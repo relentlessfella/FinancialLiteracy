@@ -1,0 +1,15 @@
+.rating {
+  display: inline-flex;
+  align-items: center;
+  font-size: 16px;
+}
+
+.stars {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.ratingValue {
+  margin-left: 5px;
+  color: gray;
+}
