@@ -14,26 +14,23 @@ export const poppins = Poppins({ subsets: ['latin'], weight: ['200', '300', '400
 const registration = () => {
   const [mailValue, setMailValue] = useState(null);
   const [userPassword, setUserPassword] = useState(null);
+  const [userName, setUserName] = useState(null);
   const handleSubmit = async (e) => {
     // e.prevenDefault();
     try {
-      const response = await axios.post('http://127.0.0.1:8000/auth/register/', {
-        headers: {
-          'Content-Type': 'application/json',
+      const response = await axios.post(
+        'http://127.0.0.1:8000/auth/register/',
+        { email: mailValue, name: userName, password: userPassword },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
         },
-        body: JSON.stringify({ email: mailValue, password: userPassword }),
-      });
-      if (response.ok) {
-        console.log('Success: ', response.data.message);
+      );
+      if (response.data) {
+        console.log('Success: ', response.data);
       } else {
-        console.log(
-          'Error: ',
-          response.data.message,
-          ' Mail: ',
-          mailValue,
-          ' Pass: ',
-          userPassword,
-        );
+        console.log('Error: ', response.data, ' Mail: ', mailValue, ' Pass: ', userPassword);
       }
     } catch (error) {
       throw error;
@@ -139,7 +136,7 @@ const registration = () => {
                       cursor: 'pointer',
                     }}
                     placeholder="Enter your full name"
-                    onChange={(e) => setMailValue(e.target.value)}
+                    onChange={(e) => setUserName(e.target.value)}
                   />
                 </form>
               </div>

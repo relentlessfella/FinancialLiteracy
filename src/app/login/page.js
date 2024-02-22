@@ -17,15 +17,18 @@ const login = () => {
   const handleSubmit = async (e) => {
     // e.prevenDefault();
     try {
-      const response = await axios.post('http://127.0.0.1:8000/auth/login/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      const response = await axios.post(
+        'http://127.0.0.1:8000/auth/login/',
+        { email: mailValue, password: userPassword },
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
         },
-        body: JSON.stringify({ email: mailValue, password: userPassword }),
-      });
-      if (response.ok) {
-        console.log('Success: ', response.data.message);
+      );
+      if (response.data) {
+        console.log('Success: ', response.data);
       } else {
         console.log(
           'Error: ',
