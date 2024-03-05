@@ -5,12 +5,29 @@ import ImageRating from '@/components/ImageRating/ImageRating';
 import { nunito, inter } from '@/app/main/page';
 import play from '../../../public/assets/play.svg';
 import axios from 'axios';
+import { useMainContext } from '@/contexts/ContextProvider/ContextProvider';
 
 const CardItem = () => {
   const [data, setData] = useState(null);
+  const { category, activeModule } = useMainContext();
   const fetchAllCards = async () => {
     try {
-      const response = await axios.get('http://127.0.0.1:8000/course/');
+      const response = await axios({
+        method: 'get',
+        url: 'http://127.0.0.1:8000/courses/course/',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        params: {
+          Module: activeModule,
+          Bank: category.Bank,
+          Investment: category.Investment,
+          Money: category.Money,
+          Credit: category.Credit,
+          Currency: category.Currency,
+          Stock: category.Stock,
+        },
+      });
       setData(response.data);
     } catch (error) {
       throw error;
@@ -19,7 +36,7 @@ const CardItem = () => {
 
   useEffect(() => {
     fetchAllCards();
-  }, []);
+  }, [category, activeModule]);
 
   if (data === null) {
     <div style={{ textAlign: 'center' }}>Loading...</div>;

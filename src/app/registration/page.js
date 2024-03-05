@@ -9,9 +9,12 @@ import './registration.css';
 import Link from 'next/link';
 import axios from 'axios';
 
-export const poppins = Poppins({ subsets: ['latin'], weight: ['200', '300', '400', '500'] });
+export const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['200', '300', '400', '500', '600', '700', '800'],
+});
 
-const registration = () => {
+const Registration = () => {
   const [mailValue, setMailValue] = useState(null);
   const [userPassword, setUserPassword] = useState(null);
   const [userName, setUserName] = useState(null);
@@ -204,4 +207,4 @@ const registration = () => {
   );
 };
 
-export default registration;
+export default Registration;

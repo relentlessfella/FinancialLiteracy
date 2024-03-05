@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import explore from '../../../public/assets/explore.png';
 import mainRight from '../../../public/assets/mainRight.png';
@@ -11,13 +11,17 @@ import CourseCategory from '@/components/CourseCategory/CourseCategory';
 import ContactUs from '@/components/ContactUs/ContactUs';
 import CardItem from '@/components/CardItem/CardItem';
 
-export const alfaSlabOne = Alfa_Slab_One({ subsets: ['latin'], weight: ['400'] });
+export const alfaSlabOne = Alfa_Slab_One({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-alfaSlabOne',
+});
 export const inter = Inter({ subsets: ['latin'], weight: ['400', '600'] });
 export const nunito = Nunito({ subsets: ['latin'], weight: ['400', '900'] });
 
 const MainPage = () => {
   return (
-    <div style={{ height: '4000px' }}>
+    <div style={{ marginBottom: '100px' }}>
       <div
         style={{
           display: 'flex',
@@ -83,7 +87,7 @@ const MainPage = () => {
           </div>
 
           {/* Contact Us */}
-          <ContactUs />
+          {/* <ContactUs /> */}
           {/* Contact Us */}
         </div>
       </div>

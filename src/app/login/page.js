@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import google from '../../../public/assets/google.svg';
 import hideIcon from '../../../public/assets/hideIcon.svg';
@@ -9,9 +9,12 @@ import './login.css';
 import Link from 'next/link';
 import axios from 'axios';
 
-export const poppins = Poppins({ subsets: ['latin'], weight: ['200', '300', '400', '500'] });
+export const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['200', '300', '400', '500', '600', '700', '800'],
+});
 
-const login = () => {
+const Login = () => {
   const [mailValue, setMailValue] = useState(null);
   const [userPassword, setUserPassword] = useState(null);
   const handleSubmit = async (e) => {
@@ -193,4 +196,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default Login;

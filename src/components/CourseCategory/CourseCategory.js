@@ -10,7 +10,44 @@ import { alfaSlabOne } from '@/app/main/page';
 import { useMainContext } from '@/contexts/ContextProvider/ContextProvider';
 
 const CourseCategory = () => {
-  const { activeCategory, setActiveCategory } = useMainContext();
+  const {
+    activeCategory,
+    setActiveCategory,
+    bankCategory,
+    setBankCategory,
+    moneyCategory,
+    setMoneyCategory,
+    investmentCategory,
+    setInvestmentCategory,
+    currencyCategory,
+    setCurrencyCategory,
+    creditCategory,
+    setCreditCategory,
+    stockCategory,
+    setStockCategory,
+    category,
+    setCategories,
+  } = useMainContext();
+  // const { bankCategory, setBankCategory } = useMainContext();
+  // const { moneyCategory, setMoneyCategory } = useMainContext();
+  // const { investmentCategory, setInvestmentCategory } = useMainContext();
+  // const { currencyCategory, setCurrencyCategory } = useMainContext();
+  // const { creditCategory, setCreditCategory } = useMainContext();
+  // const { stockCategory, setStockCategory } = useMainContext();
+
+  console.log(category);
+  const toggleCategory = (category) => {
+    setCategories(
+      (prevCategories) => (
+        console.log(prevCategories), //object with keys = null
+        {
+          ...prevCategories,
+          [category]: prevCategories[category] ? null : category,
+        }
+      ),
+    );
+  };
+
   return (
     <div
       style={{
@@ -35,7 +72,7 @@ const CourseCategory = () => {
               height: '60px',
               margin: '10px',
             }}
-            onClick={() => setActiveCategory(1)}>
+            onClick={() => toggleCategory('Bank')}>
             <div style={{ display: 'flex', marginTop: 'auto', marginBottom: 'auto' }}>
               <Image
                 src={pen}
@@ -61,7 +98,7 @@ const CourseCategory = () => {
               }}>
               <div
                 style={{
-                  display: activeCategory === 1 ? 'block' : 'none',
+                  display: category.Bank === 'Bank' ? 'block' : 'none',
                   width: '20px',
                   height: '20px',
                   borderRadius: '20px',
@@ -79,7 +116,7 @@ const CourseCategory = () => {
               height: '60px',
               margin: '10px',
             }}
-            onClick={() => setActiveCategory(2)}>
+            onClick={() => toggleCategory('Investment')}>
             <div style={{ display: 'flex', marginTop: 'auto', marginBottom: 'auto' }}>
               <Image
                 src={layers}
@@ -105,7 +142,7 @@ const CourseCategory = () => {
               }}>
               <div
                 style={{
-                  display: activeCategory === 2 ? 'block' : 'none',
+                  display: category.Investment === 'Investment' ? 'block' : 'none',
                   width: '20px',
                   height: '20px',
                   borderRadius: '20px',
@@ -123,7 +160,7 @@ const CourseCategory = () => {
               height: '60px',
               margin: '10px',
             }}
-            onClick={() => setActiveCategory(3)}>
+            onClick={() => toggleCategory('Credit')}>
             <div style={{ display: 'flex', marginTop: 'auto', marginBottom: 'auto' }}>
               <Image
                 src={paper}
@@ -149,7 +186,7 @@ const CourseCategory = () => {
               }}>
               <div
                 style={{
-                  display: activeCategory === 3 ? 'block' : 'none',
+                  display: category.Credit === 'Credit' ? 'block' : 'none',
                   width: '20px',
                   height: '20px',
                   borderRadius: '20px',
@@ -167,7 +204,7 @@ const CourseCategory = () => {
               height: '60px',
               margin: '10px',
             }}
-            onClick={() => setActiveCategory(4)}>
+            onClick={() => toggleCategory('Money')}>
             <div style={{ display: 'flex', marginTop: 'auto', marginBottom: 'auto' }}>
               <Image
                 src={database}
@@ -193,7 +230,7 @@ const CourseCategory = () => {
               }}>
               <div
                 style={{
-                  display: activeCategory === 4 ? 'block' : 'none',
+                  display: category.Money === 'Money' ? 'block' : 'none',
                   width: '20px',
                   height: '20px',
                   borderRadius: '20px',
@@ -211,7 +248,7 @@ const CourseCategory = () => {
               height: '60px',
               margin: '10px',
             }}
-            onClick={() => setActiveCategory(5)}>
+            onClick={() => toggleCategory('Currency')}>
             <div style={{ display: 'flex', marginTop: 'auto', marginBottom: 'auto' }}>
               <Image
                 src={pie}
@@ -237,7 +274,7 @@ const CourseCategory = () => {
               }}>
               <div
                 style={{
-                  display: activeCategory === 5 ? 'block' : 'none',
+                  display: category.Currency === 'Currency' ? 'block' : 'none',
                   width: '20px',
                   height: '20px',
                   borderRadius: '20px',
@@ -255,7 +292,7 @@ const CourseCategory = () => {
               height: '60px',
               margin: '10px',
             }}
-            onClick={() => setActiveCategory(6)}>
+            onClick={() => toggleCategory('Stock')}>
             <div style={{ display: 'flex', marginTop: 'auto', marginBottom: 'auto' }}>
               <Image
                 src={chart}
@@ -281,7 +318,7 @@ const CourseCategory = () => {
               }}>
               <div
                 style={{
-                  display: activeCategory === 6 ? 'block' : 'none',
+                  display: category.Stock === 'Stock' ? 'block' : 'none',
                   width: '20px',
                   height: '20px',
                   borderRadius: '20px',

@@ -6,13 +6,29 @@ import play from '../../../public/assets/play.svg';
 import ImageRating from '../ImageRating/ImageRating';
 import { data } from '@/data/data';
 import axios from 'axios';
+import { useMainContext } from '@/contexts/ContextProvider/ContextProvider';
 
 const PopularCourses = () => {
   const [data, setData] = useState(null);
   const fetchCourses = async () => {
     try {
-      const response = await axios.get('http://127.0.0.1:8000/course/');
-      console.log('fetchCourses | response:', response.data);
+      const response = await axios({
+        method: 'get',
+        url: 'http://127.0.0.1:8000/courses/course',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        params: {
+          Module: 1,
+          Bank: 'Bank',
+          Investment: 'Investment',
+          Money: 'Money',
+          Credit: 'Credit',
+          Currency: null,
+          Stock: null,
+        },
+      });
+      console.log('Only bank | response:', response.data);
       setData(response);
     } catch (error) {
       throw error;
@@ -23,7 +39,7 @@ const PopularCourses = () => {
     fetchCourses();
   }, []);
 
-  if (data === null) {
+  if (data === null || data === undefined) {
     <div style={{ textAlign: 'center' }}>Loading...</div>;
   } else {
     return (

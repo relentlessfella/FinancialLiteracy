@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+}
+.nav {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+.main {
+  background-color: #fff;
+  flex: 4;
+}
+.profileAside {
+  background-color: #08a5d3;
+  flex: 1;
+}
+.profileIconsContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+}
+.iconAvatar {
+  margin: 0 auto;
+}
+/* .iconLogo {
+} */
+
+.navLink {
+  display: flex;
+  text-decoration: none;
+  outline: none;
+  font-weight: 400;
+  color: #fff;
+  cursor: pointer;
+  margin: 10px 5px;
+}
+.navLinkIcon {
+  margin: auto 10px;
+}

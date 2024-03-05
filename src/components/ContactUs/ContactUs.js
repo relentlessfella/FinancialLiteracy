@@ -13,7 +13,6 @@ const ContactUs = () => {
       style={{
         backgroundColor: '#08A5D3',
         width: '100%',
-        marginTop: '100px',
         height: '400px',
         maxWidth: '100%',
         display: 'flex',
