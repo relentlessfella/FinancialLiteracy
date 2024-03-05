@@ -11,28 +11,25 @@ const LessonCard = () => {
   };
 
   useEffect(() => {
-    fetchLessons;
+    fetchLessons();
   }, []);
 
   if (data === null) {
     <div>Loading...</div>;
   } else {
     return (
-      <div className={styles.cardMain}>
-        <div>
-          <div>{data.name}</div>
-          <div>
-            In this Lesson, Lorem ipsum dolor sit amet consectetur. Elementum nisl duis tortor sed.
-            Lorem ipsum dolor sit amet consect. Elementum nisl duis tortor sed. Lorem ipsum dolor
-            sit amet consectetur. Elementum nisl duis tortor sed. Lorem ipsum dolor sit amet
-            consectetur. Elementum nisl duis tortor sed.{' '}
-          </div>
-          <div>
-            <div>View Lesson Details</div>
-            <button>Start</button>
-          </div>
-        </div>
-      </div>
+      <ul style={{ padding: '50px', margin: '0' }}>
+        {data.data.map((item) => (
+          <li className={styles.card} key={item.id}>
+            <div>{item.name}</div>
+            <div>{item.content}</div>
+            <div>
+              <div>View Lesson Details</div>
+              <button>Start</button>
+            </div>
+          </li>
+        ))}
+      </ul>
     );
   }
 };

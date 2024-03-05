@@ -1,6 +1,9 @@
-.cardMain {
+.card {
   padding: 40px;
+  margin: 40px 0;
   box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.35);
   -webkit-box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.35);
   -moz-box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.35);
+  list-style-type: none;
+  border-radius: 10px;
 }
