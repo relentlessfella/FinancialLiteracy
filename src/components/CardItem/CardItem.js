@@ -5,9 +5,11 @@ import ImageRating from '@/components/ImageRating/ImageRating';
 import { nunito, inter } from '@/app/main/page';
 import play from '../../../public/assets/play.svg';
 import axios from 'axios';
+import { useRouter } from 'next/navigation';
 import { useMainContext } from '@/contexts/ContextProvider/ContextProvider';
 
 const CardItem = () => {
+  const router = useRouter();
   const [data, setData] = useState(null);
   const { category, activeModule } = useMainContext();
   const fetchAllCards = async () => {
@@ -118,6 +120,7 @@ const CardItem = () => {
                     fontWeight: '600',
                     fontSize: '18px',
                   }}
+                  onClick={() => router.push('/CoursePage')}
                   className={inter.className}>
                   Join
                 </button>

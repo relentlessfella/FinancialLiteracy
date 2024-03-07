@@ -64,7 +64,7 @@ const Header = () => {
         </li>
         <li style={{ display: 'flex' }} className="header_li">
           <div>
-            <Link href={'/'} style={{ textDecoration: 'none', color: 'black' }}>
+            <Link href={'/profile'} style={{ textDecoration: 'none', color: 'black' }}>
               <div>Nussupekov Arnibek</div>
               {/* <Image src={divider} width={51} height={19} /> */}
             </Link>

@@ -23,6 +23,7 @@ const LessonCard = () => {
           <li className={styles.card} key={item.id}>
             <div>{item.name}</div>
             <div>{item.content}</div>
+            <div>{item.description}</div>
             <div>
               <div>View Lesson Details</div>
               <button>Start</button>
