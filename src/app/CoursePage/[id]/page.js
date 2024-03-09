@@ -2,45 +2,43 @@
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 // import courseImage from '../../../public/assets/CourseImage.png';
-import { alfaSlabOne } from '../main/page';
-import playCourse from '../../../public/assets/PlayCourse.svg';
-import bookmark from '../../../public/assets/bookmarkCourse.svg';
+import { alfaSlabOne } from '../../main/page';
+import playCourse from '../../../../public/assets/PlayCourse.svg';
+import bookmark from '../../../../public/assets/bookmarkCourse.svg';
 import LessonCard from '@/components/CoursePageCard/LessonCard';
-import styles from './page.module.css';
-import backButton from '../../../public/assets/courseBackButton.svg';
+import styles from '../page.module.css';
+import backButton from '../../../../public/assets/courseBackButton.svg';
 import axios from 'axios';
+import { useRouter } from 'next/navigation';
 
-const CoursePage = () => {
+const CoursePage = ({ params }) => {
   const [data, setData] = useState(null);
   const [active, setActive] = useState(false);
+  const id = params.id;
+  console.log('ID: ', id);
   const fetchAllCards = async () => {
     try {
       const response = await axios({
         method: 'get',
-        url: 'http://127.0.0.1:8000/courses/course/',
+        url: `http://127.0.0.1:8000/courses/course/${id}`,
         headers: {
           'Content-Type': 'application/json',
         },
-        // params: {
-        //   Module: 1,
-        //   Bank: category.Bank,
-        //   Investment: category.Investment,
-        //   Money: category.Money,
-        //   Credit: category.Credit,
-        //   Currency: category.Currency,
-        //   Stock: category.Stock,
-        // },
       });
       setData(response.data);
-      console.log(data);
     } catch (error) {
       throw error;
     }
   };
+  console.log('DATA ', data);
 
   useEffect(() => {
     fetchAllCards();
   }, []);
+
+  const handleActiveBookmark = () => {
+    setActive(!active);
+  };
 
   if (data === null) {
     <div>Loading...</div>;
@@ -52,9 +50,9 @@ const CoursePage = () => {
           <Image style={{ margin: '8px 10px' }} src={backButton} width={22} height={22} />
           <div>
             <div style={{ display: 'flex' }}>
-              <div>Level 1</div>
+              <div>Level {data.module}</div>
             </div>
-            <div>Basic Understanding of Financial Literacy</div>
+            <div>{data.name}</div>
             <div style={{ marginTop: '50px', display: 'flex' }}>
               <button className={styles.startLessonBtn}>
                 <Image src={playCourse} width={20} height={20} style={{ margin: 'auto 8px' }} />
@@ -62,7 +60,7 @@ const CoursePage = () => {
               </button>
               <button
                 className={active === true ? styles.startLessonBtn : styles.bookmarkBtn}
-                onClick={() => setActive(!active)}
+                onClick={handleActiveBookmark}
                 style={{ margin: '0 50px' }}>
                 <Image src={bookmark} width={20} height={20} style={{ margin: 'auto 8px' }} />
                 <div style={{ margin: 'auto 0' }}>Bookmark</div>

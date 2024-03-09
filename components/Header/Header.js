@@ -2,7 +2,7 @@
 import React from 'react';
 import { useMainContext } from '@/contexts/ContextProvider/ContextProvider';
 import Image from 'next/image';
-import logo from '../../public/assets/logo.svg';
+import logo from '../../public/assets/FinLit.svg';
 import magnifier from '../../public/assets/magnifier.svg';
 import dropdown from '../../public/assets/dropdown.svg';
 import web from '../../public/assets/web.svg';
@@ -22,7 +22,7 @@ const Header = () => {
       }}
       className="header">
       <div style={{ display: 'flex', alignItems: 'center' }}>
-        <Image src={logo} width={70} height={70} style={{ marginRight: '50px' }} />
+        <Image src={logo} style={{ marginRight: '50px', marginBottom: '10px' }} />
         <div
           style={{
             borderRadius: '10px',

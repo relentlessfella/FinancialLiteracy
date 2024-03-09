@@ -6,9 +6,11 @@ import play from '../../../public/assets/play.svg';
 import ImageRating from '../ImageRating/ImageRating';
 import { data } from '@/data/data';
 import axios from 'axios';
+import { useRouter } from 'next/navigation';
 import { useMainContext } from '@/contexts/ContextProvider/ContextProvider';
 
 const PopularCourses = () => {
+  const router = useRouter();
   const [data, setData] = useState(null);
   const fetchCourses = async () => {
     try {
@@ -137,6 +139,7 @@ const PopularCourses = () => {
                         fontWeight: '600',
                         fontSize: '18px',
                       }}
+                      onClick={() => router.push(`/CoursePage/${item.id}`)}
                       className={inter.className}>
                       Join
                     </button>

@@ -120,7 +120,7 @@ const CardItem = () => {
                     fontWeight: '600',
                     fontSize: '18px',
                   }}
-                  onClick={() => router.push('/CoursePage')}
+                  onClick={() => router.push(`/CoursePage/${item.id}`)}
                   className={inter.className}>
                   Join
                 </button>
