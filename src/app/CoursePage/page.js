@@ -9,6 +9,7 @@ import LessonCard from '@/components/CoursePageCard/LessonCard';
 import styles from './page.module.css';
 import backButton from '../../../public/assets/courseBackButton.svg';
 import axios from 'axios';
+import bookmarkInactive from '../../../public/assets/bookmarkInactive.svg';
 
 const CoursePage = () => {
   const [data, setData] = useState(null);
@@ -64,13 +65,19 @@ const CoursePage = () => {
                 className={active === true ? styles.startLessonBtn : styles.bookmarkBtn}
                 onClick={() => setActive(!active)}
                 style={{ margin: '0 50px' }}>
-                <Image src={bookmark} width={20} height={20} style={{ margin: 'auto 8px' }} />
+                {/* <Image src={bookmark} width={20} height={20} style={{ margin: 'auto 8px' }} /> */}
+                <Image
+                  src={bookmarkInactive}
+                  width={20}
+                  height={20}
+                  style={{ margin: 'auto 8px' }}
+                />
                 <div style={{ margin: 'auto 0' }}>Bookmark</div>
               </button>
             </div>
           </div>
         </div>
-        <div style={{ height: '100vh' }}>
+        <div style={{ minHeight: '100vh' }}>
           <LessonCard />
         </div>
       </div>
