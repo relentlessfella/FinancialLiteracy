@@ -9,8 +9,10 @@ import web from '../../public/assets/web.svg';
 import './Header.css';
 import Link from 'next/link';
 import divider from '../../public/assets/Divider.svg';
+import { useRouter } from 'next/navigation';
 
 const Header = () => {
+  const router = useRouter();
   const { testData } = useMainContext();
   return (
     <nav
@@ -22,7 +24,11 @@ const Header = () => {
       }}
       className="header">
       <div style={{ display: 'flex', alignItems: 'center' }}>
-        <Image src={logo} style={{ marginRight: '50px', marginBottom: '10px' }} />
+        <Image
+          src={logo}
+          style={{ marginRight: '50px', marginBottom: '10px' }}
+          onClick={() => router.push('/')}
+        />
         <div
           style={{
             borderRadius: '10px',

@@ -1,0 +1,99 @@
+.block1 {
+  box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.35);
+  -webkit-box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.35);
+  padding: 20px;
+  margin: 50px;
+  border-radius: 20px;
+  background-image: url('/assets/temporary/Slice1.png');
+  height: 65vh;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.block2 {
+  box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.35);
+  -webkit-box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.35);
+  padding: 20px;
+  margin: 50px;
+  border-radius: 20px;
+  background-image: url('/assets/temporary/Slice2.png');
+  height: 80vh;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.block3 {
+  box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.35);
+  -webkit-box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.35);
+  padding: 20px;
+  margin: 50px;
+  border-radius: 20px;
+  background-image: url('/assets/temporary/Slice3.png');
+  height: 80vh;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.block4 {
+  box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.35);
+  -webkit-box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.35);
+  padding: 20px;
+  margin: 50px;
+  border-radius: 20px;
+  background-image: url('/assets/temporary/Slice4.png');
+  height: 65vh;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.block5 {
+  box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.35);
+  -webkit-box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.35);
+  padding: 20px;
+  margin: 50px;
+  border-radius: 20px;
+  background-image: url('/assets/temporary/Slice5.png');
+  height: 65vh;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.backgroundCourseImage {
+  background-image: url('/assets/CourseImage.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+.containerInner {
+  font-family: var(--font-alfaSlabOne);
+  background-color: #a2bf00;
+  padding: 50px 60px;
+  color: #fff;
+  display: flex;
+  font-size: 30px;
+}
+.startLessonBtn {
+  width: 200px;
+  height: 50px;
+  display: flex;
+  border-radius: 15px;
+  border: none;
+  font-weight: 600;
+  justify-content: center;
+  font-size: 18px;
+  color: #fe602f;
+}
+.bookmarkBtn {
+  width: 200px;
+  height: 50px;
+  display: flex;
+  border-radius: 15px;
+  justify-content: center;
+  border: #ffffff 2px solid;
+  background-color: #a2bf00;
+  font-weight: 600;
+  font-size: 18px;
+  color: #fff;
+}

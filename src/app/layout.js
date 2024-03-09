@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
           ) : (
             <></>
           )}
-          {children}
+          <div style={{ minHeight: '100vh' }}>{children}</div>
           {pathname != '/login' &&
           pathname != '/registration' &&
           pathname != '/profile' &&
