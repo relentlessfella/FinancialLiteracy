@@ -10,31 +10,15 @@ import { alfaSlabOne } from '@/app/main/page';
 import { useMainContext } from '@/contexts/ContextProvider/ContextProvider';
 
 const CourseCategory = () => {
-  const {
-    activeCategory,
-    setActiveCategory,
-    bankCategory,
-    setBankCategory,
-    moneyCategory,
-    setMoneyCategory,
-    investmentCategory,
-    setInvestmentCategory,
-    currencyCategory,
-    setCurrencyCategory,
-    creditCategory,
-    setCreditCategory,
-    stockCategory,
-    setStockCategory,
-    category,
-    setCategories,
-  } = useMainContext();
-  // const { bankCategory, setBankCategory } = useMainContext();
-  // const { moneyCategory, setMoneyCategory } = useMainContext();
-  // const { investmentCategory, setInvestmentCategory } = useMainContext();
-  // const { currencyCategory, setCurrencyCategory } = useMainContext();
-  // const { creditCategory, setCreditCategory } = useMainContext();
-  // const { stockCategory, setStockCategory } = useMainContext();
-
+  const categories = [
+    { title: 'Bank', image: pen },
+    { title: 'Investment', image: layers },
+    { title: 'Credit', image: paper },
+    { title: 'Money', image: database },
+    { title: 'Currency', image: pie },
+    { title: 'Stock', image: chart },
+  ];
+  const { category, setCategories } = useMainContext();
   console.log(category);
   const toggleCategory = (category) => {
     setCategories(
@@ -49,20 +33,22 @@ const CourseCategory = () => {
   };
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        width: '1460px',
-        margin: '0 auto',
-      }}>
-      <div style={{}}>
-        <div
-          style={{ margin: '30px auto', width: '1085px', fontSize: '28px', color: '#A2BF00' }}
-          className={alfaSlabOne.className}>
-          Category
-        </div>
-        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
-          <div
+    <div>
+      <div
+        style={{ margin: '30px auto', width: '1085px', fontSize: '28px', color: '#A2BF00' }}
+        className={alfaSlabOne.className}>
+        Category
+      </div>
+      <ul
+        style={{
+          display: 'flex',
+          width: '1460px',
+          margin: '0 auto',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+        }}>
+        {categories.map((item) => (
+          <li
             style={{
               backgroundColor: '#08A5D3',
               borderRadius: '12px',
@@ -71,17 +57,19 @@ const CourseCategory = () => {
               width: '350px',
               height: '60px',
               margin: '10px',
+              cursor: 'pointer',
+              flexWrap: 'wrap',
             }}
-            onClick={() => toggleCategory('Bank')}>
+            onClick={() => toggleCategory(item.title)}>
             <div style={{ display: 'flex', marginTop: 'auto', marginBottom: 'auto' }}>
               <Image
-                src={pen}
+                src={item.image}
                 width={25}
                 height={25}
                 style={{ margin: '0 15px' }}
                 alt="Icon of Pen"
               />
-              <div style={{ color: '#fff' }}>Bank</div>
+              <div style={{ color: '#fff', userSelect: 'none' }}>{item.title}</div>
             </div>
             <div
               style={{
@@ -98,236 +86,24 @@ const CourseCategory = () => {
               }}>
               <div
                 style={{
-                  display: category.Bank === 'Bank' ? 'block' : 'none',
+                  display:
+                    item.title === category.Money ||
+                    item.title === category.Bank ||
+                    item.title === category.Investment ||
+                    item.title === category.Currency ||
+                    item.title === category.Credit ||
+                    item.title === category.Stock
+                      ? 'block'
+                      : 'none',
                   width: '20px',
                   height: '20px',
                   borderRadius: '20px',
                   backgroundColor: '#A2BF00',
                 }}></div>
             </div>
-          </div>
-          <div
-            style={{
-              backgroundColor: '#08A5D3',
-              borderRadius: '12px',
-              display: 'flex',
-              justifyContent: 'space-between',
-              width: '350px',
-              height: '60px',
-              margin: '10px',
-            }}
-            onClick={() => toggleCategory('Investment')}>
-            <div style={{ display: 'flex', marginTop: 'auto', marginBottom: 'auto' }}>
-              <Image
-                src={layers}
-                width={25}
-                height={25}
-                style={{ margin: '0 15px' }}
-                alt="Icon of Layers"
-              />
-              <div style={{ color: '#fff' }}>Investment</div>
-            </div>
-            <div
-              style={{
-                width: '40px',
-                height: '40px',
-                borderRadius: '20px',
-                display: 'flex',
-                justifyContent: 'center',
-                backgroundColor: '#fff',
-                alignItems: 'center',
-                marginTop: 'auto',
-                marginBottom: 'auto',
-                marginRight: '15px',
-              }}>
-              <div
-                style={{
-                  display: category.Investment === 'Investment' ? 'block' : 'none',
-                  width: '20px',
-                  height: '20px',
-                  borderRadius: '20px',
-                  backgroundColor: '#A2BF00',
-                }}></div>
-            </div>
-          </div>
-          <div
-            style={{
-              backgroundColor: '#08A5D3',
-              borderRadius: '12px',
-              display: 'flex',
-              justifyContent: 'space-between',
-              width: '350px',
-              height: '60px',
-              margin: '10px',
-            }}
-            onClick={() => toggleCategory('Credit')}>
-            <div style={{ display: 'flex', marginTop: 'auto', marginBottom: 'auto' }}>
-              <Image
-                src={paper}
-                width={25}
-                height={25}
-                style={{ margin: '0 15px' }}
-                alt="Icon of Papers"
-              />
-              <div style={{ color: '#fff' }}>Credit</div>
-            </div>
-            <div
-              style={{
-                width: '40px',
-                height: '40px',
-                borderRadius: '20px',
-                display: 'flex',
-                justifyContent: 'center',
-                backgroundColor: '#fff',
-                alignItems: 'center',
-                marginTop: 'auto',
-                marginBottom: 'auto',
-                marginRight: '15px',
-              }}>
-              <div
-                style={{
-                  display: category.Credit === 'Credit' ? 'block' : 'none',
-                  width: '20px',
-                  height: '20px',
-                  borderRadius: '20px',
-                  backgroundColor: '#A2BF00',
-                }}></div>
-            </div>
-          </div>
-          <div
-            style={{
-              backgroundColor: '#08A5D3',
-              borderRadius: '12px',
-              display: 'flex',
-              justifyContent: 'space-between',
-              width: '350px',
-              height: '60px',
-              margin: '10px',
-            }}
-            onClick={() => toggleCategory('Money')}>
-            <div style={{ display: 'flex', marginTop: 'auto', marginBottom: 'auto' }}>
-              <Image
-                src={database}
-                width={25}
-                height={25}
-                style={{ margin: '0 15px' }}
-                alt="Icon of Database"
-              />
-              <div style={{ color: '#fff' }}>Money</div>
-            </div>
-            <div
-              style={{
-                width: '40px',
-                height: '40px',
-                borderRadius: '20px',
-                display: 'flex',
-                justifyContent: 'center',
-                backgroundColor: '#fff',
-                alignItems: 'center',
-                marginTop: 'auto',
-                marginBottom: 'auto',
-                marginRight: '15px',
-              }}>
-              <div
-                style={{
-                  display: category.Money === 'Money' ? 'block' : 'none',
-                  width: '20px',
-                  height: '20px',
-                  borderRadius: '20px',
-                  backgroundColor: '#A2BF00',
-                }}></div>
-            </div>
-          </div>
-          <div
-            style={{
-              backgroundColor: '#08A5D3',
-              borderRadius: '12px',
-              display: 'flex',
-              justifyContent: 'space-between',
-              width: '350px',
-              height: '60px',
-              margin: '10px',
-            }}
-            onClick={() => toggleCategory('Currency')}>
-            <div style={{ display: 'flex', marginTop: 'auto', marginBottom: 'auto' }}>
-              <Image
-                src={pie}
-                width={25}
-                height={25}
-                style={{ margin: '0 15px' }}
-                alt="Icon of Pie Chart"
-              />
-              <div style={{ color: '#fff' }}>Currency</div>
-            </div>
-            <div
-              style={{
-                width: '40px',
-                height: '40px',
-                borderRadius: '20px',
-                display: 'flex',
-                justifyContent: 'center',
-                backgroundColor: '#fff',
-                alignItems: 'center',
-                marginTop: 'auto',
-                marginBottom: 'auto',
-                marginRight: '15px',
-              }}>
-              <div
-                style={{
-                  display: category.Currency === 'Currency' ? 'block' : 'none',
-                  width: '20px',
-                  height: '20px',
-                  borderRadius: '20px',
-                  backgroundColor: '#A2BF00',
-                }}></div>
-            </div>
-          </div>
-          <div
-            style={{
-              backgroundColor: '#08A5D3',
-              borderRadius: '12px',
-              display: 'flex',
-              justifyContent: 'space-between',
-              width: '350px',
-              height: '60px',
-              margin: '10px',
-            }}
-            onClick={() => toggleCategory('Stock')}>
-            <div style={{ display: 'flex', marginTop: 'auto', marginBottom: 'auto' }}>
-              <Image
-                src={chart}
-                width={25}
-                height={25}
-                style={{ margin: '0 15px' }}
-                alt="Icon of Chart"
-              />
-              <div style={{ color: '#fff' }}>Stock</div>
-            </div>
-            <div
-              style={{
-                width: '40px',
-                height: '40px',
-                borderRadius: '20px',
-                display: 'flex',
-                justifyContent: 'center',
-                backgroundColor: '#fff',
-                alignItems: 'center',
-                marginTop: 'auto',
-                marginBottom: 'auto',
-                marginRight: '15px',
-              }}>
-              <div
-                style={{
-                  display: category.Stock === 'Stock' ? 'block' : 'none',
-                  width: '20px',
-                  height: '20px',
-                  borderRadius: '20px',
-                  backgroundColor: '#A2BF00',
-                }}></div>
-            </div>
-          </div>
-        </div>
-      </div>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

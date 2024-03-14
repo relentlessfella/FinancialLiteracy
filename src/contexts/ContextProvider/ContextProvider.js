@@ -19,12 +19,6 @@ export const MainContextProvider = ({ children }) => {
     Credit: null,
     Stock: null,
   });
-  const [bankCategory, setBankCategory] = useState(null);
-  const [moneyCategory, setMoneyCategory] = useState(null);
-  const [investmentCategory, setInvestmentCategory] = useState(null);
-  const [currencyCategory, setCurrencyCategory] = useState(null);
-  const [creditCategory, setCreditCategory] = useState(null);
-  const [stockCategory, setStockCategory] = useState(null);
   return (
     <MainContext.Provider
       value={{

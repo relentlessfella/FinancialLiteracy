@@ -17,7 +17,6 @@ const CoursePage = ({ params }) => {
   const [active, setActive] = useState(false);
   const router = useRouter();
   const id = params.id;
-  // console.log(router);
   const fetchAllCards = async () => {
     try {
       const response = await axios({
