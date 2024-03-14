@@ -8,6 +8,8 @@ import logo from '../../../public/assets/logo.svg';
 import './login.css';
 import Link from 'next/link';
 import axios from 'axios';
+import eye from '../../../public/assets/eye.svg';
+import { useRouter } from 'next/navigation';
 
 export const poppins = Poppins({
   subsets: ['latin'],
@@ -15,8 +17,18 @@ export const poppins = Poppins({
 });
 
 const Login = () => {
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [password, setPassword] = useState('');
   const [mailValue, setMailValue] = useState(null);
   const [userPassword, setUserPassword] = useState(null);
+  const router = useRouter();
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+    setUserPassword(e.target.value);
+  };
   const handleSubmit = async (e) => {
     // e.prevenDefault();
     try {
@@ -58,7 +70,7 @@ const Login = () => {
       }}>
       <div>
         <div>
-          <Image src={logo} alt="Login Logo" />
+          <Image src={logo} alt="Login Logo" onClick={() => router.push('/')} />
         </div>
         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
           <div
@@ -71,7 +83,6 @@ const Login = () => {
             className="login_card">
             <div style={{ padding: '130px 50px' }}>
               <div style={{ textAlign: 'center', fontSize: '24px' }}>
-                {' '}
                 Welcome back to <br /> Junior Finance Academy!
               </div>
               <div style={{ display: 'flex', justifyContent: 'center' }}>
@@ -95,7 +106,6 @@ const Login = () => {
                     <Image style={{ margin: 'auto 0' }} src={google} alt="google logo" />
                   </button>
                 </div>
-                {/* <div style={{ marginTop: 'auto', marginBottom: 'auto' }}></div> */}
               </div>
               <div style={{ display: 'flex', justifyContent: 'center', marginTop: '30px' }}>
                 <div
@@ -147,6 +157,9 @@ const Login = () => {
                     <form>
                       <input
                         // value={setUserPassword}
+                        type={passwordVisible ? 'text' : 'password'}
+                        value={password}
+                        onChange={handlePasswordChange}
                         placeholder="Password"
                         style={{
                           width: '100%',
@@ -156,12 +169,18 @@ const Login = () => {
                           outline: 'none',
                           cursor: 'pointer',
                         }}
-                        onChange={(e) => setUserPassword(e.target.value)}
+                        // onChange={(e) => setUserPassword(e.target.value)}
                       />
                     </form>
                   </div>
-                  <div style={{ margin: 'auto 5px', width: '21px', height: '25px' }}>
-                    <Image src={hideIcon} alt="Hide Icon" width={21} height={25} />
+                  <div
+                    style={{ margin: 'auto 5px', width: '21px', height: '25px' }}
+                    onClick={togglePasswordVisibility}>
+                    {passwordVisible ? (
+                      <Image src={eye} alt="Visibility Icon" width={21} height={25} />
+                    ) : (
+                      <Image src={hideIcon} alt="Hide Icon" width={21} height={25} />
+                    )}
                   </div>
                 </div>
               </div>
@@ -186,7 +205,7 @@ const Login = () => {
                 </button>
               </div>
               <div style={{ textAlign: 'center' }}>
-                Already have an account? <Link href={'/'}>Sign Up</Link>
+                Already have an account? <Link href={'/registration'}>Sign Up</Link>
               </div>
             </div>
           </div>

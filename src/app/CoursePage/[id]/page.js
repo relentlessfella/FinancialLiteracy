@@ -1,7 +1,6 @@
 'use client';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
-// import courseImage from '../../../public/assets/CourseImage.png';
 import { alfaSlabOne } from '../../main/page';
 import playCourse from '../../../../public/assets/PlayCourse.svg';
 import bookmark from '../../../../public/assets/bookmarkCourse.svg';
@@ -39,6 +38,7 @@ const CoursePage = ({ params }) => {
 
   useEffect(() => {
     fetchAllCards();
+    window.scrollTo(0, 0);
   }, []);
 
   const fetchAddBookmark = async () => {
@@ -78,7 +78,7 @@ const CoursePage = ({ params }) => {
   };
 
   if (data === null) {
-    <div>Loading...</div>;
+    return <div>Loading...</div>;
   } else {
     return (
       <div className={alfaSlabOne.variable}>

@@ -9,11 +9,10 @@ const LessonCard = () => {
   const params = useParams();
   const router = useRouter();
   const fetchLessons = async () => {
-    // const response = await axios.get('http://127.0.0.1:8000/courses/lesson/');
     const response = await axios.get(
       `http://127.0.0.1:8000/courses/lesson/${params.id}/get_lessons/`,
     );
-    console.log(response);
+    console.log('Res', response);
     setData(response);
   };
 

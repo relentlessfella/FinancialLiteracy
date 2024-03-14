@@ -4,8 +4,9 @@ import ProfileLayout from '@/components/ProfileLayout/ProfileLayout';
 import styles from './page.module.css';
 import { alfaSlabOne } from '../main/page';
 import axios from 'axios';
-
+import { useRouter } from 'next/navigation';
 const Bookmarks = () => {
+  const router = useRouter();
   const [data, setData] = useState(null);
   const fetchBookmarks = async () => {
     const response = await axios({
@@ -15,8 +16,7 @@ const Bookmarks = () => {
         'Content-Type': 'application/json',
       },
     });
-    setData(response);
-    console.log(response);
+    setData(response.data);
   };
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const Bookmarks = () => {
   }, []);
 
   if (data === null) {
-    <div>Loading</div>;
+    return <div>Loading</div>;
   } else {
     return (
       <ProfileLayout>
@@ -35,7 +35,7 @@ const Bookmarks = () => {
             My Bookmarks
           </div>
           <ul>
-            {data.data.map((item) => (
+            {data.map((item) => (
               <li style={{ padding: '50px', listStyleType: 'none' }}>
                 <div className={styles.bookmarksLessonCard}>
                   <div
@@ -68,7 +68,9 @@ const Bookmarks = () => {
                         borderRadius: '15px',
                         float: 'right',
                         marginTop: '60px',
-                      }}>
+                        cursor: 'pointer',
+                      }}
+                      onClick={() => router.push(`/CoursePage/${data[0].id}`)}>
                       Continue
                     </button>
                   </div>

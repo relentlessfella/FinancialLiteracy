@@ -16,16 +16,16 @@ const LessonPage = () => {
         'Content-Type': 'application/json',
       },
     });
-    console.log('REAAEREA', response);
     setData(response.data);
   };
 
   useEffect(() => {
     fetchLesson();
+    window.scrollTo(0, 0);
   }, []);
 
   if (data === null) {
-    <div>Loading...</div>;
+    return <div>Loading...</div>;
   } else {
     return (
       <div>

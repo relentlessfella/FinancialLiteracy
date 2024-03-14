@@ -24,7 +24,9 @@ export default function RootLayout({ children }) {
           {pathname != '/login' &&
           pathname != '/registration' &&
           pathname != '/profile' &&
-          pathname != '/profile/ProfileCourses' ? (
+          pathname != '/profile/ProfileCourses' &&
+          pathname != `/bookmarks` &&
+          pathname != `/bookmarks/${params.id}` ? (
             <Header />
           ) : (
             <></>

@@ -8,6 +8,8 @@ import logo from '../../../public/assets/logo.svg';
 import './registration.css';
 import Link from 'next/link';
 import axios from 'axios';
+import eye from '../../../public/assets/eye.svg';
+import { useRouter } from 'next/navigation';
 
 export const poppins = Poppins({
   subsets: ['latin'],
@@ -15,9 +17,19 @@ export const poppins = Poppins({
 });
 
 const Registration = () => {
+  const router = useRouter();
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [password, setPassword] = useState('');
   const [mailValue, setMailValue] = useState(null);
   const [userPassword, setUserPassword] = useState(null);
   const [userName, setUserName] = useState(null);
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+    setUserPassword(e.target.value);
+  };
   const handleSubmit = async (e) => {
     // e.prevenDefault();
     try {
@@ -51,7 +63,7 @@ const Registration = () => {
       }}>
       <div>
         <div>
-          <Image src={logo} alt="Login Logo" />
+          <Image src={logo} alt="Login Logo" href="/" onClick={() => router.push('/')} />
         </div>
         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
           <div
@@ -158,6 +170,8 @@ const Registration = () => {
                     <form>
                       <input
                         // value={setUserPassword}
+                        type={passwordVisible ? 'text' : 'password'}
+                        value={password}
                         placeholder="Password"
                         style={{
                           width: '100%',
@@ -167,12 +181,18 @@ const Registration = () => {
                           outline: 'none',
                           cursor: 'pointer',
                         }}
-                        onChange={(e) => setUserPassword(e.target.value)}
+                        onChange={handlePasswordChange}
                       />
                     </form>
                   </div>
-                  <div style={{ margin: 'auto 5px', width: '21px', height: '25px' }}>
-                    <Image src={hideIcon} alt="Hide Icon" width={21} height={25} />
+                  <div
+                    style={{ margin: 'auto 5px', width: '21px', height: '25px' }}
+                    onClick={togglePasswordVisibility}>
+                    {passwordVisible ? (
+                      <Image src={eye} alt="Visibility Icon" width={21} height={25} />
+                    ) : (
+                      <Image src={hideIcon} alt="Hide Icon" width={21} height={25} />
+                    )}
                   </div>
                 </div>
               </div>
@@ -197,7 +217,7 @@ const Registration = () => {
                 </button>
               </div>
               <div style={{ textAlign: 'center' }}>
-                Already have an account? <Link href={'/'}>Login</Link>
+                Already have an account? <Link href={'/login'}>Login</Link>
               </div>
             </div>
           </div>

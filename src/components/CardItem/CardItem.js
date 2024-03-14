@@ -1,3 +1,4 @@
+'use client';
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import cardImage from '../../../public/assets/CardImage.png';
@@ -6,6 +7,7 @@ import { nunito, inter } from '@/app/main/page';
 import play from '../../../public/assets/play.svg';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { useMainContext } from '@/contexts/ContextProvider/ContextProvider';
 
 const CardItem = () => {
@@ -108,6 +110,7 @@ const CardItem = () => {
                 <div>
                   <ImageRating rating={item.rating} />
                 </div>
+                {/* <Link href={`/CoursePage/${item.id}`}> */}
                 <button
                   style={{
                     width: '150px',
@@ -120,10 +123,12 @@ const CardItem = () => {
                     fontWeight: '600',
                     fontSize: '18px',
                   }}
+                  // href={`/CoursePage/${item.id}`}
                   onClick={() => router.push(`/CoursePage/${item.id}`)}
                   className={inter.className}>
                   Join
                 </button>
+                {/* </Link> */}
               </div>
             </div>
           </li>
