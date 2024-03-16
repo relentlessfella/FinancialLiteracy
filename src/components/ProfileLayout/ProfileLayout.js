@@ -72,30 +72,6 @@ const ProfileLayout = ({ children }) => {
               </div>
             );
           })}
-          {/* <div>
-            <Link className={style.navLink} href="/profile/profile-courses">
-              <Image className={style.navLinkIcon} src={bookIcon} />
-              My Courses
-            </Link>
-          </div>
-          <div>
-            <Link className={style.navLink} href="/bookmarks">
-              <Image className={style.navLinkIcon} src={bookMarkIcon} />
-              My Bookmarks
-            </Link>
-          </div>
-          <div>
-            <Link className={style.navLink} href="/profile/profile-settings">
-              <Image className={style.navLinkIcon} src={settingsIcon} />
-              Settings
-            </Link>
-          </div>
-          <div>
-            <Link className={style.navLink} href="/logout">
-              <Image className={style.navLinkIcon} src={exitIcon} />
-              Log Out
-            </Link>
-          </div> */}
         </nav>
       </aside>
       <main className={style.main}>{children}</main>

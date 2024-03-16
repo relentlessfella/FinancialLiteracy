@@ -46,13 +46,13 @@ const LessonCard = () => {
               </div>
               <button
                 style={{
-                  backgroundColor: '#858585',
+                  backgroundColor: '#A2BF00',
                   border: 'none',
                   color: '#fff',
                   fontSize: '18px',
                   fontWeight: '600',
                   borderRadius: '15px',
-                  padding: '12px 22px',
+                  padding: '12px 62px',
                   margin: '30px 0 ',
                 }}
                 onClick={() => router.push('/lesson')}>

@@ -1,0 +1,85 @@
+.container {
+  font-family: var(--font-alfaSlabOne);
+  background-color: #a2bf00;
+  padding: 50px 180px;
+  color: #fff;
+  display: flex;
+  font-size: 30px;
+}
+.startLessonBtn {
+  width: 200px;
+  height: 50px;
+  display: flex;
+  border-radius: 15px;
+  border: none;
+  font-weight: 600;
+  justify-content: center;
+  font-size: 18px;
+  color: #fe602f;
+}
+.bookmarkBtn {
+  width: 200px;
+  height: 50px;
+  display: flex;
+  border-radius: 15px;
+  justify-content: center;
+  border: #ffffff 2px solid;
+  background-color: #a2bf00;
+  font-weight: 600;
+  font-size: 18px;
+  color: #fff;
+}
+.quizMain {
+  -webkit-box-shadow: 0px 0px 15px 0px rgba(34, 60, 80, 0.28);
+  -moz-box-shadow: 0px 0px 15px 0px rgba(34, 60, 80, 0.28);
+  box-shadow: 0px 0px 15px 0px rgba(34, 60, 80, 0.28);
+}
+.quizQuestion {
+  background-color: '#FAFAFA';
+  -webkit-box-shadow: 0px 0px 15px 0px rgba(34, 60, 80, 0.28);
+  -moz-box-shadow: 0px 0px 15px 0px rgba(34, 60, 80, 0.28);
+  box-shadow: 0px 0px 15px 0px rgba(34, 60, 80, 0.28);
+  border-radius: 15px;
+  color: #333333;
+  font-weight: 600;
+  padding: 12px;
+  margin: 10px 0;
+  transition: 0.6s;
+}
+.quizQuestion:hover {
+  background-color: #d9d9d9;
+}
+.quizWrongAnswer {
+  border: red 4px solid;
+  background-color: '#FAFAFA';
+  -webkit-box-shadow: 0px 0px 15px 0px rgba(34, 60, 80, 0.28);
+  -moz-box-shadow: 0px 0px 15px 0px rgba(34, 60, 80, 0.28);
+  box-shadow: 0px 0px 15px 0px rgba(34, 60, 80, 0.28);
+  border-radius: 15px;
+  color: #333333;
+  font-weight: 600;
+  padding: 12px;
+  margin: 10px 0;
+  transition: 0.6s;
+}
+.quizRightAnswer {
+  border: #a2bf00 4px solid;
+  background-color: '#FAFAFA';
+  -webkit-box-shadow: 0px 0px 15px 0px rgba(34, 60, 80, 0.28);
+  -moz-box-shadow: 0px 0px 15px 0px rgba(34, 60, 80, 0.28);
+  box-shadow: 0px 0px 15px 0px rgba(34, 60, 80, 0.28);
+  border-radius: 15px;
+  color: #333333;
+  font-weight: 600;
+  padding: 12px;
+  margin: 10px 0;
+  transition: 0.6s;
+}
+.leaderboard_item {
+  -webkit-box-shadow: 0px 0px 15px 0px rgba(34, 60, 80, 0.28);
+  -moz-box-shadow: 0px 0px 15px 0px rgba(34, 60, 80, 0.28);
+  box-shadow: 0px 0px 15px 0px rgba(34, 60, 80, 0.28);
+  border-radius: 15px;
+  padding: 20px 10px;
+  margin: 5px;
+}

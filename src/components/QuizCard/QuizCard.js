@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import styles from './page.module.css';
 
-const QuizCard = () => {
+const QuizCard = (id) => {
   const data = [
     {
       title: 'Quiz',
@@ -54,11 +54,11 @@ const QuizCard = () => {
                   fontSize: '18px',
                   fontWeight: '600',
                   borderRadius: '15px',
-                  padding: '12px 22px',
+                  padding: '12px 62px',
                   margin: '30px 0 ',
                 }}
-                onClick={() => router.push('/')}>
-                Completed
+                onClick={() => router.push(`/CoursePage/quiz/${id.course_id}`)}>
+                Start
               </button>
             </div>
           </li>

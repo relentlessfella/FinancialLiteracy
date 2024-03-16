@@ -18,6 +18,7 @@ const ContactUs = () => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+        padding: '10px 0',
       }}>
       <div style={{ width: '400px', padding: '40px' }}>
         <Image src={logo} alt="Logo Icon" />

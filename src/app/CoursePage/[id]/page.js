@@ -117,7 +117,7 @@ const CoursePage = ({ params }) => {
               </div>
             </div>
           </div>
-          <div style={{ minHeight: '100vh', margin: '0px 160px ' }}>
+          <div style={{ minHeight: '100vh', margin: '0px 160px' }}>
             <div>
               <LessonCard />
             </div>
@@ -134,7 +134,7 @@ const CoursePage = ({ params }) => {
                   Access will be opened after completing all the lessons.
                 </p>
               </div>
-              <QuizCard />
+              <QuizCard course_id={params.id} />
             </div>
           </div>
         </div>
