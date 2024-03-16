@@ -24,7 +24,8 @@ export default function RootLayout({ children }) {
           {pathname != '/login' &&
           pathname != '/registration' &&
           pathname != '/profile' &&
-          pathname != '/profile/ProfileCourses' &&
+          pathname != '/profile/profile-courses' &&
+          pathname != '/profile/profile-settings' &&
           pathname != `/bookmarks` &&
           pathname != `/bookmarks/${params.id}` ? (
             <Header />
@@ -35,7 +36,8 @@ export default function RootLayout({ children }) {
           {pathname != '/login' &&
           pathname != '/registration' &&
           pathname != '/profile' &&
-          pathname != '/profile/ProfileCourses' &&
+          pathname != '/profile/profile-courses' &&
+          pathname != '/profile/profile-settings' &&
           pathname != `/bookmarks` &&
           pathname != `/bookmarks/${params.id}` ? (
             <ContactUs />

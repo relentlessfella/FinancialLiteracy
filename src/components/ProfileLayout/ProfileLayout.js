@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import style from './page.module.css';
 import Link from 'next/link';
@@ -10,9 +11,31 @@ import settingsIcon from '../../../public/assets/profileIcons/settingsIcon.svg';
 import bookIcon from '../../../public/assets/profileIcons/bookIcon.svg';
 import bookMarkIcon from '../../../public/assets/profileIcons/bookMarkIcon.svg';
 import exitIcon from '../../../public/assets/profileIcons/exitIcon.svg';
-import notificationIcon from '../../../public/assets/profileIcons/notificationIcon.svg';
+import bookIconActive from '../../../public/assets/profileIcons/bookIconActive.svg';
+import bookMarkActive from '../../../public/assets/profileIcons/bookMarkActive.svg';
+import logoutActive from '../../../public/assets/profileIcons/logoutActive.svg';
+import settingsActive from '../../../public/assets/profileIcons/settingsActive.svg';
+import { useParams, usePathname } from 'next/navigation';
 
 const ProfileLayout = ({ children }) => {
+  const asideMenuLinks = [
+    { title: 'Home', link: '/', active: homeIcon, default: homeIcon },
+    {
+      title: 'My Courses',
+      link: '/profile/profile-courses',
+      default: bookIcon,
+      active: bookIconActive,
+    },
+    { title: 'My Bookmarks', link: '/bookmarks', default: bookMarkIcon, active: bookMarkActive },
+    {
+      title: 'Settings',
+      link: '/profile/profile-settings',
+      default: settingsIcon,
+      active: settingsActive,
+    },
+    { title: 'Log Out', link: '/logout', default: exitIcon, active: logoutActive },
+  ];
+  const pathname = usePathname();
   return (
     <div className={style.container}>
       <aside className={style.profileAside}>
@@ -26,7 +49,7 @@ const ProfileLayout = ({ children }) => {
             justifyContent: 'center',
             textDecoration: 'none',
             color: '#FE602F',
-            padding: '10px 5px',
+            padding: '15px 5px',
             backgroundColor: '#fff',
             cursor: 'pointer',
           }}
@@ -34,26 +57,45 @@ const ProfileLayout = ({ children }) => {
           Nussupekov Arnibek
         </Link>
         <nav className={style.nav}>
-          <Link className={style.navLink} href="/">
-            <Image className={style.navLinkIcon} src={homeIcon} />
-            <div>Home</div>
-          </Link>
-          <Link className={style.navLink} href="/profile/ProfileCourses">
-            <Image className={style.navLinkIcon} src={bookIcon} />
-            My Courses
-          </Link>
-          <Link className={style.navLink} href="/bookmarks">
-            <Image className={style.navLinkIcon} src={bookMarkIcon} />
-            My Bookmarks
-          </Link>
-          <Link className={style.navLink} href="/settings">
-            <Image className={style.navLinkIcon} src={settingsIcon} />
-            Settings
-          </Link>
-          <Link className={style.navLink} href="/logout">
-            <Image className={style.navLinkIcon} src={exitIcon} />
-            Log Out
-          </Link>
+          {asideMenuLinks.map((item) => {
+            const isActive = pathname === item.link;
+            console.log(isActive);
+            return (
+              <div className={isActive ? style.navLinkWrapper : ''}>
+                <Link className={isActive ? style.navLinkActive : style.navLink} href={item.link}>
+                  <Image
+                    className={style.navLinkIcon}
+                    src={isActive ? item.active : item.default}
+                  />
+                  <div>{item.title}</div>
+                </Link>
+              </div>
+            );
+          })}
+          {/* <div>
+            <Link className={style.navLink} href="/profile/profile-courses">
+              <Image className={style.navLinkIcon} src={bookIcon} />
+              My Courses
+            </Link>
+          </div>
+          <div>
+            <Link className={style.navLink} href="/bookmarks">
+              <Image className={style.navLinkIcon} src={bookMarkIcon} />
+              My Bookmarks
+            </Link>
+          </div>
+          <div>
+            <Link className={style.navLink} href="/profile/profile-settings">
+              <Image className={style.navLinkIcon} src={settingsIcon} />
+              Settings
+            </Link>
+          </div>
+          <div>
+            <Link className={style.navLink} href="/logout">
+              <Image className={style.navLinkIcon} src={exitIcon} />
+              Log Out
+            </Link>
+          </div> */}
         </nav>
       </aside>
       <main className={style.main}>{children}</main>
