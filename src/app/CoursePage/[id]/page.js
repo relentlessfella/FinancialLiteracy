@@ -8,8 +8,10 @@ import LessonCard from '@/components/CoursePageCard/LessonCard';
 import styles from '../page.module.css';
 import backButton from '../../../../public/assets/courseBackButton.svg';
 import axios from 'axios';
+import QuizCard from '@/components/QuizCard/QuizCard';
 import { useRouter } from 'next/navigation';
 import bookmarkInactive from '../../../../public/assets/bookmarkInactive.svg';
+import { poppins } from '@/app/login/page';
 
 const CoursePage = ({ params }) => {
   const [data, setData] = useState(null);
@@ -82,40 +84,59 @@ const CoursePage = ({ params }) => {
   } else {
     return (
       <div className={alfaSlabOne.variable}>
-        <div className={styles.backgroundCourseImage}></div>
-        <div className={styles.container}>
-          <Image style={{ margin: '8px 10px' }} src={backButton} width={22} height={22} />
-          <div>
-            <div style={{ display: 'flex' }}>
-              <div>Level {data.name}</div>
-            </div>
-            <div>{data.name}</div>
-            <div style={{ marginTop: '50px', display: 'flex' }}>
-              <button className={styles.startLessonBtn}>
-                <Image src={playCourse} width={20} height={20} style={{ margin: 'auto 8px' }} />
-                <div style={{ margin: 'auto 0' }}>Start Lesson</div>
-              </button>
-              <button
-                className={styles.bookmarkBtn}
-                onClick={data.is_bookmarked === false ? fetchAddBookmark : fetchRemoveBookmark}
-                style={{ margin: '0 50px' }}>
-                {data.is_bookmarked === false ? (
-                  <Image
-                    src={bookmarkInactive}
-                    width={20}
-                    height={20}
-                    style={{ margin: 'auto 8px' }}
-                  />
-                ) : (
-                  <Image src={bookmark} width={20} height={20} style={{ margin: 'auto 8px' }} />
-                )}
-                <div style={{ margin: 'auto 0' }}>Bookmark</div>
-              </button>
+        <div>
+          <div className={styles.backgroundCourseImage}></div>
+          <div className={styles.container}>
+            <Image style={{ margin: '8px 10px' }} src={backButton} width={22} height={22} />
+            <div>
+              <div style={{ display: 'flex' }}>
+                <div>Level {data.name}</div>
+              </div>
+              <div>{data.name}</div>
+              <div style={{ marginTop: '50px', display: 'flex' }}>
+                <button className={styles.startLessonBtn}>
+                  <Image src={playCourse} width={20} height={20} style={{ margin: 'auto 8px' }} />
+                  <div style={{ margin: 'auto 0' }}>Start Lesson</div>
+                </button>
+                <button
+                  className={styles.bookmarkBtn}
+                  onClick={data.is_bookmarked === false ? fetchAddBookmark : fetchRemoveBookmark}
+                  style={{ margin: '0 50px' }}>
+                  {data.is_bookmarked === false ? (
+                    <Image
+                      src={bookmarkInactive}
+                      width={20}
+                      height={20}
+                      style={{ margin: 'auto 8px' }}
+                    />
+                  ) : (
+                    <Image src={bookmark} width={20} height={20} style={{ margin: 'auto 8px' }} />
+                  )}
+                  <div style={{ margin: 'auto 0' }}>Bookmark</div>
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-        <div style={{ minHeight: '100vh' }}>
-          <LessonCard />
+          <div style={{ minHeight: '100vh', margin: '0px 160px ' }}>
+            <div>
+              <LessonCard />
+            </div>
+            <div style={{ padding: '5px 20px', margin: '45px 180px' }}>
+              <div style={{ padding: '10px 40px' }}>
+                <p style={{ color: '#FE602F', fontWeight: '900', fontSize: '38px' }}>Big Quiz</p>
+                <p
+                  style={{
+                    color: '#858585',
+                    display: 'list-item',
+                    listStyle: 'inside',
+                    fontSize: '20px',
+                  }}>
+                  Access will be opened after completing all the lessons.
+                </p>
+              </div>
+              <QuizCard />
+            </div>
+          </div>
         </div>
       </div>
     );

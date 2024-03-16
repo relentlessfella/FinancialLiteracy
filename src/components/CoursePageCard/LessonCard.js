@@ -24,15 +24,40 @@ const LessonCard = () => {
     <div>Loading...</div>;
   } else {
     return (
-      <ul style={{ padding: '50px', margin: '0' }}>
+      <ul style={{ padding: '50px', margin: '0 160px' }}>
         {data.data.map((item) => (
           <li className={styles.card} key={item.id}>
-            <div>{item.name}</div>
-            <div>{item.content}</div>
-            <div>{item.description}</div>
-            <div>
-              <div>View Lesson Details</div>
-              <button onClick={() => router.push('/lesson')}>Start</button>
+            <div
+              style={{ color: '#FE602F', fontSize: '32px', fontWeight: '1000', padding: '30px 0' }}>
+              {item.name}
+            </div>
+            <div style={{ color: '#1F1C14', opacity: '0.7', padding: '20px 0' }}>
+              {item.content}
+            </div>
+            <div style={{ margin: '10px 0' }}>{item.description}</div>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                borderTop: '1px solid #D9D9D9',
+              }}>
+              <div style={{ color: '#FE602F', fontWeight: '800', margin: 'auto 0' }}>
+                View Lesson Details
+              </div>
+              <button
+                style={{
+                  backgroundColor: '#858585',
+                  border: 'none',
+                  color: '#fff',
+                  fontSize: '18px',
+                  fontWeight: '600',
+                  borderRadius: '15px',
+                  padding: '12px 22px',
+                  margin: '30px 0 ',
+                }}
+                onClick={() => router.push('/lesson')}>
+                Read
+              </button>
             </div>
           </li>
         ))}
