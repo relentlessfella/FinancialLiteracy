@@ -16,8 +16,16 @@ export const alfaSlabOne = Alfa_Slab_One({
   weight: ['400'],
   variable: '--font-alfaSlabOne',
 });
-export const inter = Inter({ subsets: ['latin'], weight: ['400', '600'] });
-export const nunito = Nunito({ subsets: ['latin'], weight: ['400', '900'] });
+export const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '600'],
+  variable: '--font-inter',
+});
+export const nunito = Nunito({
+  subsets: ['latin'],
+  weight: ['400', '900'],
+  variable: '--font-nunito',
+});
 
 const MainPage = () => {
   return (
