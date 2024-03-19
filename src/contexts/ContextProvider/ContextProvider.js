@@ -11,6 +11,7 @@ export const MainContextProvider = ({ children }) => {
   const [testData, setTestData] = useState('Context Works!!!');
   const [activeModule, setActiveModule] = useState(1);
   const [activeCategory, setActiveCategory] = useState(1);
+  const [activeCourse, setActiveCourse] = useState(1);
   const [category, setCategories] = useState({
     Bank: null,
     Money: null,
@@ -29,6 +30,8 @@ export const MainContextProvider = ({ children }) => {
         setActiveCategory,
         category,
         setCategories,
+        activeCourse,
+        setActiveCourse,
       }}>
       {children}
     </MainContext.Provider>

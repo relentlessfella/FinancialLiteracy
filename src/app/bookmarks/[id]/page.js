@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import ProfileLayout from '@/components/ProfileLayout/ProfileLayout';
 import styles from '../page.module.css';
 import { alfaSlabOne } from '../../main/page';
+import { poppins } from '@/app/login/page';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 
@@ -30,7 +31,7 @@ const Bookmarks = ({ params }) => {
   } else {
     return (
       <ProfileLayout>
-        <div>
+        <div className={poppins.variable}>
           <div
             style={{ textAlign: 'center', color: '#FE8863', fontSize: '32px' }}
             className={alfaSlabOne.className}>
@@ -69,7 +70,7 @@ const Bookmarks = ({ params }) => {
                         height: '40px',
                         borderRadius: '15px',
                         float: 'right',
-                        marginTop: '60px',
+                        // marginTop: '10px',
                       }}
                       onClick={() => router.push(`/CoursePage/${data[0].id}`)}>
                       Continue

@@ -36,7 +36,7 @@ const Bookmarks = () => {
           </div>
           <ul>
             {data.map((item) => (
-              <li style={{ padding: '50px', listStyleType: 'none' }}>
+              <li style={{ listStyleType: 'none' }}>
                 <div className={styles.bookmarksLessonCard}>
                   <div
                     style={{
@@ -67,8 +67,9 @@ const Bookmarks = () => {
                         height: '40px',
                         borderRadius: '15px',
                         float: 'right',
-                        marginTop: '60px',
+                        marginTop: '30px',
                         cursor: 'pointer',
+                        fontFamily: 'var(--font-poppins)',
                       }}
                       onClick={() => router.push(`/CoursePage/${data[0].id}`)}>
                       Continue

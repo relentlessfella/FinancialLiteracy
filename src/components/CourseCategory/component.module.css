@@ -1,0 +1,6 @@
+.category_active {
+  width: 20px;
+  height: 20px;
+  background-color: #a2bf00;
+  transition: 0.8s;
+}

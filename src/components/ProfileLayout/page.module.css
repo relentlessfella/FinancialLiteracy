@@ -11,6 +11,7 @@
 .main {
   background-color: #fff;
   flex: 5;
+  padding: 30px 50px;
 }
 .profileAside {
   background-color: #08a5d3;

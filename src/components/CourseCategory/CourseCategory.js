@@ -8,6 +8,7 @@ import chart from '../../../public/assets/Chart.png';
 import paper from '../../../public/assets/Paper.png';
 import { alfaSlabOne } from '@/app/main/page';
 import { useMainContext } from '@/contexts/ContextProvider/ContextProvider';
+import styles from './component.module.css';
 
 const CourseCategory = () => {
   const categories = [
@@ -46,6 +47,7 @@ const CourseCategory = () => {
           margin: '0 auto',
           flexWrap: 'wrap',
           justifyContent: 'center',
+          padding: '0',
         }}>
         {categories.map((item) => (
           <li
@@ -85,21 +87,20 @@ const CourseCategory = () => {
                 marginRight: '15px',
               }}>
               <div
-                style={{
-                  display:
-                    item.title === category.Money ||
-                    item.title === category.Bank ||
-                    item.title === category.Investment ||
-                    item.title === category.Currency ||
-                    item.title === category.Credit ||
-                    item.title === category.Stock
-                      ? 'block'
-                      : 'none',
-                  width: '20px',
-                  height: '20px',
-                  borderRadius: '20px',
-                  backgroundColor: '#A2BF00',
-                }}></div>
+                style={{ borderRadius: '20px' }}
+                className={
+                  item.title === category.Money ||
+                  item.title === category.Bank ||
+                  item.title === category.Investment ||
+                  item.title === category.Currency ||
+                  item.title === category.Credit ||
+                  item.title === category.Stock
+                    ? styles.category_active
+                    : ''
+                  // styles.category_active
+                }
+                // }}
+              ></div>
             </div>
           </li>
         ))}
