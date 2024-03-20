@@ -12,7 +12,7 @@ git clone https://github.com/relentlessfella/FinancialLiteracy.git
 cd FinancialLiteracy
 ```
 
-Установи необходимые записимости для проекта:
+Установи необходимые зависимости для проекта:
 
 ```bash
 npm install
@@ -24,7 +24,6 @@ npm install
 npm run dev
 ```
 
-Открой локальный сервер в браузере [http://localhost:3000]:
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Открой локальный сервер в браузере: [http://localhost:3000](http://localhost:3000)
 
 ##Версия Node.js на момент написания проекта v20.11.1
