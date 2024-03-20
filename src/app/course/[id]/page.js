@@ -22,7 +22,7 @@ const CoursePage = ({ params }) => {
     try {
       const response = await axios({
         method: 'get',
-        url: `http://127.0.0.1:8000/courses/course/${params.id}/`,
+        url: `http://127.0.0.1:8000/courses/course/${id}/`,
         params: {
           user_id: 1,
         },
@@ -31,13 +31,10 @@ const CoursePage = ({ params }) => {
         },
       });
       setData(response.data);
-      console.log('CP: ', response);
     } catch (error) {
       throw error;
     }
   };
-  console.log('DATA ', data);
-
   useEffect(() => {
     fetchAllCards();
     window.scrollTo(0, 0);

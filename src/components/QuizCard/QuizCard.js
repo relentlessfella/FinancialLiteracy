@@ -57,7 +57,7 @@ const QuizCard = (id) => {
                   padding: '12px 62px',
                   margin: '30px 0 ',
                 }}
-                onClick={() => router.push(`/CoursePage/quiz/${id.course_id}`)}>
+                onClick={() => router.push(`/course/quiz/${id.course_id}`)}>
                 Start
               </button>
             </div>

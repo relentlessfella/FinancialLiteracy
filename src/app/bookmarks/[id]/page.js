@@ -72,7 +72,7 @@ const Bookmarks = ({ params }) => {
                         float: 'right',
                         // marginTop: '10px',
                       }}
-                      onClick={() => router.push(`/CoursePage/${data[0].id}`)}>
+                      onClick={() => router.push(`/course/${data[0].id}`)}>
                       Continue
                     </button>
                   </div>

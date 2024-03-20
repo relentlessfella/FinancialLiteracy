@@ -110,7 +110,7 @@ const ProfileCourses = () => {
               </div>
               <div>
                 <button
-                  onClick={() => router.push(`/CoursePage/${item.id}`)}
+                  onClick={() => router.push(`/course/${item.id}`)}
                   style={{
                     color: '#fff',
                     backgroundColor: '#A2BF00',

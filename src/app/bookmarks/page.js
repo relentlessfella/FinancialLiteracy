@@ -71,7 +71,7 @@ const Bookmarks = () => {
                         cursor: 'pointer',
                         fontFamily: 'var(--font-poppins)',
                       }}
-                      onClick={() => router.push(`/CoursePage/${data[0].id}`)}>
+                      onClick={() => router.push(`/course/${data[0].id}`)}>
                       Continue
                     </button>
                   </div>

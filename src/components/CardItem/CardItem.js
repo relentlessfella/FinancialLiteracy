@@ -8,6 +8,7 @@ import play from '../../../public/assets/play.svg';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import no_results from '../../../public/assets/NoResults.jpg';
 import { useMainContext } from '@/contexts/ContextProvider/ContextProvider';
 
 const CardItem = () => {
@@ -43,7 +44,16 @@ const CardItem = () => {
   }, [category, activeModule]);
 
   if (data === null) {
-    <div style={{ textAlign: 'center' }}>Loading...</div>;
+    return <div style={{ textAlign: 'center' }}>Loading...</div>;
+  } else if (data.length === 0) {
+    return (
+      <div>
+        <Image src={no_results} width={500} height={400} />
+        <div style={{ textAlign: 'center', fontWeight: '500', fontSize: '24px', opacity: '0.9' }}>
+          Sorry courses not found ;(
+        </div>
+      </div>
+    );
   } else {
     return (
       <div
@@ -124,7 +134,7 @@ const CardItem = () => {
                     fontSize: '18px',
                   }}
                   // href={`/CoursePage/${item.id}`}
-                  onClick={() => router.push(`/CoursePage/${item.id}`)}
+                  onClick={() => router.push(`/course/${item.id}`)}
                   className={inter.className}>
                   Join
                 </button>

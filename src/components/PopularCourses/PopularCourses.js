@@ -139,7 +139,7 @@ const PopularCourses = () => {
                         fontWeight: '600',
                         fontSize: '18px',
                       }}
-                      onClick={() => router.push(`/CoursePage/${item.id}`)}
+                      onClick={() => router.push(`/course/${item.id}`)}
                       className={inter.className}>
                       Join
                     </button>

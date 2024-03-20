@@ -33,6 +33,15 @@
   -webkit-box-shadow: 0px 0px 15px 0px rgba(34, 60, 80, 0.28);
   -moz-box-shadow: 0px 0px 15px 0px rgba(34, 60, 80, 0.28);
   box-shadow: 0px 0px 15px 0px rgba(34, 60, 80, 0.28);
+  display: flex;
+  max-width: 1000px;
+  min-height: 525px;
+  margin: 120px auto;
+  text-align: center;
+  font-weight: 1000;
+  border-radius: 10px;
+  flex-direction: column;
+  justify-content: center;
 }
 .quizQuestion {
   background-color: '#FAFAFA';
@@ -45,6 +54,7 @@
   padding: 12px;
   margin: 10px 0;
   transition: 0.6s;
+  user-select: none;
 }
 .quizQuestion:hover {
   background-color: #d9d9d9;
@@ -73,5 +83,6 @@
   font-weight: 600;
   padding: 12px;
   margin: 10px 0;
-  transition: 0.6s;
+  transition: 0.1s;
+  user-select: none;
 }
