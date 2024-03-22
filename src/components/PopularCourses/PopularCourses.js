@@ -41,6 +41,24 @@ const PopularCourses = () => {
     fetchCourses();
   }, []);
 
+  const handleCourseJoin = (id) => {
+    router.push(`/course/${id}`);
+    const fetchJoin = async () => {
+      try {
+        const response = await axios({
+          method: 'post',
+          url: `http://127.0.0.1:8000/progress/course_progress/${id}/join/?user_id=1`,
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        console.log('res', response.data);
+      } catch (error) {
+        throw error;
+      }
+    };
+    fetchJoin();
+  };
   if (data === null || data === undefined) {
     <div style={{ textAlign: 'center' }}>Loading...</div>;
   } else {
@@ -139,7 +157,7 @@ const PopularCourses = () => {
                         fontWeight: '600',
                         fontSize: '18px',
                       }}
-                      onClick={() => router.push(`/course/${item.id}`)}
+                      onClick={() => handleCourseJoin(item.id)}
                       className={inter.className}>
                       Join
                     </button>

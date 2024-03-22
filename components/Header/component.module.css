@@ -21,6 +21,7 @@
   animation-fill-mode: both;
   animation-timeline: scroll();
   animation-range: 0 200px;
+  z-index: 100;
 }
 .header_li {
   margin-right: 20px;
