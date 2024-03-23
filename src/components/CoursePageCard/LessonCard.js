@@ -12,13 +12,13 @@ const LessonCard = () => {
     const response = await axios.get(
       `http://127.0.0.1:8000/courses/lesson/${params.id}/get_lessons/`,
     );
-    console.log('Res', response);
     setData(response);
   };
 
   useEffect(() => {
     fetchLessons();
   }, []);
+  // console.log('Res', data.data[0].id);
 
   if (data === null) {
     <div>Loading...</div>;
@@ -55,7 +55,7 @@ const LessonCard = () => {
                   padding: '12px 62px',
                   margin: '30px 0 ',
                 }}
-                onClick={() => router.push('/lesson')}>
+                onClick={() => router.push(`/lesson/${item.id}`)}>
                 Read
               </button>
             </div>

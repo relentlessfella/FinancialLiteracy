@@ -53,6 +53,7 @@ const CoursePage = ({ params }) => {
         },
       });
       fetchAllCards();
+      console.log(response);
     } catch (error) {
       throw error;
     }
@@ -76,6 +77,30 @@ const CoursePage = ({ params }) => {
     }
   };
 
+  const fetchCourseJoin = async () => {
+    try {
+      const response = await axios({
+        method: 'post',
+        url: `http://127.0.0.1:8000/progress/course_progress/${params.id}/join/`,
+        params: {
+          user_id: 1,
+        },
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      if (response.status === 200) {
+        alert('You have joined this course!');
+      }
+    } catch (error) {
+      if (error.response.status === 500) {
+        alert('You already joined the course');
+      }
+      console.log(error);
+      // throw error;
+    }
+  };
+
   if (data === null) {
     return <div>Loading...</div>;
   } else {
@@ -91,7 +116,7 @@ const CoursePage = ({ params }) => {
               </div>
               <div>{data.name}</div>
               <div style={{ marginTop: '50px', display: 'flex' }}>
-                <button className={styles.startLessonBtn}>
+                <button className={styles.startLessonBtn} onClick={() => fetchCourseJoin()}>
                   <Image src={playCourse} width={20} height={20} style={{ margin: 'auto 8px' }} />
                   <div style={{ margin: 'auto 0' }}>Start Lesson</div>
                 </button>

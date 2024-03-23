@@ -70,6 +70,8 @@ const MainPage = () => {
                 // alignContent: 'center',
                 justifyContent: 'center',
                 flexDirection: 'row',
+                margin: '0 auto',
+                width: '1320px',
               }}
               className="ul_main_page">
               <CardItem />

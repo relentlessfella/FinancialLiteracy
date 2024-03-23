@@ -67,6 +67,9 @@ const Feedback = () => {
         },
       });
       console.log(response);
+      if (response.status === 200) {
+        alert('Feedback sent!');
+      }
       console.log(keyIndex);
     } catch (error) {
       throw error;

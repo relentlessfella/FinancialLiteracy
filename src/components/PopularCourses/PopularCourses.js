@@ -43,21 +43,21 @@ const PopularCourses = () => {
 
   const handleCourseJoin = (id) => {
     router.push(`/course/${id}`);
-    const fetchJoin = async () => {
-      try {
-        const response = await axios({
-          method: 'post',
-          url: `http://127.0.0.1:8000/progress/course_progress/${id}/join/?user_id=1`,
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-        console.log('res', response.data);
-      } catch (error) {
-        throw error;
-      }
-    };
-    fetchJoin();
+    // const fetchJoin = async () => {
+    //   try {
+    //     const response = await axios({
+    //       method: 'post',
+    //       url: `http://127.0.0.1:8000/progress/course_progress/${id}/join/?user_id=1`,
+    //       headers: {
+    //         'Content-Type': 'application/json',
+    //       },
+    //     });
+    //     console.log('res', response.data);
+    //   } catch (error) {
+    //     throw error;
+    //   }
+    // };
+    // fetchJoin();
   };
   if (data === null || data === undefined) {
     <div style={{ textAlign: 'center' }}>Loading...</div>;

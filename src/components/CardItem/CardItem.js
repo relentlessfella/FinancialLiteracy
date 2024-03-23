@@ -43,6 +43,25 @@ const CardItem = () => {
     fetchAllCards();
   }, [category, activeModule]);
 
+  // () => router.push(`/course/${item.id}`)
+  const handleCourseJoin = (id) => {
+    router.push(`/course/${id}`);
+    // const fetchJoin = async () => {
+    //   try {
+    //     const response = await axios({
+    //       method: 'post',
+    //       url: `http://127.0.0.1:8000/progress/course_progress/${id}/join/?user_id=1`,
+    //       headers: {
+    //         'Content-Type': 'application/json',
+    //       },
+    //     });
+    //     console.log('res', response.data);
+    //   } catch (error) {
+    //     throw error;
+    //   }
+    // };
+    // fetchJoin();
+  };
   if (data === null) {
     return <div style={{ textAlign: 'center' }}>Loading...</div>;
   } else if (data.length === 0) {
@@ -63,7 +82,7 @@ const CardItem = () => {
           flexWrap: 'wrap',
           maxWidth: '1759px',
           width: 'auto',
-          justifyContent: 'center',
+          // justifyContent: 'center',
           flexDirection: 'row',
         }}>
         {data.map((item) => (
@@ -133,8 +152,7 @@ const CardItem = () => {
                     fontWeight: '600',
                     fontSize: '18px',
                   }}
-                  // href={`/CoursePage/${item.id}`}
-                  onClick={() => router.push(`/course/${item.id}`)}
+                  onClick={() => handleCourseJoin(item.id)}
                   className={inter.className}>
                   Join
                 </button>

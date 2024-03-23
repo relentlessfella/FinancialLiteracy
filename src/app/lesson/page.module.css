@@ -58,6 +58,17 @@
   background-repeat: no-repeat;
   background-position: center;
 }
+.block6 {
+  box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.35);
+  -webkit-box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.35);
+  padding: 20px;
+  margin: 50px;
+  justify-content: center;
+  border-radius: 20px;
+  height: 65vh;
+  display: flex;
+}
 .backgroundCourseImage {
   background-image: url('/assets/CourseImage.jpg');
   background-repeat: no-repeat;

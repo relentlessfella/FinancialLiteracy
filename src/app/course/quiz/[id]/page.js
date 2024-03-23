@@ -184,7 +184,11 @@ const QuizPage = ({ params }) => {
             <button
               style={data.next === null ? { backgroundColor: '#a2bf00', color: '#fff' } : {}}
               className={styles.next_button}
-              onClick={data.next === null ? () => {} : handleNextPage}>
+              onClick={
+                data.next === null
+                  ? () => router.push(`/course/quiz/${params.id}/feedback`)
+                  : handleNextPage
+              }>
               {data.next === null ? 'Finish' : 'Next'}
             </button>
           </div>
