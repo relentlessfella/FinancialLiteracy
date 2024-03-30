@@ -14,6 +14,7 @@ import { useRouter } from 'next/navigation';
 import { useMainContext } from '@/contexts/ContextProvider/ContextProvider';
 import ProgressBar from '@/components/ProgressBar/ProgressBar';
 import play from '../../../../public/assets/play.svg';
+import CourseModules from '@/components/CourseModules/CourseModules';
 
 const ProfileCourses = () => {
   const { activeCourse, setActiveCourse } = useMainContext();
@@ -82,7 +83,7 @@ const ProfileCourses = () => {
           </div>
         </div>
         <div style={{ textAlign: 'center', marginTop: '40px' }} className={`${inter.variable} `}>
-          <ul className={styles.main}>
+          {/* <ul className={styles.main}>
             {course_type.map((item) => (
               <li
                 className={activeCourse === item.id ? styles.course_active : styles.course_inactive}
@@ -90,7 +91,13 @@ const ProfileCourses = () => {
                 {item.title}
               </li>
             ))}
-          </ul>
+          </ul> */}
+          <CourseModules
+            modules={course_type}
+            width={500}
+            activeModule={activeCourse}
+            setActiveModule={setActiveCourse}
+          />
         </div>
 
         {activeCourse === 1 ? (

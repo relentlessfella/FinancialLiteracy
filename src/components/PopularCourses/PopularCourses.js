@@ -4,9 +4,9 @@ import { alfaSlabOne, inter, nunito } from '@/app/main/page';
 import cardImage from '../../../public/assets/CardImage.png';
 import play from '../../../public/assets/play.svg';
 import ImageRating from '../ImageRating/ImageRating';
-import { data } from '@/data/data';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
+import styles from './component.module.css';
 import { useMainContext } from '@/contexts/ContextProvider/ContextProvider';
 
 const PopularCourses = () => {
@@ -100,7 +100,7 @@ const PopularCourses = () => {
                   height: '520px',
                   borderRadius: '10px',
                 }}
-                className="li_card_item">
+                className={styles.li_card_item}>
                 <div>
                   <Image src={cardImage} width={400} alt="Image og Card Item" />
                 </div>

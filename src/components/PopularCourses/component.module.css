@@ -1,0 +1,6 @@
+.li_card_item {
+  -webkit-box-shadow: 0px 0px 15px 0px rgba(34, 60, 80, 0.28);
+  -moz-box-shadow: 0px 0px 15px 0px rgba(34, 60, 80, 0.28);
+  box-shadow: 0px 0px 15px 0px rgba(34, 60, 80, 0.28);
+  margin: 20px;
+}

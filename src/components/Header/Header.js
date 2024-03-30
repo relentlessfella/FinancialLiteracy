@@ -2,13 +2,12 @@
 import React from 'react';
 import { useMainContext } from '@/contexts/ContextProvider/ContextProvider';
 import Image from 'next/image';
-import logo from '../../public/assets/FinLit.svg';
-import magnifier from '../../public/assets/magnifier.svg';
-import dropdown from '../../public/assets/dropdown.svg';
-import web from '../../public/assets/web.svg';
+import logo from '../../../public/assets/FinLit.svg';
+import magnifier from '../../../public/assets/magnifier.svg';
+import dropdown from '../../../public/assets/dropdown.svg';
+import web from '../../../public/assets/web.svg';
 import styles from './component.module.css';
 import Link from 'next/link';
-import divider from '../../public/assets/Divider.svg';
 import { useRouter } from 'next/navigation';
 import { poppins } from '@/app/login/page';
 
@@ -54,7 +53,7 @@ const Header = () => {
           </Link>
         </li>
         <li className={styles.header_li}>
-          <Link href={'/'} style={{ textDecoration: 'none', color: 'black' }}>
+          <Link href={'/financial-simulator'} style={{ textDecoration: 'none', color: 'black' }}>
             <div>Financial Simulator</div>
             {/* <Image src={divider} width={51} height={19} /> */}
           </Link>

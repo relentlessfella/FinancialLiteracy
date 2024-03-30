@@ -1,0 +1,41 @@
+@keyframes scrolling-header {
+  to {
+    height: 70px;
+  }
+}
+.header {
+  /* display: 'flex'; */
+  /* justify-content: 'flex-end'; */
+  -webkit-box-shadow: 0px 0px 15px 0px rgba(34, 60, 80, 0.28);
+  -moz-box-shadow: 0px 0px 15px 0px rgba(34, 60, 80, 0.28);
+  box-shadow: 0px 0px 15px 0px rgba(34, 60, 80, 0.28);
+  height: 100px;
+  background-color: #fff;
+  /* align-items: center; */
+  width: 100%;
+  position: sticky;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  animation-name: scrolling-header;
+  animation-fill-mode: both;
+  animation-timeline: scroll();
+  animation-range: 0 200px;
+  z-index: 100;
+}
+.header_li {
+  margin-right: 20px;
+  color: black;
+  display: flex;
+  align-items: center;
+}
+.section_background {
+  background-image: url('/assets/sideRight.png');
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-alfaSlabOne);
+  color: #fff;
+  font-size: 34px;
+}

@@ -1,15 +1,16 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import explore from '../../../public/assets/explore.png';
 import mainRight from '../../../public/assets/mainRight.png';
-import { Alfa_Slab_One, Inter, Nunito } from 'next/font/google';
-import './MainPage.css';
+import { Alfa_Slab_One, Inter, Nunito, DM_Sans } from 'next/font/google';
 import PopularCourses from '@/components/PopularCourses/PopularCourses';
 import CourseModules from '@/components/CourseModules/CourseModules';
 import CourseCategory from '@/components/CourseCategory/CourseCategory';
 import ContactUs from '@/components/ContactUs/ContactUs';
 import CardItem from '@/components/CardItem/CardItem';
+import { useMainContext } from '@/contexts/ContextProvider/ContextProvider';
+import styles from './page.module.css';
 
 export const alfaSlabOne = Alfa_Slab_One({
   subsets: ['latin'],
@@ -26,8 +27,19 @@ export const nunito = Nunito({
   weight: ['400', '900'],
   variable: '--font-nunito',
 });
+export const DMSans = DM_Sans({
+  subsets: ['latin'],
+  weight: ['500', '700'],
+  variable: '--font-DMSans',
+});
+const modules = [
+  { id: 1, title: 'Level 1' },
+  { id: 2, title: 'Level 2' },
+  { id: 3, title: 'Level 3' },
+];
 
 const MainPage = () => {
+  const { activeModule, setActiveModule } = useMainContext();
   return (
     <div style={{ marginBottom: '100px' }}>
       <div
@@ -45,9 +57,15 @@ const MainPage = () => {
         <PopularCourses />
         {/* Popular Courses */}
 
-        <div>
+        <div className={alfaSlabOne.variable}>
           {/* Course Modules */}
-          <CourseModules />
+          <p className={styles.title}>Courses</p>
+          <CourseModules
+            modules={modules}
+            width={450}
+            activeModule={activeModule}
+            setActiveModule={setActiveModule}
+          />
           {/* Course Modules */}
 
           {/* Course Category */}
@@ -64,16 +82,7 @@ const MainPage = () => {
               flexDirection: 'row',
             }}
             className={inter.className}>
-            <ul
-              style={{
-                display: 'flex',
-                // alignContent: 'center',
-                justifyContent: 'center',
-                flexDirection: 'row',
-                margin: '0 auto',
-                width: '1320px',
-              }}
-              className="ul_main_page">
+            <ul style={{}} className={styles.ul_main_page}>
               <CardItem />
             </ul>
           </div>

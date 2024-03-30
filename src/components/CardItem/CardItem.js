@@ -9,6 +9,7 @@ import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import no_results from '../../../public/assets/NoResults.jpg';
+import styles from './component.module.css';
 import { useMainContext } from '@/contexts/ContextProvider/ContextProvider';
 
 const CardItem = () => {
@@ -82,7 +83,6 @@ const CardItem = () => {
           flexWrap: 'wrap',
           maxWidth: '1759px',
           width: 'auto',
-          // justifyContent: 'center',
           flexDirection: 'row',
         }}>
         {data.map((item) => (
@@ -94,7 +94,7 @@ const CardItem = () => {
               height: '520px',
               borderRadius: '10px',
             }}
-            className="li_card_item">
+            className={styles.li_card_item}>
             <div>
               <Image src={cardImage} width={400} alt="Icon of Card Image" />
             </div>

@@ -1,11 +1,11 @@
 'use client';
 import { Poppins } from 'next/font/google';
 import './globals.css';
-import Header from '../../components/Header/Header';
+import Header from '../components/Header/Header';
 import React from 'react';
 import ContactUs from '@/components/ContactUs/ContactUs';
 import { MainContextProvider } from '../contexts/ContextProvider/ContextProvider';
-import { usePathname, useRouter, useParams } from 'next/navigation';
+import { usePathname, useParams } from 'next/navigation';
 
 const poppins = Poppins({ subsets: ['latin'], weight: ['500', '400', '900', '800', '700'] });
 // export const metadata = {
@@ -27,6 +27,7 @@ export default function RootLayout({ children }) {
           pathname != '/profile/profile-courses' &&
           pathname != '/profile/profile-settings' &&
           pathname != `/bookmarks` &&
+          pathname != `/financial-simulator` &&
           pathname != `/bookmarks/${params.id}` ? (
             <Header />
           ) : (
@@ -39,6 +40,7 @@ export default function RootLayout({ children }) {
           pathname != '/profile/profile-courses' &&
           pathname != '/profile/profile-settings' &&
           pathname != `/bookmarks` &&
+          pathname != `/financial-simulator` &&
           pathname != `/bookmarks/${params.id}` ? (
             <ContactUs />
           ) : (
