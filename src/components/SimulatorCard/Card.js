@@ -8,6 +8,7 @@ import mask4 from '../../../public/assets/SimulatorPageAssets/mask4.png';
 import mask5 from '../../../public/assets/SimulatorPageAssets/mask5.png';
 import styles from './component.module.css';
 import { DMSans } from '@/app/main/page';
+import { useRouter } from 'next/navigation';
 const data1 = [
   {
     id: 1,
@@ -52,8 +53,8 @@ const data1 = [
     image: mask5,
   },
 ];
-// --font-DMSans
 const Card = ({ data }) => {
+  const router = useRouter();
   return (
     <ul className={`${styles.ul} ${DMSans.variable}`}>
       {data.data.map((item, key) => (
@@ -76,7 +77,13 @@ const Card = ({ data }) => {
             <div className={styles.card_title}>{item.name}</div>
             <div className={styles.card_description}>{item.description}</div>
           </div>
-          <button className={styles.card_button}>Start</button>
+          <button
+            className={styles.card_button}
+            onClick={() =>
+              router.push(`financial-simulator/${item.id}/${item.name.replace(' ', '-')}`)
+            }>
+            Start
+          </button>
         </li>
       ))}
       {console.log(data)}

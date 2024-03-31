@@ -16,7 +16,7 @@ export const ContextProvider = React.createContext();
 export default function RootLayout({ children }) {
   const params = useParams();
   const pathname = usePathname();
-  console.log(params.id);
+  // console.log(params.id);
   return (
     <MainContextProvider>
       <html lang="en">
@@ -28,6 +28,7 @@ export default function RootLayout({ children }) {
           pathname != '/profile/profile-settings' &&
           pathname != `/bookmarks` &&
           pathname != `/financial-simulator` &&
+          pathname != `/financial-simulator/${params.id}/${params.slug}` &&
           pathname != `/bookmarks/${params.id}` ? (
             <Header />
           ) : (
@@ -41,6 +42,8 @@ export default function RootLayout({ children }) {
           pathname != '/profile/profile-settings' &&
           pathname != `/bookmarks` &&
           pathname != `/financial-simulator` &&
+          pathname != `/financial-simulator/${params.id}` &&
+          pathname != `/financial-simulator/${params.id}/${params.slug}` &&
           pathname != `/bookmarks/${params.id}` ? (
             <ContactUs />
           ) : (

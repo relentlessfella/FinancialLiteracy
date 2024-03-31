@@ -5,6 +5,9 @@ import CourseModules from '@/components/CourseModules/CourseModules';
 import Card from '@/components/SimulatorCard/Card';
 import styles from './page.module.css';
 import axios from 'axios';
+import no_results from '../../../public/assets/NoResults.jpg';
+import Image from 'next/image';
+
 const FinancialSimulator = () => {
   const [activeOption, setActiveOption] = useState(1);
   const [data, setData] = useState(null);
@@ -57,7 +60,22 @@ const FinancialSimulator = () => {
             />
           </div>
           <div className={styles.container}>
-            <Card data={data} />
+            {data.data.length === 0 ? (
+              <div style={{ width: '500px', margin: '0 auto' }}>
+                <Image src={no_results} width={500} height={400} />
+                <div
+                  style={{
+                    textAlign: 'center',
+                    fontWeight: '500',
+                    fontSize: '24px',
+                    opacity: '0.9',
+                  }}>
+                  Sorry courses not found ;(
+                </div>
+              </div>
+            ) : (
+              <Card data={data} />
+            )}
           </div>
         </SimulatorLayout>
       </div>
