@@ -24,7 +24,12 @@ export default function RootLayout({ children }) {
           className={poppins.className}
           style={{
             margin: '0',
-            backgroundColor: pathname === '/orientation-page' ? '#A2BF00' : 'initial',
+            backgroundColor:
+              pathname === '/orientation-page' ||
+              pathname === '/orientation-page/quiz' ||
+              pathname === '/orientation-page/recomendation'
+                ? '#A2BF00'
+                : 'initial',
           }}>
           {pathname != '/login' &&
           pathname != '/registration' &&
@@ -34,6 +39,8 @@ export default function RootLayout({ children }) {
           pathname != `/bookmarks` &&
           pathname != `/financial-simulator` &&
           pathname != `/orientation-page` &&
+          pathname != `/orientation-page/quiz` &&
+          pathname != `/orientation-page/recomendation` &&
           pathname != `/financial-simulator/${params.id}/${params.slug}` &&
           pathname != `/bookmarks/${params.id}` ? (
             <Header />
@@ -49,6 +56,8 @@ export default function RootLayout({ children }) {
           pathname != `/bookmarks` &&
           pathname != `/financial-simulator` &&
           pathname != `/orientation-page` &&
+          pathname != `/orientation-page/quiz` &&
+          pathname != `/orientation-page/recomendation` &&
           pathname != `/financial-simulator/${params.id}` &&
           pathname != `/financial-simulator/${params.id}/${params.slug}` &&
           pathname != `/bookmarks/${params.id}` ? (
