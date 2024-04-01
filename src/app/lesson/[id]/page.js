@@ -40,6 +40,7 @@ const LessonPage = ({ params }) => {
       }
     } catch (error) {
       if (error.response.status === 500) {
+        // console.log(error.response.data);
         alert('Lesson already completed');
       }
     }

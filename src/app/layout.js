@@ -20,7 +20,12 @@ export default function RootLayout({ children }) {
   return (
     <MainContextProvider>
       <html lang="en">
-        <body className={poppins.className} style={{ margin: '0' }}>
+        <body
+          className={poppins.className}
+          style={{
+            margin: '0',
+            backgroundColor: pathname === '/orientation-page' ? '#A2BF00' : 'initial',
+          }}>
           {pathname != '/login' &&
           pathname != '/registration' &&
           pathname != '/profile' &&
@@ -28,6 +33,7 @@ export default function RootLayout({ children }) {
           pathname != '/profile/profile-settings' &&
           pathname != `/bookmarks` &&
           pathname != `/financial-simulator` &&
+          pathname != `/orientation-page` &&
           pathname != `/financial-simulator/${params.id}/${params.slug}` &&
           pathname != `/bookmarks/${params.id}` ? (
             <Header />
@@ -42,6 +48,7 @@ export default function RootLayout({ children }) {
           pathname != '/profile/profile-settings' &&
           pathname != `/bookmarks` &&
           pathname != `/financial-simulator` &&
+          pathname != `/orientation-page` &&
           pathname != `/financial-simulator/${params.id}` &&
           pathname != `/financial-simulator/${params.id}/${params.slug}` &&
           pathname != `/bookmarks/${params.id}` ? (
