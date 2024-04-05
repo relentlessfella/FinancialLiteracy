@@ -11,7 +11,7 @@
 .main {
   background-color: #fff;
   flex: 5;
-  padding: 30px 50px;
+  padding: 30px 80px;
 }
 .profileAside {
   background-color: #08a5d3;
@@ -50,4 +50,24 @@
 }
 .navLinkWrapper {
   background-color: white;
+}
+
+.profileLink {
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  padding: 15px 5px;
+  cursor: pointer;
+}
+
+.profileLinkActive {
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  color: #fe602f;
+  padding: 15px 5px;
+  background-color: #fff;
+  cursor: pointer;
 }

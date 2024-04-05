@@ -21,16 +21,20 @@
 .profile_search {
   display: flex;
   justify-content: space-between;
-  width: 900px;
+  width: 980px;
   height: 60px;
   border-radius: 10px;
   border: 1px solid #e5e5e5;
   font-size: 35px;
   outline: none;
+  margin: 30px 0;
 }
 .profile_main {
-  display: flex;
-  justify-content: space-between;
+  min-height: 1800px;
+  width: 100%;
+  max-width: 1200px;
+  /* margin: 0 80px; */
+  padding: 0 5px;
 }
 .input {
   font-family: var(--font-poppins);
@@ -39,6 +43,13 @@
   padding: 0 0 0 20px;
   border: none;
   outline: none;
+}
+.profile_main_inner {
+  font-weight: 1000;
+  color: #86d521;
+  font-size: 32px;
+  width: 990px;
+  margin-top: 20px;
 }
 
 /* .course_inactive {

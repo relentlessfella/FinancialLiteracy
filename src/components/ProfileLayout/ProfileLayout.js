@@ -44,15 +44,7 @@ const ProfileLayout = ({ children }) => {
           <Image className={style.iconAvatar} src={avatar} width={100} height={100} />
         </div>
         <Link
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            textDecoration: 'none',
-            color: '#FE602F',
-            padding: '15px 5px',
-            backgroundColor: '#fff',
-            cursor: 'pointer',
-          }}
+          className={pathname === '/profile' ? style.profileLinkActive : style.profileLink}
           href="/profile">
           Nussupekov Arnibek
         </Link>

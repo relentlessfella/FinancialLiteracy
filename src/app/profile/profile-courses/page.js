@@ -15,6 +15,7 @@ import { useMainContext } from '@/contexts/ContextProvider/ContextProvider';
 import ProgressBar from '@/components/ProgressBar/ProgressBar';
 import play from '../../../../public/assets/play.svg';
 import CourseModules from '@/components/CourseModules/CourseModules';
+import notFound from '../../../../public/assets/NoResults.jpg';
 
 const ProfileCourses = () => {
   const { activeCourse, setActiveCourse } = useMainContext();
@@ -57,104 +58,115 @@ const ProfileCourses = () => {
     return (
       <ProfileLayout>
         <div className={`${styles.profile_main} ${poppins.variable}`}>
-          <div className={styles.profile_search}>
-            <input type="text" placeholder="Search or type" className={styles.input} />
+          {/* <div className={styles.profile_search}> */}
+          {/* <input type="text" placeholder="Search or type" className={styles.input} />
             <div
               style={{
                 margin: 'auto',
               }}>
               <Image src={magnifier} />
-            </div>
-          </div>
-          <div style={{ display: 'flex' }}>
+            </div> */}
+
+          {/* <div style={{ display: 'flex' }}>
             <div style={{ margin: 'auto 30px', height: '35px' }}>
               <Image src={webIcon} />
             </div>
             <div style={{ margin: 'auto 0', height: '35px' }}>
               <Image src={notificationIcon} />
             </div>
+          </div> */}
+          {/* </div> */}
+          <div className={styles.profile_main_inner}>
+            <div className={styles.profile_search}>
+              <input type="text" placeholder="Search or type" className={styles.input} />
+              <div
+                style={{
+                  margin: 'auto',
+                }}>
+                <Image src={magnifier} />
+              </div>
+            </div>
+            <div style={{ color: '#08A5D3' }}>Hi, Arnibek!</div>
+            Take a step towards a better future!
+            {/* <div style={{ paddingTop: '50px' }}> */}
+            <Image src={profileImage} style={{ paddingTop: '50px' }} />
+            {/* </div> */}
+            <div
+              style={{ textAlign: 'center', marginTop: '40px' }}
+              className={`${inter.variable} `}>
+              <CourseModules
+                modules={course_type}
+                width={500}
+                activeModule={activeCourse}
+                setActiveModule={setActiveCourse}
+              />
+            </div>
           </div>
-        </div>
-        <div style={{ fontWeight: '1000', color: '#86D521', fontSize: '32px', marginTop: '80px' }}>
-          <div style={{ color: '#08A5D3' }}>Hi, Arnibek!</div>
-          Take a step towards a better future!
-          <div style={{ paddingTop: '50px' }}>
-            <Image src={profileImage} />
-          </div>
-        </div>
-        <div style={{ textAlign: 'center', marginTop: '40px' }} className={`${inter.variable} `}>
-          {/* <ul className={styles.main}>
-            {course_type.map((item) => (
-              <li
-                className={activeCourse === item.id ? styles.course_active : styles.course_inactive}
-                onClick={() => setActiveCourse(item.id)}>
-                {item.title}
-              </li>
-            ))}
-          </ul> */}
-          <CourseModules
-            modules={course_type}
-            width={500}
-            activeModule={activeCourse}
-            setActiveModule={setActiveCourse}
-          />
-        </div>
 
-        {activeCourse === 1 ? (
-          <ul className={poppins.variable}>
-            {data.map((item) => (
-              <li className={styles.profileLessonCard}>
-                <div
-                  style={{
-                    fontSize: '28px',
-                    color: '#FE602F',
-                    fontWeight: '1000',
-                    margin: '20px 0',
-                  }}>
-                  Course name:
-                  <br /> {item.name}
-                </div>
-                <div
-                  style={{ fontSize: '18px', color: '#1F1C14', opacity: '0.7', padding: '20px 0' }}>
-                  {item.description}
-                </div>
-                <div style={{ display: 'flex' }}>
-                  <Image src={play} width={48} height={48} />
-                  <div style={{ margin: '13px 10px 0 10px' }}>
-                    <div style={{ margin: 'auto 0px', color: '#A2BF00', fontWeight: '500' }}>
-                      {item.lesson_num} Lessons
-                    </div>
-                    <div style={{ display: 'flex', marginTop: '10px' }}>
-                      <div style={{ margin: 'auto 0px' }}>
-                        <ProgressBar value={item.progress} />
+          {activeCourse === 1 && data.length != 0 ? (
+            <ul className={poppins.variable}>
+              {data.map((item) => (
+                <li className={styles.profileLessonCard}>
+                  <div
+                    style={{
+                      fontSize: '28px',
+                      color: '#FE602F',
+                      fontWeight: '1000',
+                      margin: '20px 0',
+                    }}>
+                    Course name:
+                    <br /> {item.name}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: '18px',
+                      color: '#1F1C14',
+                      opacity: '0.7',
+                      padding: '20px 0',
+                    }}>
+                    {item.description}
+                  </div>
+                  <div style={{ display: 'flex' }}>
+                    <Image src={play} width={48} height={48} />
+                    <div style={{ margin: '13px 10px 0 10px' }}>
+                      <div style={{ margin: 'auto 0px', color: '#A2BF00', fontWeight: '500' }}>
+                        {item.lesson_num} Lessons
                       </div>
-                      <div style={{ color: '#A2BF00', fontSize: '16px', margin: '0 15px' }}>
-                        {item.progress}%
+                      <div style={{ display: 'flex', marginTop: '10px' }}>
+                        <div style={{ margin: 'auto 0px' }}>
+                          <ProgressBar value={item.progress} />
+                        </div>
+                        <div style={{ color: '#A2BF00', fontSize: '16px', margin: '0 15px' }}>
+                          {item.progress}%
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                  <button
-                    onClick={() => router.push(`/course/${item.id}`)}
-                    style={{
-                      color: '#fff',
-                      backgroundColor: '#A2BF00',
-                      border: 'none',
-                      borderRadius: '15px',
-                      padding: '10px 30px',
-                      fontFamily: 'var(--font-poppins)',
-                      fontSize: '16px',
-                    }}>
-                    Continue
-                  </button>
-                </div>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          ''
-        )}
+                  <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                    <button
+                      onClick={() => router.push(`/course/${item.id}`)}
+                      style={{
+                        color: '#fff',
+                        backgroundColor: '#A2BF00',
+                        border: 'none',
+                        borderRadius: '15px',
+                        padding: '10px 30px',
+                        fontFamily: 'var(--font-poppins)',
+                        fontSize: '16px',
+                      }}>
+                      Continue
+                    </button>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <section style={{ textAlign: 'center', marginTop: '30px', width: '990px' }}>
+              <Image src={notFound} width={500} height={400} />
+              <div>Sorry courses not found ;(</div>
+            </section>
+          )}
+        </div>
       </ProfileLayout>
     );
   }

@@ -16,10 +16,6 @@ const Profile = () => {
   return (
     <ProfileLayout>
       <div style={{ padding: '40px 100px' }}>
-        <div style={{ float: 'right' }}>
-          <Image src={webIcon} width={30} height={30} style={{ margin: 'auto 10px' }} />
-          <Image src={notificationsIcon} width={30} height={30} style={{ margin: 'auto 10px' }} />
-        </div>
         <div style={{ display: 'flex', justifyContent: 'center', textAlign: 'center' }}>
           <div
             className={alfaSlabOne.variable}
@@ -33,7 +29,7 @@ const Profile = () => {
               <div style={{ color: '#A2BF00', fontSize: '24px', fontWeight: '600' }}>
                 Junior Saver
               </div>
-              <ImageRating rating={1} />
+              <ImageRating rating={5} />
             </div>
             <ProfileForm />
             <ProfileAchievements />

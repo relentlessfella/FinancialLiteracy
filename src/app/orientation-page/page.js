@@ -63,7 +63,7 @@ const OrientationPage = () => {
                     cursor: 'pointer',
                     userSelect: 'none',
                   }}
-                  onClick={''}>
+                  onClick={() => router.push('/orientation-page/quiz')}>
                   Start
                 </button>
               </div>
