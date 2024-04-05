@@ -82,7 +82,7 @@ const MainPage = () => {
               flexDirection: 'row',
             }}
             className={inter.className}>
-            <ul style={{}} className={styles.ul_main_page}>
+            <ul className={styles.ul_main_page}>
               <CardItem />
             </ul>
           </div>

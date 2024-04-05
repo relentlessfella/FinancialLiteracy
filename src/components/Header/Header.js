@@ -19,58 +19,66 @@ const Header = () => {
       style={{
         display: 'flex',
         justifyContent: 'space-between',
-        // paddingLeft: '40px',
-        // paddingRight: '40px',
       }}
       className={`${styles.header} ${poppins.variable}`}>
-      <div style={{ display: 'flex', alignItems: 'center' }}>
-        <Image
-          src={logo}
-          style={{ marginRight: '50px', marginBottom: '10px' }}
-          onClick={() => router.push('/')}
-        />
-        <div
-          style={{
-            borderRadius: '10px',
-            border: '1px solid gray',
-            // width: '444px',
-            // height: '62px',
-            display: 'flex',
-            justifyContent: 'space-between',
-          }}>
-          {/* <div style={{ marginTop: 'auto', marginBottom: 'auto' }}>Search</div> */}
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <input type="text" placeholder="Search..." className={styles.input} />
-            <Image src={magnifier} width={20} height={20} style={{ margin: '15px' }} />
+      <div
+        style={{
+          maxWidth: '1875px',
+          display: 'flex',
+          margin: '0 auto',
+          justifyContent: 'space-between',
+          width: '100%',
+          padding: '0 15px',
+        }}>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <Image
+            src={logo}
+            style={{ marginRight: '50px', marginBottom: '10px' }}
+            onClick={() => router.push('/')}
+          />
+          <div
+            style={{
+              borderRadius: '10px',
+              border: '1px solid gray',
+              // width: '444px',
+              // height: '62px',
+              display: 'flex',
+              justifyContent: 'space-between',
+            }}>
+            {/* <div style={{ marginTop: 'auto', marginBottom: 'auto' }}>Search</div> */}
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <input type="text" placeholder="Search..." className={styles.input} />
+              <Image src={magnifier} width={20} height={20} style={{ margin: '15px' }} />
+            </div>
           </div>
         </div>
-      </div>
-      <ul style={{ display: 'flex', listStyle: 'none' }}>
-        <li className={styles.header_li}>
-          <Link href={'/'} style={{ textDecoration: 'none', color: 'black' }}>
-            <div>Courses</div>
-            {/* <Image src={divider } width={51} height={19} /> */}
-          </Link>
-        </li>
-        <li className={styles.header_li}>
-          <Link href={'/financial-simulator'} style={{ textDecoration: 'none', color: 'black' }}>
-            <div>Financial Simulator</div>
-            {/* <Image src={divider} width={51} height={19} /> */}
-          </Link>
-        </li>
-        <li style={{ display: 'flex' }} className={styles.header_li}>
-          <div>
-            <Link href={'/profile'} style={{ textDecoration: 'none', color: 'black' }}>
-              <div>Nussupekov Arnibek</div>
+        <ul style={{ display: 'flex', listStyle: 'none' }}>
+          <li className={styles.header_li}>
+            <Link href={'/'} style={{ textDecoration: 'none', color: 'black' }}>
+              <div>Courses</div>
+              {/* <Image src={divider } width={51} height={19} /> */}
+            </Link>
+          </li>
+          <li className={styles.header_li}>
+            <Link href={'/financial-simulator'} style={{ textDecoration: 'none', color: 'black' }}>
+              <div>Financial Simulator</div>
               {/* <Image src={divider} width={51} height={19} /> */}
             </Link>
-          </div>
-          <Image style={{ paddingTop: '0px' }} src={dropdown} width={10} height={10} />
-        </li>
-        <li className={styles.header_li}>
-          <Image src={web} width={30} height={30} />
-        </li>
-      </ul>
+          </li>
+          <li style={{ display: 'flex' }} className={styles.header_li}>
+            <div>
+              <Link href={'/profile'} style={{ textDecoration: 'none', color: 'black' }}>
+                <div>Nussupekov Arnibek</div>
+                {/* <Image src={divider} width={51} height={19} /> */}
+              </Link>
+            </div>
+            <Image style={{ paddingTop: '0px' }} src={dropdown} width={10} height={10} />
+          </li>
+          <li className={styles.header_li}>
+            <Image src={web} width={30} height={30} />
+          </li>
+        </ul>
+      </div>
     </nav>
   );
 };
