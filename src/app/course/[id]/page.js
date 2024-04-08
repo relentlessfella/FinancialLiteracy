@@ -12,6 +12,7 @@ import QuizCard from '@/components/QuizCard/QuizCard';
 import { useRouter } from 'next/navigation';
 import bookmarkInactive from '../../../../public/assets/bookmarkInactive.svg';
 import { poppins } from '@/app/login/page';
+import CertificateCard from '@/components/CertificateCard/CertificateCard';
 
 const CoursePage = ({ params }) => {
   const [data, setData] = useState(null);
@@ -157,6 +158,7 @@ const CoursePage = ({ params }) => {
                 </p>
               </div>
               <QuizCard course_id={params.id} />
+              {data.is_completed && <CertificateCard course_id={params.id} />}
             </div>
           </div>
         </div>

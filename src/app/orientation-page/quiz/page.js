@@ -29,7 +29,9 @@ const OrientationQuiz = () => {
       throw error;
     }
   };
-
+  useEffect(() => {
+    localStorage.clear();
+  }, []);
   useEffect(() => {
     const storedAnswers = JSON.parse(localStorage.getItem('answers'));
     if (storedAnswers) {
@@ -67,10 +69,9 @@ const OrientationQuiz = () => {
   };
 
   useEffect(() => {
-    localStorage.clear();
     fetchQuiz();
   }, []);
-  const handleNextPage = (id) => {
+  const handleNextPage = () => {
     const nextPage = currentPage + 1;
     setCurrentPage(nextPage);
     setSelectedAnswer(answers[nextPage] || null);
@@ -141,6 +142,7 @@ const OrientationQuiz = () => {
       throw error;
     }
   };
+
   if (data === null) {
     return <div style={{ textAlign: 'center' }}>Loading...</div>;
   } else {

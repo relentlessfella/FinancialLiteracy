@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import explore from '../../../public/assets/explore.png';
 import mainRight from '../../../public/assets/mainRight.png';
@@ -11,6 +11,8 @@ import ContactUs from '@/components/ContactUs/ContactUs';
 import CardItem from '@/components/CardItem/CardItem';
 import { useMainContext } from '@/contexts/ContextProvider/ContextProvider';
 import styles from './page.module.css';
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
 
 export const alfaSlabOne = Alfa_Slab_One({
   subsets: ['latin'],
@@ -39,7 +41,59 @@ const modules = [
 ];
 
 const MainPage = () => {
-  const { activeModule, setActiveModule } = useMainContext();
+  // const { activeModule, setActiveModule } = useMainContext();
+  // const [data, setData] = useState();
+
+  const router = useRouter();
+  const [data, setData] = useState(null);
+  const { category, activeModule, setActiveModule } = useMainContext();
+  const fetchAllCards = async () => {
+    try {
+      const response = await axios({
+        method: 'get',
+        url: 'http://127.0.0.1:8000/courses/course/',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        params: {
+          Module: activeModule,
+          Bank: category.Bank,
+          Investment: category.Investment,
+          Money: category.Money,
+          Credit: category.Credit,
+          Currency: category.Currency,
+          Stock: category.Stock,
+        },
+      });
+      setData(response.data);
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  useEffect(() => {
+    fetchAllCards();
+  }, [category, activeModule]);
+
+  // const fetchAllCards = async () => {
+  //   try {
+  //     const response = await axios({
+  //       method: 'get',
+  //       url: 'http://127.0.0.1:8000/courses/course/',
+  //       params: {
+  //         Module: activeModule,
+  //       },
+  //     });
+  //     setData(response.data);
+  //     console.log(response);
+  //   } catch (error) {
+  //     throw error;
+  //   }
+  // };
+  // useEffect(() => {
+  //   fetchAllCards();
+  // }, []);
+
   return (
     <div style={{ marginBottom: '100px' }}>
       <div
@@ -48,9 +102,24 @@ const MainPage = () => {
           alignItems: 'center',
           justifyContent: 'center',
           borderBottom: '1px solid #D9D9D9',
+          width: '100%',
+          maxWidth: '1200px',
+          margin: '0 auto',
         }}>
-        <Image src={explore} alt="Text on the main page" />
-        <Image src={mainRight} alt="Photo of 4 people" />
+        <Image
+          src={explore}
+          alt="Text on the main page"
+          layout="responsive"
+          width={500}
+          height={400}
+        />
+        <Image
+          src={mainRight}
+          alt="Photo of 4 people"
+          layout="responsive"
+          width={500}
+          height={400}
+        />
       </div>
       <div>
         {/* Popular Courses */}
@@ -83,7 +152,7 @@ const MainPage = () => {
             }}
             className={inter.className}>
             <ul className={styles.ul_main_page}>
-              <CardItem />
+              <CardItem data={data} />
             </ul>
           </div>
 

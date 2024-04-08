@@ -12,21 +12,13 @@ import QuizLayout from './QuizLayout/QuizLayout';
 
 const QuizPage = ({ params }) => {
   const [data, setData] = useState(null);
-  const [currentPage, setCurrentPage] = useState(0);
-  const [selectedAnswer, setSelectedAnswer] = useState({
-    answer_1: null,
-    state_1: false,
-    answer_2: null,
-    state_2: false,
-    answer_3: null,
-    state_3: false,
-    answer_4: null,
-    state_4: false,
-  });
-  const answers = [];
+  const [currentPage, setCurrentPage] = useState(1);
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
   const answerType = ['a.', 'b.', 'c.', 'd.'];
   const router = useRouter();
   const id = params.id;
+  console.log(id);
+  const [answers, setAnswers] = useState({});
   const fetchAllCards = async () => {
     try {
       const response = await axios({
@@ -50,8 +42,22 @@ const QuizPage = ({ params }) => {
     fetchAllCards();
     window.scrollTo(0, 0);
   }, []);
-  console.log(data);
+  useEffect(() => {
+    localStorage.clear();
+  }, []);
+  useEffect(() => {
+    const storedAnswers = JSON.parse(localStorage.getItem('answers'));
+    if (storedAnswers) {
+      setAnswers(storedAnswers);
+      if (storedAnswers[currentPage]) {
+        setSelectedAnswer(storedAnswers[currentPage]);
+      }
+    }
+  }, []);
   const handleNextPage = () => {
+    const prevPage = currentPage + 1;
+    setCurrentPage(prevPage);
+    setSelectedAnswer(answers[prevPage] || null);
     const fetchAllCards = async () => {
       try {
         const response = await axios({
@@ -69,6 +75,9 @@ const QuizPage = ({ params }) => {
     fetchAllCards();
   };
   const handlePreviousPage = () => {
+    const prevPage = currentPage - 1;
+    setCurrentPage(prevPage);
+    setSelectedAnswer(answers[prevPage] || null);
     const fetchAllCards = async () => {
       try {
         const response = await axios({
@@ -85,12 +94,49 @@ const QuizPage = ({ params }) => {
     };
     fetchAllCards();
   };
-  const handleAnswerState = (key) => {
-    setSelectedAnswer((prevState) => ({
-      ...prevState,
-      [`state_${key}`]: !prevState[`state_${key}`],
+
+  const updateAnswers = (page, answer) => {
+    setAnswers((prevAnswers) => ({
+      ...prevAnswers,
+      [page]: answer,
     }));
+    localStorage.setItem('answers', JSON.stringify({ ...answers, [page]: answer }));
   };
+  const handleClick = (id) => {
+    setSelectedAnswer(id);
+    updateAnswers(currentPage, id);
+    const answers = localStorage.getItem('answers');
+    const parseAns = JSON.parse(answers);
+    const vals = Object.values(parseAns);
+    console.log(vals);
+  };
+
+  const fetchSubmit = async () => {
+    try {
+      const answers = localStorage.getItem('answers');
+      const parseAns = JSON.parse(answers);
+      const vals = Object.values(parseAns);
+      const response = await axios({
+        method: 'post',
+        url: `http://127.0.0.1:8000/progress/quiz_progress/${id}/submit/`,
+        params: {
+          user_id: 1,
+        },
+        data: {
+          answers: vals,
+        },
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      localStorage.setItem('level', JSON.stringify(response.data.level));
+      console.log('submit response: ', response.data);
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  console.log(data);
   if (data === null) {
     return <div>{params.id}</div>;
   } else if (data.count === 0) {
@@ -104,22 +150,17 @@ const QuizPage = ({ params }) => {
       </div>
     );
   } else {
+    const handleNextAnswer = () => {
+      // arrayAnswers.push(selectedAnswer);
+      // console.log(arrayAnswers);
+      console.log(data.next);
+      if (data.next === null) {
+        fetchSubmit();
+      } else {
+        handleNextPage();
+      }
+    };
     return (
-      // <div className={alfaSlabOne.variable}>
-      //   <div className={styles.description}>
-      //     <div className={styles.container}>
-      //       <Image style={{ margin: '8px 10px' }} src={backButton} width={22} height={22} />
-      //       <div>
-      //         <div style={{ display: 'flex' }}>
-      //           <div>Quiz {data.results[0].id}</div>
-      //         </div>
-      //         <div>{data.name}</div>
-      //         <div style={{ marginTop: '30px', display: 'flex' }}>
-      //           Basic Understanding of Financial Literacy
-      //         </div>
-      //       </div>
-      //     </div>
-      //   </div>
       <QuizLayout data={data}>
         <div className={`${poppins.className} ${styles.quizMain}`}>
           <div
@@ -158,9 +199,9 @@ const QuizPage = ({ params }) => {
                 style={{ display: 'flex' }}
                 key={item.id}
                 className={
-                  selectedAnswer[`state_${key + 1}`] ? styles.quizRightAnswer : styles.quizQuestion
+                  selectedAnswer === item.id ? styles.quizRightAnswer : styles.quizQuestion
                 }
-                onClick={() => handleAnswerState(key + 1)}>
+                onClick={() => handleClick(item.id)}>
                 <div style={{ margin: '0 40px' }}>{answerType[key]}</div>
                 {item.text}
               </li>
@@ -178,23 +219,18 @@ const QuizPage = ({ params }) => {
                 display: data.previous === null ? 'none' : 'block',
               }}
               className={styles.back_button}
-              onClick={handlePreviousPage}>
+              onClick={() => handlePreviousPage()}>
               Back
             </button>
             <button
               style={data.next === null ? { backgroundColor: '#a2bf00', color: '#fff' } : {}}
               className={styles.next_button}
-              onClick={
-                data.next === null
-                  ? () => router.push(`/course/quiz/${params.id}/feedback`)
-                  : handleNextPage
-              }>
+              onClick={() => handleNextAnswer()}>
               {data.next === null ? 'Finish' : 'Next'}
             </button>
           </div>
         </div>
       </QuizLayout>
-      // </div>
     );
   }
 };

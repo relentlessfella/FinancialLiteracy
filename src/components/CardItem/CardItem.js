@@ -12,56 +12,10 @@ import no_results from '../../../public/assets/NoResults.jpg';
 import styles from './component.module.css';
 import { useMainContext } from '@/contexts/ContextProvider/ContextProvider';
 
-const CardItem = () => {
+const CardItem = ({ data }) => {
   const router = useRouter();
-  const [data, setData] = useState(null);
-  const { category, activeModule } = useMainContext();
-  const fetchAllCards = async () => {
-    try {
-      const response = await axios({
-        method: 'get',
-        url: 'http://127.0.0.1:8000/courses/course/',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        params: {
-          Module: activeModule,
-          Bank: category.Bank,
-          Investment: category.Investment,
-          Money: category.Money,
-          Credit: category.Credit,
-          Currency: category.Currency,
-          Stock: category.Stock,
-        },
-      });
-      setData(response.data);
-    } catch (error) {
-      throw error;
-    }
-  };
-
-  useEffect(() => {
-    fetchAllCards();
-  }, [category, activeModule]);
-
-  // () => router.push(`/course/${item.id}`)
   const handleCourseJoin = (id) => {
     router.push(`/course/${id}`);
-    // const fetchJoin = async () => {
-    //   try {
-    //     const response = await axios({
-    //       method: 'post',
-    //       url: `http://127.0.0.1:8000/progress/course_progress/${id}/join/?user_id=1`,
-    //       headers: {
-    //         'Content-Type': 'application/json',
-    //       },
-    //     });
-    //     console.log('res', response.data);
-    //   } catch (error) {
-    //     throw error;
-    //   }
-    // };
-    // fetchJoin();
   };
   if (data === null) {
     return <div style={{ textAlign: 'center' }}>Loading...</div>;
@@ -140,22 +94,41 @@ const CardItem = () => {
                   <ImageRating rating={item.rating} />
                 </div>
                 {/* <Link href={`/CoursePage/${item.id}`}> */}
-                <button
-                  style={{
-                    width: '150px',
-                    height: '38px',
-                    marginTop: '10px',
-                    borderRadius: '47px',
-                    border: 'none',
-                    backgroundColor: '#A2BF00',
-                    color: '#ffffff',
-                    fontWeight: '600',
-                    fontSize: '18px',
-                  }}
-                  onClick={() => handleCourseJoin(item.id)}
-                  className={inter.className}>
-                  Join
-                </button>
+                {item.is_free ? (
+                  <button
+                    style={{
+                      width: '150px',
+                      height: '38px',
+                      marginTop: '10px',
+                      borderRadius: '47px',
+                      border: 'none',
+                      backgroundColor: '#A2BF00',
+                      color: '#ffffff',
+                      fontWeight: '600',
+                      fontSize: '18px',
+                    }}
+                    onClick={() => handleCourseJoin(item.id)}
+                    className={inter.className}>
+                    Join
+                  </button>
+                ) : (
+                  <button
+                    style={{
+                      width: '150px',
+                      height: '38px',
+                      marginTop: '10px',
+                      borderRadius: '47px',
+                      border: 'none',
+                      backgroundColor: '#FE8863',
+                      color: '#ffffff',
+                      fontWeight: '600',
+                      fontSize: '18px',
+                    }}
+                    onClick={() => handleCourseJoin(item.id)}
+                    className={inter.className}>
+                    $ {item.cost}
+                  </button>
+                )}
                 {/* </Link> */}
               </div>
             </div>
