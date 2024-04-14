@@ -39,6 +39,7 @@ export default function RootLayout({ children }) {
           pathname != `/bookmarks` &&
           pathname != `/financial-simulator` &&
           pathname != `/orientation-page` &&
+          pathname != `/game` &&
           pathname != `/orientation-page/quiz` &&
           pathname != `/orientation-page/recomendation` &&
           pathname != `/financial-simulator/${params.id}/${params.slug}` &&
@@ -56,6 +57,7 @@ export default function RootLayout({ children }) {
           pathname != `/bookmarks` &&
           pathname != `/financial-simulator` &&
           pathname != `/orientation-page` &&
+          pathname != `/game` &&
           pathname != `/orientation-page/quiz` &&
           pathname != `/orientation-page/recomendation` &&
           pathname != `/financial-simulator/${params.id}` &&

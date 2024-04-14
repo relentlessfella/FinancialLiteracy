@@ -130,7 +130,8 @@ const QuizPage = ({ params }) => {
         },
       });
       localStorage.setItem('level', JSON.stringify(response.data.level));
-      console.log('submit response: ', response.data);
+      router.push(`${params.id}/feedback/`);
+      console.log(response.data);
     } catch (error) {
       throw error;
     }

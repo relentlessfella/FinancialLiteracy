@@ -1,0 +1,23 @@
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px auto;
+}
+.game {
+  text-align: center;
+  padding: 15px;
+}
+.startButton {
+  padding: 15px;
+}
+.cardGrid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
+}
+/* .card {
+  width: 250px;
+  height: 250px;
+} */
