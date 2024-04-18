@@ -1,24 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
-import pen from '../../../public/assets/Pen.png';
-import layers from '../../../public/assets/Layers.png';
-import database from '../../../public/assets/Database.png';
-import pie from '../../../public/assets/Pie.png';
-import chart from '../../../public/assets/Chart.png';
-import paper from '../../../public/assets/Paper.png';
 import { alfaSlabOne } from '@/app/main/page';
 import { useMainContext } from '@/contexts/ContextProvider/ContextProvider';
 import styles from './component.module.css';
+import categories from './categoriesData';
 
 const CourseCategory = () => {
-  const categories = [
-    { title: 'Bank', image: pen },
-    { title: 'Investment', image: layers },
-    { title: 'Credit', image: paper },
-    { title: 'Money', image: database },
-    { title: 'Currency', image: pie },
-    { title: 'Stock', image: chart },
-  ];
   const { category, setCategories } = useMainContext();
   console.log(category);
   const toggleCategory = (category) => {
@@ -34,35 +21,11 @@ const CourseCategory = () => {
   };
 
   return (
-    <div>
-      <div
-        style={{ margin: '30px auto', width: '1085px', fontSize: '28px', color: '#A2BF00' }}
-        className={alfaSlabOne.className}>
-        Category
-      </div>
-      <ul
-        style={{
-          display: 'flex',
-          width: '1460px',
-          margin: '0 auto',
-          flexWrap: 'wrap',
-          justifyContent: 'center',
-          padding: '0',
-        }}>
+    <div className={styles.categoryMain}>
+      <div className={`${styles.title} ${alfaSlabOne.className}`}>Category</div>
+      <ul className={styles.ul}>
         {categories.map((item) => (
-          <li
-            style={{
-              backgroundColor: '#08A5D3',
-              borderRadius: '12px',
-              display: 'flex',
-              justifyContent: 'space-between',
-              width: '350px',
-              height: '60px',
-              margin: '10px',
-              cursor: 'pointer',
-              flexWrap: 'wrap',
-            }}
-            onClick={() => toggleCategory(item.title)}>
+          <li className={styles.li} onClick={() => toggleCategory(item.title)}>
             <div style={{ display: 'flex', marginTop: 'auto', marginBottom: 'auto' }}>
               <Image
                 src={item.image}
@@ -73,19 +36,7 @@ const CourseCategory = () => {
               />
               <div style={{ color: '#fff', userSelect: 'none' }}>{item.title}</div>
             </div>
-            <div
-              style={{
-                width: '40px',
-                height: '40px',
-                borderRadius: '20px',
-                display: 'flex',
-                justifyContent: 'center',
-                backgroundColor: '#fff',
-                alignItems: 'center',
-                marginTop: 'auto',
-                marginBottom: 'auto',
-                marginRight: '15px',
-              }}>
+            <div className={styles.roundCircle}>
               <div
                 style={{ borderRadius: '20px' }}
                 className={

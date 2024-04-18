@@ -38,3 +38,31 @@
   height: 33px;
   font-family: var(--font-poppins);
 }
+.headerInner1 {
+  display: flex;
+  align-items: center;
+}
+.headerWrapper {
+  max-width: 1875px;
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 15px;
+}
+@media (max-width: 1280px) {
+  .headerInner1 {
+    display: none;
+  }
+  .headerWrapper {
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 768px) {
+  .header_li {
+    font-size: 12px;
+    white-space: nowrap;
+    margin-right: 5px;
+  }
+}

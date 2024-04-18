@@ -13,6 +13,7 @@ import { useMainContext } from '@/contexts/ContextProvider/ContextProvider';
 import styles from './page.module.css';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
+import Filter from '@/components/Filter/Filter';
 
 export const alfaSlabOne = Alfa_Slab_One({
   subsets: ['latin'],
@@ -110,8 +111,7 @@ const MainPage = () => {
           src={explore}
           alt="Text on the main page"
           layout="responsive"
-          width={500}
-          height={400}
+          className={styles.mainFirstimage}
         />
         <Image
           src={mainRight}
@@ -119,11 +119,18 @@ const MainPage = () => {
           layout="responsive"
           width={500}
           height={400}
+          className={styles.mainSecondImage}
         />
       </div>
       <div>
         {/* Popular Courses */}
-        <PopularCourses />
+        <div className={`${alfaSlabOne.className} ${styles.Popular3Courses}`}>
+          <div style={{ color: '#A2BF00', marginRight: '15px' }}>Popular</div>
+          <div style={{ color: '#FE8863', whiteSpace: 'nowrap' }}>3 Courses</div>
+        </div>
+        <ul className={styles.ul_main_page}>
+          <PopularCourses />
+        </ul>
         {/* Popular Courses */}
 
         <div className={alfaSlabOne.variable}>
@@ -131,14 +138,20 @@ const MainPage = () => {
           <p className={styles.title}>Courses</p>
           <CourseModules
             modules={modules}
-            width={450}
+            // width={450}
+            width={300}
             activeModule={activeModule}
             setActiveModule={setActiveModule}
           />
           {/* Course Modules */}
 
           {/* Course Category */}
-          <CourseCategory />
+          <div>
+            <CourseCategory />
+            <div style={{ marginTop: '50px' }}>
+              <Filter />
+            </div>
+          </div>
           {/* Course Category */}
 
           {/* All Courses  */}
@@ -146,7 +159,6 @@ const MainPage = () => {
             style={{
               marginTop: '50px',
               display: 'flex',
-              // alignContent: 'center',
               justifyContent: 'center',
               flexDirection: 'row',
             }}

@@ -1,11 +1,15 @@
 .ul_main_page {
   min-height: 600px;
   display: flex;
-  /* //alignContent: center; */
   justify-content: center;
   flex-direction: row;
   margin: 0 auto;
-  width: 1320px;
+  /* display: 'flex ', */
+  /* padding: '0', */
+  flex-wrap: 'wrap';
+  /* maxWidth: '1759px', */
+  /* width: 'auto', */
+  /* flexDirection: 'row', */
 }
 
 .selector_main {
@@ -20,4 +24,26 @@
   color: #fe8863;
   font-size: 42px;
   text-align: center;
+}
+.Popular3Courses {
+  font-size: 50px;
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
+.mainFirstimage {
+  width: 500px;
+  height: 400px;
+}
+
+@media (max-width: 768px) {
+  .Popular3Courses {
+    font-size: 25px;
+  }
+  .mainSecondImage {
+    display: none;
+  }
+  .mainFirstimage {
+    margin: 20px;
+  }
 }

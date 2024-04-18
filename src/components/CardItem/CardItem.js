@@ -8,9 +8,10 @@ import play from '../../../public/assets/play.svg';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import no_results from '../../../public/assets/NoResults.jpg';
 import styles from './component.module.css';
 import { useMainContext } from '@/contexts/ContextProvider/ContextProvider';
+import Loader from '../Loader/Loader2';
+import NotFound from '../NotFound/NotFound';
 
 const CardItem = ({ data }) => {
   const router = useRouter();
@@ -18,54 +19,18 @@ const CardItem = ({ data }) => {
     router.push(`/course/${id}`);
   };
   if (data === null) {
-    return <div style={{ textAlign: 'center' }}>Loading...</div>;
+    return <Loader />;
   } else if (data.length === 0) {
-    return (
-      <div>
-        <Image src={no_results} width={500} height={400} />
-        <div style={{ textAlign: 'center', fontWeight: '500', fontSize: '24px', opacity: '0.9' }}>
-          Sorry courses not found ;(
-        </div>
-      </div>
-    );
+    return <NotFound />;
   } else {
     return (
-      <div
-        style={{
-          display: 'flex ',
-          padding: '0',
-          flexWrap: 'wrap',
-          maxWidth: '1759px',
-          width: 'auto',
-          flexDirection: 'row',
-        }}>
+      <div className={styles.cards}>
         {data.map((item) => (
-          <li
-            key={item.id}
-            style={{
-              listStyle: 'none',
-              width: '400px',
-              height: '520px',
-              borderRadius: '10px',
-            }}
-            className={styles.li_card_item}>
-            <div>
-              <Image src={cardImage} width={400} alt="Icon of Card Image" />
-            </div>
-            <div style={{ padding: '1px 20px 20px 50px' }}>
+          <li key={item.id} className={styles.li_card_item}>
+            <Image src={cardImage} className={styles.cardImage} alt="Icon of Card Image" />
+            <div className={styles.textWrapper}>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <div>
-                  <div
-                    className={nunito.className}
-                    style={{
-                      color: '#FE8863',
-                      fontSize: '24px',
-                      fontWeight: '900',
-                      paddingTop: '40px',
-                    }}>
-                    {item.name}
-                  </div>
-                </div>
+                <div className={`${nunito.className} ${styles.cardTitle}`}>{item.name}</div>
                 <div style={{ display: 'flex' }}>
                   <Image
                     src={play}
@@ -77,14 +42,7 @@ const CardItem = ({ data }) => {
                   </div>
                 </div>
               </div>
-              <div
-                className={nunito.className}
-                style={{
-                  color: '#1F1C14',
-                  fontSize: '14px',
-                  opacity: '70%',
-                  paddingTop: '20px',
-                }}>
+              <div className={`${nunito.className} ${styles.cardDescription}`}>
                 {item.description}
               </div>
             </div>
@@ -93,43 +51,11 @@ const CardItem = ({ data }) => {
                 <div>
                   <ImageRating rating={item.rating} />
                 </div>
-                {/* <Link href={`/CoursePage/${item.id}`}> */}
-                {item.is_free ? (
-                  <button
-                    style={{
-                      width: '150px',
-                      height: '38px',
-                      marginTop: '10px',
-                      borderRadius: '47px',
-                      border: 'none',
-                      backgroundColor: '#A2BF00',
-                      color: '#ffffff',
-                      fontWeight: '600',
-                      fontSize: '18px',
-                    }}
-                    onClick={() => handleCourseJoin(item.id)}
-                    className={inter.className}>
-                    Join
-                  </button>
-                ) : (
-                  <button
-                    style={{
-                      width: '150px',
-                      height: '38px',
-                      marginTop: '10px',
-                      borderRadius: '47px',
-                      border: 'none',
-                      backgroundColor: '#FE8863',
-                      color: '#ffffff',
-                      fontWeight: '600',
-                      fontSize: '18px',
-                    }}
-                    onClick={() => handleCourseJoin(item.id)}
-                    className={inter.className}>
-                    $ {item.cost}
-                  </button>
-                )}
-                {/* </Link> */}
+                <button
+                  onClick={() => handleCourseJoin(item.id)}
+                  className={`${styles.joinButton} ${item.is_free ? styles.free : styles.paid}`}>
+                  {item.is_free ? 'Join' : `$ ${item.cost}`}
+                </button>
               </div>
             </div>
           </li>
