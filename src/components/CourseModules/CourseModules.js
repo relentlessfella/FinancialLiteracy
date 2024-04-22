@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { alfaSlabOne, inter } from '@/app/main/page';
 import { useMainContext } from '@/contexts/ContextProvider/ContextProvider';
 import styles from './component.module.css';
+import { useMediaQuery } from 'react-responsive';
 
 const CourseModules = ({
   modules,
@@ -11,25 +12,13 @@ const CourseModules = ({
   backgroundColor,
   mobileWidth,
 }) => {
-  const useResponsiveWidth = () => {
-    const [width, setWidth] = useState(null);
-    useEffect(() => {
-      const handleResize = () => setWidth(window.innerWidth);
-      window.addEventListener('resize', handleResize);
-      handleResize();
-      return () => window.removeEventListener('resize', handleResize);
-    }, []);
-    return width;
-  };
-  const screenWidth = useResponsiveWidth(); // Custom hook to get width
-  const isMobile = screenWidth < 768;
-  console.log(screenWidth);
+  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
   return (
     <div style={{ textAlign: 'center' }} className={`${''} ${alfaSlabOne.variable}`}>
       <ul
         className={styles.main}
         style={{
-          width: isMobile ? `${mobileWidth}px` : `${width}px`,
+          width: isTabletOrMobile ? `${mobileWidth}px` : `${width}px`,
           backgroundColor: backgroundColor,
         }}>
         {modules.map((item) => (

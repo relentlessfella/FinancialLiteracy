@@ -47,3 +47,13 @@
     font-size: 14px;
   }
 }
+@media (max-width: 1224px) {
+  .module {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+  .module_active {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
