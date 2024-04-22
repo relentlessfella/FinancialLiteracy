@@ -52,7 +52,7 @@ const MainPage = () => {
     try {
       const response = await axios({
         method: 'get',
-        url: 'http://127.0.0.1:8000/courses/course/',
+        url: 'http://localhost:8000/courses/course/',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -80,7 +80,7 @@ const MainPage = () => {
   //   try {
   //     const response = await axios({
   //       method: 'get',
-  //       url: 'http://127.0.0.1:8000/courses/course/',
+  //       url: 'http://localhost:8000/courses/course/',
   //       params: {
   //         Module: activeModule,
   //       },
@@ -111,13 +111,15 @@ const MainPage = () => {
           src={explore}
           alt="Text on the main page"
           layout="responsive"
+          // width={400}
+          // height={400}
           className={styles.mainFirstimage}
         />
         <Image
           src={mainRight}
           alt="Photo of 4 people"
           layout="responsive"
-          width={500}
+          width={400}
           height={400}
           className={styles.mainSecondImage}
         />
@@ -138,10 +140,10 @@ const MainPage = () => {
           <p className={styles.title}>Courses</p>
           <CourseModules
             modules={modules}
-            // width={450}
-            width={300}
+            width={450}
             activeModule={activeModule}
             setActiveModule={setActiveModule}
+            mobileWidth={300}
           />
           {/* Course Modules */}
 

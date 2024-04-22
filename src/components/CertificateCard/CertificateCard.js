@@ -20,7 +20,7 @@ const CertificateCard = (id) => {
     try {
       const response = await axios({
         method: 'get',
-        url: `http://127.0.0.1:8000/certificate/generate_pdf/`,
+        url: `http://localhost:8000/certificate/generate_pdf/`,
         params: {
           user_id: 1,
           course_id: id.course_id,

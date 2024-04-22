@@ -33,7 +33,7 @@ const ProfileCourses = () => {
   const fetchUserCourses = async () => {
     const response = await axios({
       method: 'get',
-      url: `http://127.0.0.1:8000/courses/course/get_my_courses/`,
+      url: `http://localhost:8000/courses/course/get_my_courses/`,
       headers: {
         'Content-Type': 'application/json',
       },
@@ -98,6 +98,7 @@ const ProfileCourses = () => {
                 width={500}
                 activeModule={activeCourse}
                 setActiveModule={setActiveCourse}
+                mobileWidth={350}
               />
             </div>
           </div>

@@ -22,7 +22,7 @@ const Header = () => {
     try {
       const response = await axios({
         method: 'get',
-        url: 'http://127.0.0.1:8000/user/profile/1',
+        url: 'http://localhost:8000/user/profile/1',
       });
       setData(response.data);
     } catch (error) {

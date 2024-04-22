@@ -3,7 +3,14 @@ import { alfaSlabOne, inter } from '@/app/main/page';
 import { useMainContext } from '@/contexts/ContextProvider/ContextProvider';
 import styles from './component.module.css';
 
-const CourseModules = ({ modules, width, activeModule, setActiveModule, backgroundColor }) => {
+const CourseModules = ({
+  modules,
+  width,
+  activeModule,
+  setActiveModule,
+  backgroundColor,
+  mobileWidth,
+}) => {
   const useResponsiveWidth = () => {
     const [width, setWidth] = useState(window.innerWidth);
 
@@ -17,12 +24,13 @@ const CourseModules = ({ modules, width, activeModule, setActiveModule, backgrou
   };
   const screenWidth = useResponsiveWidth(); // Custom hook to get width
   const isMobile = screenWidth < 768;
+  console.log(screenWidth);
   return (
     <div style={{ textAlign: 'center' }} className={`${''} ${alfaSlabOne.variable}`}>
       <ul
         className={styles.main}
         style={{
-          width: isMobile ? `${width}px` : '300px',
+          width: isMobile ? `${mobileWidth}px` : `${width}px`,
           backgroundColor: backgroundColor,
         }}>
         {modules.map((item) => (

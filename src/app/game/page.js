@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './page.module.css';
 import Image from 'next/image';
 import { SingleGameCard } from '@/components/SingleGameCard/SingleGameCard';
+import { inter } from '../main/page';
 
 const Game = () => {
   const [cards, setCards] = useState([]);
@@ -11,9 +12,9 @@ const Game = () => {
   const [disabled, setDisabled] = useState(null);
   const [choiceTwo, setChoiceTwo] = useState(null);
   const cardImages = [
-    { src: '/assets/game/active-1.jpeg', matched: false },
-    { src: '/assets/game/active-2.jpeg', matched: false },
-    { src: '/assets/game/active-3.jpeg', matched: false },
+    { src: '/assets/game/bank.jpeg', matched: false },
+    { src: '/assets/game/pig.jpeg', matched: false },
+    { src: '/assets/game/wallet.jpeg', matched: false },
   ];
   const shuffleCards = () => {
     const shuffledCards = [...cardImages, ...cardImages]
@@ -62,7 +63,7 @@ const Game = () => {
     shuffleCards();
   }, []);
   return (
-    <div className={styles.main}>
+    <div className={`${styles.main} ${inter.variable}`}>
       <div className={styles.game}>
         <button className={styles.startButton} onClick={shuffleCards}>
           New Game
@@ -78,7 +79,7 @@ const Game = () => {
             />
           ))}
         </div>
-        <p>{turns}</p>
+        {/* <p>{turns}</p> */}
       </div>
     </div>
   );

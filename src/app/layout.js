@@ -27,7 +27,8 @@ export default function RootLayout({ children }) {
             backgroundColor:
               pathname === '/orientation-page' ||
               pathname === '/orientation-page/quiz' ||
-              pathname === '/orientation-page/recomendation'
+              pathname === '/orientation-page/recomendation' ||
+              pathname === '/game'
                 ? '#A2BF00'
                 : 'initial',
           }}>

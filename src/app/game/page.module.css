@@ -10,6 +10,12 @@
 }
 .startButton {
   padding: 15px;
+  border: none;
+  border-radius: 5px;
+  font-family: var(--font-inter);
+  background-color: #fe602f;
+  color: #fff;
+  font-weight: 600;
 }
 .cardGrid {
   margin-top: 40px;

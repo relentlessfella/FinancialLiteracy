@@ -20,7 +20,7 @@ const SimulationCardPage = () => {
     try {
       const response = await axios({
         method: 'GET',
-        url: `http://127.0.0.1:8000/simulator/fin_trial/${params.id}/`,
+        url: `http://localhost:8000/simulator/fin_trial/${params.id}/`,
         headers: {
           'Content-Type': 'application/json',
         },

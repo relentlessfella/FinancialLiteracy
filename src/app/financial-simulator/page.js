@@ -7,6 +7,7 @@ import styles from './page.module.css';
 import axios from 'axios';
 import no_results from '../../../public/assets/NoResults.jpg';
 import Image from 'next/image';
+import NotFound from '@/components/NotFound/NotFound';
 
 const FinancialSimulator = () => {
   const [activeOption, setActiveOption] = useState(1);
@@ -22,7 +23,7 @@ const FinancialSimulator = () => {
     try {
       const response = await axios({
         method: 'GET',
-        url: 'http://127.0.0.1:8000/simulator/fin_trial/',
+        url: 'http://localhost:8000/simulator/fin_trial/',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -57,25 +58,11 @@ const FinancialSimulator = () => {
               activeModule={activeOption}
               setActiveModule={setActiveOption}
               backgroundColor={'rgba(196, 196, 196, 0.15)'}
+              mobileWidth={500}
             />
           </div>
           <div className={styles.container}>
-            {data.data.length === 0 ? (
-              <div style={{ width: '500px', margin: '0 auto' }}>
-                <Image src={no_results} width={500} height={400} />
-                <div
-                  style={{
-                    textAlign: 'center',
-                    fontWeight: '500',
-                    fontSize: '24px',
-                    opacity: '0.9',
-                  }}>
-                  Sorry courses not found ;(
-                </div>
-              </div>
-            ) : (
-              <Card data={data} />
-            )}
+            {data.data.length === 0 ? <NotFound /> : <Card data={data} />}
           </div>
         </SimulatorLayout>
       </div>

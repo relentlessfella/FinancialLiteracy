@@ -25,8 +25,9 @@ export const SingleGameCard = ({ image, handleChoice, flipped, disabled }) => {
         <Image
           height={250}
           width={250}
-          src={'/assets/game/inactive.jpg'}
+          src={'/assets/game/inactive1.png'}
           alt={'Card back'}
+          style={{ backgroundColor: '#D9D9D9' }}
           className={styles.back}
           draggable={false}
         />
