@@ -14,7 +14,7 @@ const Bookmarks = () => {
   const fetchBookmarks = async () => {
     const response = await axios({
       method: 'get',
-      url: 'http://localhost:8000/courses/course/get_bookmark/?user_id=1',
+      url: 'http://0.0.0.0:8000/courses/course/get_bookmark/?user_id=1',
       headers: {
         'Content-Type': 'application/json',
       },

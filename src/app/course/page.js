@@ -18,7 +18,7 @@ const CoursePage = () => {
     try {
       const response = await axios({
         method: 'get',
-        url: 'http://localhost:8000/courses/course/',
+        url: 'http://0.0.0.0:8000/courses/course/',
         headers: {
           'Content-Type': 'application/json',
         },

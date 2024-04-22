@@ -16,7 +16,7 @@ const PopularCourses = () => {
     try {
       const response = await axios({
         method: 'get',
-        url: 'http://localhost:8000/courses/course',
+        url: 'http://0.0.0.0:8000/courses/course',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -47,7 +47,7 @@ const PopularCourses = () => {
     //   try {
     //     const response = await axios({
     //       method: 'post',
-    //       url: `http://localhost:8000/progress/course_progress/${id}/join/?user_id=1`,
+    //       url: `http://0.0.0.0:8000/progress/course_progress/${id}/join/?user_id=1`,
     //       headers: {
     //         'Content-Type': 'application/json',
     //       },

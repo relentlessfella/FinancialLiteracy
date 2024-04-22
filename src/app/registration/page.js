@@ -34,7 +34,7 @@ const Registration = () => {
     // e.prevenDefault();
     try {
       const response = await axios.post(
-        'http://localhost:8000/user/auth/register/',
+        'http://0.0.0.0:8000/user/auth/register/',
         { email: mailValue, name: userName, password: userPassword },
         {
           headers: {
