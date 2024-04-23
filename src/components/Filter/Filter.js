@@ -6,8 +6,23 @@ import * as Popover from '@radix-ui/react-popover';
 import { MixerHorizontalIcon, Cross2Icon } from '@radix-ui/react-icons';
 import { inter } from '@/app/main/page';
 import categories from '../../components/CourseCategory/categoriesData';
+import tick from '../../../public/assets/filterImg/tick.svg';
+import { useMainContext } from '@/contexts/ContextProvider/ContextProvider';
 
 const Filter = () => {
+  const { category, setCategories } = useMainContext();
+  console.log(category);
+  const toggleCategory = (category) => {
+    setCategories(
+      (prevCategories) => (
+        console.log(prevCategories), //object with keys = null
+        {
+          ...prevCategories,
+          [category]: prevCategories[category] ? null : category,
+        }
+      ),
+    );
+  };
   return (
     <div className={styles.main}>
       <div>
@@ -19,24 +34,38 @@ const Filter = () => {
           </Popover.Trigger>
           <Popover.Portal>
             <Popover.Content className={styles.PopoverContent} sideOffset={5} align="end">
-              <div
-                style={{ display: 'flex', flexDirection: 'column', gap: 10 }}
-                className={inter.variable}>
-                <p className={styles.Text} style={{ marginBottom: 10 }}>
-                  Categories
-                </p>
+              <div style={{ display: 'flex', flexDirection: 'column' }} className={inter.variable}>
+                <p className={styles.Text}>Categories</p>
                 {categories.map((item) => (
-                  <button className={styles.button}>
-                    {/* <div style={{ width: '40px', height: '40px' }}> */}
-                    <Image src={item.image} className={styles.image} />
-                    {/* </div> */}
-                    <div className={styles.title}>{item.title}</div>
+                  <button
+                    className={
+                      item.title === category.Money ||
+                      item.title === category.Bank ||
+                      item.title === category.Investment ||
+                      item.title === category.Currency ||
+                      item.title === category.Credit ||
+                      item.title === category.Stock
+                        ? styles.buttonActive
+                        : styles.button
+                    }
+                    onClick={() => toggleCategory(item.title)}>
+                    <div style={{ display: 'flex' }}>
+                      <Image src={item.image} className={styles.image} />
+                      <div className={styles.title}>{item.title}</div>
+                    </div>
+                    {item.title === category.Money ||
+                    item.title === category.Bank ||
+                    item.title === category.Investment ||
+                    item.title === category.Currency ||
+                    item.title === category.Credit ||
+                    item.title === category.Stock ? (
+                      <Image className={styles.tickImg} src={tick} width={25} height={25} />
+                    ) : (
+                      ''
+                    )}
                   </button>
                 ))}
               </div>
-              <Popover.Close className={styles.PopoverClose} aria-label="Close">
-                <Cross2Icon />
-              </Popover.Close>
               <Popover.Arrow className={styles.PopoverArrow} />
             </Popover.Content>
           </Popover.Portal>

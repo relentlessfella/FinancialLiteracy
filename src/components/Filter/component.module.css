@@ -1,5 +1,4 @@
 .main {
-  /* outline: solid #000; */
   width: 300px;
   margin: 0 auto;
   justify-content: flex-end;
@@ -15,14 +14,13 @@
   align-items: center;
   border-radius: 5px;
 }
-.modal {
+/* .modal {
   position: absolute;
   background-color: #fff;
   outline: solid #000;
-}
+} */
 .PopoverContent {
   border-radius: 4px;
-  padding: 20px;
   width: 260px;
   background-color: #08a5d3;
   box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
@@ -48,7 +46,7 @@
 }
 
 .PopoverArrow {
-  fill: white;
+  fill: #08a5d3;
 }
 
 .PopoverClose {
@@ -124,6 +122,7 @@
   margin: 0;
   color: #fff;
   font-size: 15px;
+  padding: 10px;
   line-height: 19px;
   font-weight: 500;
 }
@@ -132,19 +131,33 @@
   display: flex;
   background-color: #08a5d3;
   border: none;
+  box-shadow: 0px 0px 68px 21px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   color: #fff;
+  padding: 10px 10px;
+}
+.buttonActive {
+  transition: ease-in 0.2s;
+  font-family: var(--font-inter);
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0.45);
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  padding: 10px 10px;
 }
 .title {
   margin: auto 0;
+  margin-left: 10px;
 }
 .image {
-  /* margin: auto; */
-  width: 30px;
-  height: 30px;
-  justify-content: center;
-  align-items: center;
+  width: 25px;
+  height: 25px;
+}
+.tickImg {
   display: flex;
+  justify-content: flex-end;
 }
 @keyframes slideUpAndFade {
   from {
