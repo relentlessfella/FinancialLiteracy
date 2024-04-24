@@ -12,11 +12,14 @@ import { useRouter } from 'next/navigation';
 import { poppins } from '@/app/login/page';
 import coin from '../../../public/assets/coinSign.svg';
 import axios from 'axios';
+import Hamburger from '../Hamburger/Burger/Hamburger';
+import SideNavigation from '../Hamburger/SideNav/SideNavigation';
 
 const Header = () => {
   const router = useRouter();
   const { testData } = useMainContext();
   const [data, setData] = useState(null);
+  const [toggleBurger, setToggleBurger] = useState(false);
 
   const fetchUser = async () => {
     try {
@@ -107,7 +110,7 @@ const Header = () => {
               </div>
             </div>
           </div>
-          <ul style={{ display: 'flex', listStyle: 'none' }}>
+          <ul className={styles.ul}>
             <li className={styles.header_li}>
               <Link href={'/'} style={{ textDecoration: 'none', color: 'black' }}>
                 <div>Courses</div>
@@ -133,6 +136,10 @@ const Header = () => {
               <div style={{ margin: '0 10px', fontWeight: '700' }}>{data.balance}</div>
             </li>
           </ul>
+          <div className={styles.hamburger} onClick={() => setToggleBurger(!toggleBurger)}>
+            <Hamburger isOpen={toggleBurger} />
+          </div>
+          {/* {toggleBurger && <SideNavigation />} */}
         </div>
       </nav>
     );

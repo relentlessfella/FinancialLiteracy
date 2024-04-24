@@ -1,0 +1,44 @@
+.sideNav {
+  height: 100%;
+  width: 300px;
+  /* width: 0px; */
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  /* left: -250px; */
+  background-color: #08a5d3;
+  overflow-x: hidden;
+  /* transition: 0.7s; */
+  /* transition: margin-left 0.8s ease; */
+  /* transition: transform 0.7s ease; */
+  padding-top: 80px; /* Space from top */
+}
+.sideNav.open {
+  /* width: 300px; */
+  /* transform: translateX(250px); */
+}
+.links {
+  padding: 10px 15px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #ffffff;
+  display: flex;
+  transition: 0.3s;
+  user-select: none;
+}
+
+.links:hover {
+  color: #818181;
+}
+
+.icons {
+  margin: auto 0;
+  margin-right: 10px;
+}
+
+@media (max-width: 608px) {
+  .links {
+    font-size: 14px;
+  }
+}
