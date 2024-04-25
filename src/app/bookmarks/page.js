@@ -6,7 +6,7 @@ import { alfaSlabOne } from '../main/page';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import { CourseCard } from '@/components/CourseCard/CourseCard';
-import { Loader } from '@/components/Loader/Loader';
+import Loader from '@/components/Loader/Loader2';
 
 const Bookmarks = () => {
   const router = useRouter();
@@ -14,7 +14,7 @@ const Bookmarks = () => {
   const fetchBookmarks = async () => {
     const response = await axios({
       method: 'get',
-      url: 'http://86.107.44.136:8000/courses/course/get_bookmark/?user_id=1',
+      url: 'http://0.0.0.0:8000/courses/course/get_bookmark/?user_id=1',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -27,7 +27,13 @@ const Bookmarks = () => {
   }, []);
 
   if (data === null) {
-    return <Loader />;
+    return (
+      <ProfileLayout>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <Loader />
+        </div>
+      </ProfileLayout>
+    );
   } else {
     return (
       <ProfileLayout>

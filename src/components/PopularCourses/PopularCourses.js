@@ -8,6 +8,7 @@ import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import styles from './component.module.css';
 import { useMainContext } from '@/contexts/ContextProvider/ContextProvider';
+import Loader from '../Loader/Loader2';
 
 const PopularCourses = () => {
   const router = useRouter();
@@ -16,7 +17,7 @@ const PopularCourses = () => {
     try {
       const response = await axios({
         method: 'get',
-        url: 'http://86.107.44.136:8000/courses/course',
+        url: 'http://0.0.0.0:8000/courses/course',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -43,24 +44,9 @@ const PopularCourses = () => {
 
   const handleCourseJoin = (id) => {
     router.push(`/course/${id}`);
-    // const fetchJoin = async () => {
-    //   try {
-    //     const response = await axios({
-    //       method: 'post',
-    //       url: `http://86.107.44.136:8000/progress/course_progress/${id}/join/?user_id=1`,
-    //       headers: {
-    //         'Content-Type': 'application/json',
-    //       },
-    //     });
-    //     console.log('res', response.data);
-    //   } catch (error) {
-    //     throw error;
-    //   }
-    // };
-    // fetchJoin();
   };
-  if (data === null || data === undefined) {
-    <div style={{ textAlign: 'center' }}>Loading...</div>;
+  if (data === null) {
+    return <Loader />;
   } else {
     return (
       <div className={styles.cards}>

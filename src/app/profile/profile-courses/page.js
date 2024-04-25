@@ -15,6 +15,7 @@ import { useMainContext } from '@/contexts/ContextProvider/ContextProvider';
 import CourseModules from '@/components/CourseModules/CourseModules';
 import notFound from '../../../../public/assets/NoResults.jpg';
 import { CourseCard } from '@/components/CourseCard/CourseCard';
+import Loader from '@/components/Loader/Loader2';
 
 const ProfileCourses = () => {
   const { activeCourse, setActiveCourse } = useMainContext();
@@ -33,7 +34,7 @@ const ProfileCourses = () => {
   const fetchUserCourses = async () => {
     const response = await axios({
       method: 'get',
-      url: `http://86.107.44.136:8000/courses/course/get_my_courses/`,
+      url: `http://0.0.0.0:8000/courses/course/get_my_courses/`,
       headers: {
         'Content-Type': 'application/json',
       },
@@ -50,7 +51,9 @@ const ProfileCourses = () => {
   if (data === null) {
     return (
       <ProfileLayout>
-        <div style={{ textAlign: 'center' }}>Loading...</div>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <Loader />
+        </div>
       </ProfileLayout>
     );
   } else {

@@ -14,6 +14,7 @@ import styles from './page.module.css';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import Filter from '@/components/Filter/Filter';
+import Loader from '@/components/Loader/Loader2';
 
 export const alfaSlabOne = Alfa_Slab_One({
   subsets: ['latin'],
@@ -45,11 +46,13 @@ const MainPage = () => {
   const router = useRouter();
   const [data, setData] = useState(null);
   const { category, activeModule, setActiveModule } = useMainContext();
+  const [isLoading, setIsLoading] = useState(false);
   const fetchAllCards = async () => {
     try {
+      setIsLoading(true);
       const response = await axios({
         method: 'get',
-        url: 'http://86.107.44.136:8000/courses/course/',
+        url: 'http://0.0.0.0:8000/courses/course/',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -66,6 +69,8 @@ const MainPage = () => {
       setData(response.data);
     } catch (error) {
       throw error;
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -142,7 +147,7 @@ const MainPage = () => {
             }}
             className={inter.className}>
             <ul className={styles.ul_main_page}>
-              <CardItem data={data} />
+              <CardItem data={data} isLoading={isLoading} />
             </ul>
           </div>
 

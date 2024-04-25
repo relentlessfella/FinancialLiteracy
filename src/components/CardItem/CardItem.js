@@ -13,12 +13,12 @@ import { useMainContext } from '@/contexts/ContextProvider/ContextProvider';
 import Loader from '../Loader/Loader2';
 import NotFound from '../NotFound/NotFound';
 
-const CardItem = ({ data }) => {
+const CardItem = ({ data, isLoading }) => {
   const router = useRouter();
   const handleCourseJoin = (id) => {
     router.push(`/course/${id}`);
   };
-  if (data === null) {
+  if (data === null || isLoading === true) {
     return <Loader />;
   } else if (data.length === 0) {
     return <NotFound />;

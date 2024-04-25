@@ -19,29 +19,49 @@ import { useParams, usePathname } from 'next/navigation';
 
 const ProfileLayout = ({ children }) => {
   const asideMenuLinks = [
-    { title: 'Home', link: '/', active: homeIcon, default: homeIcon },
+    { id: 1, title: 'Home', link: '/', active: homeIcon, default: homeIcon },
     {
+      id: 2,
       title: 'My Courses',
       link: '/profile/profile-courses',
       default: bookIcon,
       active: bookIconActive,
     },
-    { title: 'My Bookmarks', link: '/bookmarks', default: bookMarkIcon, active: bookMarkActive },
     {
+      id: 3,
+      title: 'My Bookmarks',
+      link: '/bookmarks',
+      default: bookMarkIcon,
+      active: bookMarkActive,
+    },
+    {
+      id: 4,
       title: 'Settings',
       link: '/profile/profile-settings',
       default: settingsIcon,
       active: settingsActive,
     },
-    { title: 'Log Out', link: '/logout', default: exitIcon, active: logoutActive },
+    { id: 5, title: 'Log Out', link: '/logout', default: exitIcon, active: logoutActive },
   ];
   const pathname = usePathname();
   return (
     <div className={style.container}>
       <aside className={style.profileAside}>
         <div className={style.profileIconsContainer}>
-          <Image className={style.iconLogo} src={logo} width={58} height={48} />
-          <Image className={style.iconAvatar} src={avatar} width={100} height={100} />
+          <Image
+            className={style.iconLogo}
+            src={logo}
+            width={58}
+            height={48}
+            alt="Logo of the website"
+          />
+          <Image
+            className={style.iconAvatar}
+            src={avatar}
+            width={100}
+            height={100}
+            alt="Your profile avatar"
+          />
         </div>
         <Link
           className={pathname === '/profile' ? style.profileLinkActive : style.profileLink}
@@ -52,11 +72,12 @@ const ProfileLayout = ({ children }) => {
           {asideMenuLinks.map((item) => {
             const isActive = pathname === item.link;
             return (
-              <div className={isActive ? style.navLinkWrapper : ''}>
+              <div key={item.id} className={isActive ? style.navLinkWrapper : ''}>
                 <Link className={isActive ? style.navLinkActive : style.navLink} href={item.link}>
                   <Image
                     className={style.navLinkIcon}
                     src={isActive ? item.active : item.default}
+                    alt="Icon"
                   />
                   <div>{item.title}</div>
                 </Link>
