@@ -42,9 +42,6 @@ const modules = [
 ];
 
 const MainPage = () => {
-  // const { activeModule, setActiveModule } = useMainContext();
-  // const [data, setData] = useState();
-
   const router = useRouter();
   const [data, setData] = useState(null);
   const { category, activeModule, setActiveModule } = useMainContext();
@@ -76,25 +73,6 @@ const MainPage = () => {
     fetchAllCards();
   }, [category, activeModule]);
 
-  // const fetchAllCards = async () => {
-  //   try {
-  //     const response = await axios({
-  //       method: 'get',
-  //       url: 'http://86.107.44.136:8000/courses/course/',
-  //       params: {
-  //         Module: activeModule,
-  //       },
-  //     });
-  //     setData(response.data);
-  //     console.log(response);
-  //   } catch (error) {
-  //     throw error;
-  //   }
-  // };
-  // useEffect(() => {
-  //   fetchAllCards();
-  // }, []);
-
   return (
     <div style={{ marginBottom: '100px' }}>
       <div
@@ -111,8 +89,6 @@ const MainPage = () => {
           src={explore}
           alt="Text on the main page"
           layout="responsive"
-          // width={400}
-          // height={400}
           className={styles.mainFirstimage}
         />
         <Image
