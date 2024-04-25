@@ -34,7 +34,7 @@ const Login = () => {
     // e.prevenDefault();
     try {
       const response = await axios.post(
-        'http://0.0.0.0:8000/user/auth/login/',
+        'http://86.107.44.136:8000/user/auth/login/',
         { email: mailValue, password: userPassword },
         {
           method: 'POST',

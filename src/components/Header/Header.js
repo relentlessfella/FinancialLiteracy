@@ -13,7 +13,6 @@ import { poppins } from '@/app/login/page';
 import coin from '../../../public/assets/coinSign.svg';
 import axios from 'axios';
 import Hamburger from '../Hamburger/Burger/Hamburger';
-import SideNavigation from '../Hamburger/SideNav/SideNavigation';
 
 const Header = () => {
   const router = useRouter();
@@ -25,7 +24,7 @@ const Header = () => {
     try {
       const response = await axios({
         method: 'get',
-        url: 'http://0.0.0.0:8000/user/profile/1',
+        url: 'http://86.107.44.136:8000/user/profile/1',
       });
       setData(response.data);
     } catch (error) {
@@ -139,7 +138,6 @@ const Header = () => {
           <div className={styles.hamburger} onClick={() => setToggleBurger(!toggleBurger)}>
             <Hamburger isOpen={toggleBurger} />
           </div>
-          {/* {toggleBurger && <SideNavigation />} */}
         </div>
       </nav>
     );
