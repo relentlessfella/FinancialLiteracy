@@ -51,7 +51,6 @@
 .phoneNumber {
   display: flex;
   margin: 0 auto;
-  justify-content: center;
 }
 .emailWrapper {
   display: flex;
@@ -105,5 +104,8 @@
   }
   .emailWrapper {
     margin-top: 10px;
+  }
+  .phoneNumber {
+    justify-content: center;
   }
 }

@@ -23,7 +23,7 @@ const QuizPage = ({ params }) => {
     try {
       const response = await axios({
         method: 'get',
-        url: `http://0.0.0.0:8000/courses/quiz/`,
+        url: `http://86.107.44.136:8000/courses/quiz/`,
         params: {
           course_id: id,
           page: 1,
@@ -118,7 +118,7 @@ const QuizPage = ({ params }) => {
       const vals = Object.values(parseAns);
       const response = await axios({
         method: 'post',
-        url: `http://0.0.0.0:8000/progress/quiz_progress/${id}/submit/`,
+        url: `http://86.107.44.136:8000/progress/quiz_progress/${id}/submit/`,
         params: {
           user_id: 1,
         },
