@@ -9,15 +9,18 @@ import { useRouter } from 'next/navigation';
 import styles from './component.module.css';
 import { useMainContext } from '@/contexts/ContextProvider/ContextProvider';
 import Loader from '../Loader/Loader2';
+import NotFound from '../NotFound/NotFound';
 
 const PopularCourses = () => {
   const router = useRouter();
   const [data, setData] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const fetchCourses = async () => {
     try {
+      setIsLoading(true);
       const response = await axios({
         method: 'get',
-        url: 'http://86.107.44.136:8000/courses/course',
+        url: 'http://0.0.0.0:8000/courses/course',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -31,10 +34,16 @@ const PopularCourses = () => {
           Stock: null,
         },
       });
-      console.log('Only bank | response:', response.data);
-      setData(response);
+      if (response.data && response.data.length > 0) {
+        setData(response.data);
+      } else {
+        setData(undefined);
+      }
     } catch (error) {
+      setData(undefined);
       throw error;
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -45,12 +54,16 @@ const PopularCourses = () => {
   const handleCourseJoin = (id) => {
     router.push(`/course/${id}`);
   };
-  if (data === null) {
+  if (isLoading) {
     return <Loader />;
-  } else {
-    return (
-      <div className={styles.cards}>
-        {data.data.slice(0, 3).map((item) => (
+  }
+  if (data === undefined) {
+    return <NotFound />;
+  }
+  return (
+    <div className={styles.cards}>
+      {data &&
+        data.slice(0, 3).map((item) => (
           <li key={item.id} className={styles.li_card_item}>
             <Image src={cardImage} className={styles.cardImage} alt="Icon of Card Image" />
             <div className={styles.textWrapper}>
@@ -85,9 +98,8 @@ const PopularCourses = () => {
             </div>
           </li>
         ))}
-      </div>
-    );
-  }
+    </div>
+  );
 };
 
 export default PopularCourses;

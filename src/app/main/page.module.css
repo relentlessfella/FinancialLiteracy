@@ -39,11 +39,15 @@
 @media (max-width: 768px) {
   .Popular3Courses {
     font-size: 25px;
+    margin-top: 20px;
   }
   .mainSecondImage {
     display: none;
   }
   .mainFirstimage {
     margin: 20px;
+  }
+  .ul_main_page {
+    min-height: 100px;
   }
 }

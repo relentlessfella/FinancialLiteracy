@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import Image from 'next/image';
 import explore from '../../../public/assets/explore.png';
 import mainRight from '../../../public/assets/mainRight.png';
@@ -15,6 +15,11 @@ import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import Filter from '@/components/Filter/Filter';
 import Loader from '@/components/Loader/Loader2';
+import dynamic from 'next/dynamic';
+// const PopularCourses = dynamic(() => import('@/components/PopularCourses/PopularCourses'), {
+//   ssr: false,
+//   loading: () => <Loader />,
+// });
 
 export const alfaSlabOne = Alfa_Slab_One({
   subsets: ['latin'],
@@ -52,7 +57,7 @@ const MainPage = () => {
       setIsLoading(true);
       const response = await axios({
         method: 'get',
-        url: 'http://86.107.44.136:8000/courses/course/',
+        url: 'http://0.0.0.0:8000/courses/course/',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -67,6 +72,11 @@ const MainPage = () => {
         },
       });
       setData(response.data);
+      if (response.data && response.data.length > 0) {
+        setData(response.data);
+      } else {
+        setData(undefined);
+      }
     } catch (error) {
       throw error;
     } finally {
@@ -112,7 +122,15 @@ const MainPage = () => {
           <div style={{ color: '#FE8863', whiteSpace: 'nowrap' }}>3 Courses</div>
         </div>
         <ul className={styles.ul_main_page}>
-          <PopularCourses />
+          <div
+            style={{
+              marginTop: '50px',
+              display: 'flex',
+              justifyContent: 'center',
+              flexDirection: 'row',
+            }}>
+            <PopularCourses />
+          </div>
         </ul>
         {/* Popular Courses */}
 

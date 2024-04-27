@@ -34,7 +34,7 @@ const ProfileCourses = () => {
   const fetchUserCourses = async () => {
     const response = await axios({
       method: 'get',
-      url: `http://86.107.44.136:8000/courses/course/get_my_courses/`,
+      url: `http://0.0.0.0:8000/courses/course/get_my_courses/`,
       headers: {
         'Content-Type': 'application/json',
       },

@@ -18,14 +18,17 @@ const CardItem = ({ data, isLoading }) => {
   const handleCourseJoin = (id) => {
     router.push(`/course/${id}`);
   };
-  if (data === null || isLoading === true) {
+  if (isLoading) {
     return <Loader />;
-  } else if (data.length === 0) {
+  }
+  if (data === undefined) {
     return <NotFound />;
-  } else {
-    return (
-      <div className={styles.cards}>
-        {data.map((item) => (
+  }
+
+  return (
+    <div className={styles.cards}>
+      {data &&
+        data.map((item) => (
           <li key={item.id} className={styles.li_card_item}>
             <Image src={cardImage} className={styles.cardImage} alt="Icon of Card Image" />
             <div className={styles.textWrapper}>
@@ -60,9 +63,8 @@ const CardItem = ({ data, isLoading }) => {
             </div>
           </li>
         ))}
-      </div>
-    );
-  }
+    </div>
+  );
 };
 
 export default CardItem;

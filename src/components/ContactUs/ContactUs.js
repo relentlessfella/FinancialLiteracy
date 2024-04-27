@@ -14,7 +14,7 @@ const ContactUs = () => {
       <div className={styles.container}>
         <div className={styles.leftBlock}>
           <Image src={logo} alt="Logo Icon" />
-          <div style={{ color: '#fff', marginTop: '15px' }}>
+          <div className={styles.ContactUsDescription}>
             “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
             incididunt ut labore et dolore magna aliqua.”
           </div>
@@ -22,10 +22,10 @@ const ContactUs = () => {
         <div className={styles.middleLineHorizontal}></div>
         <div className={styles.middleLineVertical}></div>
         <div className={styles.rightBlock}>
-          <div style={{ color: '#fff', fontSize: '20px' }}>Contact Us</div>
+          <div className={styles.ContactUsTitle}>Contact Us</div>
           <div className={styles.wrapper}>
             <div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '30px' }}>
+              <div className={styles.emailWrapper}>
                 <div style={{ display: 'flex', margin: '0 auto', justifyContent: 'center' }}>
                   <Image src={mail} style={{ marginRight: '10px' }} alt="Mail Icon" />
                   <div style={{ color: '#fff', fontSize: '13px', fontWeight: '200' }}>
@@ -33,7 +33,7 @@ const ContactUs = () => {
                   </div>
                 </div>
               </div>
-              <div style={{ display: 'flex', margin: '0 auto', justifyContent: 'center' }}>
+              <div className={styles.phoneNumber}>
                 <Image
                   src={phone}
                   style={{ margin: 'auto 0', marginRight: '10px' }}
