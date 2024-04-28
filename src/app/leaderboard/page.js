@@ -67,7 +67,7 @@ const Leaderboard = () => {
           <Image style={{ margin: '8px 10px' }} src={backButton} width={22} height={22} />
           <div>
             <div style={{ display: 'flex' }}>
-              <div> Arnibek's {data.id}</div>
+              <div> Arnibek&apos;s {data.id}</div>
             </div>
             <div>{data.name}</div>
             <div style={{ marginTop: '50px', display: 'flex' }}>Achievement Leaderboard</div>
@@ -109,6 +109,7 @@ const Leaderboard = () => {
               }}>
               {data.map((item) => (
                 <li
+                  key={data.id}
                   style={{ display: 'flex', fontWeight: '600', justifyContent: 'space-between' }}
                   className={styles.leaderboard_item}>
                   <div style={{ display: 'flex' }}>

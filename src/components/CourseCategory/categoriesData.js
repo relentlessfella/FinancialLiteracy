@@ -12,11 +12,11 @@ import currency from '../../../public/assets/filterImg/currency.svg';
 import stock from '../../../public/assets/filterImg/stock.svg';
 
 const categories = [
-  { title: 'Bank', image: bank },
-  { title: 'Investment', image: investment },
-  { title: 'Credit', image: credit },
-  { title: 'Money', image: money },
-  { title: 'Currency', image: currency },
-  { title: 'Stock', image: stock },
+  { id: 1, title: 'Bank', image: bank },
+  { id: 2, title: 'Investment', image: investment },
+  { id: 3, title: 'Credit', image: credit },
+  { id: 4, title: 'Money', image: money },
+  { id: 5, title: 'Currency', image: currency },
+  { id: 6, title: 'Stock', image: stock },
 ];
 export default categories;

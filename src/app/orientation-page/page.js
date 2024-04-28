@@ -13,25 +13,26 @@ const OrientationPage = () => {
     {
       title: (
         <>
-          Hello, <span style={{ color: '#FE602F' }}>My Friend</span>! <br /> I'm{' '}
+          Hello, <span style={{ color: '#FE602F' }}>My Friend</span>! <br /> I&apos;m{' '}
           <span style={{ color: '#FE602F' }}>Mr. Tenge</span>, your guide through the exciting world
-          of learning. Are you ready to embark on a journey to discover new knowledge and skills?"
+          of learning. Are you ready to embark on a journey to discover new knowledge and
+          skills?&quot;
         </>
       ),
     },
     {
       title: (
         <>
-          "Fantastic! Let's start with a short test to gauge your interests and current level of
-          knowledge. It's quick and fun, I promise! "
+          &quot;Fantastic! Let&apos;s start with a short test to gauge your interests and current
+          level of knowledge. It&apos;s quick and fun, I promise! &quot;
         </>
       ),
     },
     {
       title: (
         <>
-          'Ok, then you can go to the main page of our website, where you have a lot of resources
-          and information at your disposal.'
+          &apos;Ok, then you can go to the main page of our website, where you have a lot of
+          resources and information at your disposal.&apos;
         </>
       ),
     },

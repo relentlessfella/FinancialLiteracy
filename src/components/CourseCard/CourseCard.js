@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 export const CourseCard = ({ data }) => {
   const router = useRouter();
   return data.map((item) => (
-    <li className={styles.profileLessonCard}>
+    <li key={data.id} className={styles.profileLessonCard}>
       <div
         style={{
           fontSize: '28px',

@@ -145,7 +145,7 @@ const QuizPage = ({ params }) => {
       <div style={{ textAlign: 'center', fontSize: '28px', marginTop: '100px', opacity: '0.9' }}>
         <Image alt="No Results" src={noResult} width={400} height={300} />
         <div>
-          Ooops we don't have
+          Ooops we don&apos;t have
           <br /> quiz on this course! XD
         </div>
       </div>

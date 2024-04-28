@@ -91,7 +91,7 @@ const Feedback = () => {
         <div className={''}>
           <ul className={styles.feedback_images}>
             {feedback_titles.map((item, key) => (
-              <li className={styles.image_block} onClick={() => handleFeedback(key + 1)}>
+              <li key={key} className={styles.image_block} onClick={() => handleFeedback(key + 1)}>
                 {active[`option_${key + 1}`] ? (
                   <>
                     <Image src={item.active_image} width={126} height={128} />

@@ -25,7 +25,7 @@ const CourseCategory = () => {
       <div className={`${styles.title} ${alfaSlabOne.className}`}>Category</div>
       <ul className={styles.ul}>
         {categories.map((item) => (
-          <li className={styles.li} onClick={() => toggleCategory(item.title)}>
+          <li key={item.id} className={styles.li} onClick={() => toggleCategory(item.title)}>
             <div style={{ display: 'flex', marginTop: 'auto', marginBottom: 'auto' }}>
               <Image
                 src={item.image}
