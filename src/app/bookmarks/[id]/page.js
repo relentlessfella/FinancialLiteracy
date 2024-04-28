@@ -13,7 +13,7 @@ const Bookmarks = ({ params }) => {
   const fetchBookmarks = async () => {
     const response = await axios({
       method: 'get',
-      url: `http://86.107.44.136:8000/courses/course/get_bookmark/?user_id=${params.id}`,
+      url: `http://0.0.0.0:8000/courses/course/get_bookmark/?user_id=${params.id}`,
       headers: {
         'Content-Type': 'application/json',
       },

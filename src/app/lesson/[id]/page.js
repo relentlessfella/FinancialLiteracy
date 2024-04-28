@@ -12,7 +12,7 @@ const LessonPage = ({ params }) => {
   const fetchLesson = async () => {
     const response = await axios({
       method: 'GET',
-      url: `http://86.107.44.136:8000/courses/lesson/${params.id}`,
+      url: `http://0.0.0.0:8000/courses/lesson/${params.id}`,
       headers: {
         'Content-Type': 'application/json',
       },
@@ -30,7 +30,7 @@ const LessonPage = ({ params }) => {
     try {
       const response = await axios({
         method: 'POST',
-        url: `http://86.107.44.136:8000/progress/course_progress/${params.id}/complete_lesson/?user_id=1`,
+        url: `http://0.0.0.0:8000/progress/course_progress/${params.id}/complete_lesson/?user_id=1`,
         headers: {
           'Content-Type': 'application/json',
         },
