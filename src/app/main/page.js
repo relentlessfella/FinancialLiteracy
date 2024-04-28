@@ -77,6 +77,7 @@ const MainPage = () => {
         setData(undefined);
       }
     } catch (error) {
+      setData(undefined);
       throw error;
     } finally {
       setIsLoading(false);
