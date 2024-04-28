@@ -71,7 +71,6 @@ const MainPage = () => {
           Stock: category.Stock,
         },
       });
-      setData(response.data);
       if (response.data && response.data.length > 0) {
         setData(response.data);
       } else {
