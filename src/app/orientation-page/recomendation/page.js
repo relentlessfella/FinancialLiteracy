@@ -3,13 +3,16 @@ import React from 'react';
 import styles from './page.module.css';
 import coinTeacher from '../../../../public/assets/coinTeacher.png';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 const RecomendationPage = () => {
   const [yes, setYes] = useState(false);
   const [no, setNo] = useState(false);
   const router = useRouter();
-  const level = localStorage.getItem('level');
+  let level;
+  useEffect(() => {
+    level = localStorage.getItem('level');
+  }, []);
   const data = [
     {
       title: (
@@ -25,7 +28,7 @@ const RecomendationPage = () => {
     {
       title: (
         <>
-          Let's start learning the material! Click on &nbsp;
+          Let&apos;s start learning the material! Click on &nbsp;
           <span style={{ color: '#FE602F' }}>Start</span>.
         </>
       ),

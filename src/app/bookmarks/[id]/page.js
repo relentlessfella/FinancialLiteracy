@@ -19,8 +19,8 @@ const Bookmarks = ({ params }) => {
       },
     });
     setData(response.data);
+    console.log('response', response.data);
   };
-  console.log('rere', response);
 
   useEffect(() => {
     fetchBookmarks();
@@ -39,7 +39,7 @@ const Bookmarks = ({ params }) => {
           </div>
           <ul>
             {data.map((item) => (
-              <li style={{ padding: '50px', listStyleType: 'none' }}>
+              <li key={item.id} style={{ padding: '50px', listStyleType: 'none' }}>
                 <div className={styles.bookmarksLessonCard}>
                   <div
                     style={{

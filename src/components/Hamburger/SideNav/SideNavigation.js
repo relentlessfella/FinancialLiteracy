@@ -8,15 +8,15 @@ import Image from 'next/image';
 
 const SideNavigation = ({ isOpen }) => {
   const SideLinks = [
-    { title: 'Courses', image: hat, href: '/' },
-    { title: 'Financial Simulator', image: square, href: '/financial-simulator' },
-    { title: 'Games', image: joystick, href: '/game' },
+    { id: 1, title: 'Courses', image: hat, href: '/' },
+    { id: 2, title: 'Financial Simulator', image: square, href: '/financial-simulator' },
+    { id: 3, title: 'Games', image: joystick, href: '/game' },
   ];
   console.log(SideLinks);
   return (
     <div className={isOpen ? `${styles.sideNav} ${styles.open}` : styles.sideNav}>
       {SideLinks.map((item) => (
-        <Link href={item.href} className={styles.links}>
+        <Link key={item.id} href={item.href} className={styles.links}>
           <Image className={styles.icons} src={item.image} width={20} height={20} />
           <div>{item.title}</div>
         </Link>

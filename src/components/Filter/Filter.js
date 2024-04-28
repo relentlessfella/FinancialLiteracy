@@ -38,6 +38,7 @@ const Filter = () => {
                 <p className={styles.Text}>Categories</p>
                 {categories.map((item) => (
                   <button
+                    key={item.id}
                     className={
                       item.title === category.Money ||
                       item.title === category.Bank ||
