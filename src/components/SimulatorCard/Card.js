@@ -1,11 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
-import mask0 from '../../../public/assets/SimulatorPageAssets/mask0.png';
-import mask1 from '../../../public/assets/SimulatorPageAssets/mask1.png';
-import mask2 from '../../../public/assets/SimulatorPageAssets/mask2.png';
-import mask3 from '../../../public/assets/SimulatorPageAssets/mask3.png';
-import mask4 from '../../../public/assets/SimulatorPageAssets/mask4.png';
-import mask5 from '../../../public/assets/SimulatorPageAssets/mask5.png';
+import mask0 from '../../../public/assets/SimulatorPageAssets/Mask0.png';
+import mask1 from '../../../public/assets/SimulatorPageAssets/Mask1.png';
+import mask2 from '../../../public/assets/SimulatorPageAssets/Mask2.png';
+import mask3 from '../../../public/assets/SimulatorPageAssets/Mask3.png';
+import mask4 from '../../../public/assets/SimulatorPageAssets/Mask4.png';
+import mask5 from '../../../public/assets/SimulatorPageAssets/Mask5.png';
 import styles from './component.module.css';
 import { DMSans } from '@/app/main/page';
 import { useRouter } from 'next/navigation';
