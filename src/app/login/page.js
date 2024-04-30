@@ -9,7 +9,7 @@ import './login.css';
 import Link from 'next/link';
 import axios from 'axios';
 import eye from '../../../public/assets/eye.svg';
-import { useRouter } from 'next/navigation';
+import { useRouter, redirect } from 'next/navigation';
 
 export const poppins = Poppins({
   subsets: ['latin'],
@@ -22,6 +22,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [mailValue, setMailValue] = useState(null);
   const [userPassword, setUserPassword] = useState(null);
+  const [redirectState, setRedirectState] = useState(false);
   const router = useRouter();
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
@@ -31,19 +32,23 @@ const Login = () => {
     setUserPassword(e.target.value);
   };
   const handleSubmit = async (e) => {
-    // e.prevenDefault();
+    e.preventDefault();
     try {
-      const response = await axios.post(
-        'http://86.107.44.136:8000/user/auth/login/',
-        { email: mailValue, password: userPassword },
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
+      const response = await axios({
+        method: 'POST',
+        url: 'http://localhost:8000/user/login/',
+        headers: {
+          'Content-Type': 'application/json',
         },
-      );
+        data: {
+          email: mailValue,
+          password: userPassword,
+        },
+        withCredentials: true,
+      });
       if (response.data) {
+        setRedirectState(true);
+        // localStorage.setItem('AuthToken', response.data.jwt);
         console.log('Success: ', response.data);
       } else {
         console.log(
@@ -60,6 +65,10 @@ const Login = () => {
     }
   };
 
+  if (redirectState) {
+    redirect('/');
+  }
+
   return (
     <div
       style={{
@@ -69,7 +78,7 @@ const Login = () => {
         height: '100%',
         margin: '0 auto',
       }}>
-      <div>
+      <form onSubmit={handleSubmit}>
         <div>
           <Image src={logo} alt="Login Logo" onClick={() => router.push('/')} />
         </div>
@@ -127,21 +136,19 @@ const Login = () => {
               </div>
               <div style={{ margin: '30px 0' }}>
                 <div>Email Address</div>
-                <form onSubmit={handleSubmit}>
-                  <input
-                    // value={setMailValue}
-                    style={{
-                      border: '1px solid #CBCAD7',
-                      width: '468px',
-                      borderRadius: '10px',
-                      padding: '15px',
-                      outline: 'none',
-                      cursor: 'pointer',
-                    }}
-                    placeholder="Enter your email address"
-                    onChange={(e) => setMailValue(e.target.value)}
-                  />
-                </form>
+                <input
+                  // value={setMailValue}
+                  style={{
+                    border: '1px solid #CBCAD7',
+                    width: '468px',
+                    borderRadius: '10px',
+                    padding: '15px',
+                    outline: 'none',
+                    cursor: 'pointer',
+                  }}
+                  placeholder="Enter your email address"
+                  onChange={(e) => setMailValue(e.target.value)}
+                />
               </div>
               <div style={{ margin: '30px 0' }}>
                 <div>Password</div>
@@ -155,24 +162,22 @@ const Login = () => {
                     justifyContent: 'space-between',
                   }}>
                   <div style={{ margin: 'auto 0', width: '100%' }}>
-                    <form>
-                      <input
-                        // value={setUserPassword}
-                        type={passwordVisible ? 'text' : 'password'}
-                        value={password}
-                        onChange={handlePasswordChange}
-                        placeholder="Password"
-                        style={{
-                          width: '100%',
-                          padding: '14px',
-                          border: 'none',
-                          borderRadius: '10px',
-                          outline: 'none',
-                          cursor: 'pointer',
-                        }}
-                        // onChange={(e) => setUserPassword(e.target.value)}
-                      />
-                    </form>
+                    <input
+                      // value={setUserPassword}
+                      type={passwordVisible ? 'text' : 'password'}
+                      value={password}
+                      onChange={handlePasswordChange}
+                      placeholder="Password"
+                      style={{
+                        width: '100%',
+                        padding: '14px',
+                        border: 'none',
+                        borderRadius: '10px',
+                        outline: 'none',
+                        cursor: 'pointer',
+                      }}
+                      // onChange={(e) => setUserPassword(e.target.value)}
+                    />
                   </div>
                   <div
                     style={{ margin: 'auto 5px', width: '21px', height: '25px' }}
@@ -211,7 +216,7 @@ const Login = () => {
             </div>
           </div>
         </div>
-      </div>
+      </form>
     </div>
   );
 };

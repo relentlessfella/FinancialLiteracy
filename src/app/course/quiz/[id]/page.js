@@ -23,7 +23,7 @@ const QuizPage = ({ params }) => {
     try {
       const response = await axios({
         method: 'get',
-        url: `http://86.107.44.136:8000/courses/quiz/`,
+        url: `http://localhost:8000/courses/quiz/`,
         params: {
           course_id: id,
           page: 1,
@@ -118,7 +118,7 @@ const QuizPage = ({ params }) => {
       const vals = Object.values(parseAns);
       const response = await axios({
         method: 'post',
-        url: `http://86.107.44.136:8000/progress/quiz_progress/${id}/submit/`,
+        url: `http://localhost:8000/progress/quiz_progress/${id}/submit/`,
         params: {
           user_id: 1,
         },
@@ -136,8 +136,6 @@ const QuizPage = ({ params }) => {
       throw error;
     }
   };
-
-  console.log(data);
   if (data === null) {
     return <div>{params.id}</div>;
   } else if (data.count === 0) {
@@ -185,16 +183,7 @@ const QuizPage = ({ params }) => {
             }}>
             {data.results[0].question}
           </div>
-          <ul
-            style={{
-              listStyleType: 'none',
-              padding: '0',
-              margin: '0 auto',
-              marginBottom: '30px',
-              width: '600px',
-              textAlign: 'start',
-              height: '210px',
-            }}>
+          <ul className={styles.ul}>
             {data.results[0].answers.map((item, key) => (
               <li
                 style={{ display: 'flex' }}
@@ -203,18 +192,14 @@ const QuizPage = ({ params }) => {
                   selectedAnswer === item.id ? styles.quizRightAnswer : styles.quizQuestion
                 }
                 onClick={() => handleClick(item.id)}>
-                <div style={{ margin: '0 40px' }}>{answerType[key]}</div>
+                <div className={styles.answerType}>{answerType[key]}</div>
                 {item.text}
               </li>
             ))}
           </ul>
           <div
-            style={{
-              display: 'flex',
-              justifyContent: data.previous === null ? 'flex-end' : 'space-between',
-              width: '600px',
-              margin: '0 auto',
-            }}>
+            className={styles.buttons}
+            style={{ justifyContent: data.previous === null ? 'flex-end' : 'space-between' }}>
             <button
               style={{
                 display: data.previous === null ? 'none' : 'block',

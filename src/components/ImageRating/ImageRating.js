@@ -2,7 +2,6 @@ import grayStar from '../../../public/assets/grayStar.svg';
 import yellowStar from '../../../public/assets/yellowStar.svg';
 import styles from './ImageRating.module.css';
 import Image from 'next/image';
-// CHATGPT IS GENIUS!!!
 function ImageRating({ rating }) {
   // Render stars based on rating
   const renderStars = () => {

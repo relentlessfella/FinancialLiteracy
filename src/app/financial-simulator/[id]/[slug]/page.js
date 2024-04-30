@@ -20,7 +20,7 @@ const SimulationCardPage = () => {
     try {
       const response = await axios({
         method: 'GET',
-        url: `http://86.107.44.136:8000/simulator/fin_trial/${params.id}/`,
+        url: `http://localhost:8000/simulator/fin_trial/${params.id}/`,
         headers: {
           'Content-Type': 'application/json',
         },
@@ -79,14 +79,25 @@ const SimulationCardPage = () => {
                   Answer
                 </p>
                 <div style={{ display: 'flex', justifyContent: 'center', padding: '40px 0' }}>
-                  <Image src={simulationCorrectImg} width={400} height={300} />
+                  <Image
+                    src={simulationCorrectImg}
+                    width={400}
+                    height={300}
+                    alt="Simulation page main image"
+                  />
                 </div>
                 <li key={userSelect.id} className={styles.option_correct}>
                   <div style={{ display: 'flex', alignItems: 'center' }}>
                     <div className={styles.option_inner}>{userSelect.id}.</div>
                     <div>{userSelect.text}</div>
                   </div>
-                  <Image src={tick} width={30} height={30} style={{ margin: '0 20px' }} />
+                  <Image
+                    src={tick}
+                    width={30}
+                    height={30}
+                    style={{ margin: '0 20px' }}
+                    alt="Tick icon"
+                  />
                 </li>
               </ul>
             ) : (
@@ -102,21 +113,38 @@ const SimulationCardPage = () => {
                   Answer
                 </p>
                 <div style={{ display: 'flex', justifyContent: 'center', padding: '40px 0' }}>
-                  <Image src={simulationCorrectImg} width={400} height={300} />
+                  <Image
+                    src={simulationCorrectImg}
+                    width={400}
+                    height={300}
+                    alt="Simulation page main image"
+                  />
                 </div>
                 <li key={userSelect.id} className={styles.option_correct}>
                   <div style={{ display: 'flex', alignItems: 'center' }}>
                     <div className={styles.option_inner}>{userSelect.id}.</div>
                     <div>{userSelect.text}</div>
                   </div>
-                  <Image src={wrongTick} width={30} height={30} style={{ margin: '0 20px' }} />
+                  <Image
+                    src={wrongTick}
+                    width={30}
+                    height={30}
+                    style={{ margin: '0 20px' }}
+                    alt="Wrong icon"
+                  />
                 </li>
                 <li key={correctAnswer.id} className={styles.option_correct}>
                   <div style={{ display: 'flex', alignItems: 'center' }}>
                     <div className={styles.option_inner}>{correctAnswer.id}.</div>
                     <div>{correctAnswer.text}</div>
                   </div>
-                  <Image src={tick} width={30} height={30} style={{ margin: '0 20px' }} />
+                  <Image
+                    src={tick}
+                    width={30}
+                    height={30}
+                    style={{ margin: '0 20px' }}
+                    alt="Tick icon"
+                  />
                 </li>
               </ul>
             )

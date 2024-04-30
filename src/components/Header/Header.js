@@ -24,8 +24,10 @@ const Header = () => {
     try {
       const response = await axios({
         method: 'get',
-        url: 'http://86.107.44.136:8000/user/profile/1',
+        url: 'http://localhost:8000/user/active_user/',
+        withCredentials: true,
       });
+      console.log('header: ', response.data);
       setData(response.data);
     } catch (error) {
       throw error;
@@ -50,8 +52,9 @@ const Header = () => {
               src={logo}
               style={{ marginRight: '50px', marginBottom: '10px' }}
               onClick={() => router.push('/')}
+              alt="logo"
             />
-            <div
+            {/* <div
               style={{
                 borderRadius: '10px',
                 border: '1px solid gray',
@@ -60,9 +63,15 @@ const Header = () => {
               }}>
               <div style={{ display: 'flex', alignItems: 'center' }}>
                 <input type="text" placeholder="Search..." className={styles.input} />
-                <Image src={magnifier} width={20} height={20} style={{ margin: '15px' }} />
+                <Image
+                  src={magnifier}
+                  width={20}
+                  height={20}
+                  style={{ margin: '15px' }}
+                  alt="input magnifier"
+                />
               </div>
-            </div>
+            </div> */}
           </div>
           <ul style={{ display: 'flex', listStyle: 'none' }}>
             <li className={styles.header_li}>
@@ -95,8 +104,9 @@ const Header = () => {
               src={logo}
               style={{ marginRight: '50px', marginBottom: '10px' }}
               onClick={() => router.push('/')}
+              alt="logo"
             />
-            <div
+            {/* <div
               style={{
                 borderRadius: '10px',
                 border: '1px solid gray',
@@ -107,7 +117,7 @@ const Header = () => {
                 <input type="text" placeholder="Search..." className={styles.input} />
                 <Image src={magnifier} width={20} height={20} style={{ margin: '15px' }} />
               </div>
-            </div>
+            </div> */}
           </div>
           <ul className={styles.ul}>
             <li className={styles.header_li}>
@@ -125,13 +135,19 @@ const Header = () => {
             <li style={{ display: 'flex' }} className={styles.header_li}>
               <div>
                 <Link href={'/profile'} style={{ textDecoration: 'none', color: 'black' }}>
-                  <div>Nussupekov Arnibek</div>
+                  <div>{data.name}</div>
                 </Link>
               </div>
-              <Image style={{ paddingTop: '0px' }} src={dropdown} width={10} height={10} />
+              <Image
+                style={{ paddingTop: '0px' }}
+                src={dropdown}
+                width={10}
+                height={10}
+                alt="Dropdown icon"
+              />
             </li>
             <li className={styles.header_li}>
-              <Image src={coin} width={30} height={30} />
+              <Image src={coin} width={30} height={30} alt="Balance coin icon" />
               <div style={{ margin: '0 10px', fontWeight: '700' }}>{data.balance}</div>
             </li>
           </ul>

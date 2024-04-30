@@ -1,0 +1,160 @@
+.quizCardWrapper {
+  padding: 5px 20px;
+  margin: 45px auto;
+  width: 1200px;
+}
+.backgroundCourseImage {
+  background-image: url('/assets/CourseImage.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  min-height: 30vh;
+}
+.courseWrapper {
+  font-family: var(--font-alfaSlabOne);
+  background-color: #a2bf00;
+  padding: 50px 180px;
+  color: #fff;
+  display: flex;
+  font-size: 30px;
+}
+.startLessonBtn {
+  width: 200px;
+  height: 50px;
+  display: flex;
+  border-radius: 15px;
+  border: none;
+  font-weight: 600;
+  justify-content: center;
+  font-size: 18px;
+  color: #fe602f;
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.1);
+}
+.bookmarkBtn {
+  width: 200px;
+  height: 50px;
+  display: flex;
+  border-radius: 15px;
+  justify-content: center;
+  border: #ffffff 2px solid;
+  background-color: #a2bf00;
+  font-weight: 600;
+  font-size: 18px;
+  margin: 0 50px;
+  color: #fff;
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.1);
+}
+.container {
+  display: flex;
+}
+.buttonsWrapper {
+  margin-top: 50px;
+  display: flex;
+}
+.playIcon {
+  margin: auto 8px;
+}
+.backButton {
+  margin: 8px 10px;
+}
+.bigQuizTitle {
+  color: #fe602f;
+  font-weight: 900;
+  font-size: 38px;
+}
+.bigQuizInfo {
+  color: #858585;
+  display: list-item;
+  list-style: inside;
+  font-size: 20px;
+}
+@media (max-width: 1240px) {
+  .quizCardWrapper {
+    width: auto;
+  }
+}
+@media (max-width: 1020px) {
+  .courseWrapper {
+    padding: 20px 0;
+  }
+}
+@media (max-width: 768px) {
+  .backgroundCourseImage {
+    background-image: none;
+    min-height: 0vh;
+  }
+  .playIcon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .buttonsWrapper {
+    width: 300px;
+    justify-content: space-between;
+  }
+  .courseWrapper {
+    margin: 0 auto;
+  }
+  /* .container {
+    margin: 0 auto;
+  } */
+  .startLessonBtn {
+    width: auto;
+    height: 40px;
+    font-size: 12px;
+    white-space: nowrap;
+    border-radius: 10px;
+    padding: 0 18px;
+  }
+  .bookmarkBtn {
+    padding: 0 20px;
+    height: 40px;
+    margin: 0;
+    width: auto;
+    border-radius: 10px;
+    font-size: 12px;
+  }
+}
+@media (max-width: 540px) {
+  .backButton {
+    /* width: 16px; */
+    /* height: 16px; */
+    /* margin: 8px 4px; */
+  }
+  .startLessonBtn {
+    /* width: auto; */
+    height: 35px;
+    /* font-size: 12px; */
+    white-space: nowrap;
+    border-radius: 10px;
+    padding: 0 8px;
+  }
+  .levelTitle {
+    font-size: 16px;
+  }
+  .levelUnderTitle {
+    font-size: 16px;
+  }
+  .bookmarkBtn {
+    /* width: auto; */
+    padding: 0 10px;
+    height: 35px;
+    margin: 0;
+    border-radius: 10px;
+    font-size: 12px;
+  }
+  .buttonsWrapper {
+    width: 250px;
+    margin-top: 20px;
+  }
+  .quizCardWrapper {
+    margin: 10px auto;
+  }
+  .bigQuizTitle {
+    font-size: 22px;
+  }
+  .bigQuizInfo {
+    font-size: 14px;
+  }
+}

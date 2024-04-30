@@ -11,7 +11,6 @@ import { useMainContext } from '@/contexts/ContextProvider/ContextProvider';
 
 const Filter = () => {
   const { category, setCategories } = useMainContext();
-  console.log(category);
   const toggleCategory = (category) => {
     setCategories(
       (prevCategories) => (
@@ -29,7 +28,7 @@ const Filter = () => {
         <Popover.Root>
           <Popover.Trigger asChild>
             <button className={styles.filterImage} aria-label="Update dimensions">
-              <Image src={filterImage} />
+              <Image src={filterImage} alt="Filter icon" />
             </button>
           </Popover.Trigger>
           <Popover.Portal>
@@ -51,7 +50,7 @@ const Filter = () => {
                     }
                     onClick={() => toggleCategory(item.title)}>
                     <div style={{ display: 'flex' }}>
-                      <Image src={item.image} className={styles.image} />
+                      <Image src={item.image} className={styles.image} alt={item.title + ' icon'} />
                       <div className={styles.title}>{item.title}</div>
                     </div>
                     {item.title === category.Money ||
@@ -60,7 +59,13 @@ const Filter = () => {
                     item.title === category.Currency ||
                     item.title === category.Credit ||
                     item.title === category.Stock ? (
-                      <Image className={styles.tickImg} src={tick} width={25} height={25} />
+                      <Image
+                        className={styles.tickImg}
+                        src={tick}
+                        width={25}
+                        height={25}
+                        alt="tick selection icon"
+                      />
                     ) : (
                       ''
                     )}

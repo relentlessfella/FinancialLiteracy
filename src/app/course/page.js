@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { alfaSlabOne } from '../main/page';
 import playCourse from '../../../public/assets/PlayCourse.svg';
 import bookmark from '../../../public/assets/bookmarkCourse.svg';
-import LessonCard from '@/components/CoursePageCard/LessonCard';
+import LessonCard from '@/components/LessonCard/LessonCard1';
 import styles from './page.module.css';
 import backButton from '../../../public/assets/courseBackButton.svg';
 import axios from 'axios';
@@ -18,7 +18,7 @@ const CoursePage = () => {
     try {
       const response = await axios({
         method: 'get',
-        url: 'http://86.107.44.136:8000/courses/course/',
+        url: 'http://localhost:8000/courses/course/',
         headers: {
           'Content-Type': 'application/json',
         },

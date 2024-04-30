@@ -71,7 +71,7 @@ const Card = ({ data }) => {
               }}>
               {item.level}
             </div>
-            <Image src={data1[key].image} />
+            <Image src={data1[key].image} alt={data1[key].title} />
           </div>
           <div className={styles.card_text}>
             <div className={styles.card_title}>{item.name}</div>

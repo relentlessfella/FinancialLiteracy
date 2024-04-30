@@ -15,7 +15,10 @@ import sml4 from '../../../../../../public/assets/feedbackImages/sml4.svg';
 import sml5 from '../../../../../../public/assets/feedbackImages/sml5.svg';
 import { poppins } from '@/app/login/page';
 import axios from 'axios';
+import Slider from 'react-slick';
 import { useParams } from 'next/navigation';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 const Feedback = () => {
   const [keyIndex, setKeyIndex] = useState();
@@ -58,7 +61,7 @@ const Feedback = () => {
     try {
       const response = await axios({
         method: 'put',
-        url: `http://86.107.44.136:8000/courses/feedback/${params.id}/send_feedback/?user_id=1`,
+        url: `http://localhost:8000/courses/feedback/${params.id}/send_feedback/?user_id=1`,
         headers: {
           'Content-Type': 'application/json',
         },
@@ -75,12 +78,85 @@ const Feedback = () => {
       throw error;
     }
   };
-  const handleFeedback = (key) => {
-    setKeyIndex(key);
-    setActive((prevState) => ({
-      //   ...prevState,
-      [`option_${key}`]: !prevState[`option_${key}`],
-    }));
+  // const handleFeedback = (key) => {
+  //   setKeyIndex(key);
+  //   setActive((prevState) => ({
+  //     // ...prevState,
+  //     [`option_${key}`]: !prevState[`option_${key}`],
+  //   }));
+  // };
+
+  // const handleFeedback = (key) => {
+  //   setKeyIndex(key); // Store the selected key index
+  //   setActive((prevState) => {
+  //     // Reset all options to false, then set the selected option to true
+  //     const resetState = Object.keys(prevState).reduce(
+  //       (acc, cur) => ({
+  //         ...acc,
+  //         [cur]: false,
+  //       }),
+  //       {},
+  //     );
+
+  //     return { ...resetState, [`option_${key}`]: true };
+  //   });
+  // };
+
+  const handleFeedback = (selectedKey) => {
+    setKeyIndex(selectedKey); // Optional, depends on what you do with this state
+    setActive((prevState) => {
+      let newState = { ...prevState };
+      Object.keys(newState).forEach((key, index) => {
+        // Activate all previous and the selected option
+        if (index + 1 <= selectedKey) {
+          newState[key] = true;
+        }
+        if (index + 1 > selectedKey) {
+          newState[key] = false;
+        }
+      });
+      return newState;
+    });
+  };
+  function CustomSlide(props) {
+    const { index, image } = props;
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <Image className={styles.activeImage} width={126} height={128} src={image} />
+      </div>
+    );
+  }
+  function SampleNextArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{ ...style, display: 'block', background: 'red', marginRight: '30px' }}
+        onClick={onClick}
+      />
+    );
+  }
+
+  function SamplePrevArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{ ...style, display: 'block', background: 'green' }}
+        onClick={onClick}
+      />
+    );
+  }
+
+  const settings = {
+    // dots: true,
+    infinite: true,
+    speed: 700,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    swipeToSlide: true,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
   };
 
   return (
@@ -90,27 +166,70 @@ const Feedback = () => {
         <div className={styles.question}>How would you rate the course?</div>
         <div className={''}>
           <ul className={styles.feedback_images}>
-            {feedback_titles.map((item, key) => (
+            {/* {feedback_titles.map((item, key) => (
               <li key={key} className={styles.image_block} onClick={() => handleFeedback(key + 1)}>
                 {active[`option_${key + 1}`] ? (
                   <>
-                    <Image src={item.active_image} width={126} height={128} />
+                    <Image
+                      src={item.active_image}
+                      width={126}
+                      height={128}
+                      alt={item.title}
+                      className={styles.activeImage}
+                    />
                     <div className={styles.image_block_title} style={{ color: '#FE602F' }}>
                       {item.title}
                     </div>
                   </>
                 ) : (
                   <>
-                    <Image src={item.image} width={126} height={128} />
+                    <Image
+                      src={item.image}
+                      width={126}
+                      height={128}
+                      alt={item.title}
+                      className={styles.activeImage}
+                    />
                     <div className={styles.image_block_title}>{item.title}</div>
                   </>
                 )}
               </li>
-            ))}
+            ))} */}
+            {feedback_titles.map((item, index) => {
+              const isActive = active[`option_${index + 1}`];
+              return (
+                <li
+                  key={index}
+                  className={styles.image_block}
+                  onClick={() => handleFeedback(index + 1)}>
+                  <Image
+                    src={isActive ? item.active_image : item.image}
+                    width={126}
+                    height={128}
+                    alt={item.title}
+                    className={styles.activeImage}
+                  />
+                  <div
+                    className={styles.image_block_title}
+                    style={{ color: isActive ? '#FE602F' : 'inherit' }}>
+                    {item.title}
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+          <ul className={styles.mobileFeedbackImages}>
+            <div className="slider-container">
+              <Slider {...settings}>
+                {feedback_titles.map((item, index) => (
+                  <CustomSlide index={index} image={item.image} />
+                ))}
+              </Slider>
+            </div>
           </ul>
         </div>
         <div>
-          <button className={styles.button} onClick={() => fetchFeedBack()}>
+          <button className={styles.button} onClick={fetchFeedBack}>
             Submit
           </button>
         </div>

@@ -12,7 +12,7 @@ const LessonPage = ({ params }) => {
   const fetchLesson = async () => {
     const response = await axios({
       method: 'GET',
-      url: `http://86.107.44.136:8000/courses/lesson/${params.id}`,
+      url: `http://localhost:8000/courses/lesson/${params.id}`,
       headers: {
         'Content-Type': 'application/json',
       },
@@ -30,7 +30,7 @@ const LessonPage = ({ params }) => {
     try {
       const response = await axios({
         method: 'POST',
-        url: `http://86.107.44.136:8000/progress/course_progress/${params.id}/complete_lesson/?user_id=1`,
+        url: `http://localhost:8000/progress/course_progress/${params.id}/complete_lesson/?user_id=1`,
         headers: {
           'Content-Type': 'application/json',
         },
@@ -52,7 +52,13 @@ const LessonPage = ({ params }) => {
       <div>
         <div className={alfaSlabOne.variable}>
           <div className={styles.containerInner}>
-            <Image style={{ margin: '8px 10px' }} src={backButton} width={22} height={22} />
+            <Image
+              style={{ margin: '8px 10px' }}
+              src={backButton}
+              width={22}
+              height={22}
+              alt="Back button image"
+            />
             <div>
               <div style={{ display: 'flex' }}>
                 <div>Level {data.name}</div>
@@ -69,7 +75,7 @@ const LessonPage = ({ params }) => {
             {/* <div className={styles.block5}></div> */}
             <div className={styles.block6}>
               <div style={{ margin: 'auto 0' }}>
-                <Image src={coinTeacher} />
+                <Image src={coinTeacher} alt="Virtual simulator coin image" />
               </div>
               <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
                 <div

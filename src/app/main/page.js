@@ -16,10 +16,6 @@ import { useRouter } from 'next/navigation';
 import Filter from '@/components/Filter/Filter';
 import Loader from '@/components/Loader/Loader2';
 import dynamic from 'next/dynamic';
-// const PopularCourses = dynamic(() => import('@/components/PopularCourses/PopularCourses'), {
-//   ssr: false,
-//   loading: () => <Loader />,
-// });
 
 export const alfaSlabOne = Alfa_Slab_One({
   subsets: ['latin'],
@@ -50,6 +46,7 @@ const modules = [
 const MainPage = () => {
   const router = useRouter();
   const [data, setData] = useState(null);
+  const [userData, setUserData] = useState(null);
   const { category, activeModule, setActiveModule } = useMainContext();
   const [isLoading, setIsLoading] = useState(false);
   const fetchAllCards = async () => {
@@ -57,7 +54,7 @@ const MainPage = () => {
       setIsLoading(true);
       const response = await axios({
         method: 'get',
-        url: 'http://86.107.44.136:8000/courses/course/',
+        url: 'http://localhost:8000/courses/course/',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -84,7 +81,24 @@ const MainPage = () => {
     }
   };
 
+  const fetchActiveUser = async () => {
+    try {
+      const response = await axios({
+        method: 'GET',
+        url: 'http://localhost:8000/user/active_user/',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        withCredentials: true,
+      });
+      setUserData(response.data);
+      console.log(response);
+    } catch (error) {
+      throw error;
+    }
+  };
   useEffect(() => {
+    fetchActiveUser();
     fetchAllCards();
   }, [category, activeModule]);
 

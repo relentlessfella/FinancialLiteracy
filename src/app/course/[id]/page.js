@@ -4,8 +4,8 @@ import React, { useEffect, useState } from 'react';
 import { alfaSlabOne } from '../../main/page';
 import playCourse from '../../../../public/assets/PlayCourse.svg';
 import bookmark from '../../../../public/assets/bookmarkCourse.svg';
-import LessonCard from '@/components/CoursePageCard/LessonCard';
-import styles from '../page.module.css';
+import LessonCard from '@/components/LessonCard/LessonCard';
+// import styles from '../page.module.css';
 import backButton from '../../../../public/assets/courseBackButton.svg';
 import axios from 'axios';
 import QuizCard from '@/components/QuizCard/QuizCard';
@@ -13,6 +13,8 @@ import { useRouter } from 'next/navigation';
 import bookmarkInactive from '../../../../public/assets/bookmarkInactive.svg';
 import { poppins } from '@/app/login/page';
 import CertificateCard from '@/components/CertificateCard/CertificateCard';
+import Loader from '@/components/Loader/Loader2';
+import styles from './components.module.css';
 
 const CoursePage = ({ params }) => {
   const [data, setData] = useState(null);
@@ -23,7 +25,7 @@ const CoursePage = ({ params }) => {
     try {
       const response = await axios({
         method: 'get',
-        url: `http://86.107.44.136:8000/courses/course/${id}/`,
+        url: `http://localhost:8000/courses/course/${id}/`,
         params: {
           user_id: 1,
         },
@@ -45,7 +47,7 @@ const CoursePage = ({ params }) => {
     try {
       const response = await axios({
         method: 'put',
-        url: `http://86.107.44.136:8000/courses/course/${params.id}/add_bookmark/?user_id=1`,
+        url: `http://localhost:8000/courses/course/${params.id}/add_bookmark/?user_id=1`,
         params: {
           user_id: 1,
         },
@@ -54,7 +56,6 @@ const CoursePage = ({ params }) => {
         },
       });
       fetchAllCards();
-      console.log(response);
     } catch (error) {
       throw error;
     }
@@ -64,7 +65,7 @@ const CoursePage = ({ params }) => {
     try {
       const response = await axios({
         method: 'put',
-        url: `http://86.107.44.136:8000/courses/course/${params.id}/remove_bookmark/?user_id=1`,
+        url: `http://localhost:8000/courses/course/${params.id}/remove_bookmark/?user_id=1`,
         params: {
           user_id: 1,
         },
@@ -82,7 +83,7 @@ const CoursePage = ({ params }) => {
     try {
       const response = await axios({
         method: 'post',
-        url: `http://86.107.44.136:8000/progress/course_progress/${params.id}/join/`,
+        url: `http://localhost:8000/progress/course_progress/${params.id}/join/`,
         params: {
           user_id: 1,
         },
@@ -97,63 +98,79 @@ const CoursePage = ({ params }) => {
       if (error.response.status === 500) {
         alert('You already joined the course');
       }
-      console.log(error);
-      // throw error;
     }
   };
 
   if (data === null) {
-    return <div>Loading...</div>;
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center', marginTop: '50px' }}>
+        <Loader />
+      </div>
+    );
   } else {
     return (
       <div className={alfaSlabOne.variable}>
         <div>
           <div className={styles.backgroundCourseImage}></div>
-          <div className={styles.container}>
-            <Image style={{ margin: '8px 10px' }} src={backButton} width={22} height={22} />
-            <div>
-              <div style={{ display: 'flex' }}>
-                <div>Level {data.name}</div>
-              </div>
-              <div>{data.name}</div>
-              <div style={{ marginTop: '50px', display: 'flex' }}>
-                <button className={styles.startLessonBtn} onClick={() => fetchCourseJoin()}>
-                  <Image src={playCourse} width={20} height={20} style={{ margin: 'auto 8px' }} />
-                  <div style={{ margin: 'auto 0' }}>Start Lesson</div>
-                </button>
-                <button
-                  className={styles.bookmarkBtn}
-                  onClick={data.is_bookmarked === false ? fetchAddBookmark : fetchRemoveBookmark}
-                  style={{ margin: '0 50px' }}>
-                  {data.is_bookmarked === false ? (
+          <div className={styles.courseWrapper}>
+            <div className={styles.container}>
+              <Image
+                src={backButton}
+                width={22}
+                height={22}
+                className={styles.backButton}
+                alt="Back button image"
+              />
+              <div>
+                <div style={{ display: 'flex' }}>
+                  <div className={styles.levelTitle}>Level {data.name}</div>
+                </div>
+                <div className={styles.levelUnderTitle}>{data.name}</div>
+                <div className={styles.buttonsWrapper}>
+                  <button className={styles.startLessonBtn} onClick={() => fetchCourseJoin()}>
                     <Image
-                      src={bookmarkInactive}
+                      src={playCourse}
                       width={20}
                       height={20}
-                      style={{ margin: 'auto 8px' }}
+                      className={styles.playIcon}
+                      alt="Start course image"
                     />
-                  ) : (
-                    <Image src={bookmark} width={20} height={20} style={{ margin: 'auto 8px' }} />
-                  )}
-                  <div style={{ margin: 'auto 0' }}>Bookmark</div>
-                </button>
+                    <div style={{ margin: 'auto 0' }}>Start Lesson</div>
+                  </button>
+                  <button
+                    className={styles.bookmarkBtn}
+                    onClick={data.is_bookmarked === false ? fetchAddBookmark : fetchRemoveBookmark}>
+                    {data.is_bookmarked === false ? (
+                      <Image
+                        src={bookmarkInactive}
+                        width={20}
+                        height={20}
+                        className={styles.playIcon}
+                        alt="Bookmark inactive image"
+                      />
+                    ) : (
+                      <Image
+                        src={bookmark}
+                        width={20}
+                        height={20}
+                        className={styles.playIcon}
+                        alt="Bookmark image"
+                      />
+                    )}
+                    <div style={{ margin: 'auto 0' }}>Bookmark</div>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-          <div style={{ minHeight: '100vh', margin: '0px 160px' }}>
-            <div>
+          <div style={{ minHeight: '100vh', margin: '0px auto' }}>
+            <div className={styles.quizCardWrapper}>
               <LessonCard />
             </div>
-            <div style={{ padding: '5px 20px', margin: '45px 180px' }}>
+            <div className={styles.quizCardWrapper}>
               <div style={{ padding: '10px 40px' }}>
-                <p style={{ color: '#FE602F', fontWeight: '900', fontSize: '38px' }}>Big Quiz</p>
-                <p
-                  style={{
-                    color: '#858585',
-                    display: 'list-item',
-                    listStyle: 'inside',
-                    fontSize: '20px',
-                  }}>
+                <p className={styles.bigQuizTitle}>Big Quiz</p>
+                <p className={styles.bigQuizInfo}>
                   Access will be opened after completing all the lessons.
                 </p>
               </div>

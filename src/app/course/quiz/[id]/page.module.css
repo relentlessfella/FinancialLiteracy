@@ -7,11 +7,11 @@
 }
 .description {
   background-color: #a2bf00;
-  height: 180px;
+  /* height: 180px; */
   color: #fff;
   display: flex;
   font-size: 30px;
-  padding-top: 40px;
+  padding: 40px;
 }
 .startLessonBtn {
   width: 200px;
@@ -138,4 +138,64 @@
 .back_button:hover {
   color: #fff;
   background-color: gray;
+}
+.ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  width: 600px;
+  text-align: start;
+  height: 210px;
+}
+.buttons {
+  display: flex;
+  width: 600px;
+  margin: 0 auto;
+}
+.answerType {
+  margin: 0 40px;
+}
+.quizTitle {
+}
+
+.quizDescription {
+  display: flex;
+  margin-top: 30px;
+}
+
+@media (max-width: 1070px) {
+  .quizMain {
+    margin: 20px 30px;
+  }
+}
+@media (max-width: 768px) {
+  .ul {
+    width: 100%;
+    height: auto;
+  }
+  .quizMain {
+    padding: 10px 20px;
+    min-height: auto;
+  }
+  .buttons {
+    width: 100%;
+  }
+  .quizDescription {
+    margin-top: 10px;
+    font-size: 20px;
+  }
+  .quizTitle {
+    font-size: 20px;
+  }
+  .description {
+    padding-top: 10px;
+    height: auto;
+  }
+  .next_button {
+    margin: 10px;
+  }
+  .answerType {
+    margin: 0 5px;
+  }
 }

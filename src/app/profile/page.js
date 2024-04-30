@@ -24,7 +24,7 @@ const Profile = () => {
             }}>
             <div>
               <div className={style.profileTitle}>My Profile</div>
-              <Image src={avatar} style={{ margin: '30px 0' }} />
+              <Image src={avatar} style={{ margin: '30px 0' }} alt="Profile avatar" />
               <div style={{ color: '#FE602F', fontSize: '24px', fontWeight: '600' }}>Rank 1</div>
               <div style={{ color: '#A2BF00', fontSize: '24px', fontWeight: '600' }}>
                 Junior Saver

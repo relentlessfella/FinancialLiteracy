@@ -1,6 +1,7 @@
 'use client';
 import { Poppins } from 'next/font/google';
 import './globals.css';
+import styles from './page.module.css';
 import Header from '../components/Header/Header';
 import React from 'react';
 import ContactUs from '@/components/ContactUs/ContactUs';
@@ -49,7 +50,7 @@ export default function RootLayout({ children }) {
           ) : (
             <></>
           )}
-          <div style={{ minHeight: '100vh' }}>{children}</div>
+          <div className={styles.mainWrapper}>{children}</div>
           {pathname != '/login' &&
           pathname != '/registration' &&
           pathname != '/profile' &&

@@ -28,7 +28,7 @@ export const CourseCard = ({ data }) => {
         {item.description}
       </div>
       <div style={{ display: 'flex' }}>
-        <Image src={play} width={48} height={48} />
+        <Image src={play} width={48} height={48} alt="Play icon" />
         <div style={{ margin: '13px 10px 0 10px' }}>
           <div style={{ margin: 'auto 0px', color: '#A2BF00', fontWeight: '500' }}>
             {item.lesson_num} Lessons

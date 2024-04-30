@@ -34,7 +34,7 @@ const ProfileCourses = () => {
   const fetchUserCourses = async () => {
     const response = await axios({
       method: 'get',
-      url: `http://86.107.44.136:8000/courses/course/get_my_courses/`,
+      url: `http://localhost:8000/courses/course/get_my_courses/`,
       headers: {
         'Content-Type': 'application/json',
       },
@@ -85,13 +85,13 @@ const ProfileCourses = () => {
                 style={{
                   margin: 'auto',
                 }}>
-                <Image src={magnifier} />
+                <Image src={magnifier} alt="Magnifier icon" />
               </div>
             </div>
             <div style={{ color: '#08A5D3' }}>Hi, Arnibek!</div>
             Take a step towards a better future!
             {/* <div style={{ paddingTop: '50px' }}> */}
-            <Image src={profileImage} style={{ paddingTop: '50px' }} />
+            <Image src={profileImage} style={{ paddingTop: '50px' }} alt="Profile avatar image" />
             {/* </div> */}
             <div
               style={{ textAlign: 'center', marginTop: '40px' }}
@@ -113,7 +113,7 @@ const ProfileCourses = () => {
             </ul>
           ) : (
             <section style={{ textAlign: 'center', marginTop: '30px', width: '990px' }}>
-              <Image src={notFound} width={500} height={400} />
+              <Image src={notFound} width={500} height={400} alt="Not found image" />
               <div>Sorry courses not found ;(</div>
             </section>
           )}

@@ -36,7 +36,13 @@ const SimulatorLayout = ({ children }) => {
                 <div>Nussupekov Arnibek</div>
               </Link>
             </div>
-            <Image style={{ paddingTop: '0px' }} src={dropdown} width={10} height={10} />
+            <Image
+              style={{ paddingTop: '0px' }}
+              src={dropdown}
+              width={10}
+              height={10}
+              alt="Dropdown icon"
+            />
           </li>
           <li className={styles.header_li}>{/* <Image src={web} width={30} height={30} /> */}</li>
         </ul>

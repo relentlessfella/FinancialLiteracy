@@ -7,7 +7,7 @@ const ProfileProgress = () => {
   return (
     <div className={styles.profileProgressMain}>
       <div className={styles.profileProgressTitle}>Level 1 Progress</div>
-      <Image src={demoProgress} width={700} />
+      <Image src={demoProgress} width={700} alt="Progress bar" />
     </div>
   );
 };

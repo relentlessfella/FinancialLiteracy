@@ -41,7 +41,7 @@ const OrientationPage = () => {
   return (
     <div className={styles.container}>
       <div className={styles.main}>
-        <Image src={coinTeacher} width={300} height={300} />
+        <Image src={coinTeacher} width={300} height={300} alt="Virtual simulator coin image" />
         <div className={styles.chat_card}>
           {yes === true ? (
             <div>{data[1].title}</div>

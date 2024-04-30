@@ -17,7 +17,13 @@ const SideNavigation = ({ isOpen }) => {
     <div className={isOpen ? `${styles.sideNav} ${styles.open}` : styles.sideNav}>
       {SideLinks.map((item) => (
         <Link key={item.id} href={item.href} className={styles.links}>
-          <Image className={styles.icons} src={item.image} width={20} height={20} />
+          <Image
+            className={styles.icons}
+            src={item.image}
+            width={20}
+            height={20}
+            alt={item.title + ' icon'}
+          />
           <div>{item.title}</div>
         </Link>
       ))}

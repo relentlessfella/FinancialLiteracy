@@ -53,3 +53,35 @@
   font-weight: 600;
   font-size: 16px;
 }
+.activeImage {
+  user-drag: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+.mobileFeedbackImages {
+  display: none;
+}
+@media (max-width: 1040px) {
+  .title {
+    font-size: 20px;
+  }
+  .main {
+    margin: 30px 15px;
+    padding: 15px;
+  }
+  .question {
+    font-size: 16px;
+  }
+}
+@media (max-width: 768px) {
+  .feedback_images {
+    display: none;
+    background-color: #421323;
+  }
+  .mobileFeedbackImages {
+    display: block;
+  }
+}

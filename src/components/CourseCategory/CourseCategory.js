@@ -7,7 +7,6 @@ import categories from './categoriesData';
 
 const CourseCategory = () => {
   const { category, setCategories } = useMainContext();
-  console.log(category);
   const toggleCategory = (category) => {
     setCategories(
       (prevCategories) => (

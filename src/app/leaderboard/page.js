@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { alfaSlabOne } from '../main/page';
 import playCourse from '../../../public/assets/PlayCourse.svg';
 import bookmark from '../../../public/assets/bookmarkCourse.svg';
-import LessonCard from '@/components/CoursePageCard/LessonCard';
+import LessonCard from '@/components/LessonCard/LessonCard1';
 import styles from './page.module.css';
 import backButton from '../../../public/assets/courseBackButton.svg';
 import axios from 'axios';
@@ -64,7 +64,13 @@ const Leaderboard = () => {
     return (
       <div className={alfaSlabOne.variable}>
         <div className={styles.container}>
-          <Image style={{ margin: '8px 10px' }} src={backButton} width={22} height={22} />
+          <Image
+            style={{ margin: '8px 10px' }}
+            src={backButton}
+            width={22}
+            height={22}
+            alt="Back button image"
+          />
           <div>
             <div style={{ display: 'flex' }}>
               <div> Arnibek&apos;s {data.id}</div>

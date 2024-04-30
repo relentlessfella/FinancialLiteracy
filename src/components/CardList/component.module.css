@@ -7,3 +7,21 @@
   list-style-type: none;
   border-radius: 10px;
 }
+.ul {
+  padding: 0px 50px;
+  margin: 0 auto;
+}
+.quizButton {
+  margin: 10px 0;
+}
+@media (max-width: 768px) {
+  .card {
+    padding: 0px 30px;
+  }
+}
+@media (max-width: 540px) {
+  .ul {
+    padding: 0;
+    margin: 0 auto;
+  }
+}

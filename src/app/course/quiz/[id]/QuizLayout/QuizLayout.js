@@ -33,12 +33,18 @@ const QuizLayout = ({ children, data }) => {
       <div className={alfaSlabOne.variable}>
         <div className={styles.description}>
           <div className={styles.container}>
-            <Image style={{ margin: '8px 10px' }} src={backButton} width={22} height={22} />
+            <Image
+              style={{ margin: '8px 10px' }}
+              src={backButton}
+              width={22}
+              height={22}
+              alt="Back button image"
+            />
             <div>
               <div style={{ display: 'flex' }}>
-                <div>Quiz {params.id} </div>
+                <div className={styles.quizTitle}>Quiz {params.id} </div>
               </div>
-              <div style={{ marginTop: '30px', display: 'flex' }}>
+              <div className={styles.quizDescription}>
                 Basic Understanding of Financial Literacy
               </div>
             </div>

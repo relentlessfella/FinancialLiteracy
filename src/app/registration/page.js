@@ -9,7 +9,7 @@ import './registration.css';
 import Link from 'next/link';
 import axios from 'axios';
 import eye from '../../../public/assets/eye.svg';
-import { useRouter } from 'next/navigation';
+import { useRouter, redirect } from 'next/navigation';
 
 export const poppins = Poppins({
   subsets: ['latin'],
@@ -20,9 +20,9 @@ const Registration = () => {
   const router = useRouter();
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [password, setPassword] = useState('');
-  const [mailValue, setMailValue] = useState(null);
-  const [userPassword, setUserPassword] = useState(null);
   const [userName, setUserName] = useState(null);
+  const [userPassword, setUserPassword] = useState(null);
+  const [mailValue, setMailValue] = useState(null);
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
@@ -33,17 +33,17 @@ const Registration = () => {
   const handleSubmit = async (e) => {
     // e.prevenDefault();
     try {
-      const response = await axios.post(
-        'http://86.107.44.136:8000/user/auth/register/',
-        { email: mailValue, name: userName, password: userPassword },
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
+      const response = await axios({
+        method: 'POST',
+        url: 'http://localhost:8000/user/register/',
+        headers: {
+          'Content-Type': 'application/json',
         },
-      );
+        data: { email: mailValue, name: userName, password: userPassword, balance: 0 },
+      });
       if (response.data) {
         console.log('Success: ', response.data);
+        redirect('/login');
       } else {
         console.log('Error: ', response.data, ' Mail: ', mailValue, ' Pass: ', userPassword);
       }
@@ -76,7 +76,6 @@ const Registration = () => {
             className="registration_card">
             <div style={{ padding: '130px 50px' }}>
               <div style={{ textAlign: 'center', fontSize: '24px' }}>
-                {' '}
                 Welcome back to <br /> Junior Finance Academy!
               </div>
               <div style={{ display: 'flex', justifyContent: 'center' }}>
@@ -100,7 +99,6 @@ const Registration = () => {
                     <Image style={{ margin: 'auto 0' }} src={google} alt="google logo" />
                   </button>
                 </div>
-                {/* <div style={{ marginTop: 'auto', marginBottom: 'auto' }}></div> */}
               </div>
               <div style={{ display: 'flex', justifyContent: 'center', marginTop: '30px' }}>
                 <div
@@ -123,7 +121,6 @@ const Registration = () => {
                 <div>Email Address</div>
                 <form onSubmit={handleSubmit}>
                   <input
-                    // value={setMailValue}
                     style={{
                       border: '1px solid #CBCAD7',
                       width: '468px',
@@ -141,7 +138,6 @@ const Registration = () => {
                 <div>Full Name</div>
                 <form onSubmit={handleSubmit}>
                   <input
-                    // value={setMailValue}
                     style={{
                       border: '1px solid #CBCAD7',
                       width: '468px',
@@ -169,7 +165,6 @@ const Registration = () => {
                   <div style={{ margin: 'auto 0', width: '100%' }}>
                     <form>
                       <input
-                        // value={setUserPassword}
                         type={passwordVisible ? 'text' : 'password'}
                         value={password}
                         placeholder="Password"

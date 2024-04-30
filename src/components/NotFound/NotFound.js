@@ -5,7 +5,7 @@ import Image from 'next/image';
 const NotFound = () => {
   return (
     <div className={styles.main}>
-      <Image src={no_results} className={styles.image} />
+      <Image src={no_results} className={styles.image} alt="Not found image" />
       <div className={styles.title}>Sorry courses not found ;(</div>
     </div>
   );
