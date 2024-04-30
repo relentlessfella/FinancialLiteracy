@@ -8,14 +8,13 @@ const CardList = ({ fetchData, cardStyle, buttonStyle, buttonLink, constantData 
   const [data, setData] = useState(null);
   const router = useRouter();
 
-  fetchData &&
-    useEffect(() => {
-      const getData = async () => {
-        const response = await fetchData();
-        setData(response);
-      };
-      getData();
-    }, [fetchData]);
+  useEffect(() => {
+    const getData = async () => {
+      const response = await fetchData();
+      setData(response);
+    };
+    getData();
+  }, [fetchData]);
 
   if (data === null) {
     return (

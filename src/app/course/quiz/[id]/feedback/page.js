@@ -222,7 +222,7 @@ const Feedback = () => {
             <div className="slider-container">
               <Slider {...settings}>
                 {feedback_titles.map((item, index) => (
-                  <CustomSlide index={index} image={item.image} />
+                  <CustomSlide index={index} image={item.image} key={index} />
                 ))}
               </Slider>
             </div>
