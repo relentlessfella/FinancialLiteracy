@@ -5,7 +5,7 @@ import { useParams } from 'next/navigation';
 // const fetchLessonData = async () => {
 //   const params = useParams();
 //   const response = await axios.get(
-//     `http://localhost:8000/courses/lesson/${params.id}/get_lessons/`,
+//     `http://86.107.44.136:8000/courses/lesson/${params.id}/get_lessons/`,
 //   );
 //   return response.data;
 // };
@@ -36,7 +36,7 @@ const LessonCard = () => {
   const params = useParams();
   const fetchLessonData = async () => {
     const response = await axios.get(
-      `http://localhost:8000/courses/lesson/${params.id}/get_lessons/`,
+      `http://86.107.44.136:8000/courses/lesson/${params.id}/get_lessons/`,
     );
     return response.data;
   };

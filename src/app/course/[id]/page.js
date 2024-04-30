@@ -25,7 +25,7 @@ const CoursePage = ({ params }) => {
     try {
       const response = await axios({
         method: 'get',
-        url: `http://localhost:8000/courses/course/${id}/`,
+        url: `http://86.107.44.136:8000/courses/course/${id}/`,
         params: {
           user_id: 1,
         },
@@ -47,7 +47,7 @@ const CoursePage = ({ params }) => {
     try {
       const response = await axios({
         method: 'put',
-        url: `http://localhost:8000/courses/course/${params.id}/add_bookmark/?user_id=1`,
+        url: `http://86.107.44.136:8000/courses/course/${params.id}/add_bookmark/?user_id=1`,
         params: {
           user_id: 1,
         },
@@ -65,7 +65,7 @@ const CoursePage = ({ params }) => {
     try {
       const response = await axios({
         method: 'put',
-        url: `http://localhost:8000/courses/course/${params.id}/remove_bookmark/?user_id=1`,
+        url: `http://86.107.44.136:8000/courses/course/${params.id}/remove_bookmark/?user_id=1`,
         params: {
           user_id: 1,
         },
@@ -83,7 +83,7 @@ const CoursePage = ({ params }) => {
     try {
       const response = await axios({
         method: 'post',
-        url: `http://localhost:8000/progress/course_progress/${params.id}/join/`,
+        url: `http://86.107.44.136:8000/progress/course_progress/${params.id}/join/`,
         params: {
           user_id: 1,
         },

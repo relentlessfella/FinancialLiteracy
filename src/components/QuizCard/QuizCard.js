@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const fetchQuizData = async () => {
   //   try {
-  //     const response = await axios.get(`http://localhost:8000/courses/quiz/get_quizzes/`);
+  //     const response = await axios.get(`http://86.107.44.136:8000/courses/quiz/get_quizzes/`);
   //   } catch (error) {
   //     throw error;
   //   }

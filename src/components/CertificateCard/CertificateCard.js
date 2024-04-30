@@ -9,7 +9,7 @@ const CertificateCard = (id) => {
     try {
       const response = await axios({
         method: 'get',
-        url: `http://localhost:8000/certificate/generate_pdf/`,
+        url: `http://86.107.44.136:8000/certificate/generate_pdf/`,
         params: {
           user_id: 1,
           course_id: id.course_id,
@@ -42,7 +42,7 @@ const CertificateCard = (id) => {
 
   const fetchCertificateData = async () => {
     //   try {
-    //     const response = await axios.get(`http://localhost:8000/courses/quiz/get_quizzes/`);
+    //     const response = await axios.get(`http://86.107.44.136:8000/courses/quiz/get_quizzes/`);
     //   } catch (error) {
     //     throw error;
     //   }
