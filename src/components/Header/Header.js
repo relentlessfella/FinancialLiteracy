@@ -24,7 +24,7 @@ const Header = () => {
     try {
       const response = await axios({
         method: 'get',
-        url: 'http://86.107.44.136:8000/user/active_user/',
+        url: 'http://localhost:8000/user/active_user/',
         withCredentials: true,
       });
       console.log('header: ', response.data);
@@ -50,7 +50,11 @@ const Header = () => {
           <div className={styles.headerInner1}>
             <Image
               src={logo}
-              style={{ marginRight: '50px', marginBottom: '10px' }}
+              draggable={false}
+              style={{
+                marginRight: '50px',
+                marginBottom: '10px',
+              }}
               onClick={() => router.push('/')}
               alt="logo"
             />
@@ -102,6 +106,7 @@ const Header = () => {
           <div className={styles.headerInner1}>
             <Image
               src={logo}
+              draggable={false}
               style={{ marginRight: '50px', marginBottom: '10px' }}
               onClick={() => router.push('/')}
               alt="logo"
@@ -142,12 +147,13 @@ const Header = () => {
                 style={{ paddingTop: '0px' }}
                 src={dropdown}
                 width={10}
+                draggable={false}
                 height={10}
                 alt="Dropdown icon"
               />
             </li>
             <li className={styles.header_li}>
-              <Image src={coin} width={30} height={30} alt="Balance coin icon" />
+              <Image src={coin} width={30} height={30} alt="Balance coin icon" draggable={false} />
               <div style={{ margin: '0 10px', fontWeight: '700' }}>{data.balance}</div>
             </li>
           </ul>

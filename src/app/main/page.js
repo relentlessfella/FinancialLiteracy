@@ -16,27 +16,8 @@ import { useRouter } from 'next/navigation';
 import Filter from '@/components/Filter/Filter';
 import Loader from '@/components/Loader/Loader2';
 import dynamic from 'next/dynamic';
+import { alfaSlabOne, inter, nunito, DMSans } from '@/fonts';
 
-export const alfaSlabOne = Alfa_Slab_One({
-  subsets: ['latin'],
-  weight: ['400'],
-  variable: '--font-alfaSlabOne',
-});
-export const inter = Inter({
-  subsets: ['latin'],
-  weight: ['400', '600'],
-  variable: '--font-inter',
-});
-export const nunito = Nunito({
-  subsets: ['latin'],
-  weight: ['400', '900'],
-  variable: '--font-nunito',
-});
-export const DMSans = DM_Sans({
-  subsets: ['latin'],
-  weight: ['500', '700'],
-  variable: '--font-DMSans',
-});
 const modules = [
   { id: 1, title: 'Level 1' },
   { id: 2, title: 'Level 2' },
@@ -49,43 +30,25 @@ const MainPage = () => {
   const [userData, setUserData] = useState(null);
   const { category, activeModule, setActiveModule } = useMainContext();
   const [isLoading, setIsLoading] = useState(false);
-  const fetchAllCards = async () => {
-    try {
-      setIsLoading(true);
-      const response = await axios({
-        method: 'get',
-        url: 'http://86.107.44.136:8000/courses/course/',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        params: {
-          Module: activeModule,
-          Bank: category.Bank,
-          Investment: category.Investment,
-          Money: category.Money,
-          Credit: category.Credit,
-          Currency: category.Currency,
-          Stock: category.Stock,
-        },
-      });
-      setData(response.data);
-      if (response.data && response.data.length > 0) {
-        setData(response.data);
-      } else {
-        setData(undefined);
-      }
-    } catch (error) {
-      throw error;
-    } finally {
-      setIsLoading(false);
-    }
+  const mainCourseModule = {
+    module: {
+      padding: '10px 20px',
+      fontSize: '14px',
+    },
+    module_active: {
+      padding: '10px 20px',
+      fontSize: '14px',
+    },
+    main: {
+      padding: '15px',
+    },
   };
 
   const fetchActiveUser = async () => {
     try {
       const response = await axios({
         method: 'GET',
-        url: 'http://86.107.44.136:8000/user/active_user/',
+        url: 'http://localhost:8000/user/active_user/',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -98,6 +61,36 @@ const MainPage = () => {
     }
   };
   useEffect(() => {
+    const fetchAllCards = async () => {
+      try {
+        setIsLoading(true);
+        const response = await axios({
+          method: 'get',
+          url: 'http://localhost:8000/courses/course/',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          params: {
+            Module: activeModule,
+            Bank: category.Bank,
+            Investment: category.Investment,
+            Money: category.Money,
+            Credit: category.Credit,
+            Currency: category.Currency,
+            Stock: category.Stock,
+          },
+        });
+        if (response.data && response.data.length > 0) {
+          setData(response.data);
+        } else {
+          setData(undefined);
+        }
+      } catch (error) {
+        throw error;
+      } finally {
+        setIsLoading(false);
+      }
+    };
     fetchActiveUser();
     fetchAllCards();
   }, [category, activeModule]);
@@ -157,6 +150,7 @@ const MainPage = () => {
             activeModule={activeModule}
             setActiveModule={setActiveModule}
             mobileWidth={300}
+            moduleStyles={mainCourseModule}
           />
           {/* Course Modules */}
 

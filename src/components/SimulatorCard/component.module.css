@@ -34,3 +34,11 @@
   margin: 10px;
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  .li {
+    height: auto;
+    width: auto;
+    padding-bottom: 10px;
+  }
+}

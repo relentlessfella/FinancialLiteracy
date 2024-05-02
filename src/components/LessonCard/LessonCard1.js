@@ -10,15 +10,22 @@ const LessonCard = () => {
   const [data, setData] = useState(null);
   const params = useParams();
   const router = useRouter();
-  const fetchLessons = async () => {
-    const response = await axios.get(
-      `http://86.107.44.136:8000/courses/lesson/${params.id}/get_lessons/`,
-    );
-    setData(response.data);
-    console.log(response);
-  };
+  // const fetchLessons = async () => {
+  //   const response = await axios.get(
+  //     `http://localhost:8000/courses/lesson/${params.id}/get_lessons/`,
+  //   );
+  //   setData(response.data);
+  //   console.log(response);
+  // };
 
   useEffect(() => {
+    const fetchLessons = async () => {
+      const response = await axios.get(
+        `http://localhost:8000/courses/lesson/${params.id}/get_lessons/`,
+      );
+      setData(response.data);
+      console.log(response);
+    };
     fetchLessons();
   }, []);
 

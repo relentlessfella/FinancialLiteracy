@@ -1,9 +1,9 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { alfaSlabOne, inter } from '@/app/main/page';
-import { useMainContext } from '@/contexts/ContextProvider/ContextProvider';
+import { alfaSlabOne } from '@/fonts';
 import styles from './component.module.css';
 import { useMediaQuery } from 'react-responsive';
+import { useIsMobile } from '@/configs/axios/isMobile';
 
 const CourseModules = ({
   modules,
@@ -12,24 +12,23 @@ const CourseModules = ({
   setActiveModule,
   backgroundColor,
   mobileWidth,
+  moduleStyles,
 }) => {
-  const [hideOnMobile, setHideOnMobile] = useState(false);
-  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
-  useEffect(() => {
-    setHideOnMobile(isTabletOrMobile);
-  }, [isTabletOrMobile]);
+  const isMobile = useIsMobile();
   return (
     <div style={{ textAlign: 'center' }} className={`${''} ${alfaSlabOne.variable}`}>
       <ul
         className={styles.main}
         style={{
-          width: hideOnMobile ? `${mobileWidth}px` : `${width}px`,
+          width: isMobile ? `${mobileWidth}px` : `${width}px`,
           backgroundColor: backgroundColor,
+          padding: moduleStyles.main.padding,
         }}>
         {modules.map((item) => (
           <li
             key={item.id}
             className={activeModule === item.id ? styles.module_active : styles.module}
+            style={isMobile ? moduleStyles.module_active : {}}
             onClick={() => setActiveModule(item.id)}>
             {item.title}
           </li>

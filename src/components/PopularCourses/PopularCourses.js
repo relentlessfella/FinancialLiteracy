@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { alfaSlabOne, inter, nunito } from '@/app/main/page';
+// import { alfaSlabOne, inter, nunito } from '@/app/main/page';
+import { nunito } from '@/fonts';
 import cardImage from '../../../public/assets/CardImage.png';
 import play from '../../../public/assets/play.svg';
 import ImageRating from '../ImageRating/ImageRating';
@@ -20,7 +21,7 @@ const PopularCourses = () => {
       setIsLoading(true);
       const response = await axios({
         method: 'get',
-        url: 'http://86.107.44.136:8000/courses/course',
+        url: 'http://localhost:8000/courses/course',
         headers: {
           'Content-Type': 'application/json',
         },

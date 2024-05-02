@@ -5,8 +5,6 @@ import CourseModules from '@/components/CourseModules/CourseModules';
 import Card from '@/components/SimulatorCard/Card';
 import styles from './page.module.css';
 import axios from 'axios';
-import no_results from '../../../public/assets/NoResults.jpg';
-import Image from 'next/image';
 import NotFound from '@/components/NotFound/NotFound';
 
 const FinancialSimulator = () => {
@@ -19,29 +17,39 @@ const FinancialSimulator = () => {
     { id: 4, title: 'Credit' },
     { id: 5, title: 'Economy' },
   ];
-  const fetchCard = async () => {
-    try {
-      const response = await axios({
-        method: 'GET',
-        url: 'http://86.107.44.136:8000/simulator/fin_trial/',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        params: {
-          stocks: activeOption === 1 ? 'stocks' : '',
-          investment: activeOption === 2 ? 'investment' : '',
-          money: activeOption === 3 ? 'money' : '',
-          credit: activeOption === 4 ? 'credit' : '',
-          economy: activeOption === 5 ? 'economy' : '',
-        },
-      });
-      setData(response);
-    } catch (error) {
-      throw error;
-    }
+
+  const mainCourseModule = {
+    module_active: {
+      padding: '10px 5px',
+      fontSize: '12px',
+    },
+    main: {
+      padding: '5px 5px',
+    },
   };
 
   useEffect(() => {
+    const fetchCard = async () => {
+      try {
+        const response = await axios({
+          method: 'GET',
+          url: 'http://localhost:8000/simulator/fin_trial/',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          params: {
+            stocks: activeOption === 1 ? 'stocks' : '',
+            investment: activeOption === 2 ? 'investment' : '',
+            money: activeOption === 3 ? 'money' : '',
+            credit: activeOption === 4 ? 'credit' : '',
+            economy: activeOption === 5 ? 'economy' : '',
+          },
+        });
+        setData(response);
+      } catch (error) {
+        throw error;
+      }
+    };
     fetchCard();
   }, [activeOption]);
 
@@ -51,14 +59,15 @@ const FinancialSimulator = () => {
     return (
       <div>
         <SimulatorLayout>
-          <div style={{ margin: '50px' }}>
+          <div className={styles.main}>
             <CourseModules
               modules={options}
               width={750}
               activeModule={activeOption}
               setActiveModule={setActiveOption}
               backgroundColor={'rgba(196, 196, 196, 0.15)'}
-              mobileWidth={500}
+              mobileWidth={335}
+              moduleStyles={mainCourseModule}
             />
           </div>
           <div className={styles.container}>

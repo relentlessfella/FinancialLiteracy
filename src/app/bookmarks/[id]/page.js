@@ -2,7 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import ProfileLayout from '@/components/ProfileLayout/ProfileLayout';
 import styles from '../page.module.css';
-import { alfaSlabOne } from '../../main/page';
+// import { alfaSlabOne } from '../../main/page';
+import { alfaSlabOne } from '@/fonts';
 import { poppins } from '@/app/login/page';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
@@ -13,7 +14,7 @@ const Bookmarks = ({ params }) => {
   const fetchBookmarks = async () => {
     const response = await axios({
       method: 'get',
-      url: `http://86.107.44.136:8000/courses/course/get_bookmark/?user_id=${params.id}`,
+      url: `http://localhost:8000/courses/course/get_bookmark/?user_id=${params.id}`,
       headers: {
         'Content-Type': 'application/json',
       },

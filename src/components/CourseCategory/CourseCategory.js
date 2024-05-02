@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
-import { alfaSlabOne } from '@/app/main/page';
+// import { alfaSlabOne } from '@/app/main/page';
+import { alfaSlabOne } from '@/fonts';
 import { useMainContext } from '@/contexts/ContextProvider/ContextProvider';
 import styles from './component.module.css';
 import categories from './categoriesData';

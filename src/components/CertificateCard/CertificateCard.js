@@ -3,13 +3,14 @@ import axios from 'axios';
 import { useParams } from 'next/navigation';
 import download from '../../../public/assets/Download.svg';
 import Image from 'next/image';
+import { useIsMobile } from '@/configs/axios/isMobile';
 
 const CertificateCard = (id) => {
   const handleDownload = async () => {
     try {
       const response = await axios({
         method: 'get',
-        url: `http://86.107.44.136:8000/certificate/generate_pdf/`,
+        url: `http://localhost:8000/certificate/generate_pdf/`,
         params: {
           user_id: 1,
           course_id: id.course_id,
@@ -42,19 +43,18 @@ const CertificateCard = (id) => {
 
   const fetchCertificateData = async () => {
     //   try {
-    //     const response = await axios.get(`http://86.107.44.136:8000/courses/quiz/get_quizzes/`);
+    //     const response = await axios.get(`http://localhost:8000/courses/quiz/get_quizzes/`);
     //   } catch (error) {
     //     throw error;
     //   }
     //   return response.data;
   };
-
+  const isMobile = useIsMobile();
   const data = {
     title: 'Certificate',
     content:
       'Lorem ipsum dolor sit amet consectetur. Elementum nisl duis tortor sed. Lorem ipsum dolor sit amet consect. Elementum nisl duis tortor sed. Lorem ipsum dolor sit amet consectetur. Elementum nisl duis tortor sed. Lorem ipsum dolor sit amet consectetur. Elementum nisl duis tortor sed.  ',
   };
-
   const certificateStyles = {
     title: { color: '#FE602F', fontSize: '32px', fontWeight: '1000', padding: '30px 0' },
     content: { color: '#1F1C14', opacity: '0.7', padding: '20px 0' },
@@ -62,7 +62,7 @@ const CertificateCard = (id) => {
     footer: {
       borderTop: '1px solid #D9D9D9',
       display: 'flex',
-      justifyContent: 'center',
+      justifyContent: `${isMobile ? 'center' : 'flex-end'}`,
     },
     button: {
       backgroundColor: '#A2BF00',
@@ -81,7 +81,6 @@ const CertificateCard = (id) => {
       fontSize: '18px',
       fontWeight: '600',
       borderRadius: '15px',
-      // padding: '12px 62px',
       padding: '12px 38px',
       margin: '30px 5px',
       cursor: 'pointer',

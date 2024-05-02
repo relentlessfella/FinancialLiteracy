@@ -1,7 +1,8 @@
 'use client';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
-import { alfaSlabOne } from '../main/page';
+// import { alfaSlabOne } from '../main/page';
+import { alfaSlabOne } from '../../fonts/index';
 import playCourse from '../../../public/assets/PlayCourse.svg';
 import bookmark from '../../../public/assets/bookmarkCourse.svg';
 import LessonCard from '@/components/LessonCard/LessonCard1';

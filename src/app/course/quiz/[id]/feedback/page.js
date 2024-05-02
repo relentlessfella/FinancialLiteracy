@@ -14,6 +14,8 @@ import sml3 from '../../../../../../public/assets/feedbackImages/sml3.svg';
 import sml4 from '../../../../../../public/assets/feedbackImages/sml4.svg';
 import sml5 from '../../../../../../public/assets/feedbackImages/sml5.svg';
 import { poppins } from '@/app/login/page';
+import prev from '../../../../../../public/assets/feedbackImages/prevArrow.svg';
+import next from '../../../../../../public/assets/feedbackImages/nextArrow.svg';
 import axios from 'axios';
 import Slider from 'react-slick';
 import { useParams } from 'next/navigation';
@@ -61,7 +63,7 @@ const Feedback = () => {
     try {
       const response = await axios({
         method: 'put',
-        url: `http://86.107.44.136:8000/courses/feedback/${params.id}/send_feedback/?user_id=1`,
+        url: `http://localhost:8000/courses/feedback/${params.id}/send_feedback/?user_id=1`,
         headers: {
           'Content-Type': 'application/json',
         },
@@ -78,6 +80,7 @@ const Feedback = () => {
       throw error;
     }
   };
+
   // const handleFeedback = (key) => {
   //   setKeyIndex(key);
   //   setActive((prevState) => ({
@@ -118,6 +121,14 @@ const Feedback = () => {
       return newState;
     });
   };
+
+  const handleFeedbackMobile = (key) => {
+    setKeyIndex(key);
+    setActive((prevState) => ({
+      // ...prevState,
+      [`option_${key}`]: !prevState[`option_${key}`],
+    }));
+  };
   function CustomSlide(props) {
     const { index, image } = props;
     return (
@@ -129,9 +140,16 @@ const Feedback = () => {
   function SampleNextArrow(props) {
     const { className, style, onClick } = props;
     return (
-      <div
+      <Image
         className={className}
-        style={{ ...style, display: 'block', background: 'red', marginRight: '30px' }}
+        src={next}
+        style={{
+          ...style,
+          display: 'block',
+          color: 'black',
+          width: '50px',
+          height: '50px',
+        }}
         onClick={onClick}
       />
     );
@@ -140,22 +158,28 @@ const Feedback = () => {
   function SamplePrevArrow(props) {
     const { className, style, onClick } = props;
     return (
-      <div
+      <Image
         className={className}
-        style={{ ...style, display: 'block', background: 'green' }}
+        src={prev}
+        style={{
+          ...style,
+          display: 'block',
+          color: 'black',
+          width: '50px',
+          height: '50px',
+        }}
         onClick={onClick}
       />
     );
   }
 
   const settings = {
-    // dots: true,
     infinite: true,
     speed: 700,
     slidesToShow: 1,
     slidesToScroll: 1,
     swipeToSlide: true,
-    nextArrow: <SampleNextArrow />,
+    nextArrow: <SampleNextArrow width />,
     prevArrow: <SamplePrevArrow />,
   };
 
@@ -166,35 +190,6 @@ const Feedback = () => {
         <div className={styles.question}>How would you rate the course?</div>
         <div className={''}>
           <ul className={styles.feedback_images}>
-            {/* {feedback_titles.map((item, key) => (
-              <li key={key} className={styles.image_block} onClick={() => handleFeedback(key + 1)}>
-                {active[`option_${key + 1}`] ? (
-                  <>
-                    <Image
-                      src={item.active_image}
-                      width={126}
-                      height={128}
-                      alt={item.title}
-                      className={styles.activeImage}
-                    />
-                    <div className={styles.image_block_title} style={{ color: '#FE602F' }}>
-                      {item.title}
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <Image
-                      src={item.image}
-                      width={126}
-                      height={128}
-                      alt={item.title}
-                      className={styles.activeImage}
-                    />
-                    <div className={styles.image_block_title}>{item.title}</div>
-                  </>
-                )}
-              </li>
-            ))} */}
             {feedback_titles.map((item, index) => {
               const isActive = active[`option_${index + 1}`];
               return (
@@ -211,7 +206,7 @@ const Feedback = () => {
                   />
                   <div
                     className={styles.image_block_title}
-                    style={{ color: isActive ? '#FE602F' : 'inherit' }}>
+                    style={{ color: isActive ? '#FE602F' : '#858585' }}>
                     {item.title}
                   </div>
                 </li>
@@ -220,10 +215,24 @@ const Feedback = () => {
           </ul>
           <ul className={styles.mobileFeedbackImages}>
             <div className="slider-container">
-              <Slider {...settings}>
-                {feedback_titles.map((item, index) => (
-                  <CustomSlide index={index} image={item.image} key={index} />
-                ))}
+              <Slider {...settings} style={{ width: '280px', margin: '0 auto' }}>
+                {feedback_titles.map((item, index) => {
+                  const isActive = active[`option_${index + 1}`];
+                  return (
+                    <div key={index} onClick={() => handleFeedbackMobile(index + 1)}>
+                      <CustomSlide
+                        index={index}
+                        image={isActive ? item.active_image : item.image}
+                        key={index}
+                      />
+                      <h4
+                        style={{ color: `${isActive ? '#FE602F' : '#858585'}`, margin: '5px 0' }}
+                        key={index}>
+                        {item.title}
+                      </h4>
+                    </div>
+                  );
+                })}
               </Slider>
             </div>
           </ul>

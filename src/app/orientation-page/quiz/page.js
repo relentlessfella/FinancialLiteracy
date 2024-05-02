@@ -12,23 +12,23 @@ const OrientationQuiz = () => {
   const answerType = ['a.', 'b.', 'c.', 'd.'];
   const arrayAnswers = [];
   const [selectedAnswer, setSelectedAnswer] = useState(null);
-  const fetchQuiz = async () => {
-    try {
-      const response = await axios({
-        method: 'get',
-        url: `http://86.107.44.136:8000/navigator/orientation_test/`,
-        params: {
-          page: currentPage,
-        },
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      setData(response.data);
-    } catch (error) {
-      throw error;
-    }
-  };
+  // const fetchQuiz = async () => {
+  //   try {
+  //     const response = await axios({
+  //       method: 'get',
+  //       url: `http://localhost:8000/navigator/orientation_test/`,
+  //       params: {
+  //         page: currentPage,
+  //       },
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //     });
+  //     setData(response.data);
+  //   } catch (error) {
+  //     throw error;
+  //   }
+  // };
   useEffect(() => {
     localStorage.clear();
   }, []);
@@ -69,6 +69,23 @@ const OrientationQuiz = () => {
   };
 
   useEffect(() => {
+    const fetchQuiz = async () => {
+      try {
+        const response = await axios({
+          method: 'get',
+          url: `http://localhost:8000/navigator/orientation_test/`,
+          params: {
+            page: currentPage,
+          },
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        setData(response.data);
+      } catch (error) {
+        throw error;
+      }
+    };
     fetchQuiz();
   }, []);
   const handleNextPage = () => {
@@ -127,7 +144,7 @@ const OrientationQuiz = () => {
       const vals = Object.values(parseAns);
       const response = await axios({
         method: 'post',
-        url: `http://86.107.44.136:8000/navigator/orientation_test/submit/`,
+        url: `http://localhost:8000/navigator/orientation_test/submit/`,
         data: {
           answers: vals,
         },
@@ -136,7 +153,6 @@ const OrientationQuiz = () => {
         },
       });
       localStorage.setItem('level', JSON.stringify(response.data.level));
-      // console.log('submit response: ', response.data);
       router.push('/orientation-page/recomendation');
     } catch (error) {
       throw error;

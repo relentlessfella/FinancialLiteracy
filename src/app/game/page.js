@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react';
 import styles from './page.module.css';
 import Image from 'next/image';
 import { SingleGameCard } from '@/components/SingleGameCard/SingleGameCard';
-import { inter } from '../main/page';
+// import { inter } from '../main/page';
+import { inter } from '@/fonts';
 
 const Game = () => {
   const [cards, setCards] = useState([]);

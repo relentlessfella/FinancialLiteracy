@@ -26,6 +26,7 @@
 .image_block {
   margin: 30px 14px;
   user-select: none;
+  /* width: 100px; */
 }
 .image_block_title {
   margin-top: 13px;

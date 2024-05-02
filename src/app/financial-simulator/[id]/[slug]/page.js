@@ -16,22 +16,36 @@ const SimulationCardPage = () => {
   const [userSelect, setUserSelect] = useState({ id: null, answer: null });
   const [correctAnswer, setCorrectAnswer] = useState({ id: null, answer: null });
   const [showCorrectAnswer, setShowCorrectAnswer] = useState(false);
-  const fetchSimulation = async () => {
-    try {
-      const response = await axios({
-        method: 'GET',
-        url: `http://86.107.44.136:8000/simulator/fin_trial/${params.id}/`,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      setData(response.data);
-    } catch (error) {
-      throw error;
-    }
-  };
+  // const fetchSimulation = async () => {
+  //   try {
+  //     const response = await axios({
+  //       method: 'GET',
+  //       url: `http://localhost:8000/simulator/fin_trial/${params.id}/`,
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //     });
+  //     setData(response.data);
+  //   } catch (error) {
+  //     throw error;
+  //   }
+  // };
   console.log(data);
   useEffect(() => {
+    const fetchSimulation = async () => {
+      try {
+        const response = await axios({
+          method: 'GET',
+          url: `http://localhost:8000/simulator/fin_trial/${params.id}/`,
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        setData(response.data);
+      } catch (error) {
+        throw error;
+      }
+    };
     fetchSimulation();
   }, []);
   // useEffect(() => {
@@ -52,10 +66,6 @@ const SimulationCardPage = () => {
     setUserSelect(answer);
     setShowCorrectAnswer(true);
   };
-  // const handleRightAnswer = () => {
-
-  // }
-
   if (data === null) {
     return <div style={{ textAlign: 'center' }}>Loading...</div>;
   } else {
@@ -78,27 +88,30 @@ const SimulationCardPage = () => {
                   }}>
                   Answer
                 </p>
-                <div style={{ display: 'flex', justifyContent: 'center', padding: '40px 0' }}>
-                  <Image
-                    src={simulationCorrectImg}
-                    width={400}
-                    height={300}
-                    alt="Simulation page main image"
-                  />
-                </div>
-                <li key={userSelect.id} className={styles.option_correct}>
-                  <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <div className={styles.option_inner}>{userSelect.id}.</div>
-                    <div>{userSelect.text}</div>
+                <div className={styles.correctImageWrapper}>
+                  <div style={{ margin: '0 auto' }}>
+                    <Image
+                      src={simulationCorrectImg}
+                      width={400}
+                      height={300}
+                      layout="responsive"
+                      alt="Simulation page main image"
+                    />
+                    <li key={userSelect.id} className={styles.option_correct}>
+                      <div style={{ display: 'flex', alignItems: 'center' }}>
+                        <div className={styles.option_inner}>{userSelect.id}.</div>
+                        <div>{userSelect.text}</div>
+                      </div>
+                      <Image
+                        src={tick}
+                        width={30}
+                        height={30}
+                        style={{ margin: '0 20px' }}
+                        alt="Tick icon"
+                      />
+                    </li>
                   </div>
-                  <Image
-                    src={tick}
-                    width={30}
-                    height={30}
-                    style={{ margin: '0 20px' }}
-                    alt="Tick icon"
-                  />
-                </li>
+                </div>
               </ul>
             ) : (
               <ul className={styles.main}>
@@ -112,40 +125,44 @@ const SimulationCardPage = () => {
                   }}>
                   Answer
                 </p>
-                <div style={{ display: 'flex', justifyContent: 'center', padding: '40px 0' }}>
-                  <Image
-                    src={simulationCorrectImg}
-                    width={400}
-                    height={300}
-                    alt="Simulation page main image"
-                  />
+                <div className={styles.correctImageWrapper}>
+                  <div style={{ margin: '0 auto' }}>
+                    <Image
+                      src={simulationCorrectImg}
+                      // width={400}
+                      // height={300}
+                      layout="responsive"
+                      alt="Simulation page main image"
+                    />
+
+                    <li key={userSelect.id} className={styles.option_correct}>
+                      <div style={{ display: 'flex', alignItems: 'center' }}>
+                        <div className={styles.option_inner}>{userSelect.id}.</div>
+                        <div>{userSelect.text}</div>
+                      </div>
+                      <Image
+                        src={wrongTick}
+                        width={30}
+                        height={30}
+                        style={{ margin: '0 20px' }}
+                        alt="Wrong icon"
+                      />
+                    </li>
+                    <li key={correctAnswer.id} className={styles.option_correct}>
+                      <div style={{ display: 'flex', alignItems: 'center' }}>
+                        <div className={styles.option_inner}>{correctAnswer.id}.</div>
+                        <div>{correctAnswer.text}</div>
+                      </div>
+                      <Image
+                        src={tick}
+                        width={30}
+                        height={30}
+                        style={{ margin: '0 20px' }}
+                        alt="Tick icon"
+                      />
+                    </li>
+                  </div>
                 </div>
-                <li key={userSelect.id} className={styles.option_correct}>
-                  <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <div className={styles.option_inner}>{userSelect.id}.</div>
-                    <div>{userSelect.text}</div>
-                  </div>
-                  <Image
-                    src={wrongTick}
-                    width={30}
-                    height={30}
-                    style={{ margin: '0 20px' }}
-                    alt="Wrong icon"
-                  />
-                </li>
-                <li key={correctAnswer.id} className={styles.option_correct}>
-                  <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <div className={styles.option_inner}>{correctAnswer.id}.</div>
-                    <div>{correctAnswer.text}</div>
-                  </div>
-                  <Image
-                    src={tick}
-                    width={30}
-                    height={30}
-                    style={{ margin: '0 20px' }}
-                    alt="Tick icon"
-                  />
-                </li>
               </ul>
             )
           ) : (
@@ -154,49 +171,27 @@ const SimulationCardPage = () => {
                 <p>LeveL:&nbsp;</p>
                 <p className={styles.level_inner}>{data.level}</p>
               </div>
-              <div
-                style={{
-                  margin: '0 auto',
-                  display: 'flex',
-                  justifyContent: 'center',
-                  textAlign: 'center',
-                }}>
+              <div className={styles.imageWrapper}>
                 <div>
                   <p className={styles.title}>{data.name}</p>
                   <Image
                     alt="Image of test"
                     src={image}
-                    width={650}
-                    height={400}
+                    className={styles.simulatorImage}
+                    layout="responsive"
+                    // width={650}
+                    // height={400}
                     style={{ borderRadius: '20px' }}
                   />
                   <div className={styles.question}>{data.situation}</div>
                   <div style={{ color: '#858585' }}>
                     Instructions: Choose the best answer (1, 2, or 3)
-                    {/* {console.log(correctAnswer)} */}
                   </div>
                   <ul className={styles.option_outter}>
-                    {/* {showCorrectAnswer === true && userSelect.answer === correctAnswer.answer ? (
-                    <li key={userSelect.id} className={styles.option}>
-                      <div className={styles.option_inner}>{userSelect.id}.</div>
-                      <div>{userSelect.answer}</div>
-                    </li>
-                  ) : (
-                    data.answers.map((answer) => (
-                      <li
-                        key={answer.id}
-                        className={styles.option}
-                        onClick={() => handleClick(answer.is_correct, answer.id, answer.text)}>
-                        <div className={styles.option_inner}>{answer.id}.</div>
-                        <div>{answer.text}</div>
-                      </li>
-                    ))
-                  )} */}
                     {data.answers.map((answer) => (
                       <li
                         key={answer.id}
                         className={styles.option}
-                        // onClick={() => handleClick(answer.is_correct, answer.id, answer.text)}>
                         onClick={() => handleClick(answer)}>
                         <div className={styles.option_inner}>{answer.id}.</div>
                         <div>{answer.text}</div>

@@ -36,7 +36,7 @@ const Login = () => {
     try {
       const response = await axios({
         method: 'POST',
-        url: 'http://86.107.44.136:8000/user/login/',
+        url: 'http://localhost:8000/user/login/',
         headers: {
           'Content-Type': 'application/json',
         },

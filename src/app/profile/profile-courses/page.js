@@ -8,7 +8,8 @@ import notificationIcon from '../../../../public/assets/profileIcons/notificatio
 import styles from './component.module.css';
 import magnifier from '../../../../public/assets/magnifier.svg';
 import axios from 'axios';
-import { inter } from '@/app/main/page';
+// import { inter } from '@/app/main/page';
+import { inter } from '@/fonts';
 import { poppins } from '@/app/login/page';
 import { useRouter } from 'next/navigation';
 import { useMainContext } from '@/contexts/ContextProvider/ContextProvider';
@@ -31,10 +32,23 @@ const ProfileCourses = () => {
       title: 'Completed Courses',
     },
   ];
+  const profileCourseModule = {
+    module: {
+      padding: '10px 20px',
+      fontSize: '14px',
+    },
+    module_active: {
+      padding: '10px 20px',
+      fontSize: '14px',
+    },
+    main: {
+      padding: '15px',
+    },
+  };
   const fetchUserCourses = async () => {
     const response = await axios({
       method: 'get',
-      url: `http://86.107.44.136:8000/courses/course/get_my_courses/`,
+      url: `http://localhost:8000/courses/course/get_my_courses/`,
       headers: {
         'Content-Type': 'application/json',
       },
@@ -60,24 +74,6 @@ const ProfileCourses = () => {
     return (
       <ProfileLayout>
         <div className={`${styles.profile_main} ${poppins.variable}`}>
-          {/* <div className={styles.profile_search}> */}
-          {/* <input type="text" placeholder="Search or type" className={styles.input} />
-            <div
-              style={{
-                margin: 'auto',
-              }}>
-              <Image src={magnifier} />
-            </div> */}
-
-          {/* <div style={{ display: 'flex' }}>
-            <div style={{ margin: 'auto 30px', height: '35px' }}>
-              <Image src={webIcon} />
-            </div>
-            <div style={{ margin: 'auto 0', height: '35px' }}>
-              <Image src={notificationIcon} />
-            </div>
-          </div> */}
-          {/* </div> */}
           <div className={styles.profile_main_inner}>
             <div className={styles.profile_search}>
               <input type="text" placeholder="Search or type" className={styles.input} />
@@ -90,9 +86,7 @@ const ProfileCourses = () => {
             </div>
             <div style={{ color: '#08A5D3' }}>Hi, Arnibek!</div>
             Take a step towards a better future!
-            {/* <div style={{ paddingTop: '50px' }}> */}
             <Image src={profileImage} style={{ paddingTop: '50px' }} alt="Profile avatar image" />
-            {/* </div> */}
             <div
               style={{ textAlign: 'center', marginTop: '40px' }}
               className={`${inter.variable} `}>
@@ -102,6 +96,7 @@ const ProfileCourses = () => {
                 activeModule={activeCourse}
                 setActiveModule={setActiveCourse}
                 mobileWidth={350}
+                moduleStyles={profileCourseModule}
               />
             </div>
           </div>

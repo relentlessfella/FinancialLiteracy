@@ -16,6 +16,7 @@
 .profileAside {
   background-color: #08a5d3;
   flex: 1;
+  white-space: nowrap;
 }
 .profileIconsContainer {
   display: flex;

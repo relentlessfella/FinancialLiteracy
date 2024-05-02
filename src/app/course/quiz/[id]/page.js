@@ -19,26 +19,44 @@ const QuizPage = ({ params }) => {
   const id = params.id;
   console.log(id);
   const [answers, setAnswers] = useState({});
-  const fetchAllCards = async () => {
-    try {
-      const response = await axios({
-        method: 'get',
-        url: `http://86.107.44.136:8000/courses/quiz/`,
-        params: {
-          course_id: id,
-          page: 1,
-        },
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      setData(response.data);
-    } catch (error) {
-      throw error;
-    }
-  };
+  // const fetchAllCards = async () => {
+  //   try {
+  //     const response = await axios({
+  //       method: 'get',
+  //       url: `http://localhost:8000/courses/quiz/`,
+  //       params: {
+  //         course_id: id,
+  //         page: 1,
+  //       },
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //     });
+  //     setData(response.data);
+  //   } catch (error) {
+  //     throw error;
+  //   }
+  // };
 
   useEffect(() => {
+    const fetchAllCards = async () => {
+      try {
+        const response = await axios({
+          method: 'get',
+          url: `http://localhost:8000/courses/quiz/`,
+          params: {
+            course_id: id,
+            page: 1,
+          },
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        setData(response.data);
+      } catch (error) {
+        throw error;
+      }
+    };
     fetchAllCards();
     window.scrollTo(0, 0);
   }, []);
@@ -118,7 +136,7 @@ const QuizPage = ({ params }) => {
       const vals = Object.values(parseAns);
       const response = await axios({
         method: 'post',
-        url: `http://86.107.44.136:8000/progress/quiz_progress/${id}/submit/`,
+        url: `http://localhost:8000/progress/quiz_progress/${id}/submit/`,
         params: {
           user_id: 1,
         },

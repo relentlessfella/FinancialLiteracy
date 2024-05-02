@@ -1,6 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import { alfaSlabOne } from '@/app/main/page';
+// import { alfaSlabOne } from '@/app/main/page';
+import { alfaSlabOne } from '@/fonts';
 import styles from '../page.module.css';
 import backButton from '../../../../../../public/assets/courseBackButton.svg';
 import Image from 'next/image';
@@ -42,7 +43,7 @@ const QuizLayout = ({ children, data }) => {
             />
             <div>
               <div style={{ display: 'flex' }}>
-                <div className={styles.quizTitle}>Quiz {params.id} </div>
+                <div className={styles.quiztitle}>Quiz {params.id} </div>
               </div>
               <div className={styles.quizDescription}>
                 Basic Understanding of Financial Literacy

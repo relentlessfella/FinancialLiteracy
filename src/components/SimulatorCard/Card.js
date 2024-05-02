@@ -7,7 +7,8 @@ import mask3 from '../../../public/assets/SimulatorPageAssets/Mask3.png';
 import mask4 from '../../../public/assets/SimulatorPageAssets/Mask4.png';
 import mask5 from '../../../public/assets/SimulatorPageAssets/Mask5.png';
 import styles from './component.module.css';
-import { DMSans } from '@/app/main/page';
+// import { DMSans } from '@/app/main/page';
+import { DMSans } from '@/fonts';
 import { useRouter } from 'next/navigation';
 const data1 = [
   {
@@ -47,6 +48,13 @@ const data1 = [
   },
   {
     id: 6,
+    title: 'Do millennials care about saving?',
+    description:
+      'Curabitur tincidunt sed neque id pretium. Aenean volutpat tristique tincidunt. Pellentesque ac urna.',
+    image: mask5,
+  },
+  {
+    id: 7,
     title: 'Do millennials care about saving?',
     description:
       'Curabitur tincidunt sed neque id pretium. Aenean volutpat tristique tincidunt. Pellentesque ac urna.',

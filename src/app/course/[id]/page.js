@@ -1,7 +1,8 @@
 'use client';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
-import { alfaSlabOne } from '../../main/page';
+// import { alfaSlabOne } from '../../main/page';
+import { alfaSlabOne } from '@/fonts';
 import playCourse from '../../../../public/assets/PlayCourse.svg';
 import bookmark from '../../../../public/assets/bookmarkCourse.svg';
 import LessonCard from '@/components/LessonCard/LessonCard';
@@ -11,7 +12,7 @@ import axios from 'axios';
 import QuizCard from '@/components/QuizCard/QuizCard';
 import { useRouter } from 'next/navigation';
 import bookmarkInactive from '../../../../public/assets/bookmarkInactive.svg';
-import { poppins } from '@/app/login/page';
+// import { poppins } from '@/app/login/page';
 import CertificateCard from '@/components/CertificateCard/CertificateCard';
 import Loader from '@/components/Loader/Loader2';
 import styles from './components.module.css';
@@ -21,24 +22,41 @@ const CoursePage = ({ params }) => {
   const [active, setActive] = useState(false);
   const router = useRouter();
   const id = params.id;
-  const fetchAllCards = async () => {
-    try {
-      const response = await axios({
-        method: 'get',
-        url: `http://86.107.44.136:8000/courses/course/${id}/`,
-        params: {
-          user_id: 1,
-        },
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      setData(response.data);
-    } catch (error) {
-      throw error;
-    }
-  };
+  // const fetchAllCards = async () => {
+  //   try {
+  //     const response = await axios({
+  //       method: 'get',
+  //       url: `http://localhost:8000/courses/course/${id}/`,
+  //       params: {
+  //         user_id: 1,
+  //       },
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //     });
+  //     setData(response.data);
+  //   } catch (error) {
+  //     throw error;
+  //   }
+  // };
   useEffect(() => {
+    const fetchAllCards = async () => {
+      try {
+        const response = await axios({
+          method: 'get',
+          url: `http://localhost:8000/courses/course/${id}/`,
+          params: {
+            user_id: 1,
+          },
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        setData(response.data);
+      } catch (error) {
+        throw error;
+      }
+    };
     fetchAllCards();
     window.scrollTo(0, 0);
   }, []);
@@ -47,7 +65,7 @@ const CoursePage = ({ params }) => {
     try {
       const response = await axios({
         method: 'put',
-        url: `http://86.107.44.136:8000/courses/course/${params.id}/add_bookmark/?user_id=1`,
+        url: `http://localhost:8000/courses/course/${params.id}/add_bookmark/?user_id=1`,
         params: {
           user_id: 1,
         },
@@ -65,7 +83,7 @@ const CoursePage = ({ params }) => {
     try {
       const response = await axios({
         method: 'put',
-        url: `http://86.107.44.136:8000/courses/course/${params.id}/remove_bookmark/?user_id=1`,
+        url: `http://localhost:8000/courses/course/${params.id}/remove_bookmark/?user_id=1`,
         params: {
           user_id: 1,
         },
@@ -83,7 +101,7 @@ const CoursePage = ({ params }) => {
     try {
       const response = await axios({
         method: 'post',
-        url: `http://86.107.44.136:8000/progress/course_progress/${params.id}/join/`,
+        url: `http://localhost:8000/progress/course_progress/${params.id}/join/`,
         params: {
           user_id: 1,
         },
