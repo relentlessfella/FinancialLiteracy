@@ -63,7 +63,7 @@ const Feedback = () => {
     try {
       const response = await axios({
         method: 'put',
-        url: `http://localhost:8000/courses/feedback/${params.id}/send_feedback/?user_id=1`,
+        url: `http://86.107.44.136:8000/courses/feedback/${params.id}/send_feedback/?user_id=1`,
         headers: {
           'Content-Type': 'application/json',
         },

@@ -24,7 +24,7 @@ const Header = () => {
     try {
       const response = await axios({
         method: 'get',
-        url: 'http://localhost:8000/user/active_user/',
+        url: 'http://86.107.44.136:8000/user/active_user/',
         withCredentials: true,
       });
       console.log('header: ', response.data);

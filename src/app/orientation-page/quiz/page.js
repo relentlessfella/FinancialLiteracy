@@ -16,7 +16,7 @@ const OrientationQuiz = () => {
   //   try {
   //     const response = await axios({
   //       method: 'get',
-  //       url: `http://localhost:8000/navigator/orientation_test/`,
+  //       url: `http://86.107.44.136:8000/navigator/orientation_test/`,
   //       params: {
   //         page: currentPage,
   //       },
@@ -73,7 +73,7 @@ const OrientationQuiz = () => {
       try {
         const response = await axios({
           method: 'get',
-          url: `http://localhost:8000/navigator/orientation_test/`,
+          url: `http://86.107.44.136:8000/navigator/orientation_test/`,
           params: {
             page: currentPage,
           },
@@ -144,7 +144,7 @@ const OrientationQuiz = () => {
       const vals = Object.values(parseAns);
       const response = await axios({
         method: 'post',
-        url: `http://localhost:8000/navigator/orientation_test/submit/`,
+        url: `http://86.107.44.136:8000/navigator/orientation_test/submit/`,
         data: {
           answers: vals,
         },

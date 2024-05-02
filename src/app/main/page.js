@@ -48,7 +48,7 @@ const MainPage = () => {
     try {
       const response = await axios({
         method: 'GET',
-        url: 'http://localhost:8000/user/active_user/',
+        url: 'http://86.107.44.136:8000/user/active_user/',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -66,7 +66,7 @@ const MainPage = () => {
         setIsLoading(true);
         const response = await axios({
           method: 'get',
-          url: 'http://localhost:8000/courses/course/',
+          url: 'http://86.107.44.136:8000/courses/course/',
           headers: {
             'Content-Type': 'application/json',
           },
