@@ -29,10 +29,28 @@
   font-size: 18px;
   color: #fff;
 }
-.quizMain {
+.leaderboardMain {
   -webkit-box-shadow: 0px 0px 15px 0px rgba(34, 60, 80, 0.28);
   -moz-box-shadow: 0px 0px 15px 0px rgba(34, 60, 80, 0.28);
   box-shadow: 0px 0px 15px 0px rgba(34, 60, 80, 0.28);
+  padding: 30px;
+  display: flex;
+  margin: 0px auto;
+  text-align: center;
+  font-weight: 1000;
+  border-radius: 10px;
+  flex-direction: column;
+  justify-content: center;
+  width: 800px;
+}
+.leaderboardTitle {
+  color: #fe602f;
+  font-size: 28px;
+}
+.leaderboardDescription {
+  color: #858585;
+  font-weight: 400;
+  margin: 20px 0;
 }
 .quizQuestion {
   background-color: '#FAFAFA';

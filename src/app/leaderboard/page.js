@@ -1,7 +1,6 @@
 'use client';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
-// import { alfaSlabOne } from '../main/page';
 import { alfaSlabOne } from '../../fonts/index';
 import playCourse from '../../../public/assets/PlayCourse.svg';
 import bookmark from '../../../public/assets/bookmarkCourse.svg';
@@ -13,6 +12,9 @@ import QuizCard from '@/components/QuizCard/QuizCard';
 import { useRouter } from 'next/navigation';
 import bookmarkInactive from '../../../public/assets/bookmarkInactive.svg';
 import { poppins } from '@/app/login/page';
+import ProfileLayout from '@/components/ProfileLayout/ProfileLayout';
+import Loader from '@/components/Loader/Loader2';
+import Header from '@/components/Header/Header';
 
 const Leaderboard = () => {
   const data = [
@@ -56,91 +58,78 @@ const Leaderboard = () => {
       color: '#858585',
     },
   ];
-  //   const [data, setData] = useState(null);
+  // const [data, setData] = useState(null);
+  // useEffect(() => {
+  //   try {
+  //     const fetchLeaderboard = async () => {
+  //       const response = await axios({
+  //         method: 'get',
+  //         url: 'http://86.107.44.136:8000/progress/quiz_progress/leaderboard/?user_id=1',
+  //         headers: { 'Content-Type': 'application/json' },
+  //       });
+  //       setData(response.data);
+  //     };
+  //     fetchLeaderboard();
+  //   } catch (error) {
+  //     throw error;
+  //   }
+  // }, []);
+  // console.log(data);
   const [active, setActive] = useState(false);
   const router = useRouter();
   if (data === null) {
-    return <div>Loading...</div>;
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <Loader />
+      </div>
+    );
   } else {
     return (
       <div className={alfaSlabOne.variable}>
-        <div className={styles.container}>
-          <Image
-            style={{ margin: '8px 10px' }}
-            src={backButton}
-            width={22}
-            height={22}
-            alt="Back button image"
-          />
-          <div>
-            <div style={{ display: 'flex' }}>
-              <div> Arnibek&apos;s {data.id}</div>
-            </div>
-            <div>{data.name}</div>
-            <div style={{ marginTop: '50px', display: 'flex' }}>Achievement Leaderboard</div>
-          </div>
-        </div>
-        <div className={poppins.className}>
-          <div
-            className={styles.quizMain}
-            style={{
-              display: 'flex',
-              width: '1000px',
-              margin: '75px auto',
-              textAlign: 'center',
-              fontWeight: '1000',
-              borderRadius: '10px',
-              flexDirection: 'column',
-              justifyContent: 'center',
-            }}>
-            <div
-              style={{
-                marginTop: '60px',
-                marginBottom: '10px',
-                color: '#FE602F',
-                fontSize: '28px',
-              }}>
-              Leaderboard
-            </div>
-            <div style={{ color: '#858585', fontWeight: '400', margin: '20px 0' }}>
-              The best results of each Quiz
-            </div>
-            <ul
-              style={{
-                listStyleType: 'none',
-                padding: '0',
-                margin: '0 auto',
-                marginBottom: '30px',
-                width: '800px',
-                textAlign: 'start',
-              }}>
-              {data.map((item) => (
-                <li
-                  key={data.id}
-                  style={{ display: 'flex', fontWeight: '600', justifyContent: 'space-between' }}
-                  className={styles.leaderboard_item}>
-                  <div style={{ display: 'flex' }}>
-                    <div
-                      style={{
-                        margin: '0px 10px',
-                        borderRadius: '18px',
-                        padding: '3px 11px',
-                        width: '8px',
-                        textAlign: 'center',
-                        backgroundColor: `${item.rounded}`,
-                      }}>
-                      {item.id}
+        <ProfileLayout>
+          <div className={poppins.className}>
+            <div className={styles.leaderboardMain}>
+              <div className={styles.leaderboardTitle}>Leaderboard</div>
+              <div className={styles.leaderboardDescription}>The best results of each Quiz</div>
+              <ul
+                style={{
+                  listStyleType: 'none',
+                  padding: '0',
+                  margin: '0 auto',
+                  width: '800px',
+                  textAlign: 'start',
+                }}>
+                {data.map((item, key) => (
+                  <li
+                    key={data.id}
+                    style={{ display: 'flex', fontWeight: '600', justifyContent: 'space-between' }}
+                    className={styles.leaderboard_item}>
+                    <div style={{ display: 'flex' }}>
+                      <div
+                        style={{
+                          margin: '0px 10px',
+                          borderRadius: '18px',
+                          padding: '3px 11px',
+                          width: '8px',
+                          textAlign: 'center',
+                          backgroundColor: `${item.rounded}`,
+                        }}
+                        key={data.id}>
+                        {item.id}
+                      </div>
+                      <div style={{ margin: 'auto 10px', color: `${item.color}` }} key={data.id}>
+                        {item.title}
+                      </div>
                     </div>
-                    <div style={{ margin: 'auto 10px', color: `${item.color}` }}>{item.title}</div>
-                  </div>
-                  <div style={{ margin: 'auto 10px', color: `${item.color}` }}>
-                    {item.percentage}%
-                  </div>
-                </li>
-              ))}
-            </ul>
+                    <div style={{ margin: 'auto 10px', color: `${item.color}` }} key={data.id}>
+                      {item.percentage}%
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-        </div>
+        </ProfileLayout>
       </div>
     );
   }

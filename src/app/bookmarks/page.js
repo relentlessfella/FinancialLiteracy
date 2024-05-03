@@ -44,9 +44,8 @@ const Bookmarks = () => {
             {console.log(data)}
             My Bookmarks
           </div>
-          <ul>
+          <ul className={styles.main}>
             <CourseCard data={data} />
-            {/* <Loader /> */}
           </ul>
         </div>
       </ProfileLayout>

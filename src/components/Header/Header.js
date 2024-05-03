@@ -58,24 +58,6 @@ const Header = () => {
               onClick={() => router.push('/')}
               alt="logo"
             />
-            {/* <div
-              style={{
-                borderRadius: '10px',
-                border: '1px solid gray',
-                display: 'flex',
-                justifyContent: 'space-between',
-              }}>
-              <div style={{ display: 'flex', alignItems: 'center' }}>
-                <input type="text" placeholder="Search..." className={styles.input} />
-                <Image
-                  src={magnifier}
-                  width={20}
-                  height={20}
-                  style={{ margin: '15px' }}
-                  alt="input magnifier"
-                />
-              </div>
-            </div> */}
           </div>
           <ul style={{ display: 'flex', listStyle: 'none' }}>
             <li className={styles.header_li}>
@@ -111,18 +93,6 @@ const Header = () => {
               onClick={() => router.push('/')}
               alt="logo"
             />
-            {/* <div
-              style={{
-                borderRadius: '10px',
-                border: '1px solid gray',
-                display: 'flex',
-                justifyContent: 'space-between',
-              }}>
-              <div style={{ display: 'flex', alignItems: 'center' }}>
-                <input type="text" placeholder="Search..." className={styles.input} />
-                <Image src={magnifier} width={20} height={20} style={{ margin: '15px' }} />
-              </div>
-            </div> */}
           </div>
           <ul className={styles.ul}>
             <li className={styles.header_li}>

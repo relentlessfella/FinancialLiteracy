@@ -15,7 +15,10 @@ import bookIconActive from '../../../public/assets/profileIcons/bookIconActive.s
 import bookMarkActive from '../../../public/assets/profileIcons/bookMarkActive.svg';
 import logoutActive from '../../../public/assets/profileIcons/logoutActive.svg';
 import settingsActive from '../../../public/assets/profileIcons/settingsActive.svg';
+import leaderboardIcon from '../../../public/assets/profileIcons/leaderboardIcon.svg';
+import leaderboardIconActive from '../../../public/assets/profileIcons/leaderboardIconActive.svg';
 import { useParams, usePathname } from 'next/navigation';
+import Header from '../Header/Header';
 
 const ProfileLayout = ({ children }) => {
   const asideMenuLinks = [
@@ -36,12 +39,19 @@ const ProfileLayout = ({ children }) => {
     },
     {
       id: 4,
+      title: 'Leaderboard',
+      link: '/leaderboard',
+      default: leaderboardIcon,
+      active: leaderboardIconActive,
+    },
+    {
+      id: 5,
       title: 'Settings',
       link: '/profile/profile-settings',
       default: settingsIcon,
       active: settingsActive,
     },
-    { id: 5, title: 'Log Out', link: '/logout', default: exitIcon, active: logoutActive },
+    { id: 6, title: 'Log Out', link: '/logout', default: exitIcon, active: logoutActive },
   ];
   const pathname = usePathname();
   return (
@@ -86,7 +96,12 @@ const ProfileLayout = ({ children }) => {
           })}
         </nav>
       </aside>
-      <main className={style.main}>{children}</main>
+      <main className={style.main}>
+        <div className={style.layoutHeader}>
+          <Header />
+        </div>
+        {children}
+      </main>
     </div>
   );
 };

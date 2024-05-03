@@ -1,10 +1,91 @@
-.profileLessonCard {
-  box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.35);
-  -webkit-box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.35);
-  -moz-box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.35);
+/* .profileLessonCard {
+  box-shadow: 0px 0px 50px 12px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0px 0px 50px 12px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 0px 50px 12px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   width: 900px;
   min-height: 265px;
   padding: 50px 60px;
   margin-top: 50px;
+}
+.cardTitle {
+  font-size: 28px;
+  color: #fe602f;
+  font-weight: 1000;
+  margin: 20px 0;
+}
+.cardDescription {
+  font-size: 18px;
+  color: #1f1c14;
+  opacity: 0.7;
+  padding: 20px 0;
+}
+.progressWrapper {
+  display: flex;
+}
+
+.lessonProgress {
+  margin: 13px 10px 0 10px;
+}
+
+.lessonTitle {
+  margin: auto 0px;
+  color: #a2bf00;
+  font-weight: 500;
+} */
+
+.main {
+  display: grid;
+  flex-wrap: wrap;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px 0px;
+}
+
+.card {
+  box-shadow: 0px 0px 50px 12px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  min-height: 400px;
+  margin: 15px auto;
+  border-radius: 15px;
+}
+
+.courseImage {
+  width: 300px;
+  height: 250px;
+}
+
+.progressWrapper {
+  padding: 20px;
+}
+
+.progress {
+  display: flex;
+  justify-content: space-between;
+}
+
+.progressNum {
+  color: #a2bf00;
+}
+@media (max-width: 1420px) {
+  .main {
+    grid-template-columns: repeat(2, 330px);
+    gap: 10px 0px;
+    width: 660px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 700px) {
+  .main {
+    grid-template-columns: repeat(1, 330px);
+    justify-content: center;
+    width: auto;
+  }
+}
+@media (max-width: 446px) {
+  .main {
+    grid-template-columns: repeat(1, 330px);
+    justify-content: center;
+    width: auto;
+  }
 }

@@ -17,6 +17,7 @@ export const SingleGameCard = ({ image, handleChoice, flipped, disabled }) => {
         <Image
           height={250}
           width={250}
+          layout="responsive"
           src={image.src}
           alt={'Card front'}
           className={styles.front}

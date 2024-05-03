@@ -10,12 +10,13 @@ import magnifier from '../../../../public/assets/magnifier.svg';
 import axios from 'axios';
 // import { inter } from '@/app/main/page';
 import { inter } from '@/fonts';
+import { alfaSlabOne } from '@/fonts';
 import { poppins } from '@/app/login/page';
 import { useRouter } from 'next/navigation';
 import { useMainContext } from '@/contexts/ContextProvider/ContextProvider';
 import CourseModules from '@/components/CourseModules/CourseModules';
 import notFound from '../../../../public/assets/NoResults.jpg';
-import { CourseCard } from '@/components/CourseCard/CourseCard';
+import { CourseCard } from '@/components/CourseCard/CourseCard1';
 import Loader from '@/components/Loader/Loader2';
 
 const ProfileCourses = () => {
@@ -65,7 +66,7 @@ const ProfileCourses = () => {
   if (data === null) {
     return (
       <ProfileLayout>
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '50px' }}>
           <Loader />
         </div>
       </ProfileLayout>
@@ -75,7 +76,7 @@ const ProfileCourses = () => {
       <ProfileLayout>
         <div className={`${styles.profile_main} ${poppins.variable}`}>
           <div className={styles.profile_main_inner}>
-            <div className={styles.profile_search}>
+            {/* <div className={styles.profile_search}>
               <input type="text" placeholder="Search or type" className={styles.input} />
               <div
                 style={{
@@ -83,13 +84,16 @@ const ProfileCourses = () => {
                 }}>
                 <Image src={magnifier} alt="Magnifier icon" />
               </div>
-            </div>
-            <div style={{ color: '#08A5D3' }}>Hi, Arnibek!</div>
-            Take a step towards a better future!
-            <Image src={profileImage} style={{ paddingTop: '50px' }} alt="Profile avatar image" />
+            </div> */}
+            {/* <div style={{ color: '#08A5D3' }}>Hi, Arnibek!</div> */}
+            {/* Take a step towards a better future! */}
+            {/* <Image src={profileImage} style={{ paddingTop: '50px' }} alt="Profile avatar image" /> */}
             <div
-              style={{ textAlign: 'center', marginTop: '40px' }}
-              className={`${inter.variable} `}>
+              style={{ color: '#FE8863', textAlign: 'center' }}
+              className={alfaSlabOne.className}>
+              My Courses
+            </div>
+            <div className={`${inter.variable} ${styles.moduleProfile}`}>
               <CourseModules
                 modules={course_type}
                 width={500}
@@ -107,8 +111,8 @@ const ProfileCourses = () => {
               <CourseCard data={data} />
             </ul>
           ) : (
-            <section style={{ textAlign: 'center', marginTop: '30px', width: '990px' }}>
-              <Image src={notFound} width={500} height={400} alt="Not found image" />
+            <section className={styles.notFoundSection}>
+              <Image src={notFound} layout="responsive" alt="Not found image" />
               <div>Sorry courses not found ;(</div>
             </section>
           )}

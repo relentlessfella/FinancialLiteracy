@@ -8,32 +8,16 @@ export const CourseCard = ({ data }) => {
   const router = useRouter();
   return data.map((item) => (
     <li key={data.id} className={styles.profileLessonCard}>
-      <div
-        style={{
-          fontSize: '28px',
-          color: '#FE602F',
-          fontWeight: '1000',
-          margin: '20px 0',
-        }}>
+      <div className={styles.cardTitle}>
         Course name:
         <br /> {item.name}
       </div>
-      <div
-        style={{
-          fontSize: '18px',
-          color: '#1F1C14',
-          opacity: '0.7',
-          padding: '20px 0',
-        }}>
-        {item.description}
-      </div>
-      <div style={{ display: 'flex' }}>
+      <div className={styles.cardDescription}>{item.description}</div>
+      <div className={styles.progressWrapper}>
         <Image src={play} width={48} height={48} alt="Play icon" />
-        <div style={{ margin: '13px 10px 0 10px' }}>
-          <div style={{ margin: 'auto 0px', color: '#A2BF00', fontWeight: '500' }}>
-            {item.lesson_num} Lessons
-          </div>
-          <div style={{ display: 'flex', marginTop: '10px' }}>
+        <div className={styles.lessonProgress}>
+          <div className={styles.lessonTitle}>{item.lesson_num} Lessons</div>
+          <div style={{ display: 'flex', marginTop: '10px', outline: '1px solid #000' }}>
             <div style={{ margin: 'auto 0px' }}>
               <ProgressBar value={item.progress} />
             </div>

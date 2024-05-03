@@ -8,9 +8,13 @@ import Image from 'next/image';
 
 const SideNavigation = ({ isOpen }) => {
   const SideLinks = [
-    { id: 1, title: 'Courses', image: hat, href: '/' },
-    { id: 2, title: 'Financial Simulator', image: square, href: '/financial-simulator' },
-    { id: 3, title: 'Games', image: joystick, href: '/game' },
+    { id: 1, title: 'Home', image: hat, href: '/' },
+    { id: 2, title: 'Games', image: joystick, href: '/profile/profile-courses' },
+    { id: 3, title: 'Games', image: joystick, href: '/bookmarks' },
+    { id: 4, title: 'Games', image: joystick, href: '/leaderboard' },
+    { id: 5, title: 'Games', image: joystick, href: '/profile/profile-settings' },
+    { id: 6, title: 'Financial Simulator', image: square, href: '/financial-simulator' },
+    { id: 7, title: 'Games', image: joystick, href: '/game' },
   ];
   console.log(SideLinks);
   return (
