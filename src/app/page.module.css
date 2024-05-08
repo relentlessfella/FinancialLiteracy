@@ -6,7 +6,7 @@
   padding: 6rem;
 }
 .mainWrapper {
-  min-height: 100vh;
+  /* min-height: 100vh; */
 }
 
 .description {
@@ -121,8 +121,8 @@
   margin: 0 auto;
   width: 550px;
 }
-.notFoundMain {
-}
+/* .notFoundMain {
+} */
 
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {

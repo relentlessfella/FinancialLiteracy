@@ -19,8 +19,14 @@ import leaderboardIcon from '../../../public/assets/profileIcons/leaderboardIcon
 import leaderboardIconActive from '../../../public/assets/profileIcons/leaderboardIconActive.svg';
 import { useParams, usePathname } from 'next/navigation';
 import Header from '../Header/Header';
+import { useRouter } from 'next/navigation';
+import { getUserFromLocalCookie } from '@/lib/auth';
+import { useFetchUser } from '@/contexts/authContext/authContext';
 
 const ProfileLayout = ({ children }) => {
+  const { user, loading } = useFetchUser();
+  const { username } = getUserFromLocalCookie();
+  const router = useRouter();
   const asideMenuLinks = [
     { id: 1, title: 'Home', link: '/', active: homeIcon, default: homeIcon },
     {
@@ -54,6 +60,10 @@ const ProfileLayout = ({ children }) => {
     { id: 6, title: 'Log Out', link: '/logout', default: exitIcon, active: logoutActive },
   ];
   const pathname = usePathname();
+  if (!user && !loading) {
+    router.push('/login');
+    return null;
+  }
   return (
     <div className={style.container}>
       <aside className={style.profileAside}>
@@ -76,7 +86,7 @@ const ProfileLayout = ({ children }) => {
         <Link
           className={pathname === '/profile' ? style.profileLinkActive : style.profileLink}
           href="/profile">
-          Nussupekov Arnibek
+          {user ? username : ''}
         </Link>
         <nav className={style.nav}>
           {asideMenuLinks.map((item) => {

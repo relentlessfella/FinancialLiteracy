@@ -8,20 +8,23 @@ import notificationIcon from '../../../../public/assets/profileIcons/notificatio
 import styles from './component.module.css';
 import magnifier from '../../../../public/assets/magnifier.svg';
 import axios from 'axios';
-// import { inter } from '@/app/main/page';
 import { inter } from '@/fonts';
 import { alfaSlabOne } from '@/fonts';
-import { poppins } from '@/app/login/page';
 import { useRouter } from 'next/navigation';
 import { useMainContext } from '@/contexts/ContextProvider/ContextProvider';
 import CourseModules from '@/components/CourseModules/CourseModules';
 import notFound from '../../../../public/assets/NoResults.jpg';
 import { CourseCard } from '@/components/CourseCard/CourseCard1';
 import Loader from '@/components/Loader/Loader2';
+import { poppins } from '@/fonts';
+import useLocalStorage from '@/configs/axios/sessionStorage/useLocalStorage';
+import { getUserFromLocalCookie } from '@/lib/auth';
 
 const ProfileCourses = () => {
   const { activeCourse, setActiveCourse } = useMainContext();
   const router = useRouter();
+  // const userID = useLocalStorage('UserID');
+  const { id } = getUserFromLocalCookie();
   const [data, setData] = useState(null);
   const course_type = [
     {
@@ -49,19 +52,23 @@ const ProfileCourses = () => {
   const fetchUserCourses = async () => {
     const response = await axios({
       method: 'get',
-      url: `http://86.107.44.136:8000/courses/course/get_my_courses/`,
+      url: `http://localhost:8000/courses/course/get_my_courses/`,
       headers: {
         'Content-Type': 'application/json',
       },
       params: {
-        user_id: 1,
+        user_id: id,
       },
     });
     setData(response.data);
     console.log(response);
   };
   useEffect(() => {
-    fetchUserCourses();
+    if (id === undefined) {
+      return router.push('/login');
+    } else {
+      fetchUserCourses();
+    }
   }, []);
   if (data === null) {
     return (
@@ -76,18 +83,6 @@ const ProfileCourses = () => {
       <ProfileLayout>
         <div className={`${styles.profile_main} ${poppins.variable}`}>
           <div className={styles.profile_main_inner}>
-            {/* <div className={styles.profile_search}>
-              <input type="text" placeholder="Search or type" className={styles.input} />
-              <div
-                style={{
-                  margin: 'auto',
-                }}>
-                <Image src={magnifier} alt="Magnifier icon" />
-              </div>
-            </div> */}
-            {/* <div style={{ color: '#08A5D3' }}>Hi, Arnibek!</div> */}
-            {/* Take a step towards a better future! */}
-            {/* <Image src={profileImage} style={{ paddingTop: '50px' }} alt="Profile avatar image" /> */}
             <div
               style={{ color: '#FE8863', textAlign: 'center' }}
               className={alfaSlabOne.className}>

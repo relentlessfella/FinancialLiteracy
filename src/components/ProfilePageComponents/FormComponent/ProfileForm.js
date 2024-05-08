@@ -1,12 +1,17 @@
 import React from 'react';
 import style from './component.module.css';
-
+import { useFetchUser } from '@/contexts/authContext/authContext';
+import { getUserFromLocalCookie } from '@/lib/auth';
 const ProfileForm = () => {
+  const { user, loading } = useFetchUser();
+  const { username, email } = getUserFromLocalCookie();
+  if (!user && !loading) {
+    return router.push('/login');
+  }
   return (
     <div className={style.profileFormMain}>
       <div
         style={{
-          // float: 'left',
           textAlign: 'left',
           color: '#9794AA',
         }}>
@@ -20,7 +25,7 @@ const ProfileForm = () => {
               border: '1px solid #CBCAD7',
               padding: '0 0 0 10px',
             }}
-            placeholder="Nussupekov Arnibek"
+            placeholder={user ? username : ''}
             type="text"
           />
         </div>
@@ -34,7 +39,7 @@ const ProfileForm = () => {
               border: '1px solid #CBCAD7',
               padding: '0 0 0 10px',
             }}
-            placeholder="email@gmail.com"
+            placeholder={user ? email : ''}
             type="text"
           />
         </div>
@@ -48,7 +53,7 @@ const ProfileForm = () => {
               border: '1px solid #CBCAD7',
               padding: '0 0 0 10px',
             }}
-            placeholder="14"
+            placeholder="Your age.."
             type="text"
           />
         </div>

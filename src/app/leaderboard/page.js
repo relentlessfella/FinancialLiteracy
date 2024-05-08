@@ -11,7 +11,8 @@ import axios from 'axios';
 import QuizCard from '@/components/QuizCard/QuizCard';
 import { useRouter } from 'next/navigation';
 import bookmarkInactive from '../../../public/assets/bookmarkInactive.svg';
-import { poppins } from '@/app/login/page';
+import { poppins } from '@/fonts';
+
 import ProfileLayout from '@/components/ProfileLayout/ProfileLayout';
 import Loader from '@/components/Loader/Loader2';
 import Header from '@/components/Header/Header';
@@ -64,7 +65,7 @@ const Leaderboard = () => {
   //     const fetchLeaderboard = async () => {
   //       const response = await axios({
   //         method: 'get',
-  //         url: 'http://86.107.44.136:8000/progress/quiz_progress/leaderboard/?user_id=1',
+  //         url: 'http://localhost:8000/progress/quiz_progress/leaderboard/?user_id=1',
   //         headers: { 'Content-Type': 'application/json' },
   //       });
   //       setData(response.data);
@@ -91,37 +92,38 @@ const Leaderboard = () => {
             <div className={styles.leaderboardMain}>
               <div className={styles.leaderboardTitle}>Leaderboard</div>
               <div className={styles.leaderboardDescription}>The best results of each Quiz</div>
-              <ul
-                style={{
-                  listStyleType: 'none',
-                  padding: '0',
-                  margin: '0 auto',
-                  width: '800px',
-                  textAlign: 'start',
-                }}>
+              <ul className={styles.ul}>
                 {data.map((item, key) => (
                   <li
                     key={data.id}
                     style={{ display: 'flex', fontWeight: '600', justifyContent: 'space-between' }}
                     className={styles.leaderboard_item}>
                     <div style={{ display: 'flex' }}>
-                      <div
-                        style={{
-                          margin: '0px 10px',
-                          borderRadius: '18px',
-                          padding: '3px 11px',
-                          width: '8px',
-                          textAlign: 'center',
-                          backgroundColor: `${item.rounded}`,
-                        }}
-                        key={data.id}>
-                        {item.id}
+                      <div style={{ margin: 'auto 0' }}>
+                        <div
+                          style={{
+                            margin: '0px 10px',
+                            borderRadius: '18px',
+                            padding: '3px 11px',
+                            width: '8px',
+                            textAlign: 'center',
+                            backgroundColor: `${item.rounded}`,
+                          }}
+                          key={data.id}>
+                          {item.id}
+                        </div>
                       </div>
-                      <div style={{ margin: 'auto 10px', color: `${item.color}` }} key={data.id}>
+                      <div
+                        className={styles.leaderboardItemTitle}
+                        style={{ margin: 'auto 10px', color: `${item.color}` }}
+                        key={data.id}>
                         {item.title}
                       </div>
                     </div>
-                    <div style={{ margin: 'auto 10px', color: `${item.color}` }} key={data.id}>
+                    <div
+                      className={styles.leaderboardItemTitle}
+                      style={{ margin: 'auto 10px', color: `${item.color}` }}
+                      key={data.id}>
                       {item.percentage}%
                     </div>
                   </li>

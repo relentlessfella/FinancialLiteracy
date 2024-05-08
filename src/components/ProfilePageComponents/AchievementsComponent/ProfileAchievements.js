@@ -1,8 +1,7 @@
 import React from 'react';
-// import { alfaSlabOne } from '@/app/main/page';
 import { alfaSlabOne } from '@/fonts';
+import { poppins } from '@/fonts';
 import styles from './component.module.css';
-import { poppins } from '@/app/login/page';
 import {
   CircularProgressbar,
   CircularProgressbarWithChildren,

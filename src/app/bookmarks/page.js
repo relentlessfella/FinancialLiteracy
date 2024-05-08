@@ -5,16 +5,19 @@ import styles from './page.module.css';
 import { alfaSlabOne } from '@/fonts';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
-import { CourseCard } from '@/components/CourseCard/CourseCard';
+import { CourseCard } from '@/components/CourseCard/CourseCard1';
 import Loader from '@/components/Loader/Loader2';
+import { getUserFromLocalCookie } from '@/lib/auth';
 
 const Bookmarks = () => {
   const router = useRouter();
+  const { id } = getUserFromLocalCookie();
   const [data, setData] = useState(null);
+
   const fetchBookmarks = async () => {
     const response = await axios({
       method: 'get',
-      url: 'http://86.107.44.136:8000/courses/course/get_bookmark/?user_id=1',
+      url: `http://localhost:8000/courses/course/get_bookmark/?user_id=${id}`,
       headers: {
         'Content-Type': 'application/json',
       },
@@ -23,7 +26,11 @@ const Bookmarks = () => {
   };
 
   useEffect(() => {
-    fetchBookmarks();
+    if (id === undefined) {
+      return router.push('login');
+    } else {
+      fetchBookmarks();
+    }
   }, []);
 
   if (data === null) {
@@ -32,6 +39,13 @@ const Bookmarks = () => {
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           <Loader />
         </div>
+      </ProfileLayout>
+    );
+  }
+  if (data.length === 0) {
+    return (
+      <ProfileLayout>
+        <div>You do not have bookmarks</div>
       </ProfileLayout>
     );
   } else {

@@ -7,7 +7,7 @@ import ImageRating from '@/components/ImageRating/ImageRating';
 import { nunito } from '@/fonts';
 import play from '../../../public/assets/play.svg';
 import axios from 'axios';
-import { useRouter } from 'next/navigation';
+import { redirect, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import styles from './component.module.css';
 import { useMainContext } from '@/contexts/ContextProvider/ContextProvider';
@@ -35,7 +35,7 @@ const CardItem = ({ data, isLoading }) => {
             <div className={styles.textWrapper}>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <div className={`${nunito.className} ${styles.cardTitle}`}>{item.name}</div>
-                <div style={{ display: 'flex' }}>
+                {/* <div style={{ display: 'flex' }}>
                   <Image
                     src={play}
                     style={{ marginTop: 'auto', marginBottom: 'auto', marginRight: '5px' }}
@@ -44,13 +44,18 @@ const CardItem = ({ data, isLoading }) => {
                   <div style={{ color: '#333333', marginTop: 'auto', marginBottom: 'auto' }}>
                     10x Lesson
                   </div>
-                </div>
+                </div> */}
               </div>
               <div className={`${nunito.className} ${styles.cardDescription}`}>
                 {item.description}
               </div>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
               <div>
                 <div>
                   <ImageRating rating={item.rating} />

@@ -1,9 +1,8 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-// import { alfaSlabOne } from '@/app/main/page';
 import { alfaSlabOne } from '@/fonts';
 import styles from '../page.module.css';
-import backButton from '../../../../../../public/assets/courseBackButton.svg';
+import backButton from '@assets/courseBackButton.svg';
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
 

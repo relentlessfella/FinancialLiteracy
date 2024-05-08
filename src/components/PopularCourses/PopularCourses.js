@@ -21,7 +21,7 @@ const PopularCourses = () => {
       setIsLoading(true);
       const response = await axios({
         method: 'get',
-        url: 'http://86.107.44.136:8000/courses/course',
+        url: 'http://localhost:8000/courses/course',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -70,7 +70,7 @@ const PopularCourses = () => {
             <div className={styles.textWrapper}>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <div className={`${nunito.className} ${styles.cardTitle}`}>{item.name}</div>
-                <div style={{ display: 'flex' }}>
+                {/* <div style={{ display: 'flex' }}>
                   <Image
                     src={play}
                     style={{ marginTop: 'auto', marginBottom: 'auto', marginRight: '5px' }}
@@ -79,7 +79,7 @@ const PopularCourses = () => {
                   <div style={{ color: '#333333', marginTop: 'auto', marginBottom: 'auto' }}>
                     10x Lesson
                   </div>
-                </div>
+                </div> */}
               </div>
               <div className={`${nunito.className} ${styles.cardDescription}`}>
                 {item.description}

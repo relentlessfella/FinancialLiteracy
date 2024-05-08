@@ -1,32 +1,19 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import styles from '../page.module.css';
-// import { alfaSlabOne } from '../../main/page';
 import { alfaSlabOne } from '@/fonts';
-import backButton from '../../../../public/assets/courseBackButton.svg';
+import backButton from '@assets/courseBackButton.svg';
 import Image from 'next/image';
 import axios from 'axios';
-import coinTeacher from '../../../../public/assets/coinTeacher.png';
+import coinTeacher from '@assets/coinTeacher.png';
 
 const LessonPage = ({ params }) => {
   const [data, setData] = useState(null);
-  // const fetchLesson = async () => {
-  //   const response = await axios({
-  //     method: 'GET',
-  //     url: `http://86.107.44.136:8000/courses/lesson/${params.id}`,
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //   });
-  //   setData(response.data);
-  //   console.log(response.data);
-  // };
-
   useEffect(() => {
     const fetchLesson = async () => {
       const response = await axios({
         method: 'GET',
-        url: `http://86.107.44.136:8000/courses/lesson/${params.id}`,
+        url: `http://localhost:8000/courses/lesson/${params.id}`,
         headers: {
           'Content-Type': 'application/json',
         },
@@ -42,7 +29,7 @@ const LessonPage = ({ params }) => {
     try {
       const response = await axios({
         method: 'POST',
-        url: `http://86.107.44.136:8000/progress/course_progress/${params.id}/complete_lesson/?user_id=1`,
+        url: `http://localhost:8000/progress/course_progress/${params.id}/complete_lesson/?user_id=1`,
         headers: {
           'Content-Type': 'application/json',
         },

@@ -3,12 +3,11 @@ import { useRouter } from 'next/navigation';
 import React, { useState, useEffect } from 'react';
 import styles from './page.module.css';
 import Image from 'next/image';
-import backButton from '../../../../../public/assets/courseBackButton.svg';
 import axios from 'axios';
-import { alfaSlabOne } from '@/app/main/page';
-import { poppins } from '@/app/login/page';
-import noResult from '../../../../../public/assets/NoResults.jpg';
+import { poppins } from '@/fonts';
+import noResult from '@assets/NoResults.jpg';
 import QuizLayout from './QuizLayout/QuizLayout';
+import Loader from '@/components/Loader/Loader2';
 
 const QuizPage = ({ params }) => {
   const [data, setData] = useState(null);
@@ -19,31 +18,12 @@ const QuizPage = ({ params }) => {
   const id = params.id;
   console.log(id);
   const [answers, setAnswers] = useState({});
-  // const fetchAllCards = async () => {
-  //   try {
-  //     const response = await axios({
-  //       method: 'get',
-  //       url: `http://86.107.44.136:8000/courses/quiz/`,
-  //       params: {
-  //         course_id: id,
-  //         page: 1,
-  //       },
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //     });
-  //     setData(response.data);
-  //   } catch (error) {
-  //     throw error;
-  //   }
-  // };
-
   useEffect(() => {
     const fetchAllCards = async () => {
       try {
         const response = await axios({
           method: 'get',
-          url: `http://86.107.44.136:8000/courses/quiz/`,
+          url: `http://localhost:8000/courses/quiz/`,
           params: {
             course_id: id,
             page: 1,
@@ -61,7 +41,7 @@ const QuizPage = ({ params }) => {
     window.scrollTo(0, 0);
   }, []);
   useEffect(() => {
-    localStorage.clear();
+    localStorage.removeItem('answers');
   }, []);
   useEffect(() => {
     const storedAnswers = JSON.parse(localStorage.getItem('answers'));
@@ -136,7 +116,7 @@ const QuizPage = ({ params }) => {
       const vals = Object.values(parseAns);
       const response = await axios({
         method: 'post',
-        url: `http://86.107.44.136:8000/progress/quiz_progress/${id}/submit/`,
+        url: `http://localhost:8000/progress/quiz_progress/${id}/submit/`,
         params: {
           user_id: 1,
         },
@@ -155,7 +135,11 @@ const QuizPage = ({ params }) => {
     }
   };
   if (data === null) {
-    return <div>{params.id}</div>;
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <Loader />
+      </div>
+    );
   } else if (data.count === 0) {
     return (
       <div style={{ textAlign: 'center', fontSize: '28px', marginTop: '100px', opacity: '0.9' }}>

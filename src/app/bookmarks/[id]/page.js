@@ -2,19 +2,19 @@
 import React, { useEffect, useState } from 'react';
 import ProfileLayout from '@/components/ProfileLayout/ProfileLayout';
 import styles from '../page.module.css';
-// import { alfaSlabOne } from '../../main/page';
-import { alfaSlabOne } from '@/fonts';
-import { poppins } from '@/app/login/page';
+import { alfaSlabOne, poppins } from '@/fonts';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
+import { getUserFromLocalCookie } from '@/lib/auth';
 
 const Bookmarks = ({ params }) => {
   const [data, setData] = useState(null);
+  const { id } = getUserFromLocalCookie();
   const router = useRouter();
   const fetchBookmarks = async () => {
     const response = await axios({
       method: 'get',
-      url: `http://86.107.44.136:8000/courses/course/get_bookmark/?user_id=${params.id}`,
+      url: `http://localhost:8000/courses/course/get_bookmark/?user_id=${id}`,
       headers: {
         'Content-Type': 'application/json',
       },

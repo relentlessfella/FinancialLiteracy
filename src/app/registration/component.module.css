@@ -1,0 +1,75 @@
+/* .registration_card {
+  -webkit-box-shadow: 0px 0px 15px 0px rgba(34, 60, 80, 0.28);
+  -moz-box-shadow: 0px 0px 15px 0px rgba(34, 60, 80, 0.28);
+  box-shadow: 0px 0px 15px 0px rgba(34, 60, 80, 0.28);
+} */
+.main {
+  display: flex;
+  justify-content: center;
+  padding: 0 30px;
+  height: 100vh;
+}
+.formWrapper {
+  display: flex;
+  margin: auto 0;
+  -webkit-box-shadow: 0px 0px 15px 0px rgba(34, 60, 80, 0.28);
+  -moz-box-shadow: 0px 0px 15px 0px rgba(34, 60, 80, 0.28);
+  box-shadow: 0px 0px 15px 0px rgba(34, 60, 80, 0.28);
+  border-radius: 45px;
+  padding: 60px 25px;
+  width: 500px;
+  height: 600px;
+}
+.form {
+  margin: auto;
+  max-width: 800px;
+  width: 100%;
+}
+
+.submit {
+  width: 100%;
+  background-color: #23afd8;
+  border-radius: 13px;
+  height: 40px;
+  font-family: var(--font-poppins);
+}
+
+.welcomeText {
+  font-family: var(--font-poppins);
+  font-size: 24px;
+  text-align: center;
+  font-weight: 600;
+}
+.formText {
+  text-align: center;
+  font-family: var(--font-poppins);
+}
+
+.imageWrapper {
+  margin: auto 0;
+  margin-left: 50px;
+  width: 600px;
+  height: auto;
+}
+.inputPassword {
+  height: 50px;
+}
+
+.emailInput {
+  height: 50px;
+}
+
+@media (max-width: 768px) {
+  .imageWrapper {
+    display: none;
+  }
+  .welcomeText {
+    margin-bottom: 50px;
+  }
+}
+
+@media (max-width: 425px) {
+  .welcomeText {
+    font-size: 18px;
+  }
+}

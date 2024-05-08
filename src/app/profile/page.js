@@ -5,7 +5,6 @@ import Image from 'next/image';
 import webIcon from '../../../public/assets/web.svg';
 import notificationsIcon from '../../../public/assets/profileIcons/notificationIcon.svg';
 import avatar from '../../../public/assets/avatar.svg';
-// import { alfaSlabOne } from '../main/page';
 import { alfaSlabOne } from '@/fonts';
 import style from './page.module.css';
 import ImageRating from '@/components/ImageRating/ImageRating';
@@ -34,7 +33,7 @@ const Profile = () => {
             </div>
             <ProfileForm />
             <ProfileAchievements />
-            <ProfileProgress />
+            {/* <ProfileProgress /> */}
           </div>
         </div>
       </div>

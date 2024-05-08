@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react';
 import styles from './page.module.css';
 import Image from 'next/image';
 import { SingleGameCard } from '@/components/SingleGameCard/SingleGameCard';
-// import { inter } from '../main/page';
 import { inter } from '@/fonts';
+import Header from '@/components/Header/Header';
 
 const Game = () => {
   const [cards, setCards] = useState([]);
@@ -64,23 +64,26 @@ const Game = () => {
     shuffleCards();
   }, []);
   return (
-    <div className={`${styles.main} ${inter.variable}`}>
-      <div className={styles.game}>
-        <button className={styles.startButton} onClick={shuffleCards}>
-          New Game
-        </button>
-        <div className={styles.cardGrid}>
-          {cards.map((image, index) => (
-            <SingleGameCard
-              key={index}
-              image={image}
-              handleChoice={handleChoice}
-              flipped={image === choiceOne || image === choiceTwo || image.matched}
-              disabled={disabled}
-            />
-          ))}
+    <div>
+      <Header />
+      <div className={`${styles.main} ${inter.variable}`}>
+        <div className={styles.game}>
+          <button className={styles.startButton} onClick={shuffleCards}>
+            New Game
+          </button>
+          <div className={styles.cardGrid}>
+            {cards.map((image, index) => (
+              <SingleGameCard
+                key={index}
+                image={image}
+                handleChoice={handleChoice}
+                flipped={image === choiceOne || image === choiceTwo || image.matched}
+                disabled={disabled}
+              />
+            ))}
+          </div>
+          {/* <p>{turns}</p> */}
         </div>
-        {/* <p>{turns}</p> */}
       </div>
     </div>
   );

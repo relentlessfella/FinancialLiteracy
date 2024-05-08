@@ -5,6 +5,7 @@ import Image from 'next/image';
 import courseImg from '../../../public/assets/profileCourses/mycoursepic.png';
 import ProgressBar from '../ProgressBar/ProgressBar';
 import play from '../../../public/assets/profileCourses/playCourse.svg';
+import playActive from '../../../public/assets/profileCourses/playWhite.svg';
 
 export const CourseCard = ({ data }) => {
   const router = useRouter();
@@ -17,26 +18,11 @@ export const CourseCard = ({ data }) => {
   return (
     <ul className={styles.main}>
       {data.map((item) => (
-        <li className={styles.card}>
+        <li className={styles.card} key={item.id}>
           <Image src={courseImg} className={styles.courseImage} />
-          <button
-            onClick={() => router.push(`/course/${item.id}`)}
-            style={{
-              position: 'relative',
-              bottom: '150px',
-              left: '95px',
-              color: '#A2BF00',
-              display: 'flex',
-              userSelect: 'none',
-              cursor: 'pointer',
-              border: 'none',
-              justifyContent: 'center',
-              borderRadius: '15px',
-              fontWeight: '600',
-              width: '110px',
-              height: '40px',
-            }}>
-            <Image src={play} style={{ margin: 'auto 7px' }} />
+          <button onClick={() => router.push(`/course/${item.id}`)} className={styles.courseButton}>
+            <Image src={play} className={styles.playInactive} />
+            <Image src={playActive} className={styles.playActiveImg} />
             <div style={{ margin: 'auto 0' }}>Continue</div>
           </button>
           <div className={styles.progressWrapper}>

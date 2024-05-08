@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './component.module.css';
 import Image from 'next/image';
+import inactive from '../../../public/assets/game/inactive1.png';
 
 export const SingleGameCard = ({ image, handleChoice, flipped, disabled }) => {
   const handleClick = () => {
@@ -10,10 +11,7 @@ export const SingleGameCard = ({ image, handleChoice, flipped, disabled }) => {
   };
   return (
     <div className={styles.card}>
-      <div
-        style={{ width: '250px' }}
-        onClick={handleClick}
-        className={flipped ? styles.flipped : ''}>
+      <div onClick={handleClick} className={flipped ? styles.flipped : styles.cardInner}>
         <Image
           height={250}
           width={250}
@@ -26,7 +24,8 @@ export const SingleGameCard = ({ image, handleChoice, flipped, disabled }) => {
         <Image
           height={250}
           width={250}
-          src={'/assets/game/inactive1.png'}
+          // layout="responsive"
+          src={inactive}
           alt={'Card back'}
           style={{ backgroundColor: '#D9D9D9' }}
           className={styles.back}

@@ -3,19 +3,19 @@ import React, { useState } from 'react';
 import styles from './page.module.css';
 import QuizLayout from '../QuizLayout/QuizLayout';
 import Image from 'next/image';
-import sm1 from '../../../../../../public/assets/feedbackImages/sm1.svg';
-import sm2 from '../../../../../../public/assets/feedbackImages/sm2.svg';
-import sm3 from '../../../../../../public/assets/feedbackImages/sm3.svg';
-import sm4 from '../../../../../../public/assets/feedbackImages/sm4.svg';
-import sm5 from '../../../../../../public/assets/feedbackImages/sm5.svg';
-import sml1 from '../../../../../../public/assets/feedbackImages/sml1.svg';
-import sml2 from '../../../../../../public/assets/feedbackImages/sml2.svg';
-import sml3 from '../../../../../../public/assets/feedbackImages/sml3.svg';
-import sml4 from '../../../../../../public/assets/feedbackImages/sml4.svg';
-import sml5 from '../../../../../../public/assets/feedbackImages/sml5.svg';
-import { poppins } from '@/app/login/page';
-import prev from '../../../../../../public/assets/feedbackImages/prevArrow.svg';
-import next from '../../../../../../public/assets/feedbackImages/nextArrow.svg';
+import sm1 from '@assets/feedbackImages/sm1.svg';
+import sm2 from '@assets/feedbackImages/sm2.svg';
+import sm3 from '@assets/feedbackImages/sm3.svg';
+import sm4 from '@assets/feedbackImages/sm4.svg';
+import sm5 from '@assets/feedbackImages/sm5.svg';
+import sml1 from '@assets/feedbackImages/sml1.svg';
+import sml2 from '@assets/feedbackImages/sml2.svg';
+import sml3 from '@assets/feedbackImages/sml3.svg';
+import sml4 from '@assets/feedbackImages/sml4.svg';
+import sml5 from '@assets/feedbackImages/sml5.svg';
+import { poppins } from '@/fonts';
+import prev from '@assets/feedbackImages/prevArrow.svg';
+import next from '@assets/feedbackImages/nextArrow.svg';
 import axios from 'axios';
 import Slider from 'react-slick';
 import { useParams } from 'next/navigation';
@@ -63,7 +63,7 @@ const Feedback = () => {
     try {
       const response = await axios({
         method: 'put',
-        url: `http://86.107.44.136:8000/courses/feedback/${params.id}/send_feedback/?user_id=1`,
+        url: `http://localhost:8000/courses/feedback/${params.id}/send_feedback/?user_id=1`,
         headers: {
           'Content-Type': 'application/json',
         },

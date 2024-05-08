@@ -13,10 +13,18 @@ const ContactUs = () => {
     <div className={styles.main}>
       <div className={styles.container}>
         <div className={styles.leftBlock}>
-          <Image src={logo} alt="Logo Icon" />
+          {/* <Image src={logo} alt="Logo Icon" /> */}
+          <div
+            style={{
+              textTransform: 'uppercase',
+              color: '#fff',
+              textAlign: 'center',
+              fontSize: '22px',
+            }}>
+            Our Slogan
+          </div>
           <div className={styles.ContactUsDescription}>
-            “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua.”
+            “Spend Smart, Save Smarter: Fun with Finance!”
           </div>
         </div>
         <div className={styles.middleLineHorizontal}></div>
@@ -26,11 +34,9 @@ const ContactUs = () => {
           <div className={styles.wrapper}>
             <div>
               <div className={styles.emailWrapper}>
-                <div style={{ display: 'flex', margin: '0 auto', justifyContent: 'center' }}>
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
                   <Image src={mail} style={{ marginRight: '10px' }} alt="Mail Icon" />
-                  <div style={{ color: '#fff', fontSize: '13px', fontWeight: '200' }}>
-                    email@gmail.com
-                  </div>
+                  <div style={{ color: '#fff', fontWeight: '200' }}>finlit@gmail.com</div>
                 </div>
               </div>
               <div className={styles.phoneNumber}>
@@ -39,7 +45,7 @@ const ContactUs = () => {
                   style={{ margin: 'auto 0', marginRight: '10px' }}
                   alt="Phone Icon"
                 />
-                <div style={{ color: '#fff' }}>+77777777</div>
+                <div style={{ color: '#fff' }}>+7(707)-518-91-47</div>
               </div>
             </div>
             <div className={styles.images}>

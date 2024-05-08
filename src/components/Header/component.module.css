@@ -23,7 +23,7 @@
   position: sticky;
   top: 0;
   left: 0;
-  overflow: hidden;
+  /* overflow: hidden; */
   animation-name: scrolling-header;
   animation-fill-mode: both;
   animation-timeline: scroll();
@@ -61,23 +61,137 @@
   display: flex;
   list-style: none;
 }
+
+.MenubarRoot {
+  display: flex;
+  background-color: white;
+  padding: 3px;
+  border-radius: 6px;
+  box-shadow: 0 2px 10px var(--black-a7);
+}
+
+.MenubarTrigger {
+  font-family: var(--font-poppins);
+  padding: 8px 27px;
+  outline: none;
+  user-select: none;
+  font-weight: 500;
+  line-height: 1;
+  border: none;
+  background-color: #fff;
+  border-radius: 4px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2px;
+}
+
+.links {
+  background-color: transparent;
+  border: none;
+  margin-left: 10px;
+  padding: 0;
+  font-family: var(--font-poppins);
+}
+/* .MenubarTrigger[data-highlighted],
+.MenubarTrigger[data-state='open'] {
+  background-color: #a2bf00;
+} */
+
+.MenubarContent,
+.MenubarSubContent {
+  min-width: 220px;
+  background-color: white;
+  border-radius: 6px;
+  padding: 5px;
+  box-shadow: 0px 10px 38px -10px rgba(22, 23, 24, 0.35), 0px 10px 20px -15px rgba(22, 23, 24, 0.2);
+  animation-duration: 400ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+  z-index: 10000000;
+}
+
+.MenubarItem,
+.MenubarSubTrigger,
+.MenubarCheckboxItem,
+.MenubarRadioItem {
+  all: unset;
+  font-size: 13px;
+  line-height: 1;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  height: 25px;
+  padding: 0 10px;
+  position: relative;
+  user-select: none;
+}
+
+.MenubarItem:hover {
+  background-color: #a2bf00;
+}
+
+.MenubarItem.inset,
+.MenubarSubTrigger.inset,
+.MenubarCheckboxItem.inset,
+.MenubarRadioItem.inset {
+  padding-left: 20px;
+}
+
+/* .MenubarItem[data-state='open'],
+.MenubarSubTrigger[data-state='open'] {
+  background-color: #a2bf00;
+  color: '#aa2bf00';
+} */
+
+.MenubarItemIndicator {
+  position: absolute;
+  left: 0;
+  width: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.MenubarSeparator {
+  height: 1px;
+  background-color: black;
+  margin: 5px;
+}
+
+.RightSlot {
+  margin-left: auto;
+  padding-left: 20px;
+  color: var(--mauve-9);
+}
+
+[data-highlighted] > .RightSlot {
+  color: white;
+}
+
+[data-disabled] > .RightSlot {
+  color: var(--mauve-8);
+}
+
 @media (max-width: 1280px) {
   /* .headerWrapper { */
   /* justify-content: flex-end; */
   /* } */
 }
-
-@media (max-width: 768px) {
-  .headerInner1 {
+@media (max-width: 900px) {
+  .ul {
     display: none;
   }
-  .ul {
+  .headerInner1 {
     display: none;
   }
   .hamburger {
     display: flex;
     /* z-index: 10; */
   }
+}
+@media (max-width: 768px) {
   .headerWrapper {
     justify-content: flex-start;
   }

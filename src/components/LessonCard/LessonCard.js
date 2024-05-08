@@ -6,7 +6,7 @@ import { useIsMobile } from '@/configs/axios/isMobile';
 // const fetchLessonData = async () => {
 //   const params = useParams();
 //   const response = await axios.get(
-//     `http://86.107.44.136:8000/courses/lesson/${params.id}/get_lessons/`,
+//     `http://localhost:8000/courses/lesson/${params.id}/get_lessons/`,
 //   );
 //   return response.data;
 // };
@@ -37,7 +37,7 @@ const LessonCard = () => {
   };
   const fetchLessonData = async () => {
     const response = await axios.get(
-      `http://86.107.44.136:8000/courses/lesson/${params.id}/get_lessons/`,
+      `http://localhost:8000/courses/lesson/${params.id}/get_lessons/`,
     );
     return response.data;
   };

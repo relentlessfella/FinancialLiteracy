@@ -7,8 +7,8 @@
   width: 750px;
   height: 400px;
   padding: 50px;
-  box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.35);
-  -webkit-box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.35);
-  -moz-box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.35);
+  box-shadow: 0px 0px 38px 20px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0px 0px 38px 20px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 0px 38px 20px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
 }

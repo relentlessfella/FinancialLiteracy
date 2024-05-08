@@ -35,10 +35,7 @@
     grid-gap: 20px;
   }
 }
-@media (max-width: 585px) {
+/* @media (max-width: 585px) {
   .cardGrid {
-    margin-top: 40px;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 10px;
   }
-}
+} */

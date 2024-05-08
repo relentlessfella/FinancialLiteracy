@@ -1,222 +1,149 @@
 'use client';
 import React, { useState } from 'react';
-import Image from 'next/image';
-import google from '../../../public/assets/google.svg';
-import hideIcon from '../../../public/assets/hideIcon.svg';
-import { Poppins } from 'next/font/google';
-import logo from '../../../public/assets/logo.svg';
-import './login.css';
-import Link from 'next/link';
-import axios from 'axios';
-import eye from '../../../public/assets/eye.svg';
+import { Button, Checkbox, Form, Input } from 'antd';
 import { useRouter, redirect } from 'next/navigation';
-
-export const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['200', '300', '400', '500', '600', '700', '800'],
-  variable: '--font-poppins',
-});
+import loginImg from '../../../public/assets/login/loginPageImg.png';
+import axios from 'axios';
+import styles from './component.module.css';
+import Link from 'next/link';
+import Image from 'next/image';
+import { poppins } from '@/fonts';
+import { setTokenUser, setTokenJWT } from '@/lib/auth';
 
 const Login = () => {
-  const [passwordVisible, setPasswordVisible] = useState(false);
-  const [password, setPassword] = useState('');
   const [mailValue, setMailValue] = useState(null);
   const [userPassword, setUserPassword] = useState(null);
   const [redirectState, setRedirectState] = useState(false);
-  const router = useRouter();
-  const togglePasswordVisibility = () => {
-    setPasswordVisible(!passwordVisible);
+  const [activeUserData, setActiveUserData] = useState(null);
+  const onFinish = (values) => {
+    handleSubmit({ values });
   };
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-    setUserPassword(e.target.value);
+  const onFinishFailed = (errorInfo) => {
+    console.log('Failed:', errorInfo);
   };
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+
+  const handleSubmit = async ({ values }) => {
     try {
       const response = await axios({
         method: 'POST',
-        url: 'http://86.107.44.136:8000/user/login/',
+        url: 'http://localhost:8000/user/login/',
         headers: {
           'Content-Type': 'application/json',
         },
         data: {
-          email: mailValue,
-          password: userPassword,
+          email: values.email,
+          password: values.password,
         },
-        withCredentials: true,
       });
-      if (response.data) {
+      if (response.data.jwt) {
+        fetchActiveUser();
+        setTokenJWT(response.data);
         setRedirectState(true);
-        // localStorage.setItem('AuthToken', response.data.jwt);
-        console.log('Success: ', response.data);
+        console.log('fewfdsgrev', response);
+      } else if (response.data.message === 'No such user') {
+        alert('Invalid credentials');
       } else {
-        console.log(
-          'Error: ',
-          response.data.message,
-          ' Mail: ',
-          mailValue,
-          ' Pass: ',
-          userPassword,
-        );
+        alert('Error');
       }
     } catch (error) {
       throw error;
     }
   };
+  const fetchActiveUser = async () => {
+    try {
+      const response = await axios.get('http://localhost:8000/user/active_user/', {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        withCredentials: true,
+      });
+
+      if (response.data) {
+        console.log(response.data);
+        setTokenUser(response.data);
+        return response.data;
+      } else {
+        throw new Error('No data returned');
+      }
+    } catch (error) {
+      console.error('Error fetching active user:', error);
+      throw error;
+    }
+  };
 
   if (redirectState) {
-    redirect('/');
+    return redirect('/');
   }
-
   return (
-    <div
-      style={{
-        maxWidth: '1500px',
-        width: '100%',
-        padding: '20px 190px 20px 50px',
-        height: '100%',
-        margin: '0 auto',
-      }}>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <Image src={logo} alt="Login Logo" onClick={() => router.push('/')} />
-        </div>
-        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-          <div
-            style={{
-              border: '1px solid #D9D9D9',
-              width: '600px',
-              height: '850px',
-              borderRadius: '50px',
-            }}
-            className="login_card">
-            <div style={{ padding: '130px 50px' }}>
-              <div style={{ textAlign: 'center', fontSize: '24px' }}>
-                Welcome back to <br /> Junior Finance Academy!
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <div style={{ marginTop: 'auto', marginBottom: 'auto' }}>
-                  <button
-                    style={{
-                      padding: '10px',
-                      width: '500px',
-                      marginTop: '40px',
-                      display: 'flex',
-                      justifyContent: 'center',
-                      borderRadius: '10px',
-                      border: '1px solid #CBCAD7',
-                      backgroundColor: '#fff',
-                    }}>
-                    <div
-                      style={{ margin: 'auto 10px', fontSize: '14px' }}
-                      className={poppins.className}>
-                      Continue with Google
-                    </div>
-                    <Image style={{ margin: 'auto 0' }} src={google} alt="google logo" />
-                  </button>
-                </div>
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'center', marginTop: '30px' }}>
-                <div
-                  style={{
-                    borderBottom: '1px solid #CBCAD7',
-                    width: '150px',
-                    height: '0px',
-                    margin: 'auto 0',
-                  }}></div>
-                <div style={{ margin: '0 15px' }}>Or</div>
-                <div
-                  style={{
-                    borderBottom: '1px solid #CBCAD7',
-                    width: '150px',
-                    height: '0px',
-                    margin: 'auto 0',
-                  }}></div>
-              </div>
-              <div style={{ margin: '30px 0' }}>
-                <div>Email Address</div>
-                <input
-                  // value={setMailValue}
-                  style={{
-                    border: '1px solid #CBCAD7',
-                    width: '468px',
-                    borderRadius: '10px',
-                    padding: '15px',
-                    outline: 'none',
-                    cursor: 'pointer',
-                  }}
-                  placeholder="Enter your email address"
-                  onChange={(e) => setMailValue(e.target.value)}
-                />
-              </div>
-              <div style={{ margin: '30px 0' }}>
-                <div>Password</div>
-                <div
-                  style={{
-                    border: '1px solid #CBCAD7',
-                    width: '496px',
-                    borderRadius: '10px',
-                    padding: '1px',
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                  }}>
-                  <div style={{ margin: 'auto 0', width: '100%' }}>
-                    <input
-                      // value={setUserPassword}
-                      type={passwordVisible ? 'text' : 'password'}
-                      value={password}
-                      onChange={handlePasswordChange}
-                      placeholder="Password"
-                      style={{
-                        width: '100%',
-                        padding: '14px',
-                        border: 'none',
-                        borderRadius: '10px',
-                        outline: 'none',
-                        cursor: 'pointer',
-                      }}
-                      // onChange={(e) => setUserPassword(e.target.value)}
-                    />
-                  </div>
-                  <div
-                    style={{ margin: 'auto 5px', width: '21px', height: '25px' }}
-                    onClick={togglePasswordVisibility}>
-                    {passwordVisible ? (
-                      <Image src={eye} alt="Visibility Icon" width={21} height={25} />
-                    ) : (
-                      <Image src={hideIcon} alt="Hide Icon" width={21} height={25} />
-                    )}
-                  </div>
-                </div>
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                <div>Forgot password?</div>
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'center', margin: '30px 0' }}>
-                <button
-                  style={{
-                    width: '480px',
-                    padding: '15px',
-                    borderRadius: '40px',
-                    color: '#fff',
-                    backgroundColor: '#FE602F',
-                    border: 'none',
-                    fontSize: '18px',
-                    cursor: 'pointer',
-                  }}
-                  onClick={handleSubmit}
-                  className={poppins.className}>
-                  Login
-                </button>
-              </div>
-              <div style={{ textAlign: 'center' }}>
-                Already have an account? <Link href={'/registration'}>Sign Up</Link>
-              </div>
-            </div>
+    <div className={`${styles.main} ${poppins.variable}`}>
+      <div className={styles.formWrapper}>
+        <Form
+          className={styles.form}
+          name="basic"
+          wrapperCol={{
+            span: 24,
+          }}
+          layout={null}
+          initialValues={{
+            remember: true,
+            layout: null,
+          }}
+          onFinish={onFinish}
+          onFinishFailed={onFinishFailed}
+          autoComplete="off">
+          <div className={styles.welcomeText}>
+            Welcome back to
+            <br /> Junior Finance Academy!
           </div>
-        </div>
-      </form>
+          <Form.Item
+            label="Email"
+            name="email"
+            style={{ width: '100%' }}
+            rules={[
+              {
+                required: true,
+                message: 'Please input your email address!',
+              },
+            ]}>
+            <Input className={styles.emailInput} placeholder="Enter your email address" />
+          </Form.Item>
+
+          <Form.Item
+            // className={styles.password}
+            style={{ width: '100%' }}
+            label="Password"
+            name="password"
+            rules={[
+              {
+                required: true,
+                message: 'Please input your password!',
+              },
+            ]}>
+            <Input.Password className={styles.inputPassword} placeholder="password" />
+          </Form.Item>
+
+          <Form.Item
+            wrapperCol={{
+              offset: 0,
+              span: 200,
+            }}>
+            <Button type="primary" htmlType="submit" className={styles.submit}>
+              Login
+            </Button>
+          </Form.Item>
+          <div className={styles.formText}>
+            Don&apos;t have an account?{' '}
+            <Link
+              href={'/registration'}
+              style={{ color: '#A2BF00', borderBottom: '1px solid  #A2BF00' }}>
+              Sign Up
+            </Link>
+          </div>
+        </Form>
+      </div>
+      <div className={styles.imageWrapper}>
+        <Image src={loginImg} layout="responsive" />
+      </div>
     </div>
   );
 };
