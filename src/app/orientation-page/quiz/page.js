@@ -1,9 +1,13 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { poppins } from '@/app/login/page';
+import { poppins } from '@/fonts';
 import styles from './page.module.css';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
+import Loader from '@/components/Loader/Loader2';
+import emptyBox from '@assets/empty-box.png';
+import Image from 'next/image';
+import Link from 'next/link';
 
 const OrientationQuiz = () => {
   const router = useRouter();
@@ -82,6 +86,7 @@ const OrientationQuiz = () => {
           },
         });
         setData(response.data);
+        console.log(response);
       } catch (error) {
         throw error;
       }
@@ -160,7 +165,37 @@ const OrientationQuiz = () => {
   };
 
   if (data === null) {
-    return <div style={{ textAlign: 'center' }}>Loading...</div>;
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <Loader />
+      </div>
+    );
+  }
+  if (data.results.length === 0) {
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center', marginTop: '70px' }}>
+        <div>
+          <Image src={emptyBox} width={300} height={300} />
+          <div style={{ color: '#fff', fontSize: '18px' }}>
+            Sorry orientation quizes not found ;(
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <Link
+              style={{
+                textDecoration: 'none',
+                color: '#fff',
+                backgroundColor: '#FE602F',
+                borderRadius: '10px',
+                padding: '5px 15px',
+                marginTop: '5px',
+              }}
+              href={'/'}>
+              Back
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
   } else {
     const handleNextAnswer = () => {
       // arrayAnswers.push(selectedAnswer);

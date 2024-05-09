@@ -2,18 +2,18 @@
 import React, { useEffect, useState } from 'react';
 import ProfileLayout from '@/components/ProfileLayout/ProfileLayout';
 import Image from 'next/image';
-import webIcon from '../../../../public/assets/web.svg';
-import profileImage from '../../../../public/assets/profileImage.png';
-import notificationIcon from '../../../../public/assets/profileIcons/notificationIcon.svg';
+import webIcon from '@assets/web.svg';
+import profileImage from '@assets/profileImage.png';
+import notificationIcon from '@assets/profileIcons/notificationIcon.svg';
 import styles from './component.module.css';
-import magnifier from '../../../../public/assets/magnifier.svg';
+import magnifier from '@assets/magnifier.svg';
 import axios from 'axios';
 import { inter } from '@/fonts';
 import { alfaSlabOne } from '@/fonts';
 import { useRouter } from 'next/navigation';
 import { useMainContext } from '@/contexts/ContextProvider/ContextProvider';
 import CourseModules from '@/components/CourseModules/CourseModules';
-import notFound from '../../../../public/assets/NoResults.jpg';
+import notFound from '@assets/NoResults.jpg';
 import { CourseCard } from '@/components/CourseCard/CourseCard1';
 import Loader from '@/components/Loader/Loader2';
 import { poppins } from '@/fonts';
@@ -70,6 +70,8 @@ const ProfileCourses = () => {
       fetchUserCourses();
     }
   }, []);
+
+
   if (data === null) {
     return (
       <ProfileLayout>
@@ -79,6 +81,9 @@ const ProfileCourses = () => {
       </ProfileLayout>
     );
   } else {
+    const filteredData = activeCourse === 1 ? data.filter(item => item.status === 'COMPLETED') :
+                      activeCourse === 2 ? data.filter(item => item.status === 'LEARNING') :
+                      data;
     return (
       <ProfileLayout>
         <div className={`${styles.profile_main} ${poppins.variable}`}>
@@ -100,10 +105,10 @@ const ProfileCourses = () => {
             </div>
           </div>
 
-          {activeCourse === 1 && data.length != 0 ? (
+          {data.length != 0  ? (
             <ul className={poppins.variable}>
               {console.log(data)}
-              <CourseCard data={data} />
+              <CourseCard data={filteredData} />
             </ul>
           ) : (
             <section className={styles.notFoundSection}>

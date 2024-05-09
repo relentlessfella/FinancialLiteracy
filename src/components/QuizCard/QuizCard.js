@@ -13,7 +13,7 @@ const fetchQuizData = async () => {
 const data = {
   title: 'Quiz',
   content:
-    'Lorem ipsum dolor sit amet consectetur. Elementum nisl duis tortor sed. Lorem ipsum dolor sit amet consect. Elementum nisl duis tortor sed. Lorem ipsum dolor sit amet consectetur. Elementum nisl duis tortor sed. Lorem ipsum dolor sit amet consectetur. Elementum nisl duis tortor sed.  ',
+    'Unlock your knowledge and test your understanding by taking our interactive quiz! Challenge yourself with questions tailored to the topics you have been learning.',
 };
 
 const QuizCard = ({ course_id }) => {

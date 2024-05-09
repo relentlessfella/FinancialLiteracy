@@ -1,0 +1,36 @@
+.main {
+  background-color: #a2bf00;
+}
+.container {
+  display: flex;
+  padding: 30px 100px;
+  color: #fff;
+}
+
+.lessonTitle {
+  font-size: 28px;
+}
+.lessonUnderTitle {
+  font-size: 36px;
+}
+.backButton {
+  margin-top: 7px;
+}
+.titles {
+  padding: 0 15px;
+}
+
+.mainChildren {
+  display: flex;
+  justify-content: center;
+}
+.button {
+  border-radius: 10px;
+  background-color: #fe8863;
+  width: 160px;
+  height: 50px;
+  border: none;
+  color: #fff;
+  margin: 15px 0;
+  font-size: 16px;
+}

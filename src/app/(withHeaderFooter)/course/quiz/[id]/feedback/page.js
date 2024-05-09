@@ -21,9 +21,13 @@ import Slider from 'react-slick';
 import { useParams } from 'next/navigation';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { useFetchUser } from '@/contexts/authContext/authContext';
+import { getUserFromLocalCookie } from '@/lib/auth';
 
 const Feedback = () => {
   const [keyIndex, setKeyIndex] = useState();
+  const { user, loading } = useFetchUser();
+  const { id } = getUserFromLocalCookie();
   const [active, setActive] = useState({
     option_1: false,
     option_2: false,
@@ -63,7 +67,7 @@ const Feedback = () => {
     try {
       const response = await axios({
         method: 'put',
-        url: `http://localhost:8000/courses/feedback/${params.id}/send_feedback/?user_id=1`,
+        url: `http://localhost:8000/courses/feedback/${params.id}/send_feedback/?user_id=${id}`,
         headers: {
           'Content-Type': 'application/json',
         },

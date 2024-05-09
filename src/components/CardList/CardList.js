@@ -29,8 +29,8 @@ const CardList = ({ fetchData, cardStyle, buttonStyle, buttonLink, constantData 
           data.map((item) => (
             <li className={styles.card} key={item.id}>
               <div style={cardStyle.title}>{item.name}</div>
-              <div style={cardStyle.content}>{item.content}</div>
               <div style={cardStyle.description}>{item.description}</div>
+              <div style={cardStyle.content}>{item.content}</div>
               <div style={cardStyle.footer}>
                 <div>{item.footerText}</div>
                 <button style={cardStyle.button} onClick={() => router.push(buttonLink(item.id))}>

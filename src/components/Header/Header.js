@@ -23,29 +23,29 @@ import * as Menubar from '@radix-ui/react-menubar';
 
 const Header = () => {
   const router = useRouter();
-  const { testData } = useMainContext();
-  // const [data, setData] = useState(null);
+  // const { testData } = useMainContext();
+  const [data, setData] = useState(null);
   const [toggleBurger, setToggleBurger] = useState(false);
   const { user, loading } = useFetchUser();
   const { username, balance } = getUserFromLocalCookie();
   const [showVector, setShowVector] = useState(false);
-
-  // const fetchUser = async () => {
-  //   try {
-  //     const response = await axios({
-  //       method: 'get',
-  //       url: 'http://localhost:8000/user/active_user/',
-  //       withCredentials: true,
-  //     });
-  //     console.log('header: ', response.data);
-  //     setData(response.data);
-  //   } catch (error) {
-  //     throw error;
-  //   }
-  // };
-  // useEffect(() => {
-  //   fetchUser();
-  // }, []);
+  const fetchUser = async () => {
+    try {
+      const response = await axios({
+        method: 'get',
+        url: 'http://localhost:8000/user/active_user/',
+        withCredentials: true,
+        
+      });
+      setData(response.data);
+      console.log(response.data);
+    } catch (error) {
+      throw error;
+    }
+  };
+  useEffect(() => {
+    fetchUser();
+  }, []);
 
   // if (data === null) {
   // if (username === undefined) {
@@ -174,8 +174,10 @@ const Header = () => {
               )}
             </div>
             <Image src={coin} width={30} height={30} alt="Balance coin icon" draggable={false} />
-            {user ? (
-              <div style={{ margin: '0 10px', fontWeight: '700', color: '#F0BE33' }}>{balance}</div>
+            {data ? (
+              <div style={{ margin: '0 10px', fontWeight: '700', color: '#F0BE33' }}>
+                {data.balance}
+              </div>
             ) : (
               ''
             )}

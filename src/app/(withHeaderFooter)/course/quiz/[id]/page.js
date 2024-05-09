@@ -8,15 +8,18 @@ import { poppins } from '@/fonts';
 import noResult from '@assets/NoResults.jpg';
 import QuizLayout from './QuizLayout/QuizLayout';
 import Loader from '@/components/Loader/Loader2';
+import { useFetchUser } from '@/contexts/authContext/authContext';
+import { getUserFromLocalCookie } from '@/lib/auth';
 
 const QuizPage = ({ params }) => {
+  const { id } = getUserFromLocalCookie();
   const [data, setData] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const answerType = ['a.', 'b.', 'c.', 'd.'];
   const router = useRouter();
-  const id = params.id;
-  console.log(id);
+  const course_id = params.id;
+  console.log(course_id);
   const [answers, setAnswers] = useState({});
   useEffect(() => {
     const fetchAllCards = async () => {
@@ -25,7 +28,7 @@ const QuizPage = ({ params }) => {
           method: 'get',
           url: `http://localhost:8000/courses/quiz/`,
           params: {
-            course_id: id,
+            course_id: course_id,
             page: 1,
           },
           headers: {
@@ -116,9 +119,9 @@ const QuizPage = ({ params }) => {
       const vals = Object.values(parseAns);
       const response = await axios({
         method: 'post',
-        url: `http://localhost:8000/progress/quiz_progress/${id}/submit/`,
+        url: `http://localhost:8000/progress/quiz_progress/${course_id}/submit/`,
         params: {
-          user_id: 1,
+          user_id: id,
         },
         data: {
           answers: vals,
@@ -131,7 +134,7 @@ const QuizPage = ({ params }) => {
       router.push(`${params.id}/feedback/`);
       console.log(response.data);
     } catch (error) {
-      throw error;
+      alert('Error');
     }
   };
   if (data === null) {
@@ -145,8 +148,8 @@ const QuizPage = ({ params }) => {
       <div style={{ textAlign: 'center', fontSize: '28px', marginTop: '100px', opacity: '0.9' }}>
         <Image alt="No Results" src={noResult} width={400} height={300} />
         <div>
-          Ooops we don&apos;t have
-          <br /> quiz on this course! XD
+          Sorry we don&apos;t have
+          <br /> quiz on this course
         </div>
       </div>
     );

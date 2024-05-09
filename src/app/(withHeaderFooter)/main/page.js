@@ -14,6 +14,8 @@ import { useRouter } from 'next/navigation';
 import Layout from '../layout';
 import Filter from '@/components/Filter/Filter';
 import { alfaSlabOne, inter } from '@/fonts';
+import { useFetchUser } from '@/contexts/authContext/authContext';
+import { getUserFromLocalCookie } from '@/lib/auth';
 
 const modules = [
   { id: 1, title: 'Level 1' },
@@ -24,9 +26,11 @@ const modules = [
 const MainPage = () => {
   const router = useRouter();
   const [data, setData] = useState(null);
-  const [userData, setUserData] = useState(null);
+  // const [userData, setUserData] = useState(null);
   const { category, activeModule, setActiveModule } = useMainContext();
   const [isLoading, setIsLoading] = useState(false);
+  const { user, loading } = useFetchUser();
+  const { id } = getUserFromLocalCookie();
   const mainCourseModule = {
     module: {
       padding: '10px 20px',
@@ -41,22 +45,22 @@ const MainPage = () => {
     },
   };
 
-  const fetchActiveUser = async () => {
-    try {
-      const response = await axios({
-        method: 'GET',
-        url: 'http://localhost:8000/user/active_user/',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        withCredentials: true,
-      });
-      setUserData(response.data);
-      console.log(response);
-    } catch (error) {
-      throw error;
-    }
-  };
+  // const fetchActiveUser = async () => {
+  //   try {
+  //     const response = await axios({
+  //       method: 'GET',
+  //       url: 'http://localhost:8000/user/active_user/',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       withCredentials: true,
+  //     });
+  //     setUserData(response.data);
+  //     console.log(response);
+  //   } catch (error) {
+  //     throw error;
+  //   }
+  // };
   useEffect(() => {
     const fetchAllCards = async () => {
       try {
@@ -88,8 +92,12 @@ const MainPage = () => {
         setIsLoading(false);
       }
     };
-    fetchActiveUser();
-    fetchAllCards();
+    // fetchActiveUser();
+    if (id === undefined) {
+      router.push('/login');
+    } else {
+      fetchAllCards();
+    }
   }, [category, activeModule]);
 
   return (

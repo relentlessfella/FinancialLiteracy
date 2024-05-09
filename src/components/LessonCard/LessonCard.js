@@ -3,14 +3,6 @@ import axios from 'axios';
 import { useParams } from 'next/navigation';
 import { useIsMobile } from '@/configs/axios/isMobile';
 
-// const fetchLessonData = async () => {
-//   const params = useParams();
-//   const response = await axios.get(
-//     `http://localhost:8000/courses/lesson/${params.id}/get_lessons/`,
-//   );
-//   return response.data;
-// };
-
 const LessonCard = () => {
   const params = useParams();
   const isMobile = useIsMobile();
@@ -45,11 +37,6 @@ const LessonCard = () => {
     <CardList
       fetchData={fetchLessonData}
       cardStyle={lessonStyles}
-      // buttonStyle={{
-
-      // }}
-      //   constantData={null}
-
       buttonLink={(id) => `/lesson/${id}`}
     />
   );

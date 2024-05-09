@@ -12,70 +12,71 @@ import QuizCard from '@/components/QuizCard/QuizCard';
 import { useRouter } from 'next/navigation';
 import bookmarkInactive from '../../../public/assets/bookmarkInactive.svg';
 import { poppins } from '@/fonts';
-
 import ProfileLayout from '@/components/ProfileLayout/ProfileLayout';
 import Loader from '@/components/Loader/Loader2';
 import Header from '@/components/Header/Header';
+import { getUserFromLocalCookie } from '@/lib/auth';
 
 const Leaderboard = () => {
-  const data = [
-    {
-      id: 1,
-      title: 'Quiz 3: Budgeting Mastery: Learning to Manage Your Money Effectively',
-      percentage: 100,
-      color: '#A2BF00',
-      rounded: '#A2BF00',
-    },
-    {
-      id: 2,
-      title: 'Quiz 5: Budgeting Mastery: Learning to Manage Your Money Effectively',
-      percentage: 95,
-      color: '#A2BF00',
-      rounded: '#A2BF00',
-    },
-    {
-      id: 3,
-      title: 'Quiz 1: Basic Understanding of Financial Literacy ',
-      percentage: 85,
-      color: '#A2BF00',
-      rounded: '#A2BF00',
-    },
-    {
-      id: 4,
-      title: 'Quiz 2: From A to Z in Money Matters: Financial Skills for Teens ',
-      percentage: 75,
-      color: '#858585',
-    },
-    {
-      id: 5,
-      title: 'Quiz 7: Budgeting Mastery: Learning to Manage Your Money Effectively ',
-      percentage: 70,
-      color: '#858585',
-    },
-    {
-      id: 6,
-      title: 'Quiz 4: Teen Investing: Smart Resource Allocation Skills ',
-      percentage: 65,
-      color: '#858585',
-    },
-  ];
-  // const [data, setData] = useState(null);
-  // useEffect(() => {
-  //   try {
-  //     const fetchLeaderboard = async () => {
-  //       const response = await axios({
-  //         method: 'get',
-  //         url: 'http://localhost:8000/progress/quiz_progress/leaderboard/?user_id=1',
-  //         headers: { 'Content-Type': 'application/json' },
-  //       });
-  //       setData(response.data);
-  //     };
-  //     fetchLeaderboard();
-  //   } catch (error) {
-  //     throw error;
-  //   }
-  // }, []);
-  // console.log(data);
+  // const data = [
+  //   {
+  //     id: 1,
+  //     title: 'Quiz 3: Budgeting Mastery: Learning to Manage Your Money Effectively',
+  //     percentage: 100,
+  //     color: '#A2BF00',
+  //     rounded: '#A2BF00',
+  //   },
+  //   {
+  //     id: 2,
+  //     title: 'Quiz 5: Budgeting Mastery: Learning to Manage Your Money Effectively',
+  //     percentage: 95,
+  //     color: '#A2BF00',
+  //     rounded: '#A2BF00',
+  //   },
+  //   {
+  //     id: 3,
+  //     title: 'Quiz 1: Basic Understanding of Financial Literacy ',
+  //     percentage: 85,
+  //     color: '#A2BF00',
+  //     rounded: '#A2BF00',
+  //   },
+  //   {
+  //     id: 4,
+  //     title: 'Quiz 2: From A to Z in Money Matters: Financial Skills for Teens ',
+  //     percentage: 75,
+  //     color: '#858585',
+  //   },
+  //   {
+  //     id: 5,
+  //     title: 'Quiz 7: Budgeting Mastery: Learning to Manage Your Money Effectively ',
+  //     percentage: 70,
+  //     color: '#858585',
+  //   },
+  //   {
+  //     id: 6,
+  //     title: 'Quiz 4: Teen Investing: Smart Resource Allocation Skills ',
+  //     percentage: 65,
+  //     color: '#858585',
+  //   },
+  // ];
+  const [data, setData] = useState(null);
+  const { id } = getUserFromLocalCookie();
+  useEffect(() => {
+    try {
+      const fetchLeaderboard = async () => {
+        const response = await axios({
+          method: 'get',
+          url: `http://localhost:8000/progress/quiz_progress/leaderboard/?user_id=${id}`,
+          headers: { 'Content-Type': 'application/json' },
+        });
+        setData(response.data);
+      };
+      fetchLeaderboard();
+    } catch (error) {
+      throw error;
+    }
+  }, []);
+  console.log(data);
   const [active, setActive] = useState(false);
   const router = useRouter();
   if (data === null) {
@@ -99,7 +100,7 @@ const Leaderboard = () => {
                     style={{ display: 'flex', fontWeight: '600', justifyContent: 'space-between' }}
                     className={styles.leaderboard_item}>
                     <div style={{ display: 'flex' }}>
-                      <div style={{ margin: 'auto 0' }}>
+                      <div style={{ margin: 'auto 0', borderRight: '1px solid #D9D9D9' }}>
                         <div
                           style={{
                             margin: '0px 10px',
@@ -107,7 +108,8 @@ const Leaderboard = () => {
                             padding: '3px 11px',
                             width: '8px',
                             textAlign: 'center',
-                            backgroundColor: `${item.rounded}`,
+
+                            backgroundColor: key < 3 ? '#A2BF00' : 'transparent',
                           }}
                           key={data.id}>
                           {item.id}
@@ -115,16 +117,19 @@ const Leaderboard = () => {
                       </div>
                       <div
                         className={styles.leaderboardItemTitle}
-                        style={{ margin: 'auto 10px', color: `${item.color}` }}
+                        style={{
+                          margin: 'auto 10px',
+                          color: '#858585',
+                        }}
                         key={data.id}>
-                        {item.title}
+                        {item.name}
                       </div>
                     </div>
                     <div
                       className={styles.leaderboardItemTitle}
-                      style={{ margin: 'auto 10px', color: `${item.color}` }}
+                      style={{ margin: 'auto 10px', color: '#A2BF00' }}
                       key={data.id}>
-                      {item.percentage}%
+                      {item.grade}%
                     </div>
                   </li>
                 ))}

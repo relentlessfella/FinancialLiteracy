@@ -8,6 +8,8 @@ import { useRouter } from 'next/navigation';
 import { CourseCard } from '@/components/CourseCard/CourseCard1';
 import Loader from '@/components/Loader/Loader2';
 import { getUserFromLocalCookie } from '@/lib/auth';
+import emptyBox from '@assets/empty-box.png';
+import Image from 'next/image';
 
 const Bookmarks = () => {
   const router = useRouter();
@@ -27,7 +29,7 @@ const Bookmarks = () => {
 
   useEffect(() => {
     if (id === undefined) {
-      return router.push('login');
+      return router.push('/login');
     } else {
       fetchBookmarks();
     }
@@ -45,7 +47,12 @@ const Bookmarks = () => {
   if (data.length === 0) {
     return (
       <ProfileLayout>
-        <div>You do not have bookmarks</div>
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '70px' }}>
+          <div>
+            <Image src={emptyBox} width={300} height={300} />
+            <div style={{ textAlign: 'center' }}>You&apos;re bookmarks are empty</div>
+          </div>
+        </div>
       </ProfileLayout>
     );
   } else {

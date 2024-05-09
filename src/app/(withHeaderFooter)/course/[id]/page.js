@@ -13,30 +13,37 @@ import bookmarkInactive from '@assets/bookmarkInactive.svg';
 import CertificateCard from '@/components/CertificateCard/CertificateCard';
 import Loader from '@/components/Loader/Loader2';
 import styles from './components.module.css';
-
+import { useFetchUser } from '@/contexts/authContext/authContext';
+import { getUserFromLocalCookie } from '@/lib/auth';
 const CoursePage = ({ params }) => {
+  const { user, loading } = useFetchUser();
+  const { id } = getUserFromLocalCookie();
   const [data, setData] = useState(null);
   const [active, setActive] = useState(false);
   const router = useRouter();
-  const id = params.id;
+  const course_id = params.id;
   const fetchAllCards = async () => {
     try {
       const response = await axios({
         method: 'get',
-        url: `http://localhost:8000/courses/course/${id}/`,
+        url: `http://localhost:8000/courses/course/${course_id}/`,
         params: {
-          user_id: 1,
+          user_id: id,
         },
         headers: {
           'Content-Type': 'application/json',
         },
       });
       setData(response.data);
+      console.log(response.data);
     } catch (error) {
       throw error;
     }
   };
   useEffect(() => {
+    if (!user && !loading) {
+      return router.push('/login');
+    }
     fetchAllCards();
     window.scrollTo(0, 0);
   }, []);
@@ -45,9 +52,9 @@ const CoursePage = ({ params }) => {
     try {
       const response = await axios({
         method: 'put',
-        url: `http://localhost:8000/courses/course/${params.id}/add_bookmark/?user_id=1`,
+        url: `http://localhost:8000/courses/course/${params.id}/add_bookmark/`,
         params: {
-          user_id: 1,
+          user_id: id,
         },
         headers: {
           'Content-Type': 'application/json',
@@ -63,9 +70,9 @@ const CoursePage = ({ params }) => {
     try {
       const response = await axios({
         method: 'put',
-        url: `http://localhost:8000/courses/course/${params.id}/remove_bookmark/?user_id=1`,
+        url: `http://localhost:8000/courses/course/${params.id}/remove_bookmark/`,
         params: {
-          user_id: 1,
+          user_id: id,
         },
         headers: {
           'Content-Type': 'application/json',
@@ -83,7 +90,7 @@ const CoursePage = ({ params }) => {
         method: 'post',
         url: `http://localhost:8000/progress/course_progress/${params.id}/join/`,
         params: {
-          user_id: 1,
+          user_id: id,
         },
         headers: {
           'Content-Type': 'application/json',
@@ -121,7 +128,7 @@ const CoursePage = ({ params }) => {
               />
               <div>
                 <div style={{ display: 'flex' }}>
-                  <div className={styles.levelTitle}>Level {data.name}</div>
+                  <div className={styles.levelTitle}>Level {data.module}</div>
                 </div>
                 <div className={styles.levelUnderTitle}>{data.name}</div>
                 <div className={styles.buttonsWrapper}>
@@ -169,7 +176,8 @@ const CoursePage = ({ params }) => {
               <div style={{ padding: '10px 40px' }}>
                 <p className={styles.bigQuizTitle}>Big Quiz</p>
                 <p className={styles.bigQuizInfo}>
-                  Access will be opened after completing all the lessons.
+                  Quizzes are a fantastic way to solidify your learning and ensure you've grasped
+                  key concepts.
                 </p>
               </div>
               <QuizCard course_id={params.id} />
