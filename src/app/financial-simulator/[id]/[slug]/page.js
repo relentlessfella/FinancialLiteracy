@@ -5,10 +5,11 @@ import { useParams } from 'next/navigation';
 import styles from './page.module.css';
 import axios from 'axios';
 import Image from 'next/image';
-import image from '../../../../../public/assets/SimulationImg/SimulationPageImg.png';
-import simulationCorrectImg from '../../../../../public/assets/SimulationImg/SimulationCorrectImg.png';
-import tick from '../../../../../public/assets/SimulationImg/SimulationTick.png';
-import wrongTick from '../../../../../public/assets/SimulationImg/wrongTick.png';
+import image from '@assets/general.jpg';
+import simulationCorrectImg from '@assets/correct.jpg';
+import simulationWrongImg from '@assets/wrong.jpg';
+import tick from '@assets/SimulationImg/SimulationTick.png';
+import wrongTick from '@assets/SimulationImg/wrongTick.png';
 //Retrieve required
 const SimulationCardPage = () => {
   const params = useParams();
@@ -94,12 +95,13 @@ const SimulationCardPage = () => {
                       src={simulationCorrectImg}
                       width={400}
                       height={300}
+                      style={{ borderRadius: '15px' }}
                       layout="responsive"
                       alt="Simulation page main image"
                     />
                     <li key={userSelect.id} className={styles.option_correct}>
-                      <div style={{ display: 'flex', alignItems: 'center' }}>
-                        <div className={styles.option_inner}>{userSelect.id}.</div>
+                      <div style={{ display: 'flex', alignItems: 'center', marginLeft: '45px' }}>
+                        {/* <div className={styles.option_inner}>{userSelect.id}.</div> */}
                         <div>{userSelect.text}</div>
                       </div>
                       <Image
@@ -128,16 +130,17 @@ const SimulationCardPage = () => {
                 <div className={styles.correctImageWrapper}>
                   <div style={{ margin: '0 auto' }}>
                     <Image
-                      src={simulationCorrectImg}
-                      // width={400}
-                      // height={300}
+                      src={simulationWrongImg}
+                      width={400}
+                      height={300}
+                      style={{ borderRadius: '15px' }}
                       layout="responsive"
                       alt="Simulation page main image"
                     />
 
                     <li key={userSelect.id} className={styles.option_correct}>
-                      <div style={{ display: 'flex', alignItems: 'center' }}>
-                        <div className={styles.option_inner}>{userSelect.id}.</div>
+                      <div style={{ display: 'flex', alignItems: 'center', marginLeft: '45px' }}>
+                        {/* <div className={styles.option_inner}>{userSelect.id}.</div> */}
                         <div>{userSelect.text}</div>
                       </div>
                       <Image
@@ -149,8 +152,8 @@ const SimulationCardPage = () => {
                       />
                     </li>
                     <li key={correctAnswer.id} className={styles.option_correct}>
-                      <div style={{ display: 'flex', alignItems: 'center' }}>
-                        <div className={styles.option_inner}>{correctAnswer.id}.</div>
+                      <div style={{ display: 'flex', alignItems: 'center', marginLeft: '45px' }}>
+                        {/* <div className={styles.option_inner}>{correctAnswer.id}.</div> */}
                         <div>{correctAnswer.text}</div>
                       </div>
                       <Image
@@ -188,12 +191,12 @@ const SimulationCardPage = () => {
                     Instructions: Choose the best answer (1, 2, or 3)
                   </div>
                   <ul className={styles.option_outter}>
-                    {data.answers.map((answer) => (
+                    {data.answers.map((answer, key) => (
                       <li
                         key={answer.id}
                         className={styles.option}
                         onClick={() => handleClick(answer)}>
-                        <div className={styles.option_inner}>{answer.id}.</div>
+                        <div className={styles.option_inner}>{key + 1}.</div>
                         <div>{answer.text}</div>
                       </li>
                     ))}

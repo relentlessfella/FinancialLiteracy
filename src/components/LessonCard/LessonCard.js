@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useParams } from 'next/navigation';
 import { useIsMobile } from '@/configs/axios/isMobile';
 
-const LessonCard = () => {
+const LessonCard = ({ id }) => {
   const params = useParams();
   const isMobile = useIsMobile();
   const lessonStyles = {
@@ -34,11 +34,7 @@ const LessonCard = () => {
     return response.data;
   };
   return (
-    <CardList
-      fetchData={fetchLessonData}
-      cardStyle={lessonStyles}
-      buttonLink={(id) => `/lesson/${id}`}
-    />
+    <CardList fetchData={fetchLessonData} cardStyle={lessonStyles} buttonLink={`/lesson/${id}`} />
   );
 };
 

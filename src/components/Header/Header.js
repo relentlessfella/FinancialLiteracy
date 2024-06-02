@@ -18,7 +18,7 @@ import { useFetchUser, useUser } from '@/contexts/authContext/authContext';
 import { getTokenFromLocalCookie, getUserFromLocalCookie, UnSetToken } from '@/lib/auth';
 import logoutIcon from '@assets/MenuIcons/logoutIcon.svg';
 import profileIcon from '@assets/MenuIcons/profileIcon.svg';
-import settingsIcon from '@assets/MenuIcons/settingsIcon.svg';
+import bookmarkIcon from '@assets/bookmark.png';
 import * as Menubar from '@radix-ui/react-menubar';
 
 const Header = () => {
@@ -35,7 +35,6 @@ const Header = () => {
         method: 'get',
         url: 'http://localhost:8000/user/active_user/',
         withCredentials: true,
-        
       });
       setData(response.data);
       console.log(response.data);
@@ -152,9 +151,9 @@ const Header = () => {
                       </Menubar.Item>
                       <Menubar.Item
                         className={styles.MenubarItem}
-                        onClick={() => router.push('/profile/profile-settings')}>
-                        <Image src={settingsIcon} alt="settings" width={14} height={14} />
-                        <button className={styles.links}>Account Settings</button>
+                        onClick={() => router.push('/bookmarks')}>
+                        <Image src={bookmarkIcon} alt="bookmark" width={14} height={14} />
+                        <button className={styles.links}>My Bookmarks</button>
                       </Menubar.Item>
                       <Menubar.Separator className={styles.MenubarSeparator} />
                       <Menubar.Item className={styles.MenubarItem} onClick={handleLogout}>

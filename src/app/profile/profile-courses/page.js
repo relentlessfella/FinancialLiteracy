@@ -71,7 +71,6 @@ const ProfileCourses = () => {
     }
   }, []);
 
-
   if (data === null) {
     return (
       <ProfileLayout>
@@ -81,9 +80,12 @@ const ProfileCourses = () => {
       </ProfileLayout>
     );
   } else {
-    const filteredData = activeCourse === 1 ? data.filter(item => item.status === 'COMPLETED') :
-                      activeCourse === 2 ? data.filter(item => item.status === 'LEARNING') :
-                      data;
+    const filteredData =
+      activeCourse === 1
+        ? data.filter((item) => item.status === 'LEARNING')
+        : activeCourse === 2
+        ? data.filter((item) => item.status === 'COMPLETED')
+        : data;
     return (
       <ProfileLayout>
         <div className={`${styles.profile_main} ${poppins.variable}`}>
@@ -105,7 +107,7 @@ const ProfileCourses = () => {
             </div>
           </div>
 
-          {data.length != 0  ? (
+          {data.length != 0 ? (
             <ul className={poppins.variable}>
               {console.log(data)}
               <CourseCard data={filteredData} />

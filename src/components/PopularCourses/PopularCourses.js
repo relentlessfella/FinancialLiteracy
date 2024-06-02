@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-// import { alfaSlabOne, inter, nunito } from '@/app/main/page';
 import { nunito } from '@/fonts';
 import cardImage from '../../../public/assets/CardImage.png';
 import play from '../../../public/assets/play.svg';
@@ -10,6 +9,7 @@ import { useRouter } from 'next/navigation';
 import styles from './component.module.css';
 import { useMainContext } from '@/contexts/ContextProvider/ContextProvider';
 import Loader from '../Loader/Loader2';
+import generalImage from '@assets/main/general.png';
 import NotFound from '../NotFound/NotFound';
 
 const PopularCourses = () => {
@@ -31,12 +31,13 @@ const PopularCourses = () => {
           Investment: 'Investment',
           Money: 'Money',
           Credit: 'Credit',
-          Currency: null,
-          Stock: null,
+          Currency: 'Currency',
+          Stock: 'Stock',
         },
       });
       if (response.data && response.data.length > 0) {
         setData(response.data);
+        console.log(response.data);
       } else {
         setData(undefined);
       }
@@ -66,7 +67,7 @@ const PopularCourses = () => {
       {data &&
         data.slice(0, 3).map((item) => (
           <li key={item.id} className={styles.li_card_item}>
-            <Image src={cardImage} className={styles.cardImage} alt="Icon of Card Image" />
+            <Image src={generalImage} className={styles.cardImage} alt="Icon of Card Image" />
             <div className={styles.textWrapper}>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <div className={`${nunito.className} ${styles.cardTitle}`}>{item.name}</div>

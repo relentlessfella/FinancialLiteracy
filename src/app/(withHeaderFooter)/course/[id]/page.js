@@ -170,7 +170,7 @@ const CoursePage = ({ params }) => {
           </div>
           <div style={{ minHeight: '100vh', margin: '0px auto' }}>
             <div className={styles.quizCardWrapper}>
-              <LessonCard />
+              <LessonCard id={params.id} />
             </div>
             <div className={styles.quizCardWrapper}>
               <div style={{ padding: '10px 40px' }}>

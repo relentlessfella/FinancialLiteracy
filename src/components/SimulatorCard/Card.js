@@ -58,7 +58,28 @@ const data1 = [
     title: 'Do millennials care about saving?',
     description:
       'Curabitur tincidunt sed neque id pretium. Aenean volutpat tristique tincidunt. Pellentesque ac urna.',
-    image: mask5,
+    image: mask0,
+  },
+  {
+    id: 8,
+    title: 'Do millennials care about saving?',
+    description:
+      'Curabitur tincidunt sed neque id pretium. Aenean volutpat tristique tincidunt. Pellentesque ac urna.',
+    image: mask1,
+  },
+  {
+    id: 9,
+    title: 'Do millennials care about saving?',
+    description:
+      'Curabitur tincidunt sed neque id pretium. Aenean volutpat tristique tincidunt. Pellentesque ac urna.',
+    image: mask2,
+  },
+  {
+    id: 10,
+    title: 'Do millennials care about saving?',
+    description:
+      'Curabitur tincidunt sed neque id pretium. Aenean volutpat tristique tincidunt. Pellentesque ac urna.',
+    image: mask3,
   },
 ];
 const Card = ({ data }) => {
@@ -83,7 +104,7 @@ const Card = ({ data }) => {
           </div>
           <div className={styles.card_text}>
             <div className={styles.card_title}>{item.name}</div>
-            <div className={styles.card_description}>{item.description}</div>
+            {/* <div className={styles.card_description}>{item.description}</div> */}
           </div>
           <button
             className={styles.card_button}

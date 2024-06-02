@@ -13,6 +13,7 @@ import styles from './component.module.css';
 import { useMainContext } from '@/contexts/ContextProvider/ContextProvider';
 import Loader from '../Loader/Loader2';
 import NotFound from '../NotFound/NotFound';
+import generalImage from '@assets/main/general.png';
 
 const CardItem = ({ data, isLoading }) => {
   const router = useRouter();
@@ -31,7 +32,7 @@ const CardItem = ({ data, isLoading }) => {
       {data &&
         data.map((item) => (
           <li key={item.id} className={styles.li_card_item}>
-            <Image src={cardImage} className={styles.cardImage} alt="Icon of Card Image" />
+            <Image src={generalImage} className={styles.cardImage} alt="Icon of Card Image" />
             <div className={styles.textWrapper}>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <div className={`${nunito.className} ${styles.cardTitle}`}>{item.name}</div>

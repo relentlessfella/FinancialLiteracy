@@ -185,7 +185,7 @@ const MainPage = () => {
 
             {/* All Courses  */}
 
-            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '50px' }}>
+            {/* <div style={{ display: 'flex', justifyContent: 'center', marginTop: '50px' }}>
               <button
                 style={{
                   borderRadius: '10px',
@@ -199,7 +199,7 @@ const MainPage = () => {
                 className={inter.className}>
                 View More
               </button>
-            </div>
+            </div> */}
             {/* <ContactUs /> */}
           </div>
         </div>

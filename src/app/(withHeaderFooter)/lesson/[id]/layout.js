@@ -18,7 +18,7 @@ const Layout = ({ children, params }) => {
           />
           <div className={styles.titles}>
             <div className={styles.lessonTitle}>Lesson {params.id}</div>
-            <div className={styles.lessonUnderTitle}>{'data.name'}</div>
+            {/* <div className={styles.lessonUnderTitle}>{'data.name'}</div> */}
           </div>
         </div>
       </div>

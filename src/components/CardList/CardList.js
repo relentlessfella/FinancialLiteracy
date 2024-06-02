@@ -33,7 +33,7 @@ const CardList = ({ fetchData, cardStyle, buttonStyle, buttonLink, constantData 
               <div style={cardStyle.content}>{item.content}</div>
               <div style={cardStyle.footer}>
                 <div>{item.footerText}</div>
-                <button style={cardStyle.button} onClick={() => router.push(buttonLink(item.id))}>
+                <button style={cardStyle.button} onClick={() => router.push(buttonLink)}>
                   {cardStyle.buttonText}
                 </button>
               </div>

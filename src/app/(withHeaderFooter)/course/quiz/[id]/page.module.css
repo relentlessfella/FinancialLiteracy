@@ -146,7 +146,7 @@
   margin-bottom: 30px;
   width: 600px;
   text-align: start;
-  height: 210px;
+  min-height: 210px;
 }
 .buttons {
   display: flex;
@@ -156,8 +156,8 @@
 .answerType {
   margin: 0 40px;
 }
-.quizTitle {
-}
+/* .quizTitle {
+} */
 
 .quizDescription {
   display: flex;

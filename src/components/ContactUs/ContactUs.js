@@ -48,11 +48,11 @@ const ContactUs = () => {
                 <div style={{ color: '#fff' }}>+7(707)-518-91-47</div>
               </div>
             </div>
-            <div className={styles.images}>
+            {/* <div className={styles.images}>
               <Image src={facebook} alt="Facebook Icon" />
               <Image src={instagram} alt="Instagram Icon" />
               <Image src={twitter} alt="Twitter Icon" />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
