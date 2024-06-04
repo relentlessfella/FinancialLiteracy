@@ -17,7 +17,8 @@ const Layout = ({ children, params }) => {
             alt="Back button image"
           />
           <div className={styles.titles}>
-            <div className={styles.lessonTitle}>Lesson {params.id}</div>
+            {/* <div className={styles.lessonTitle}>Lesson {params.id}</div> */}
+            <div className={styles.lessonTitle}>Lesson</div>
             {/* <div className={styles.lessonUnderTitle}>{'data.name'}</div> */}
           </div>
         </div>

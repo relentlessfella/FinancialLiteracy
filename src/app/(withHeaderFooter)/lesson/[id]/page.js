@@ -7,6 +7,7 @@ import { useFetchUser } from '@/contexts/authContext/authContext';
 import { getUserFromLocalCookie } from '@/lib/auth';
 import Loader from '@/components/Loader/Loader2';
 import axios from 'axios';
+import Layout from './layout';
 import { poppins } from '@/fonts';
 const Lesson = ({ params }) => {
   const [data, setData] = useState(null);
@@ -80,7 +81,22 @@ const Lesson = ({ params }) => {
       <div className={styles.mainChildren}>
         <div style={{ width: '1000px', margin: '20px' }}>
           <VideoFragment videoId={data[0].url} />
-          <Accordion accordionData={data[0].accordions} />
+          {data[0].accordions.length != 0 ? (
+            <div>
+              <div
+                style={{
+                  color: '#829902',
+                  fontSize: '32px',
+                  fontWeight: '600',
+                  margin: '30px 0',
+                }}>
+                Questions and answers
+              </div>
+              <Accordion accordionData={data[0].accordions} />
+            </div>
+          ) : (
+            ''
+          )}
           <div style={{ display: 'flex', justifyContent: 'center' }}>
             <button className={`${styles.button} ${poppins.className}`} onClick={handleSubmit}>
               Finish Lesson
@@ -91,4 +107,10 @@ const Lesson = ({ params }) => {
     );
   }
 };
+// export async function getStaticProps(context) {
+//   const { params } = context;
+//   return {
+//     props: { params },
+//   };
+// }
 export default Lesson;

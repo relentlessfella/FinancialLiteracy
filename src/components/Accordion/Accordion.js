@@ -34,7 +34,7 @@ const Accordion = ({ accordionData }) => {
       {accordionData.map((item, index) => (
         <AccordionComponent.Item
           className={styles.AccordionItem}
-          value={`item-${index}`}
+          value={`item-${index + 1}`}
           key={index}>
           <div className={styles.wrapper}>
             <AccordionTrigger className={styles.AccordionTrigger}>{item.question}</AccordionTrigger>

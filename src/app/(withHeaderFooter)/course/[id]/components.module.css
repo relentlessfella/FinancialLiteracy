@@ -4,12 +4,22 @@
   width: 1200px;
 }
 .backgroundCourseImage {
-  background-image: url('/assets/CourseImage.jpg');
+  background-image: url('/assets/backgroundLesson.png');
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center center;
+  background-position: top center;
   background-repeat: no-repeat;
-  min-height: 30vh;
+  min-height: 45vh;
+  color: #fff;
+  font-family: var(--font-architects);
+  font-size: 32px;
+  display: flex;
+  justify-content: flex-end;
+}
+.courseImageText {
+  padding: 20px 150px;
+  align-self: flex-end;
+  width: 900px;
 }
 .courseWrapper {
   font-family: var(--font-alfaSlabOne);
@@ -84,6 +94,10 @@
     background-image: none;
     min-height: 0vh;
   }
+  .courseImageText {
+    display: none;
+  }
+
   .playIcon {
     width: 14px;
     height: 14px;

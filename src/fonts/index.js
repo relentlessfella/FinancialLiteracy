@@ -1,4 +1,11 @@
-import { Alfa_Slab_One, Inter, Nunito, DM_Sans, Poppins } from 'next/font/google';
+import {
+  Alfa_Slab_One,
+  Inter,
+  Nunito,
+  DM_Sans,
+  Poppins,
+  Architects_Daughter,
+} from 'next/font/google';
 export const alfaSlabOne = Alfa_Slab_One({
   subsets: ['latin'],
   weight: ['400'],
@@ -23,4 +30,9 @@ export const poppins = Poppins({
   subsets: ['latin'],
   weight: ['200', '300', '400', '500', '600', '700', '800'],
   variable: '--font-poppins',
+});
+export const architects = Architects_Daughter({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-architects',
 });

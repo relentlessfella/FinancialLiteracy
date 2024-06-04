@@ -15,6 +15,7 @@ import Loader from '@/components/Loader/Loader2';
 import styles from './components.module.css';
 import { useFetchUser } from '@/contexts/authContext/authContext';
 import { getUserFromLocalCookie } from '@/lib/auth';
+import { architects } from '@/fonts';
 const CoursePage = ({ params }) => {
   const { user, loading } = useFetchUser();
   const { id } = getUserFromLocalCookie();
@@ -116,7 +117,12 @@ const CoursePage = ({ params }) => {
     return (
       <div className={alfaSlabOne.variable}>
         <div>
-          <div className={styles.backgroundCourseImage}></div>
+          <div className={`${styles.backgroundCourseImage} ${architects.variable}`}>
+            <div className={styles.courseImageText}>
+              “Understand the basics, master the fundamentals, and the complexity will become
+              simpler.” (FinLit)
+            </div>
+          </div>
           <div className={styles.courseWrapper}>
             <div className={styles.container}>
               <Image

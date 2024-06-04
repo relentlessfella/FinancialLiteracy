@@ -107,9 +107,8 @@ const ProfileCourses = () => {
             </div>
           </div>
 
-          {data.length != 0 ? (
+          {filteredData.length != 0 ? (
             <ul className={poppins.variable}>
-              {console.log(data)}
               <CourseCard data={filteredData} />
             </ul>
           ) : (
