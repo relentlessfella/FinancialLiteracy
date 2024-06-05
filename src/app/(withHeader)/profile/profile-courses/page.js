@@ -114,7 +114,7 @@ const ProfileCourses = () => {
           ) : (
             <section className={styles.notFoundSection}>
               <Image src={notFound} layout="responsive" alt="Not found image" />
-              <div>Sorry courses not found ;(</div>
+              <div>You don&apos;t have active courses ;(</div>
             </section>
           )}
         </div>

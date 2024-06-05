@@ -3,20 +3,20 @@ import React from 'react';
 import style from './page.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
-import avatar from '../../../public/assets/avatar.svg';
-import logo from '../../../public/assets/logo.svg';
+import avatar from '@assets/avatar.svg';
 import './page.module.css';
-import homeIcon from '../../../public/assets/profileIcons/homeIcon.png';
-import settingsIcon from '../../../public/assets/profileIcons/settingsIcon.svg';
-import bookIcon from '../../../public/assets/profileIcons/bookIcon.svg';
-import bookMarkIcon from '../../../public/assets/profileIcons/bookMarkIcon.svg';
-import exitIcon from '../../../public/assets/profileIcons/exitIcon.svg';
-import bookIconActive from '../../../public/assets/profileIcons/bookIconActive.svg';
-import bookMarkActive from '../../../public/assets/profileIcons/bookMarkActive.svg';
-import logoutActive from '../../../public/assets/profileIcons/logoutActive.svg';
-import settingsActive from '../../../public/assets/profileIcons/settingsActive.svg';
-import leaderboardIcon from '../../../public/assets/profileIcons/leaderboardIcon.svg';
-import leaderboardIconActive from '../../../public/assets/profileIcons/leaderboardIconActive.svg';
+import homeIcon from '@assets/profileIcons/homeIcon.svg';
+import settingsIcon from '@assets/profileIcons/settingsIcon.svg';
+import bookIcon from '@assets/profileIcons/bookIcon.svg';
+// import bookMarkIcon from '@assets/profileIcons/bookMarkIcon.svg';
+import bookMarkIcon from '@assets/profileIcons/bookmark.svg';
+import exitIcon from '@assets/profileIcons/exitIcon.svg';
+import bookIconActive from '@assets/profileIcons/bookIconActive.svg';
+import bookMarkActive from '@assets/profileIcons/bookmarkActive.svg';
+import logoutActive from '@assets/profileIcons/logoutActive.svg';
+import settingsActive from '@assets/profileIcons/settingsActive.svg';
+import leaderboardIcon from '@assets/profileIcons/leaderboardIcon.svg';
+import leaderboardIconActive from '@assets/profileIcons/leaderboardIconActive.svg';
 import { useParams, usePathname } from 'next/navigation';
 import Header from '../Header/Header';
 import { useRouter } from 'next/navigation';
@@ -69,13 +69,6 @@ const ProfileLayout = ({ children }) => {
       <aside className={style.profileAside}>
         <div className={style.profileIconsContainer}>
           <Image
-            className={style.iconLogo}
-            src={logo}
-            width={58}
-            height={48}
-            alt="Logo of the website"
-          />
-          <Image
             className={style.iconAvatar}
             src={avatar}
             width={100}
@@ -92,15 +85,18 @@ const ProfileLayout = ({ children }) => {
           {asideMenuLinks.map((item) => {
             const isActive = pathname === item.link;
             return (
-              <div key={item.id} className={isActive ? style.navLinkWrapper : ''}>
-                <Link className={isActive ? style.navLinkActive : style.navLink} href={item.link}>
-                  <Image
-                    className={style.navLinkIcon}
-                    src={isActive ? item.active : item.default}
-                    alt="Icon"
-                  />
-                  <div>{item.title}</div>
-                </Link>
+              <div>
+                <div key={item.id} className={isActive ? style.navLinkWrapper : ''}>
+                  <Link className={isActive ? style.navLinkActive : style.navLink} href={item.link}>
+                    <Image
+                      className={style.navLinkIcon}
+                      src={isActive ? item.active : item.default}
+                      alt="Icon"
+                    />
+                    <div>{item.title}</div>
+                  </Link>
+                </div>
+                <div>{item.title === 'Leaderboard' && <div className={style.divider}></div>}</div>
               </div>
             );
           })}

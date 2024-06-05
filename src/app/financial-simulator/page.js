@@ -5,6 +5,7 @@ import CourseModules from '@/components/CourseModules/CourseModules';
 import Card from '@/components/SimulatorCard/Card';
 import styles from './page.module.css';
 import axios from 'axios';
+import Loader from '@/components/Loader/Loader2';
 import NotFound from '@/components/NotFound/NotFound';
 
 const FinancialSimulator = () => {
@@ -54,7 +55,11 @@ const FinancialSimulator = () => {
   }, [activeOption]);
 
   if (data === null) {
-    return <div style={{ textAlign: 'center' }}>Loading..</div>;
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center', marginTop: '50px' }}>
+        <Loader />
+      </div>
+    );
   } else {
     return (
       <div>

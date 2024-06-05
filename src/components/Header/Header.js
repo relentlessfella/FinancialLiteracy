@@ -8,7 +8,7 @@ import dropdown from '@assets/dropdown.svg';
 import dropup from '@assets/dropdownreverse.svg';
 import web from '@assets/web.svg';
 import styles from './component.module.css';
-import { redirect, useRouter } from 'next/navigation';
+import { redirect, useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { poppins } from '@/fonts';
 import coin from '@assets/coinSign.svg';
@@ -20,10 +20,11 @@ import logoutIcon from '@assets/MenuIcons/logoutIcon.svg';
 import profileIcon from '@assets/MenuIcons/profileIcon.svg';
 import bookmarkIcon from '@assets/bookmark.png';
 import * as Menubar from '@radix-ui/react-menubar';
+import divider from '@assets/Divider.svg';
 
 const Header = () => {
   const router = useRouter();
-  // const { testData } = useMainContext();
+  const pathname = usePathname();
   const [data, setData] = useState(null);
   const [toggleBurger, setToggleBurger] = useState(false);
   const { user, loading } = useFetchUser();
@@ -45,47 +46,6 @@ const Header = () => {
   useEffect(() => {
     fetchUser();
   }, []);
-
-  // if (data === null) {
-  // if (username === undefined) {
-  //   return (
-  //     <nav
-  //       style={{
-  //         display: 'flex',
-  //         justifyContent: 'space-between',
-  //       }}
-  //       className={`${styles.header} ${poppins.variable}`}>
-  //       <div className={styles.headerWrapper}>
-  //         <div className={styles.headerInner1}>
-  //           <Image
-  //             src={logo}
-  //             draggable={false}
-  //             style={{
-  //               marginRight: '50px',
-  //               marginBottom: '10px',
-  //             }}
-  //             onClick={() => router.push('/')}
-  //             alt="logo"
-  //           />
-  //         </div>
-  //         <ul style={{ display: 'flex', listStyle: 'none' }}>
-  //           <li className={styles.header_li}>
-  //             <Link href={'/'} style={{ textDecoration: 'none', color: 'black' }}>
-  //               <div>Courses</div>
-  //             </Link>
-  //           </li>
-  //           <li className={styles.header_li}>
-  //             <Link
-  //               href={'/financial-simulator'}
-  //               style={{ textDecoration: 'none', color: 'black' }}>
-  //               <div>Financial Simulator</div>
-  //             </Link>
-  //           </li>
-  //         </ul>
-  //       </div>
-  //     </nav>
-  //   );
-  // } else {
 
   const handleLogout = () => {
     UnSetToken();
@@ -114,16 +74,19 @@ const Header = () => {
           <li className={styles.header_li}>
             <Link href={'/'} style={{ textDecoration: 'none', color: 'black' }}>
               <div>Courses</div>
+              {pathname === '/' && <div className={styles.divider}></div>}
             </Link>
           </li>
           <li className={styles.header_li}>
             <Link href={'/financial-simulator'} style={{ textDecoration: 'none', color: 'black' }}>
               <div>Financial Simulator</div>
+              {pathname === '/financial-simulator' && <div className={styles.divider}></div>}
             </Link>
           </li>
           <li className={styles.header_li}>
             <Link href={'/game'} style={{ textDecoration: 'none', color: 'black' }}>
-              <div>Games</div>
+              <div style={{ width: 'auto' }}>Games</div>
+              {pathname === '/game' && <div className={styles.divider}></div>}
             </Link>
           </li>
         </ul>
@@ -145,9 +108,9 @@ const Header = () => {
                       sideOffset={5}>
                       <Menubar.Item
                         className={styles.MenubarItem}
-                        onClick={() => router.push('/profile')}>
-                        <Image src={profileIcon} alt="My profile" width={14} height={14} />
-                        <button className={styles.links}>My Profile</button>
+                        onClick={() => router.push('/profile/profile-courses')}>
+                        <Image src={profileIcon} alt="My Courses" width={14} height={14} />
+                        <button className={styles.links}>My Courses</button>
                       </Menubar.Item>
                       <Menubar.Item
                         className={styles.MenubarItem}

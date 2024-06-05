@@ -2,13 +2,13 @@
 import React from 'react';
 import ProfileLayout from '@/components/ProfileLayout/ProfileLayout';
 import Image from 'next/image';
-import webIcon from '../../../public/assets/web.svg';
-import notificationsIcon from '../../../public/assets/profileIcons/notificationIcon.svg';
-import avatar from '../../../public/assets/avatar.svg';
+// import webIcon from '../../../public/assets/web.svg';
+// import notificationsIcon from '../../../public/assets/profileIcons/notificationIcon.svg';
+import avatar from '@assets/avatar.svg';
 import { alfaSlabOne } from '@/fonts';
 import style from './page.module.css';
 import ImageRating from '@/components/ImageRating/ImageRating';
-import ProfileForm from '../../components/ProfilePageComponents/FormComponent/ProfileForm';
+import ProfileForm from '@/components/ProfilePageComponents/FormComponent/ProfileForm';
 import ProfileAchievements from '@/components/ProfilePageComponents/AchievementsComponent/ProfileAchievements';
 import ProfileProgress from '@/components/ProfilePageComponents/ProgressComponent/ProfileProgress';
 
