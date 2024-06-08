@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Checkbox, Form, Input } from 'antd';
 import { useRouter, redirect } from 'next/navigation';
 import loginImg from '../../../public/assets/login/loginPageImg.png';
@@ -9,12 +9,14 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { poppins } from '@/fonts';
 import { setTokenUser, setTokenJWT } from '@/lib/auth';
+import AuthContext from '@/contexts/authContext2/AuthContext';
 
 const Login = () => {
   const [mailValue, setMailValue] = useState(null);
   const [userPassword, setUserPassword] = useState(null);
   const [redirectState, setRedirectState] = useState(false);
   const [activeUserData, setActiveUserData] = useState(null);
+  // const { loginUser } = useContext(AuthContext);
   const onFinish = (values) => {
     handleSubmit({ values });
   };
@@ -48,6 +50,7 @@ const Login = () => {
     } catch (error) {
       throw error;
     }
+    // await loginUser(values.email, values.password);
   };
   const fetchActiveUser = async () => {
     try {

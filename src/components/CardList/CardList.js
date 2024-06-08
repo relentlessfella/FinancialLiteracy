@@ -3,6 +3,7 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Loader from '../Loader/Loader2';
 import styles from './component.module.css';
+import { Button } from './CardListButton/Button';
 
 const CardList = ({ fetchData, cardStyle, buttonStyle, buttonLink, constantData }) => {
   const [data, setData] = useState(null);
@@ -23,6 +24,7 @@ const CardList = ({ fetchData, cardStyle, buttonStyle, buttonLink, constantData 
       </div>
     );
   } else {
+    console.log(cardStyle.button);
     return (
       <ul className={styles.ul}>
         {data &&
@@ -33,9 +35,10 @@ const CardList = ({ fetchData, cardStyle, buttonStyle, buttonLink, constantData 
               <div style={cardStyle.content}>{item.content}</div>
               <div style={cardStyle.footer}>
                 <div>{item.footerText}</div>
-                <button style={cardStyle.button} onClick={() => router.push(buttonLink)}>
+                {/* <button style={cardStyle.button} onClick={() => router.push(buttonLink)}>
                   {cardStyle.buttonText}
-                </button>
+                </button> */}
+                <Button onClick={() => router.push(buttonLink)}>{cardStyle.buttonText}</Button>
               </div>
             </li>
           ))}
@@ -57,12 +60,14 @@ const CardList = ({ fetchData, cardStyle, buttonStyle, buttonLink, constantData 
                   />
                 </button>
               )}
-              <button
+              {/* <button
                 className={styles.quizButton}
                 style={cardStyle.button}
                 onClick={() => router.push(buttonLink)}>
                 {cardStyle.buttonText}
-              </button>
+              </button> */}
+
+              <Button onClick={() => router.push(buttonLink)}>{cardStyle.buttonText}</Button>
             </div>
           </li>
         )}

@@ -84,9 +84,9 @@ const Header = () => {
             </Link>
           </li>
           <li className={styles.header_li}>
-            <Link href={'/game'} style={{ textDecoration: 'none', color: 'black' }}>
+            <Link href={'/game-instructions'} style={{ textDecoration: 'none', color: 'black' }}>
               <div style={{ width: 'auto' }}>Games</div>
-              {pathname === '/game' && <div className={styles.divider}></div>}
+              {pathname === '/game-instructions' && <div className={styles.divider}></div>}
             </Link>
           </li>
         </ul>

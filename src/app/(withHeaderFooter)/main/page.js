@@ -16,6 +16,7 @@ import Filter from '@/components/Filter/Filter';
 import { alfaSlabOne, inter } from '@/fonts';
 import { useFetchUser } from '@/contexts/authContext/authContext';
 import { getUserFromLocalCookie } from '@/lib/auth';
+import withAuth from '@/components/withAuth/withAuth';
 
 const modules = [
   { id: 1, title: 'Level 1' },

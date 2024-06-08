@@ -32,24 +32,9 @@ const Lesson = ({ params }) => {
     }
   };
 
-  // const fetchAccordion = async () => {
-  //   try {
-  //     const response = await axios({
-  //       method: 'get',
-  //       url: `http://localhost:8000/courses/accordion/${params.id}`,
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //     });
-  //     setAccordionData(response.data);
-  //   } catch (error) {
-  //     alert('Error');
-  //   }
-  // };
-
   useEffect(() => {
+    window.scrollTo(0, 0);
     fetchLesson();
-    // fetchAccordion();
   }, []);
 
   const handleSubmit = async () => {
@@ -107,10 +92,4 @@ const Lesson = ({ params }) => {
     );
   }
 };
-// export async function getStaticProps(context) {
-//   const { params } = context;
-//   return {
-//     props: { params },
-//   };
-// }
 export default Lesson;

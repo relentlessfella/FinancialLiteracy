@@ -5,6 +5,8 @@ import Image from 'next/image';
 import { SingleGameCard } from '@/components/SingleGameCard/SingleGameCard';
 import { inter } from '@/fonts';
 import Header from '@/components/Header/Header';
+import Confetti from 'react-confetti';
+import useWindowSize from 'react-use/lib/useWindowSize';
 
 const Game = () => {
   const [cards, setCards] = useState([]);
@@ -12,6 +14,8 @@ const Game = () => {
   const [choiceOne, setChoiceOne] = useState(null);
   const [disabled, setDisabled] = useState(null);
   const [choiceTwo, setChoiceTwo] = useState(null);
+  const [gameWon, setGameWon] = useState(false);
+  const { width, height } = useWindowSize();
   const cardImages = [
     { src: '/assets/game/bank.jpeg', matched: false },
     { src: '/assets/game/pig.jpeg', matched: false },
@@ -25,6 +29,7 @@ const Game = () => {
     setChoiceOne(null);
     setCards(shuffledCards);
     setTurns(0);
+    setGameWon(false);
   };
 
   const handleChoice = (card) => {
@@ -63,11 +68,39 @@ const Game = () => {
   useEffect(() => {
     shuffleCards();
   }, []);
+
+  useEffect(() => {
+    // Check if all cards are matched
+    if (cards.length && cards.every((card) => card.matched)) {
+      setGameWon(true);
+    }
+  }, [cards]);
+
+  useEffect(() => {
+    if (gameWon) {
+      setTimeout(() => shuffleCards(), 3500); // Wait 2 seconds before reshuffling
+    }
+  }, [gameWon]);
+
   return (
     <div>
       <Header />
       <div className={`${styles.main} ${inter.variable}`}>
         <div className={styles.game}>
+          {/* <button className={styles.startButton} onClick={shuffleCards}>
+            New Game
+          </button>
+          <div className={styles.cardGrid}>
+            {cards.map((image, index) => (
+              <SingleGameCard
+                key={index}
+                image={image}
+                handleChoice={handleChoice}
+                flipped={image === choiceOne || image === choiceTwo || image.matched}
+                disabled={disabled}
+              />
+            ))} */}
+          {gameWon && <Confetti width={width} height={height} />}
           <button className={styles.startButton} onClick={shuffleCards}>
             New Game
           </button>

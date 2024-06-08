@@ -2,10 +2,25 @@ import CardList from '../CardList/CardList';
 import axios from 'axios';
 import { useParams } from 'next/navigation';
 import { useIsMobile } from '@/configs/axios/isMobile';
+import styled from 'styled-components';
 
 const LessonCard = ({ id }) => {
   const params = useParams();
   const isMobile = useIsMobile();
+  const Button = styled.button`
+    background-color: #a2bf00;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 15px;
+    padding: 12px 62px;
+    margin: 30px 0;
+    cursor: pointer;
+    &:hover {
+      background-color: #8ea200;
+    }
+  `;
   const lessonStyles = {
     title: { color: '#FE602F', fontSize: '32px', fontWeight: '1000', padding: '30px 0' },
     content: { color: '#1F1C14', opacity: '0.7', padding: '20px 0' },
