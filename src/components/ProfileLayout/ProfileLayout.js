@@ -85,7 +85,7 @@ const ProfileLayout = ({ children }) => {
           {asideMenuLinks.map((item) => {
             const isActive = pathname === item.link;
             return (
-              <div>
+              <div key={item.id}>
                 <div key={item.id} className={isActive ? style.navLinkWrapper : ''}>
                   <Link className={isActive ? style.navLinkActive : style.navLink} href={item.link}>
                     <Image

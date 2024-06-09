@@ -8,6 +8,7 @@ import Image from 'next/image';
 import Header from '../Header/Header';
 import dropdown from '../../../public/assets/dropdown.svg';
 import { useParams } from 'next/navigation';
+import ContactUs from '../ContactUs/ContactUs';
 const SimulatorLayout = ({ children }) => {
   const params = useParams();
   return (
@@ -20,7 +21,8 @@ const SimulatorLayout = ({ children }) => {
             : params.slug.replace('-', ' ')}
         </div>
       </div>
-      <div style={{ minHeight: '800px' }}>{children}</div>
+      <div style={{ minHeight: '800px', marginBottom: '100px' }}>{children}</div>
+      <ContactUs />
     </div>
   );
 };

@@ -11,6 +11,7 @@ import { useMainContext } from '@/contexts/ContextProvider/ContextProvider';
 import Loader from '../Loader/Loader2';
 import generalImage from '@assets/main/general.png';
 import NotFound from '../NotFound/NotFound';
+import CardItem from '../CardItem/CardItem';
 
 const PopularCourses = () => {
   const router = useRouter();
@@ -56,52 +57,46 @@ const PopularCourses = () => {
   const handleCourseJoin = (id) => {
     router.push(`/course/${id}`);
   };
+
   if (isLoading) {
     return <Loader />;
   }
   if (data === undefined) {
     return <NotFound />;
+  } else {
+    const sortedData = data && data.sort((a, b) => b.rating - a.rating).slice(0, 3);
+    return (
+      // <div className={styles.cards}>
+      //   {data &&
+      //     data.slice(0, 3).map((item) => (
+      //       <li key={item.id} className={styles.li_card_item}>
+      //         <Image src={generalImage} className={styles.cardImage} alt="Icon of Card Image" />
+      //         <div className={styles.textWrapper}>
+      //           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+      //             <div className={`${nunito.className} ${styles.cardTitle}`}>{item.name}</div>
+      //           </div>
+      //           <div className={`${nunito.className} ${styles.cardDescription}`}>
+      //             {item.description}
+      //           </div>
+      //         </div>
+      //         <div style={{ display: 'flex', justifyContent: 'center' }}>
+      //           <div>
+      //             <div>
+      //               <ImageRating rating={item.rating} />
+      //             </div>
+      //             <button
+      //               onClick={() => handleCourseJoin(item.id)}
+      //               className={`${styles.joinButton} ${item.is_free ? styles.free : styles.paid}`}>
+      //               {item.is_free ? 'Join' : `$ ${item.cost}`}
+      //             </button>
+      //           </div>
+      //         </div>
+      //       </li>
+      //     ))}
+      // </div>
+      <CardItem data={sortedData} isLoading={isLoading} />
+    );
   }
-  return (
-    <div className={styles.cards}>
-      {data &&
-        data.slice(0, 3).map((item) => (
-          <li key={item.id} className={styles.li_card_item}>
-            <Image src={generalImage} className={styles.cardImage} alt="Icon of Card Image" />
-            <div className={styles.textWrapper}>
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <div className={`${nunito.className} ${styles.cardTitle}`}>{item.name}</div>
-                {/* <div style={{ display: 'flex' }}>
-                  <Image
-                    src={play}
-                    style={{ marginTop: 'auto', marginBottom: 'auto', marginRight: '5px' }}
-                    alt="Play Icon"
-                  />
-                  <div style={{ color: '#333333', marginTop: 'auto', marginBottom: 'auto' }}>
-                    10x Lesson
-                  </div>
-                </div> */}
-              </div>
-              <div className={`${nunito.className} ${styles.cardDescription}`}>
-                {item.description}
-              </div>
-            </div>
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-              <div>
-                <div>
-                  <ImageRating rating={item.rating} />
-                </div>
-                <button
-                  onClick={() => handleCourseJoin(item.id)}
-                  className={`${styles.joinButton} ${item.is_free ? styles.free : styles.paid}`}>
-                  {item.is_free ? 'Join' : `$ ${item.cost}`}
-                </button>
-              </div>
-            </div>
-          </li>
-        ))}
-    </div>
-  );
 };
 
 export default PopularCourses;

@@ -131,7 +131,7 @@ const QuizPage = ({ params }) => {
         },
       });
       localStorage.setItem('level', JSON.stringify(response.data.level));
-      router.push(`${params.id}/feedback/`);
+      router.push(`/course/quiz/${params.id}/results`);
       console.log(response.data);
     } catch (error) {
       alert('Error');
@@ -155,8 +155,6 @@ const QuizPage = ({ params }) => {
     );
   } else {
     const handleNextAnswer = () => {
-      // arrayAnswers.push(selectedAnswer);
-      // console.log(arrayAnswers);
       console.log(data.next);
       if (data.next === null) {
         fetchSubmit();

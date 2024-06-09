@@ -182,8 +182,8 @@ const CoursePage = ({ params }) => {
               <div style={{ padding: '10px 40px' }}>
                 <p className={styles.bigQuizTitle}>Big Quiz</p>
                 <p className={styles.bigQuizInfo}>
-                  Quizzes are a fantastic way to solidify your learning and ensure you've grasped
-                  key concepts.
+                  Quizzes are a fantastic way to solidify your learning and ensure you&apos;ve
+                  grasped key concepts.
                 </p>
               </div>
               <QuizCard course_id={params.id} />

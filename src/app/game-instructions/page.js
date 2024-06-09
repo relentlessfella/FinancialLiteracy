@@ -81,7 +81,8 @@ const Game = () => {
                 color: '#333333',
                 opacity: 0.84,
                 wordSpacing: '2px',
-              }}>
+              }}
+              key={item.id}>
               <div style={{ width: '19px', padding: '0 5px' }}>{item.id}.</div>
               <div style={{ padding: '0 10px', width: '420px' }}>{item.title}</div>
             </div>

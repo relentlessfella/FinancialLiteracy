@@ -9,10 +9,8 @@ function ImageRating({ rating }) {
     for (let i = 0; i < 5; i++) {
       if (i < rating) {
         stars.push(<Image key={i} src={yellowStar} width={30} alt="Yellow Star" />);
-        // console.log('yellow');
       } else {
         stars.push(<Image key={i} src={grayStar} width={30} alt="Gray Star" />);
-        // console.log('gray');
       }
     }
     return stars;

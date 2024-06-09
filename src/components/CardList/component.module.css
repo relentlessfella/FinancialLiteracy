@@ -7,6 +7,16 @@
   list-style-type: none;
   border-radius: 10px;
 }
+.cardCompleted {
+  padding: 0px 80px;
+  margin: 35px 0;
+  box-shadow: 0px 0px 38px 20px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0px 0px 38px 20px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 0px 38px 20px rgba(0, 0, 0, 0.1);
+  list-style-type: none;
+  border-radius: 10px;
+  background-color: #843939;
+}
 .ul {
   padding: 0px 50px;
   margin: 0 auto;

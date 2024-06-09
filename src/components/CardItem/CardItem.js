@@ -36,16 +36,6 @@ const CardItem = ({ data, isLoading }) => {
             <div className={styles.textWrapper}>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <div className={`${nunito.className} ${styles.cardTitle}`}>{item.name}</div>
-                {/* <div style={{ display: 'flex' }}>
-                  <Image
-                    src={play}
-                    style={{ marginTop: 'auto', marginBottom: 'auto', marginRight: '5px' }}
-                    alt="Play Icon"
-                  />
-                  <div style={{ color: '#333333', marginTop: 'auto', marginBottom: 'auto' }}>
-                    10x Lesson
-                  </div>
-                </div> */}
               </div>
               <div className={`${nunito.className} ${styles.cardDescription}`}>
                 {item.description}
@@ -60,6 +50,11 @@ const CardItem = ({ data, isLoading }) => {
               <div>
                 <div>
                   <ImageRating rating={item.rating} />
+                  <div
+                    style={{ textAlign: 'center', color: '#fe8863', fontWeight: '600' }}
+                    className={nunito.className}>
+                    ({item.votes})
+                  </div>
                 </div>
                 <button
                   onClick={() => handleCourseJoin(item.id)}

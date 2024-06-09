@@ -44,6 +44,12 @@
   color: #ffffff;
   font-weight: 600;
   font-size: 18px;
+  cursor: pointer;
+  transition: ease-out 0.2s;
+}
+
+.free:hover {
+  background-color: #8ca119;
 }
 
 .paid {

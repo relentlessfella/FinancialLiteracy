@@ -24,12 +24,14 @@ const CardList = ({ fetchData, cardStyle, buttonStyle, buttonLink, constantData 
       </div>
     );
   } else {
-    console.log(cardStyle.button);
     return (
       <ul className={styles.ul}>
         {data &&
           data.map((item) => (
-            <li className={styles.card} key={item.id}>
+            <li
+              // className={item.is_completed === true ? styles.cardCompleted : styles.card}
+              className={styles.card}
+              key={item.id}>
               <div style={cardStyle.title}>{item.name}</div>
               <div style={cardStyle.description}>{item.description}</div>
               <div style={cardStyle.content}>{item.content}</div>

@@ -40,6 +40,11 @@
   font-size: 18px;
   color: #fe602f;
   box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.1);
+  transition: ease-out 0.3s;
+  cursor: pointer;
+}
+.startLessonBtn:hover {
+  background-color: #c9c9c9;
 }
 .bookmarkBtn {
   width: 200px;
@@ -54,6 +59,11 @@
   margin: 0 50px;
   color: #fff;
   box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: ease-out 0.3s;
+}
+.bookmarkBtn:hover {
+  background-color: #94a918;
 }
 .container {
   display: flex;
