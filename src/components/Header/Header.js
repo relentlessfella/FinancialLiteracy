@@ -67,6 +67,8 @@ const Header = () => {
             draggable={false}
             style={{ marginRight: '50px', marginBottom: '10px' }}
             onClick={() => router.push('/')}
+            width={177}
+            height={68}
             alt="logo"
           />
         </div>
@@ -83,7 +85,7 @@ const Header = () => {
               {pathname === '/financial-simulator' && <div className={styles.divider}></div>}
             </Link>
           </li>
-          <li className={styles.header_li}>
+          <li className={styles.header_li} style={{ marginRight: '0' }}>
             <Link href={'/game-instructions'} style={{ textDecoration: 'none', color: 'black' }}>
               <div style={{ width: 'auto' }}>Games</div>
               {pathname === '/game-instructions' && <div className={styles.divider}></div>}
@@ -99,7 +101,7 @@ const Header = () => {
                 onClick={() => setShowVector(!showVector)}>
                 <Menubar.Menu>
                   <Menubar.Trigger className={styles.MenubarTrigger}>
-                    {user ? <div>{username}</div> : ''}
+                    {user ? <div style={{ fontSize: '18px' }}>{username}</div> : ''}
                   </Menubar.Trigger>
                   <Menubar.Portal>
                     <Menubar.Content
@@ -135,7 +137,14 @@ const Header = () => {
                 <Image src={dropdown} width={10} height={10} alt="dropdown" />
               )}
             </div>
-            <Image src={coin} width={30} height={30} alt="Balance coin icon" draggable={false} />
+            <Image
+              style={{ marginLeft: '20px' }}
+              src={coin}
+              width={30}
+              height={30}
+              alt="Balance coin icon"
+              draggable={false}
+            />
             {data ? (
               <div style={{ margin: '0 10px', fontWeight: '700', color: '#F0BE33' }}>
                 {data.balance}

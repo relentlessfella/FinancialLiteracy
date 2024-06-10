@@ -98,7 +98,7 @@ const ProfileCourses = () => {
             <div className={`${inter.variable} ${styles.moduleProfile}`}>
               <CourseModules
                 modules={course_type}
-                width={500}
+                width={600}
                 activeModule={activeCourse}
                 setActiveModule={setActiveCourse}
                 mobileWidth={350}

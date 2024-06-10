@@ -21,8 +21,9 @@
 }
 .title {
   font-family: var(--font-alfaSlabOne);
-  color: #fe8863;
-  font-size: 42px;
+  color: #fe602f;
+  font-size: 48px;
+  margin-top: 100px;
   text-align: center;
 }
 .Popular3Courses {
@@ -30,10 +31,11 @@
   display: flex;
   justify-content: center;
   margin-top: 100px;
+  margin-bottom: 40px;
 }
 .mainFirstimage {
-  width: 500px;
-  height: 400px;
+  /* width: 500px; */
+  /* height: 400px; */
 }
 
 @media (max-width: 768px) {

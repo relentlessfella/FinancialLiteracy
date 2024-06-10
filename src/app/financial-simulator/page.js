@@ -7,6 +7,10 @@ import styles from './page.module.css';
 import axios from 'axios';
 import Loader from '@/components/Loader/Loader2';
 import NotFound from '@/components/NotFound/NotFound';
+import Image from 'next/image';
+import simulator from '@assets/simulatorPage.svg';
+import Header from '@/components/Header/Header';
+import ContactUs from '@/components/ContactUs/ContactUs';
 
 const FinancialSimulator = () => {
   const [activeOption, setActiveOption] = useState(1);
@@ -63,22 +67,25 @@ const FinancialSimulator = () => {
   } else {
     return (
       <div>
-        <SimulatorLayout>
-          <div className={styles.main}>
-            <CourseModules
-              modules={options}
-              width={750}
-              activeModule={activeOption}
-              setActiveModule={setActiveOption}
-              backgroundColor={'rgba(196, 196, 196, 0.15)'}
-              mobileWidth={335}
-              moduleStyles={mainCourseModule}
-            />
+        <Header />
+        <div className={styles.main}>
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '120px' }}>
+            <Image src={simulator} />
           </div>
-          <div className={styles.container}>
-            {data.data.length === 0 ? <NotFound /> : <Card data={data} />}
-          </div>
-        </SimulatorLayout>
+          <CourseModules
+            modules={options}
+            width={850}
+            activeModule={activeOption}
+            setActiveModule={setActiveOption}
+            backgroundColor={'rgba(196, 196, 196, 0.15)'}
+            mobileWidth={335}
+            moduleStyles={mainCourseModule}
+          />
+        </div>
+        <div className={styles.container}>
+          {data.data.length === 0 ? <NotFound /> : <Card data={data} />}
+        </div>
+        <ContactUs />
       </div>
     );
   }

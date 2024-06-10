@@ -12,11 +12,11 @@
   display: grid;
   /* flex-wrap: wrap; */
   margin: 0 auto;
-  gap: 1rem;
+  gap: 2.5rem;
   max-width: 1320px;
 }
 .textWrapper {
-  padding: 1px 20px 20px 50px;
+  padding: 1px 20px 10px 30px;
 }
 .cardImage {
   width: 400px;
@@ -26,24 +26,38 @@
   color: #1f1c14;
   font-size: 14px;
   opacity: 70%;
+  overflow: auto;
+  height: 80px;
   padding-top: 20px;
 }
 .cardTitle {
-  color: #fe8863;
-  font-size: 19px;
+  color: #fe602f;
+  font-size: 26px;
   font-weight: 900;
-  padding-top: 10px;
+  padding-top: 30px;
+}
+.rating {
+  position: absolute;
+  background-color: #fff;
+  margin-top: 16px;
+  /* padding: 5px 18px; */
+  width: 80px;
+  height: 40px;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  color: #fab437;
+  border-radius: 0px 10px 10px 0px;
 }
 .free {
-  width: 150px;
-  height: 38px;
-  margin-top: 10px;
-  border-radius: 47px;
+  width: 130px;
+  height: 48px;
+  border-radius: 8px;
   border: none;
   background-color: #a2bf00;
   color: #ffffff;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 22px;
   cursor: pointer;
   transition: ease-out 0.2s;
 }
@@ -53,15 +67,20 @@
 }
 
 .paid {
-  width: 150px;
-  height: 38px;
-  margin-top: 10px;
-  border-radius: 47px;
+  width: 130px;
+  height: 48px;
+  border-radius: 8px;
   border: none;
   background-color: #fe8863;
   color: #ffffff;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 22px;
+  cursor: pointer;
+  transition: ease-out 0.2s;
+}
+
+.paid:hover {
+  background-color: #ec724d;
 }
 
 @media (min-width: 700px) {

@@ -19,12 +19,16 @@ const ContactUs = () => {
               textTransform: 'uppercase',
               color: '#fff',
               textAlign: 'center',
-              fontSize: '22px',
+              fontSize: '30px',
+              fontWeight: '500',
             }}>
             Our Slogan
           </div>
           <div className={styles.ContactUsDescription}>
-            “Spend Smart, Save Smarter: Fun with Finance!”
+            “Spend Smart,
+            <br />
+            &nbsp;&nbsp;&nbsp; Save Smarter: <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Fun with Finance!”
           </div>
         </div>
         <div className={styles.middleLineHorizontal}></div>
@@ -35,8 +39,22 @@ const ContactUs = () => {
             <div>
               <div className={styles.emailWrapper}>
                 <div style={{ display: 'flex', justifyContent: 'center' }}>
-                  <Image src={mail} style={{ marginRight: '10px' }} alt="Mail Icon" />
-                  <div style={{ color: '#fff', fontWeight: '200' }}>finlit@gmail.com</div>
+                  <Image
+                    src={mail}
+                    style={{ margin: 'auto 0', marginRight: '10px' }}
+                    alt="Mail Icon"
+                    width={30}
+                    height={30}
+                  />
+                  <div
+                    style={{
+                      color: '#fff',
+                      fontWeight: '200',
+                      fontSize: '26px',
+                      fontWeight: '500',
+                    }}>
+                    finlit@gmail.com
+                  </div>
                 </div>
               </div>
               <div className={styles.phoneNumber}>
@@ -44,8 +62,12 @@ const ContactUs = () => {
                   src={phone}
                   style={{ margin: 'auto 0', marginRight: '10px' }}
                   alt="Phone Icon"
+                  width={30}
+                  height={30}
                 />
-                <div style={{ color: '#fff' }}>+7(707)-518-91-47</div>
+                <div style={{ color: '#fff', fontSize: '26px', fontWeight: '500' }}>
+                  +7(707)-518-91-47
+                </div>
               </div>
             </div>
             {/* <div className={styles.images}>

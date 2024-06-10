@@ -5,7 +5,15 @@ import Loader from '../Loader/Loader2';
 import styles from './component.module.css';
 import { Button } from './CardListButton/Button';
 
-const CardList = ({ fetchData, cardStyle, buttonStyle, buttonLink, constantData }) => {
+const CardList = ({
+  fetchData,
+  cardStyle,
+  buttonStyle,
+  buttonLink,
+  constantData,
+  isQuiz,
+  isLesson,
+}) => {
   const [data, setData] = useState(null);
   const router = useRouter();
 
@@ -13,6 +21,7 @@ const CardList = ({ fetchData, cardStyle, buttonStyle, buttonLink, constantData 
     const getData = async () => {
       const response = await fetchData();
       setData(response);
+      console.log('asas', response);
     };
     getData();
   }, [fetchData]);
@@ -27,11 +36,9 @@ const CardList = ({ fetchData, cardStyle, buttonStyle, buttonLink, constantData 
     return (
       <ul className={styles.ul}>
         {data &&
+          isLesson === true &&
           data.map((item) => (
-            <li
-              // className={item.is_completed === true ? styles.cardCompleted : styles.card}
-              className={styles.card}
-              key={item.id}>
+            <li className={styles.card} key={item.id}>
               <div style={cardStyle.title}>{item.name}</div>
               <div style={cardStyle.description}>{item.description}</div>
               <div style={cardStyle.content}>{item.content}</div>
@@ -40,11 +47,18 @@ const CardList = ({ fetchData, cardStyle, buttonStyle, buttonLink, constantData 
                 {/* <button style={cardStyle.button} onClick={() => router.push(buttonLink)}>
                   {cardStyle.buttonText}
                 </button> */}
-                <Button onClick={() => router.push(buttonLink)}>{cardStyle.buttonText}</Button>
+                {console.log(data)}
+                {item.is_completed === true ? (
+                  <Button onClick={() => router.push(cardStyle.buttonLink)}>Finished</Button>
+                ) : (
+                  <Button onClick={() => router.push(cardStyle.buttonLink)}>
+                    {cardStyle.buttonText}
+                  </Button>
+                )}
               </div>
             </li>
           ))}
-        {!data && (
+        {data && isQuiz === true && (
           <li className={styles.card}>
             <div style={cardStyle.title}>{constantData && constantData.title}</div>
             <div style={cardStyle.content}>{constantData && constantData.content}</div>
@@ -69,7 +83,15 @@ const CardList = ({ fetchData, cardStyle, buttonStyle, buttonLink, constantData 
                 {cardStyle.buttonText}
               </button> */}
 
-              <Button onClick={() => router.push(buttonLink)}>{cardStyle.buttonText}</Button>
+              {data.is_completed === true ? (
+                <Button onClick={() => router.push(cardStyle.buttonLinkFinished)} finished={true}>
+                  Completed
+                </Button>
+              ) : (
+                <Button onClick={() => router.push(cardStyle.buttonLink)}>
+                  {cardStyle.buttonText}
+                </Button>
+              )}
             </div>
           </li>
         )}

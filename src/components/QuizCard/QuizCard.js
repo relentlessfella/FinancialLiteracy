@@ -1,15 +1,9 @@
 import { useIsMobile } from '@/configs/axios/isMobile';
 import CardList from '../CardList/CardList';
 import axios from 'axios';
+import { useParams } from 'next/navigation';
+import { getUserFromLocalCookie } from '@/lib/auth';
 
-const fetchQuizData = async () => {
-  //   try {
-  //     const response = await axios.get(`http://localhost:8000/courses/quiz/get_quizzes/`);
-  //   } catch (error) {
-  //     throw error;
-  //   }
-  //   return response.data;
-};
 const data = {
   title: 'Quiz',
   content:
@@ -17,6 +11,19 @@ const data = {
 };
 
 const QuizCard = ({ course_id }) => {
+  const { id } = getUserFromLocalCookie();
+  const fetchQuizData = async () => {
+    const response = await axios({
+      method: 'get',
+      url: `http://127.0.0.1:8000/courses/course/${course_id}/`,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      params: { user_id: id },
+    });
+    console.log('resd', response);
+    return response.data;
+  };
   const isMobile = useIsMobile();
   const quizStyles = {
     title: { color: '#FE602F', fontSize: '32px', fontWeight: '1000', padding: '30px 0' },
@@ -38,14 +45,11 @@ const QuizCard = ({ course_id }) => {
       margin: '30px 0 ',
     },
     buttonText: 'Start',
+    buttonLink: `/course/quiz/${course_id}`,
+    buttonLinkFinished: `/course/quiz/${course_id}/results`,
   };
   return (
-    <CardList
-      fetchData={fetchQuizData}
-      constantData={data}
-      cardStyle={quizStyles}
-      buttonLink={`/course/quiz/${course_id}`}
-    />
+    <CardList fetchData={fetchQuizData} constantData={data} cardStyle={quizStyles} isQuiz={true} />
   );
 };
 

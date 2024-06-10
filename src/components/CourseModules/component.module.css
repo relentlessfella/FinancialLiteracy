@@ -4,8 +4,8 @@
   border-radius: 46px;
   border: none;
   font-weight: 800;
-  font-size: 18px;
-  color: #fe8863;
+  font-size: 24px;
+  color: #fe602f;
   cursor: pointer;
   user-select: none;
   transition: padding 0.3s;
@@ -30,7 +30,7 @@
   border-radius: 46px;
   border: none;
   font-weight: 800;
-  font-size: 18px;
+  font-size: 24px;
   cursor: pointer;
   transition: 0.7s;
   user-select: none;

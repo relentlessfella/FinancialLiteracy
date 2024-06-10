@@ -1,10 +1,12 @@
 import CardList from '../CardList/CardList';
-import axios from 'axios';
-import { useParams } from 'next/navigation';
 import { useIsMobile } from '@/configs/axios/isMobile';
 import styled from 'styled-components';
+import axios from 'axios';
+import { useParams } from 'next/navigation';
+import { getUserFromLocalCookie } from '@/lib/auth';
 
-const LessonCard = ({ id }) => {
+const LessonCard = () => {
+  const { id } = getUserFromLocalCookie();
   const params = useParams();
   const isMobile = useIsMobile();
   const Button = styled.button`
@@ -41,16 +43,21 @@ const LessonCard = ({ id }) => {
       margin: '30px 0 ',
     },
     buttonText: 'Start',
+    buttonLink: `/lesson/${params.id}`,
   };
   const fetchLessonData = async () => {
-    const response = await axios.get(
-      `http://localhost:8000/courses/lesson/${params.id}/get_lessons/`,
-    );
+    const response = await axios({
+      method: 'GET',
+      url: `http://localhost:8000/courses/lesson/${params.id}/get_lessons/`,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      params: { user_id: id },
+    });
+    console.log('less', response);
     return response.data;
   };
-  return (
-    <CardList fetchData={fetchLessonData} cardStyle={lessonStyles} buttonLink={`/lesson/${id}`} />
-  );
+  return <CardList fetchData={fetchLessonData} cardStyle={lessonStyles} isLesson={true} />;
 };
 
 export default LessonCard;

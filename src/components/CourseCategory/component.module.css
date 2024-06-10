@@ -18,8 +18,8 @@
   border-radius: 12px;
   display: flex;
   justify-content: space-between;
-  width: 350px;
-  height: 60px;
+  width: 380px;
+  height: 80px;
   margin: 10px;
   cursor: pointer;
   flex-wrap: wrap;
@@ -38,8 +38,8 @@
 }
 .title {
   margin: 30px auto;
-  max-width: 1085px;
-  font-size: 28px;
+  max-width: 1140px;
+  font-size: 38px;
   color: #a2bf00;
 }
 @media (max-width: 1470px) {

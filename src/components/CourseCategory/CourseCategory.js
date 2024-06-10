@@ -26,15 +26,17 @@ const CourseCategory = () => {
       <ul className={styles.ul}>
         {categories.map((item) => (
           <li key={item.id} className={styles.li} onClick={() => toggleCategory(item.title)}>
-            <div style={{ display: 'flex', marginTop: 'auto', marginBottom: 'auto' }}>
+            <div style={{ display: 'flex', margin: 'auto 30px' }}>
               <Image
                 src={item.image}
                 width={25}
                 height={25}
-                style={{ margin: '0 15px' }}
+                style={{ margin: 'auto 15px' }}
                 alt="Icon of Pen"
               />
-              <div style={{ color: '#fff', userSelect: 'none' }}>{item.title}</div>
+              <div style={{ color: '#fff', userSelect: 'none', fontSize: '22px' }}>
+                {item.title}
+              </div>
             </div>
             <div className={styles.roundCircle}>
               <div

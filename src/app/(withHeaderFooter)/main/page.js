@@ -1,8 +1,8 @@
 'use client';
 import React, { useEffect, useState, Suspense } from 'react';
 import Image from 'next/image';
-import explore from '../../../../public/assets/explore.png';
-import mainRight from '../../../../public/assets/mainRight.png';
+import explore from '@assets/explore.svg';
+import mainRight from '@assets/mainRight.svg';
 import PopularCourses from '@/components/PopularCourses/PopularCourses';
 import CourseModules from '@/components/CourseModules/CourseModules';
 import CourseCategory from '@/components/CourseCategory/CourseCategory';
@@ -16,6 +16,7 @@ import Filter from '@/components/Filter/Filter';
 import { alfaSlabOne, inter } from '@/fonts';
 import { useFetchUser } from '@/contexts/authContext/authContext';
 import { getUserFromLocalCookie } from '@/lib/auth';
+import Loader from '@/components/Loader/Loader2';
 import withAuth from '@/components/withAuth/withAuth';
 
 const modules = [
@@ -109,9 +110,8 @@ const MainPage = () => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            borderBottom: '1px solid #D9D9D9',
             width: '100%',
-            maxWidth: '1200px',
+            maxWidth: '1420px',
             margin: '0 auto',
           }}>
           <Image
@@ -133,7 +133,7 @@ const MainPage = () => {
           {/* Popular Courses */}
           <div className={`${alfaSlabOne.className} ${styles.Popular3Courses}`}>
             <div style={{ color: '#A2BF00', marginRight: '15px' }}>Popular</div>
-            <div style={{ color: '#FE8863', whiteSpace: 'nowrap' }}>3 Courses</div>
+            <div style={{ color: '#FE602F', whiteSpace: 'nowrap' }}>3 Courses</div>
           </div>
           <ul className={styles.ul_main_page}>
             <div
@@ -153,7 +153,7 @@ const MainPage = () => {
             <p className={styles.title}>Courses</p>
             <CourseModules
               modules={modules}
-              width={450}
+              width={550}
               activeModule={activeModule}
               setActiveModule={setActiveModule}
               mobileWidth={300}

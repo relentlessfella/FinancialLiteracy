@@ -8,6 +8,7 @@ import mask4 from '../../../public/assets/SimulatorPageAssets/Mask4.png';
 import mask5 from '../../../public/assets/SimulatorPageAssets/Mask5.png';
 import styles from './component.module.css';
 // import { DMSans } from '@/app/main/page';
+import { poppins } from '@/fonts';
 import { DMSans } from '@/fonts';
 import { useRouter } from 'next/navigation';
 const data1 = [
@@ -93,17 +94,24 @@ const Card = ({ data }) => {
               style={{
                 position: 'absolute',
                 margin: '10px 15px',
-                backgroundColor: '#A2BF00',
+                backgroundColor:
+                  item.level.toLowerCase() === 'easy'
+                    ? '#A2BF00'
+                    : item.level.toLowerCase() === 'medium'
+                    ? '#fc9803'
+                    : item.level.toLowerCase() === 'hard'
+                    ? '#fc4503'
+                    : '',
                 borderRadius: '17.5px',
                 padding: '5px 15px',
                 color: '#fff',
               }}>
               {item.level}
             </div>
-            <Image src={data1[key].image} alt={data1[key].title} />
+            <Image src={data1[key].image} alt={data1[key].title} width={387} />
           </div>
           <div className={styles.card_text}>
-            <div className={styles.card_title}>{item.name}</div>
+            <div className={`${styles.card_title} ${poppins.className}`}>{item.name}</div>
             {/* <div className={styles.card_description}>{item.description}</div> */}
           </div>
           <button
