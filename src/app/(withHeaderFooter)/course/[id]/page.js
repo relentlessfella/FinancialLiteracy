@@ -97,13 +97,18 @@ const CoursePage = ({ params }) => {
           'Content-Type': 'application/json',
         },
       });
-      if (response.status === 200) {
-        alert('You have joined this course!');
+      console.log(response.data);
+      if (response.data.Success === true) {
+        alert('You have joined the course!');
+      }
+      if (response.data.AlreadyJoinedCourse === true) {
+        alert('You already joined the course!');
+      }
+      if (response.data.NotEnoughMoney === true) {
+        alert('You do not have enough money!');
       }
     } catch (error) {
-      if (error.response.status === 500) {
-        alert('You already joined the course');
-      }
+      throw error;
     }
   };
 
@@ -146,7 +151,7 @@ const CoursePage = ({ params }) => {
                       className={styles.playIcon}
                       alt="Start course image"
                     />
-                    <div style={{ margin: 'auto 0' }}>Start Lesson</div>
+                    <div style={{ margin: 'auto 0' }}>Join Course</div>
                   </button>
                   <button
                     className={styles.bookmarkBtn}

@@ -46,12 +46,18 @@ const Lesson = ({ params }) => {
           'Content-Type': 'application/json',
         },
       });
-      console.log(response);
+      console.log(response.data);
       if (response.data.AlreadySubmit == true) {
         alert('Already Submitted');
       }
+      if (response.data.LessonComplete == true) {
+        alert('Lesson Succesfully Finished!');
+      }
+      if (response.data.DidNotJoinedCourse === true) {
+        alert('You did not joined course!');
+      }
     } catch (error) {
-      alert('Error');
+      alert('Sorry, Error Occured');
     }
   };
 

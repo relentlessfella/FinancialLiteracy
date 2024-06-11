@@ -19,8 +19,7 @@ const FinancialSimulator = () => {
     { id: 1, title: 'Stock' },
     { id: 2, title: 'Investment' },
     { id: 3, title: 'Money' },
-    { id: 4, title: 'Credit' },
-    { id: 5, title: 'Economy' },
+    { id: 4, title: 'Economy' },
   ];
 
   const mainCourseModule = {
@@ -74,7 +73,7 @@ const FinancialSimulator = () => {
           </div>
           <CourseModules
             modules={options}
-            width={850}
+            width={750}
             activeModule={activeOption}
             setActiveModule={setActiveOption}
             backgroundColor={'rgba(196, 196, 196, 0.15)'}

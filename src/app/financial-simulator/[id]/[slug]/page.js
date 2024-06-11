@@ -8,6 +8,7 @@ import Image from 'next/image';
 import image from '@assets/general.jpg';
 import simulationCorrectImg from '@assets/correct.jpg';
 import simulationWrongImg from '@assets/wrong.jpg';
+import Loader from '@/components/Loader/Loader2';
 import tick from '@assets/SimulationImg/SimulationTick.png';
 import wrongTick from '@assets/SimulationImg/wrongTick.png';
 //Retrieve required
@@ -68,7 +69,13 @@ const SimulationCardPage = () => {
     setShowCorrectAnswer(true);
   };
   if (data === null) {
-    return <div style={{ textAlign: 'center' }}>Loading...</div>;
+    return (
+      <SimulatorLayout>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <Loader />
+        </div>
+      </SimulatorLayout>
+    );
   } else {
     const correctAnswer = data.answers.find((answer) => answer.is_correct === true);
     () => setCorrectAnswer(correctAnswer);
@@ -177,15 +184,23 @@ const SimulationCardPage = () => {
               <div className={styles.imageWrapper}>
                 <div>
                   <p className={styles.title}>{data.name}</p>
-                  <Image
-                    alt="Image of test"
-                    src={image}
-                    className={styles.simulatorImage}
-                    layout="responsive"
-                    // width={650}
-                    // height={400}
-                    style={{ borderRadius: '20px' }}
-                  />
+                  <div
+                    style={{
+                      // width: '700px',
+                      // height: '334px',
+                      margin: '0 auto',
+                    }}>
+                    <Image
+                      alt="Image of test"
+                      src={image}
+                      width={750}
+                      height={400}
+                      className={styles.simulatorImage}
+                      // layout="responsive"
+
+                      style={{ borderRadius: '20px' }}
+                    />
+                  </div>
                   <div className={styles.question}>{data.situation}</div>
                   <div style={{ color: '#858585' }}>
                     Instructions: Choose the best answer (1, 2, or 3)

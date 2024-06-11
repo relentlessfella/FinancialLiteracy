@@ -49,7 +49,9 @@ const CardList = ({
                 </button> */}
                 {console.log(data)}
                 {item.is_completed === true ? (
-                  <Button onClick={() => router.push(cardStyle.buttonLink)}>Finished</Button>
+                  <Button onClick={() => router.push(cardStyle.buttonLink)} finished={true}>
+                    Completed
+                  </Button>
                 ) : (
                   <Button onClick={() => router.push(cardStyle.buttonLink)}>
                     {cardStyle.buttonText}
@@ -82,10 +84,10 @@ const CardList = ({
                 onClick={() => router.push(buttonLink)}>
                 {cardStyle.buttonText}
               </button> */}
-
+              {console.log('data', data)}
               {data.is_completed === true ? (
                 <Button onClick={() => router.push(cardStyle.buttonLinkFinished)} finished={true}>
-                  Completed
+                  Show results
                 </Button>
               ) : (
                 <Button onClick={() => router.push(cardStyle.buttonLink)}>

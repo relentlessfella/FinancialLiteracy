@@ -132,7 +132,10 @@ const QuizPage = ({ params }) => {
       });
       localStorage.setItem('level', JSON.stringify(response.data.level));
       router.push(`/course/quiz/${params.id}/results`);
-      console.log(response.data);
+      console.log('dsdad', response.data);
+      if (response.data.DidNotJoinedCourse === true) {
+        alert('You did not joined course!');
+      }
     } catch (error) {
       alert('Error');
     }

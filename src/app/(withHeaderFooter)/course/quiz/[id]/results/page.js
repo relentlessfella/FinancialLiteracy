@@ -108,15 +108,16 @@ const Results = ({ params }) => {
     return (
       <div className={`${poppins.className} ${styles.quizMain}`}>
         <div
+          style={{ color: '#FE602F', fontWeight: '700', fontSize: '28px', margin: '20px 0 5px 0' }}>
+          Results
+        </div>
+        <div
           style={{
-            margin: '30px 0 20px 0',
+            margin: '10px 0 20px 0',
             color: '#FE602F',
             fontSize: '28px',
           }}>
           Question
-        </div>
-        <div style={{ color: '#858585', fontWeight: '400' }}>
-          Instructions: Choose the best answer (a, b, c, or d) for each question.
         </div>
         <div
           style={{

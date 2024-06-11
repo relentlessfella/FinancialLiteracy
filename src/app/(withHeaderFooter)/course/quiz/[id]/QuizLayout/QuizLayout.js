@@ -42,7 +42,7 @@ const QuizLayout = ({ children, data }) => {
             />
             <div>
               <div style={{ display: 'flex' }}>
-                <div className={styles.quiztitle}>Quiz {params.id} </div>
+                <div className={styles.quiztitle}>Big Quiz</div>
               </div>
               <div className={styles.quizDescription}>
                 Basic Understanding of Financial Literacy
