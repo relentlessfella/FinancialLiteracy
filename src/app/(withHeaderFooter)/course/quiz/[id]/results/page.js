@@ -7,6 +7,7 @@ import Loader from '@/components/Loader/Loader2';
 import noResult from '@assets/NoResults.jpg';
 import { useRouter } from 'next/navigation';
 import { getUserFromLocalCookie } from '@/lib/auth';
+import QuizLayout from '../QuizLayout/QuizLayout';
 
 const Results = ({ params }) => {
   const [data, setData] = useState(null);
@@ -31,6 +32,7 @@ const Results = ({ params }) => {
         },
       });
       setData(response.data);
+      window.scrollTo(0, 0);
     } catch (error) {
       throw error;
     }
@@ -80,8 +82,7 @@ const Results = ({ params }) => {
 
   const handleNextAnswer = () => {
     if (data.next === null) {
-      router.push(`/course/quiz/${params.id}/score`);
-      // router.push(`${params.id}/feedback/`);
+      router.push(`/course/quiz/${params.id}/feedback/`);
     } else {
       handleNextPage();
     }
@@ -106,69 +107,72 @@ const Results = ({ params }) => {
   } else {
     console.log(data);
     return (
-      <div className={`${poppins.className} ${styles.quizMain}`}>
-        <div
-          style={{ color: '#FE602F', fontWeight: '700', fontSize: '28px', margin: '20px 0 5px 0' }}>
-          Results
-        </div>
-        <div
-          style={{
-            margin: '10px 0 20px 0',
-            color: '#FE602F',
-            fontSize: '28px',
-          }}>
-          Question
-        </div>
-        <div
-          style={{
-            color: '#333333',
-            fontWeight: '700',
-            fontSize: '',
-            fontSize: '20px',
-            margin: '20px 0',
-          }}>
-          {data.results[0].question}
-        </div>
-        <ul className={styles.ul}>
-          {data.results[0].answers.map((item, key) => (
-            <li
-              style={{ display: 'flex' }}
-              key={item.id}
-              className={
-                item.is_correct === true && item.chosen === true
-                  ? styles.quizRightAnswer
-                  : item.chosen === true
-                  ? styles.quizWrongAnswer
-                  : item.is_correct === true
-                  ? styles.quizRightAnswer
-                  : styles.quizQuestion
-              }
-              onClick={() => handleClick(item.id)}>
-              {console.log('dsdsds', item)}
-              <div className={styles.answerType}>{answerType[key]}</div>
-              {item.text}
-            </li>
-          ))}
-        </ul>
-        <div
-          className={styles.buttons}
-          style={{ justifyContent: data.previous === null ? 'flex-end' : 'space-between' }}>
-          <button
+      <QuizLayout result={true}>
+        <div className={`${poppins.className} ${styles.quizMain}`}>
+          <div
             style={{
-              display: data.previous === null ? 'none' : 'block',
-            }}
-            className={styles.back_button}
-            onClick={() => handlePreviousPage()}>
-            Back
-          </button>
-          <button
-            style={data.next === null ? { backgroundColor: '#a2bf00', color: '#fff' } : {}}
-            className={styles.next_button}
-            onClick={() => handleNextAnswer()}>
-            {data.next === null ? 'Finish' : 'Next'}
-          </button>
+              margin: '40px 0 20px 0',
+              color: '#FE602F',
+              fontSize: '28px',
+            }}>
+            Question {currentPage}
+          </div>
+
+          <div
+            style={{
+              color: '#333333',
+              fontWeight: '700',
+              fontSize: '',
+              fontSize: '20px',
+              margin: '20px 0',
+            }}>
+            {data.results[0].question}
+          </div>
+          <ul className={styles.ul}>
+            {data.results[0].answers.map((item, key) => (
+              <li
+                style={{ display: 'flex' }}
+                key={item.id}
+                className={
+                  item.is_correct === true && item.chosen === true
+                    ? styles.quizRightAnswer
+                    : item.chosen === true
+                    ? styles.quizWrongAnswer
+                    : item.is_correct === true
+                    ? styles.quizRightAnswer
+                    : styles.quizQuestion
+                }
+                onClick={() => handleClick(item.id)}>
+                {console.log('dsdsds', item)}
+                <div className={styles.answerType}>{answerType[key]}</div>
+                {item.text}
+              </li>
+            ))}
+          </ul>
+          <div
+            className={styles.buttons}
+            style={{ justifyContent: data.previous === null ? 'flex-end' : 'space-between' }}>
+            <button
+              style={{
+                display: data.previous === null ? 'none' : 'block',
+              }}
+              className={styles.back_button}
+              onClick={() => handlePreviousPage()}>
+              Back
+            </button>
+            <button
+              style={
+                data.next === null
+                  ? { backgroundColor: '#a2bf00', color: '#fff', cursor: 'pointer' }
+                  : {}
+              }
+              className={styles.next_button}
+              onClick={() => handleNextAnswer()}>
+              {data.next === null ? 'Finish' : 'Next'}
+            </button>
+          </div>
         </div>
-      </div>
+      </QuizLayout>
     );
   }
 };

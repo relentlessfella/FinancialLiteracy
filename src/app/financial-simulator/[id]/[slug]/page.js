@@ -81,7 +81,7 @@ const SimulationCardPage = () => {
     () => setCorrectAnswer(correctAnswer);
     console.log(correctAnswer);
     return (
-      <SimulatorLayout>
+      <SimulatorLayout category={data.category}>
         <div className={styles.container}>
           {showCorrectAnswer === true ? (
             userSelect.is_correct === true ? (
@@ -186,8 +186,8 @@ const SimulationCardPage = () => {
                   <p className={styles.title}>{data.name}</p>
                   <div
                     style={{
-                      // width: '700px',
-                      // height: '334px',
+                      width: '750px',
+                      height: '400px',
                       margin: '0 auto',
                     }}>
                     <Image
@@ -202,7 +202,7 @@ const SimulationCardPage = () => {
                     />
                   </div>
                   <div className={styles.question}>{data.situation}</div>
-                  <div style={{ color: '#858585' }}>
+                  <div style={{ color: '#858585', textAlign: 'center', fontSize: '20px' }}>
                     Instructions: Choose the best answer (1, 2, or 3)
                   </div>
                   <ul className={styles.option_outter}>
@@ -212,7 +212,7 @@ const SimulationCardPage = () => {
                         className={styles.option}
                         onClick={() => handleClick(answer)}>
                         <div className={styles.option_inner}>{key + 1}.</div>
-                        <div>{answer.text}</div>
+                        <div style={{ fontSize: '18px' }}>{answer.text}</div>
                       </li>
                     ))}
                   </ul>

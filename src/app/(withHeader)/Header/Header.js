@@ -72,7 +72,8 @@ const Header = () => {
           <li style={{ display: 'flex' }} className={styles.header_li}>
             <Image src={coin} width={30} height={30} alt="Balance coin icon" draggable={false} />
             {data ? (
-              <div style={{ margin: '0 10px', fontWeight: '700', color: '#F0BE33' }}>
+              <div
+                style={{ margin: '0 10px', fontWeight: '700', color: '#F0BE33', fontSize: '20px' }}>
                 {data.balance}
               </div>
             ) : (

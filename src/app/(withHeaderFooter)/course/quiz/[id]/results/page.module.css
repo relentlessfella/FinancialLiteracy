@@ -57,7 +57,7 @@
   border-radius: 15px;
   color: #333333;
   font-weight: 600;
-  padding: 12px;
+  padding: 20px;
   /* margin: 10px 0; */
   margin-bottom: 15px;
   transition: 0.6s;
@@ -66,27 +66,27 @@
 }
 
 .quizWrongAnswer {
-  border: red 4px solid;
+  outline: red 4px solid;
   -webkit-box-shadow: 0px 0px 15px 0px rgba(34, 60, 80, 0.28);
   -moz-box-shadow: 0px 0px 15px 0px rgba(34, 60, 80, 0.28);
   box-shadow: 0px 0px 15px 0px rgba(34, 60, 80, 0.28);
   border-radius: 15px;
   color: #333333;
   font-weight: 600;
-  padding: 12px;
+  padding: 20px;
   /* margin: 10px 0; */
   margin-bottom: 15px;
   transition: 0.6s;
 }
 .quizRightAnswer {
-  border: #a2bf00 4px solid;
+  outline: #a2bf00 4px solid;
   -webkit-box-shadow: 0px 0px 15px 0px rgba(34, 60, 80, 0.28);
   -moz-box-shadow: 0px 0px 15px 0px rgba(34, 60, 80, 0.28);
   box-shadow: 0px 0px 15px 0px rgba(34, 60, 80, 0.28);
   border-radius: 15px;
   color: #333333;
   font-weight: 600;
-  padding: 12px;
+  padding: 20px;
   /* margin: 10px 0; */
   margin-bottom: 15px;
   transition: 0.1s;

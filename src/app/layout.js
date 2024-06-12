@@ -55,9 +55,9 @@ export default function RootLayout({ children, user, loading = false }) {
               backgroundColor:
                 pathname === '/orientation-page' ||
                 pathname === '/orientation-page/quiz' ||
-                pathname === '/orientation-page/recomendation' ||
-                pathname === '/game-instructions/game'
-                  ? '#A2BF00'
+                pathname === '/orientation-page/recomendation'
+                  ? // pathname === '/game-instructions/game'
+                    '#A2BF00'
                   : 'initial',
             }}>
             <div className={styles.mainWrapper}>{children}</div>

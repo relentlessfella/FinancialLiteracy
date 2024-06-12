@@ -6,7 +6,7 @@ import backButton from '@assets/courseBackButton.svg';
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
 
-const QuizLayout = ({ children, data }) => {
+const QuizLayout = ({ children, data, result }) => {
   //   const [useData, setData] = useState({ id: null });
   //   useEffect(() => {
   //     localStorage.setItem('id', data.results[0].course_id);
@@ -34,7 +34,7 @@ const QuizLayout = ({ children, data }) => {
         <div className={styles.description}>
           <div className={styles.container}>
             <Image
-              style={{ margin: '8px 10px' }}
+              style={{ margin: '17px 10px' }}
               src={backButton}
               width={22}
               height={22}
@@ -42,7 +42,11 @@ const QuizLayout = ({ children, data }) => {
             />
             <div>
               <div style={{ display: 'flex' }}>
-                <div className={styles.quiztitle}>Big Quiz</div>
+                {result === true ? (
+                  <div className={styles.quizTitle}>Quiz Results</div>
+                ) : (
+                  <div className={styles.quizTitle}>Quiz</div>
+                )}
               </div>
               <div className={styles.quizDescription}>
                 Basic Understanding of Financial Literacy

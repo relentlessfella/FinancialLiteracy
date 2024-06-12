@@ -131,10 +131,12 @@ const QuizPage = ({ params }) => {
         },
       });
       localStorage.setItem('level', JSON.stringify(response.data.level));
-      router.push(`/course/quiz/${params.id}/results`);
-      console.log('dsdad', response.data);
-      if (response.data.DidNotJoinedCourse === true) {
+      console.log(response.data);
+      if (response.data.NotJoined === true) {
         alert('You did not joined course!');
+      }
+      if (response.data.QuizComplete === true) {
+        router.push(`/course/quiz/${params.id}/score`);
       }
     } catch (error) {
       alert('Error');
@@ -174,7 +176,7 @@ const QuizPage = ({ params }) => {
               color: '#FE602F',
               fontSize: '28px',
             }}>
-            Question
+            Question {currentPage}
           </div>
           <div style={{ color: '#858585', fontWeight: '400' }}>
             Instructions: Choose the best answer (a, b, c, or d) for each question.

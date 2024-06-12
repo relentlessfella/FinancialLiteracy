@@ -111,18 +111,18 @@ const Header = () => {
                       <Menubar.Item
                         className={styles.MenubarItem}
                         onClick={() => router.push('/profile/profile-courses')}>
-                        <Image src={profileIcon} alt="My Courses" width={14} height={14} />
+                        <Image src={profileIcon} alt="My Courses" width={24} height={24} />
                         <button className={styles.links}>My Courses</button>
                       </Menubar.Item>
                       <Menubar.Item
                         className={styles.MenubarItem}
                         onClick={() => router.push('/bookmarks')}>
-                        <Image src={bookmarkIcon} alt="bookmark" width={14} height={14} />
+                        <Image src={bookmarkIcon} alt="bookmark" width={24} height={24} />
                         <button className={styles.links}>My Bookmarks</button>
                       </Menubar.Item>
                       <Menubar.Separator className={styles.MenubarSeparator} />
                       <Menubar.Item className={styles.MenubarItem} onClick={handleLogout}>
-                        <Image src={logoutIcon} alt="log out" width={14} height={14} />
+                        <Image src={logoutIcon} alt="log out" width={24} height={24} />
                         <button className={styles.links}>Sign out</button>
                       </Menubar.Item>
                     </Menubar.Content>

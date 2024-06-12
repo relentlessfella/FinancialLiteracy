@@ -85,7 +85,7 @@ const CardList = ({
                 {cardStyle.buttonText}
               </button> */}
               {console.log('data', data)}
-              {data.is_completed === true ? (
+              {data.quiz_completed === true ? (
                 <Button onClick={() => router.push(cardStyle.buttonLinkFinished)} finished={true}>
                   Show results
                 </Button>

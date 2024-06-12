@@ -97,6 +97,7 @@
   border: none;
   margin-left: 10px;
   padding: 0;
+  font-size: 20px;
   font-family: var(--font-poppins);
 }
 /* .MenubarTrigger[data-highlighted],
@@ -122,12 +123,12 @@
 .MenubarCheckboxItem,
 .MenubarRadioItem {
   all: unset;
-  font-size: 13px;
+  font-size: 23px;
   line-height: 1;
   border-radius: 4px;
   display: flex;
   align-items: center;
-  height: 25px;
+  height: 45px;
   padding: 0 10px;
   position: relative;
   user-select: none;

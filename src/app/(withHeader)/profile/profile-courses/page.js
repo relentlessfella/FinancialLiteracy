@@ -91,7 +91,7 @@ const ProfileCourses = () => {
         <div className={`${styles.profile_main} ${poppins.variable}`}>
           <div className={styles.profile_main_inner}>
             <div
-              style={{ color: '#FE8863', textAlign: 'center' }}
+              style={{ color: '#FE602F', textAlign: 'center', fontSize: '38px' }}
               className={alfaSlabOne.className}>
               My Courses
             </div>

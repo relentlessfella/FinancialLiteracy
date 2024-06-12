@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './component.module.css';
 import Image from 'next/image';
-import inactive from '../../../public/assets/game/inactive1.png';
+import inactive from '@assets/game/cardBack.svg';
 
 export const SingleGameCard = ({ image, handleChoice, flipped, disabled }) => {
   const handleClick = () => {
@@ -27,7 +27,8 @@ export const SingleGameCard = ({ image, handleChoice, flipped, disabled }) => {
           // layout="responsive"
           src={inactive}
           alt={'Card back'}
-          style={{ backgroundColor: '#D9D9D9' }}
+          // style={{ backgroundColor: '#D9D9D9' }}
+          style={{ backgroundColor: '#fff' }}
           className={styles.back}
           draggable={false}
         />

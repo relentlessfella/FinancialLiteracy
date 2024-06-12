@@ -17,9 +17,15 @@ const Game = () => {
   const [gameWon, setGameWon] = useState(false);
   const { width, height } = useWindowSize();
   const cardImages = [
-    { src: '/assets/game/bank.jpeg', matched: false },
-    { src: '/assets/game/pig.jpeg', matched: false },
-    { src: '/assets/game/wallet.jpeg', matched: false },
+    // { src: '/assets/game/bank.jpeg', matched: false },
+    // { src: '/assets/game/pig.jpeg', matched: false },
+    // { src: '/assets/game/wallet.jpeg', matched: false },
+    { src: '/assets/game/ruble.jpg', matched: false },
+    { src: '/assets/game/yuan.jpg', matched: false },
+    { src: '/assets/game/euro.jpg', matched: false },
+    { src: '/assets/game/lira.jpg', matched: false },
+    { src: '/assets/game/won.jpg', matched: false },
+    { src: '/assets/game/yen.jpg', matched: false },
   ];
   const shuffleCards = () => {
     const shuffledCards = [...cardImages, ...cardImages]

@@ -46,7 +46,7 @@ const QuizCard = ({ course_id }) => {
     },
     buttonText: 'Start',
     buttonLink: `/course/quiz/${course_id}`,
-    buttonLinkFinished: `/course/quiz/${course_id}/results`,
+    buttonLinkFinished: `/course/quiz/${course_id}/score`,
   };
   return (
     <CardList fetchData={fetchQuizData} constantData={data} cardStyle={quizStyles} isQuiz={true} />

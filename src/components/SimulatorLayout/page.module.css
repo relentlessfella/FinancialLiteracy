@@ -1,12 +1,19 @@
 .section_background {
   background-image: url('/assets/sideRight.png');
-  height: 300px;
+  height: 150px;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center; */
+  /* align-items: center;
+   */
   font-family: var(--font-alfaSlabOne);
   color: #fff;
   font-size: 34px;
+}
+
+.backgroundTitle {
+  padding: 20px;
+  margin: 0 auto;
+  width: 1200px;
 }
 
 @media (max-width: 968px) {
