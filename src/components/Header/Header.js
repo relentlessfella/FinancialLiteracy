@@ -18,6 +18,7 @@ import { useFetchUser, useUser } from '@/contexts/authContext/authContext';
 import { getTokenFromLocalCookie, getUserFromLocalCookie, UnSetToken } from '@/lib/auth';
 import logoutIcon from '@assets/MenuIcons/logoutIcon.svg';
 import profileIcon from '@assets/MenuIcons/profileIcon.svg';
+import trophy from '@assets/MenuIcons/trophy.png';
 import bookmarkIcon from '@assets/bookmark.png';
 import * as Menubar from '@radix-ui/react-menubar';
 import divider from '@assets/Divider.svg';
@@ -119,6 +120,12 @@ const Header = () => {
                         onClick={() => router.push('/bookmarks')}>
                         <Image src={bookmarkIcon} alt="bookmark" width={24} height={24} />
                         <button className={styles.links}>My Bookmarks</button>
+                      </Menubar.Item>
+                      <Menubar.Item
+                        className={styles.MenubarItem}
+                        onClick={() => router.push('/leaderboard')}>
+                        <Image src={trophy} alt="Grades" width={24} height={24} />
+                        <button className={styles.links}>Quiz Grades</button>
                       </Menubar.Item>
                       <Menubar.Separator className={styles.MenubarSeparator} />
                       <Menubar.Item className={styles.MenubarItem} onClick={handleLogout}>

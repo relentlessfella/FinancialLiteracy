@@ -10,6 +10,7 @@ import QuizLayout from './QuizLayout/QuizLayout';
 import Loader from '@/components/Loader/Loader2';
 import { useFetchUser } from '@/contexts/authContext/authContext';
 import { getUserFromLocalCookie } from '@/lib/auth';
+import { Modal } from 'antd';
 
 const QuizPage = ({ params }) => {
   const { id } = getUserFromLocalCookie();
@@ -133,7 +134,12 @@ const QuizPage = ({ params }) => {
       localStorage.setItem('level', JSON.stringify(response.data.level));
       console.log(response.data);
       if (response.data.NotJoined === true) {
-        alert('You did not joined course!');
+        // alert('You did not joined course!');
+        Modal.info({
+          title: 'You did not joined course!',
+          width: 600,
+          centered: true,
+        });
       }
       if (response.data.QuizComplete === true) {
         router.push(`/course/quiz/${params.id}/score`);

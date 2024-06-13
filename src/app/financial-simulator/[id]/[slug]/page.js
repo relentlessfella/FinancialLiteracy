@@ -98,14 +98,16 @@ const SimulationCardPage = () => {
                 </p>
                 <div className={styles.correctImageWrapper}>
                   <div style={{ margin: '0 auto' }}>
-                    <Image
-                      src={simulationCorrectImg}
-                      width={400}
-                      height={300}
-                      style={{ borderRadius: '15px' }}
-                      layout="responsive"
-                      alt="Simulation page main image"
-                    />
+                    <div style={{ width: '400px', height: '400px', margin: '0 auto' }}>
+                      <Image
+                        src={simulationCorrectImg}
+                        width={400}
+                        height={400}
+                        style={{ borderRadius: '15px' }}
+                        // layout="responsive"
+                        alt="Simulation page main image"
+                      />
+                    </div>
                     <li key={userSelect.id} className={styles.option_correct}>
                       <div style={{ display: 'flex', alignItems: 'center', marginLeft: '45px' }}>
                         {/* <div className={styles.option_inner}>{userSelect.id}.</div> */}
@@ -136,14 +138,16 @@ const SimulationCardPage = () => {
                 </p>
                 <div className={styles.correctImageWrapper}>
                   <div style={{ margin: '0 auto' }}>
-                    <Image
-                      src={simulationWrongImg}
-                      width={400}
-                      height={300}
-                      style={{ borderRadius: '15px' }}
-                      layout="responsive"
-                      alt="Simulation page main image"
-                    />
+                    <div style={{ margin: '0 auto', width: '400px', height: '400px' }}>
+                      <Image
+                        src={simulationWrongImg}
+                        width={400}
+                        height={400}
+                        style={{ borderRadius: '15px' }}
+                        // layout="responsive"
+                        alt="Simulation page main image"
+                      />
+                    </div>
 
                     <li key={userSelect.id} className={styles.option_correct}>
                       <div style={{ display: 'flex', alignItems: 'center', marginLeft: '45px' }}>

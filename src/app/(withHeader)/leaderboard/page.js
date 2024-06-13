@@ -50,8 +50,8 @@ const Leaderboard = () => {
         <ProfileLayout>
           <div className={poppins.className}>
             <div className={styles.leaderboardMain}>
-              <div className={styles.leaderboardTitle}>Leaderboard</div>
-              <div className={styles.leaderboardDescription}>The best results of each Quiz</div>
+              <div className={styles.leaderboardTitle}>Quiz Grades</div>
+              <div className={styles.leaderboardDescription}>The results of each Quiz</div>
               <ul className={styles.ul}>
                 {data.map((item, key) => (
                   <li
@@ -68,10 +68,11 @@ const Leaderboard = () => {
                             width: '8px',
                             textAlign: 'center',
 
-                            backgroundColor: key < 3 ? '#A2BF00' : 'transparent',
+                            // backgroundColor: key < 3 ? '#A2BF00' : 'transparent',
+                            backgroundColor: '#A2BF00',
                           }}
                           key={data.id}>
-                          {item.id}
+                          {key + 1}
                         </div>
                       </div>
                       <div
@@ -88,7 +89,8 @@ const Leaderboard = () => {
                       className={styles.leaderboardItemTitle}
                       style={{ margin: 'auto 10px', color: '#A2BF00' }}
                       key={data.id}>
-                      {item.grade}%
+                      Grade&nbsp;
+                      {parseInt(item.grade.toFixed(1))}%{/* {item.grade}% */}
                     </div>
                   </li>
                 ))}

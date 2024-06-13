@@ -61,6 +61,7 @@ const ProfileCourses = () => {
       },
     });
     setData(response.data);
+    window.scrollTo(0, 0);
     console.log(response);
   };
   useEffect(() => {

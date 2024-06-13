@@ -9,10 +9,13 @@ import Loader from '@/components/Loader/Loader2';
 import axios from 'axios';
 import Layout from './layout';
 import { poppins } from '@/fonts';
+import { Modal } from 'antd';
+import { useRouter } from 'next/navigation';
 const Lesson = ({ params }) => {
   const [data, setData] = useState(null);
   const { id } = getUserFromLocalCookie();
   const [lessonID, setLessonID] = useState(null);
+  const router = useRouter();
   const [accordionData, setAccordionData] = useState(null);
   const fetchLesson = async () => {
     try {
@@ -25,14 +28,8 @@ const Lesson = ({ params }) => {
         },
       });
       setData(response.data);
-      console.log('eeeee', response.data);
-      console.log('ID of lesson', params.id);
-      // setLessonID(params.id);
     } catch (error) {
-      // if (error.response.status === 500) {
       alert('Error');
-      console.log(error);
-      // }
     }
   };
 
@@ -52,13 +49,29 @@ const Lesson = ({ params }) => {
       });
       console.log(response.data);
       if (response.data.AlreadySubmit == true) {
-        alert('Already Submitted');
+        // alert('Already Submitted');
+        Modal.info({
+          title: 'You already submitted lesson!',
+          width: 600,
+          centered: true,
+        });
       }
       if (response.data.LessonComplete == true) {
-        alert('Lesson Succesfully Finished!');
+        // alert('Lesson Succesfully Finished!');
+        Modal.success({
+          title: 'Lesson Succesfully Finished!',
+          width: 600,
+          centered: true,
+        });
+        // router.push('/');
       }
       if (response.data.DidNotJoinedCourse === true) {
-        alert('You did not joined course!');
+        // alert('You did not joined course!');
+        Modal.warning({
+          title: 'You did not joined course!',
+          width: 600,
+          centered: true,
+        });
       }
     } catch (error) {
       alert('Sorry, Error Occured');

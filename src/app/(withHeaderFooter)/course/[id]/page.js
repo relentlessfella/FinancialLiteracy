@@ -16,7 +16,7 @@ import styles from './components.module.css';
 import { useFetchUser } from '@/contexts/authContext/authContext';
 import { getUserFromLocalCookie } from '@/lib/auth';
 import { architects } from '@/fonts';
-import { Button, Modal } from 'antd';
+import { Modal } from 'antd';
 const CoursePage = ({ params }) => {
   const { user, loading } = useFetchUser();
   const { id } = getUserFromLocalCookie();

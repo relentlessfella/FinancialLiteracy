@@ -45,19 +45,19 @@ const ProfileLayout = ({ children }) => {
     },
     {
       id: 4,
-      title: 'Leaderboard',
+      title: 'Quiz Grades',
       link: '/leaderboard',
       default: leaderboardIcon,
       active: leaderboardIconActive,
     },
-    {
-      id: 5,
-      title: 'Settings',
-      link: '/profile/profile-settings',
-      default: settingsIcon,
-      active: settingsActive,
-    },
-    { id: 6, title: 'Log Out', link: '/logout', default: exitIcon, active: logoutActive },
+    // {
+    //   id: 5,
+    //   title: 'Settings',
+    //   link: '/profile/profile-settings',
+    //   default: settingsIcon,
+    //   active: settingsActive,
+    // },
+    { id: 5, title: 'Log Out', link: '/logout', default: exitIcon, active: logoutActive },
   ];
   const pathname = usePathname();
   if (!user && !loading) {
@@ -96,7 +96,7 @@ const ProfileLayout = ({ children }) => {
                     <div>{item.title}</div>
                   </Link>
                 </div>
-                <div>{item.title === 'Leaderboard' && <div className={style.divider}></div>}</div>
+                <div>{item.title === 'Quiz Grades' && <div className={style.divider}></div>}</div>
               </div>
             );
           })}
