@@ -182,7 +182,7 @@ const SimulationCardPage = () => {
                 <p className={styles.level_inner}>{data.level}</p>
               </div>
               <div className={styles.imageWrapper}>
-                <div>
+                <div style={{ margin: '0 auto' }}>
                   <p className={styles.title}>{data.name}</p>
                   <div
                     style={{

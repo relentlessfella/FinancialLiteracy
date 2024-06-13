@@ -41,7 +41,6 @@ const Login = () => {
         fetchActiveUser();
         setTokenJWT(response.data);
         setRedirectState(true);
-        console.log('fewfdsgrev', response);
       } else if (response.data.message === 'No such user') {
         alert('Invalid credentials');
       } else {

@@ -14,6 +14,7 @@ import styles from './component.module.css';
 import { useMainContext } from '@/contexts/ContextProvider/ContextProvider';
 import Loader from '../Loader/Loader2';
 import NotFound from '../NotFound/NotFound';
+import card1 from '@assets/Cards/card1.png';
 import generalImage from '@assets/main/general.png';
 
 const CardItem = ({ data, isLoading }) => {
@@ -41,7 +42,13 @@ const CardItem = ({ data, isLoading }) => {
                 {parseFloat(item.rating.toFixed(1))}
               </div>
             </div>
-            <Image src={generalImage} className={styles.cardImage} alt="Icon of Card Image" />
+            <Image
+              src={card1}
+              // width={400}
+              // height={221}
+              className={styles.cardImage}
+              alt="Icon of Card Image"
+            />
             <div className={styles.textWrapper}>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <div className={`${poppins.className} ${styles.cardTitle}`}>{item.name}</div>

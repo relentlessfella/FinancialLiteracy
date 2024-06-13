@@ -45,8 +45,8 @@ const FinancialSimulator = () => {
             stocks: activeOption === 1 ? 'stocks' : '',
             investment: activeOption === 2 ? 'investment' : '',
             money: activeOption === 3 ? 'money' : '',
-            credit: activeOption === 4 ? 'credit' : '',
-            economy: activeOption === 5 ? 'economy' : '',
+            // credit: activeOption === 4 ? 'credit' : '',
+            economy: activeOption === 4 ? 'economy' : '',
           },
         });
         setData(response);

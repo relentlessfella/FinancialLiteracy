@@ -16,6 +16,7 @@ import styles from './components.module.css';
 import { useFetchUser } from '@/contexts/authContext/authContext';
 import { getUserFromLocalCookie } from '@/lib/auth';
 import { architects } from '@/fonts';
+import { Button, Modal } from 'antd';
 const CoursePage = ({ params }) => {
   const { user, loading } = useFetchUser();
   const { id } = getUserFromLocalCookie();
@@ -36,7 +37,6 @@ const CoursePage = ({ params }) => {
         },
       });
       setData(response.data);
-      console.log(response.data);
     } catch (error) {
       throw error;
     }
@@ -84,6 +84,14 @@ const CoursePage = ({ params }) => {
       throw error;
     }
   };
+  const config = {
+    title: 'Use Hook!',
+    content: (
+      <>
+        <div>Hook</div>
+      </>
+    ),
+  };
 
   const fetchCourseJoin = async () => {
     try {
@@ -99,13 +107,27 @@ const CoursePage = ({ params }) => {
       });
       console.log(response.data);
       if (response.data.Success === true) {
-        alert('You have joined the course!');
+        // alert('You have joined the course!');
+        Modal.success({
+          title: 'You have joined the course!',
+          width: 600,
+          centered: true,
+        });
       }
       if (response.data.AlreadyJoinedCourse === true) {
-        alert('You already joined the course!');
+        Modal.info({
+          title: 'You already joined the course!',
+          width: 600,
+          centered: true,
+        });
       }
       if (response.data.NotEnoughMoney === true) {
-        alert('You do not have enough money!');
+        // alert('You do not have enough money!');
+        Modal.warning({
+          title: 'You do not have enough money!',
+          width: 600,
+          centered: true,
+        });
       }
     } catch (error) {
       throw error;
@@ -128,6 +150,7 @@ const CoursePage = ({ params }) => {
               simpler.” (FinLit)
             </div>
           </div>
+
           <div className={styles.courseWrapper}>
             <div className={styles.container}>
               <Image

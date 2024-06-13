@@ -18,17 +18,21 @@ const Lesson = ({ params }) => {
     try {
       const response = await axios({
         method: 'get',
-        url: `http://localhost:8000/courses/lesson/${params.id}/get_lessons/?user_id=${id}`,
+        // url: `http://localhost:8000/courses/lesson/${params.id}/get_lessons/?user_id=${id}`,
+        url: `http://localhost:8000/courses/lesson/${params.id}/`,
         headers: {
           'Content-Type': 'application/json',
         },
       });
       setData(response.data);
-      setLessonID(response.data[0].id);
+      console.log('eeeee', response.data);
+      console.log('ID of lesson', params.id);
+      // setLessonID(params.id);
     } catch (error) {
-      if (error.response.status === 500) {
-        alert('Error');
-      }
+      // if (error.response.status === 500) {
+      alert('Error');
+      console.log(error);
+      // }
     }
   };
 
@@ -41,7 +45,7 @@ const Lesson = ({ params }) => {
     try {
       const response = await axios({
         method: 'post',
-        url: `http://localhost:8000/progress/course_progress/${lessonID}/complete_lesson/?user_id=${id}`,
+        url: `http://localhost:8000/progress/course_progress/${params.id}/complete_lesson/?user_id=${id}`,
         headers: {
           'Content-Type': 'application/json',
         },
@@ -71,19 +75,25 @@ const Lesson = ({ params }) => {
     return (
       <div className={styles.mainChildren}>
         <div style={{ width: '1000px', margin: '20px' }}>
-          <VideoFragment videoId={data[0].url} />
-          {data[0].accordions.length != 0 ? (
+          {/* {data.map((item, index) => { */}
+          <VideoFragment videoId={data.url} />
+          {/* })} */}
+          {console.log(params.id)}
+          {/* <VideoFragment videoId={data[0].url} /> */}
+          {/* <VideoFragment videoId={data[0].url} /> */}
+          {data.accordions.length != 0 ? (
             <div>
               <div
                 style={{
                   color: '#829902',
-                  fontSize: '32px',
-                  fontWeight: '600',
-                  margin: '30px 0',
+                  fontSize: '40px',
+                  fontWeight: '700',
+                  marginTop: '100px',
+                  marginBottom: '30px',
                 }}>
                 Questions and answers
               </div>
-              <Accordion accordionData={data[0].accordions} />
+              <Accordion accordionData={data.accordions} />
             </div>
           ) : (
             ''

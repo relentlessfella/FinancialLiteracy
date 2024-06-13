@@ -3,6 +3,12 @@
   margin: 45px auto;
   width: 1200px;
 }
+.modal {
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  font-size: 40px;
+}
 .backgroundCourseImage {
   background-image: url('/assets/backgroundLesson.png');
   background-repeat: no-repeat;

@@ -18,7 +18,7 @@ import prev from '@assets/feedbackImages/prevArrow.svg';
 import next from '@assets/feedbackImages/nextArrow.svg';
 import axios from 'axios';
 import Slider from 'react-slick';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { useFetchUser } from '@/contexts/authContext/authContext';
@@ -28,6 +28,7 @@ const Feedback = () => {
   const [keyIndex, setKeyIndex] = useState();
   const { user, loading } = useFetchUser();
   const { id } = getUserFromLocalCookie();
+  const router = useRouter();
   const [active, setActive] = useState({
     option_1: false,
     option_2: false,
@@ -78,6 +79,7 @@ const Feedback = () => {
       console.log(response);
       if (response.status === 200) {
         alert('Feedback sent!');
+        router.push('/');
       }
       console.log(keyIndex);
     } catch (error) {

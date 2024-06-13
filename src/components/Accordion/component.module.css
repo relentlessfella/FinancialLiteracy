@@ -49,7 +49,7 @@
   border: none;
   align-items: center;
   justify-content: space-between;
-  font-size: 18px;
+  font-size: 24px;
   font-weight: 600;
   line-height: 1;
   color: var(--violet-11);
@@ -63,7 +63,7 @@
 
 .AccordionContent {
   overflow: hidden;
-  font-size: 15px;
+  font-size: 18px;
   /* border: 0.5px solid #333333; */
   border: none;
   border-radius: 5px;

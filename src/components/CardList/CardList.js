@@ -47,13 +47,13 @@ const CardList = ({
                 {/* <button style={cardStyle.button} onClick={() => router.push(buttonLink)}>
                   {cardStyle.buttonText}
                 </button> */}
-                {console.log(data)}
+                {console.log('this is', item.id)}
                 {item.is_completed === true ? (
-                  <Button onClick={() => router.push(cardStyle.buttonLink)} finished={true}>
+                  <Button onClick={() => router.push(`/lesson/${item.id}`)} finished={true}>
                     Completed
                   </Button>
                 ) : (
-                  <Button onClick={() => router.push(cardStyle.buttonLink)}>
+                  <Button onClick={() => router.push(`/lesson/${item.id}`)}>
                     {cardStyle.buttonText}
                   </Button>
                 )}

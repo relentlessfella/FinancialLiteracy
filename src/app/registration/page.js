@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import { Button, Checkbox, Form, Input } from 'antd';
+import { Button, Form, Input } from 'antd';
 import { useRouter, redirect } from 'next/navigation';
 import loginImg from '../../../public/assets/login/loginPageImg.png';
 import axios from 'axios';
@@ -13,10 +13,12 @@ const Registration = () => {
   const [mailValue, setMailValue] = useState(null);
   const [userPassword, setUserPassword] = useState(null);
   const [redirectState, setRedirectState] = useState(false);
+
   const onFinish = (values) => {
     console.log('Success:', values);
     handleSubmit({ values });
   };
+
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
   };
@@ -54,9 +56,30 @@ const Registration = () => {
       throw error;
     }
   };
+
+  const passwordValidator = (rule, value) => {
+    if (!value) {
+      return Promise.reject('Please input your password!');
+    }
+    if (value.length < 8) {
+      return Promise.reject('Password must be at least 8 characters long!');
+    }
+    if (!/[A-Z]/.test(value)) {
+      return Promise.reject('Password must contain at least one uppercase letter!');
+    }
+    if (!/[a-z]/.test(value)) {
+      return Promise.reject('Password must contain at least one lowercase letter!');
+    }
+    if (!/[0-9]/.test(value)) {
+      return Promise.reject('Password must contain at least one number!');
+    }
+    return Promise.resolve();
+  };
+
   if (redirectState) {
     redirect('/login');
   }
+
   return (
     <div className={`${styles.main} ${poppins.variable}`}>
       <div className={styles.formWrapper}>
@@ -83,6 +106,7 @@ const Registration = () => {
               {
                 required: true,
                 message: 'Please input your email!',
+                type: 'email',
               },
             ]}>
             <Input className={styles.emailInput} placeholder="Enter your email address" />
@@ -108,10 +132,13 @@ const Registration = () => {
             rules={[
               {
                 required: true,
-                message: 'Please input your password!',
+                validator: passwordValidator,
               },
             ]}>
-            <Input.Password className={styles.inputPassword} placeholder="password" />
+            <Input.Password
+              className={styles.inputPassword}
+              placeholder="Enter a strong password"
+            />
           </Form.Item>
 
           <Form.Item

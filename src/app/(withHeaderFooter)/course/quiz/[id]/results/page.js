@@ -32,6 +32,7 @@ const Results = ({ params }) => {
         },
       });
       setData(response.data);
+      console.log('history', response.data);
       window.scrollTo(0, 0);
     } catch (error) {
       throw error;
@@ -81,10 +82,14 @@ const Results = ({ params }) => {
   };
 
   const handleNextAnswer = () => {
-    if (data.next === null) {
-      router.push(`/course/quiz/${params.id}/feedback/`);
-    } else {
+    if (data.next != null) {
       handleNextPage();
+    }
+    if (data.next === null && data.results[0].feedback_sent === true) {
+      router.push(`/course/${params.id}`);
+    }
+    if (data.next === null && data.results[0].feedback_sent === false) {
+      router.push(`/course/quiz/${params.id}/feedback/`);
     }
   };
 
@@ -105,7 +110,6 @@ const Results = ({ params }) => {
       </div>
     );
   } else {
-    console.log(data);
     return (
       <QuizLayout result={true}>
         <div className={`${poppins.className} ${styles.quizMain}`}>
